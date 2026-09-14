@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MonoGame – van if/else naar een statemachine :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MonoGame</li>
+    <li><a href="11-monogame-statemachine.html">State pattern</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MonoGame – van if/else naar een statemachine</h1>
+<div class="sect1">
+<h2 id="_situering"><a class="anchor" href="#_situering"></a>Situering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In deze les bouwen we verder op het MonoGame-project uit de vorige les. In deze versie zit de speltoestand rechtstreeks in <code>Game1</code> via een enumeratie en een veld om de huidige <code>state</code> bij te houden. De <code>Update</code>- en <code>Draw</code>-methode bevatten dan grote <code>if</code>/<code>else if</code>-blokken die bepalen wat er moet gebeuren in <code>Menu</code>, <code>Play</code>, <code>Pause</code> en <code>GameOver</code>. In de nieuwe versie wordt dat vervangen door het state pattern toe te passen met een abstracte basisklasse <code>AbstractState</code> en concrete toestanden zoals <code>MenuState</code>, <code>PlayState</code>, <code>PauseState</code> en <code>GameOverState</code>. <code>Game1</code> houdt dan enkel nog een referentie bij naar de actieve state en delegeert <code>Update</code> en <code>Draw</code> volledig naar die state.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_startpunt_alles_zit_in_game1"><a class="anchor" href="#_startpunt_alles_zit_in_game1"></a>Startpunt: alles zit in <code>Game1</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <code>Update</code> wordt met een reeks <code>if</code>-constructies gekeken welke logica uitgevoerd moet worden. In <code>Draw</code> gebeurt hetzelfde voor de rendering. Daardoor krijgt <code>Game1</code> meerdere verantwoordelijkheden: het beheert de game-loop, bewaart gedeelde data, verwerkt input, voert spelregels uit en beslist ook nog eens welke toestand actief is.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private States _currentState;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">if (_currentState == States.Menu)
+{
+    ...
+}
+else if (_currentState == States.Play)
+{
+    ...
+}
+else if (_currentState == States.Pause)
+{
+    ...
+}
+else if (_currentState == States.GameOver)
+{
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_probleem_van_deze_aanpak"><a class="anchor" href="#_probleem_van_deze_aanpak"></a>Probleem van deze aanpak</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Voor een klein voorbeeld werkt deze oplossing nog. Maar zodra een spel groeit, duiken er snel problemen op:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Game1</code> wordt te groot;</p>
+</li>
+<li>
+<p>logica van verschillende toestanden raakt door elkaar;</p>
+</li>
+<li>
+<p>het wordt moeilijker om gedrag per toestand apart te begrijpen;</p>
+</li>
+<li>
+<p>nieuwe states toevoegen betekent opnieuw <code>if/else</code>-blokken uitbreiden;</p>
+</li>
+<li>
+<p>hergebruik en testen worden moeilijker.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Concreet zie je in de code dat menu-, speel-, pauze- en gameoverlogica allemaal in dezelfde <code>Update</code>-methode zitten. Ook in <code>Draw</code> staan meerdere branches naast elkaar. Dat is een klassiek signaal dat gedrag beter opgesplitst wordt in aparte objecten.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wat_is_het_statemachine"><a class="anchor" href="#_wat_is_het_statemachine"></a>Wat is het statemachine?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een statemachine is een concrete implementatie van het <a href="https://refactoring.guru/design-patterns/state">State Pattern</a>, het is een model waarbij een systeem zich altijd in exact één toestand bevindt, en waarbij het gedrag afhangt van die huidige toestand. Een overgang naar een andere toestand gebeurt wanneer een bepaalde gebeurtenis optreedt, bijvoorbeeld een toetsindruk of een collision (2 of meer objecten die elkaar raken). In een game is dat erg herkenbaar:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in het menu reageert het spel anders dan tijdens het spelen;</p>
+</li>
+<li>
+<p>tijdens het spelen teken je vijanden en verwerk je beweging;</p>
+</li>
+<li>
+<p>in pauze toon je meestal dezelfde wereld, maar zonder normale update-logica;</p>
+</li>
+<li>
+<p>bij game over toon je een eindscherm en laat je de speler opnieuw starten.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Een statemachine zegt dus eigenlijk:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+De toestand bepaalt welk gedrag actief is.
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_doelarchitectuur"><a class="anchor" href="#_doelarchitectuur"></a>Doelarchitectuur</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In code verdwijnt de enum uit <code>Game1</code>. In de plaats daarvan bewaart <code>Game1</code> een veld van het type <code>AbstractState</code>. Daarnaast krijgt <code>Game1</code> een methode <code>ChangeState(AbstractState newActiveState)</code>. Bij het initialiseren houden we de logica <code>_currentState = States.Menu</code>, maar passen we deze aan naar <code>new MenuState(this)</code>. Daarna roept <code>Game1</code> in zijn game-loop gewoon <code>_currentState.Update(gameTime)</code> en <code>_currentState.Draw(gameTime, _spriteBatch)</code> op.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>this</code> hebben we nodig op elke state omdat we de context van ons spel niet in de states willen. Deze halen we - op dit moment - uit de Game1 instantie.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private AbstractState _currentState;
+
+public void ChangeState(AbstractState newActiveState)
+{
+    _currentState = newActiveState;
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Initialize()
+{
+    _currentState = new MenuState(this);
+    ...
+    base.Initialize();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Update(GameTime gameTime)
+{
+    ...
+    _currentState.Update(gameTime);
+    ...
+    base.Update(gameTime);
+}
+
+protected override void Draw(GameTime gameTime)
+{
+    GraphicsDevice.Clear(Color.CornflowerBlue);
+    _spriteBatch.Begin();
+
+    _currentState.Draw(gameTime, _spriteBatch);
+
+    _spriteBatch.End();
+    base.Draw(gameTime);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_abstracte_basisklasse"><a class="anchor" href="#_de_abstracte_basisklasse"></a>De abstracte basisklasse</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De kern van de nieuwe oplossing is <code>AbstractState</code>. Deze klasse definieert wat elke state minstens moet kunnen: een <code>Update(&#8230;&#8203;)</code> en een <code>Draw(&#8230;&#8203;)</code>. Daarnaast bewaart ze een referentie naar de <code>Game1</code>-context, zodat concrete states toegang hebben tot gedeelde data en functionaliteit. De basisklasse bevat ook hulpfuncties om toetsen te lezen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public abstract class AbstractState
+{
+    protected Game1 Context { get; init; }
+
+    public AbstractState(Game1 context)
+    {
+        Context = context;
+    }
+
+    public abstract void Update(GameTime gameTime);
+    public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+
+    protected bool IsKeyDown(Keys key1, Keys key2) =&gt; IsKeyDown(key1) || IsKeyDown(key2);
+    protected bool IsKeyDown(Keys key) =&gt; Keyboard.GetState().IsKeyDown(key);
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+We markeren de klasse als <code>abstract</code> omdat we willen afdwingen dat deze NIET kan geïnstantieerd worden.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+We maken de methoden <code>Draw</code> en <code>Update</code> abstract omdat we willen afdwingen dat elke state zijn eigen implementatie doet.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+We zetten de methoden van <code>IsKeyDown</code> in de abstracte klasse omdat elke state deze nodig heeft
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_waarom_is_dit_nuttig"><a class="anchor" href="#_waarom_is_dit_nuttig"></a>Waarom is dit nuttig?</h3>
+<div class="paragraph">
+<p>Deze klasse zorgt voor een gemeenschappelijk contract:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>elke state moet kunnen updaten;</p>
+</li>
+<li>
+<p>elke state moet kunnen tekenen;</p>
+</li>
+<li>
+<p>elke state krijgt toegang tot dezelfde context;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dit is ontwerpmatig interessant omdat clientcode dan kan werken tegen de abstractie <code>AbstractState</code> in plaats van tegen concrete types zoals <code>MenuState</code> of <code>PlayState</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_concrete_states"><a class="anchor" href="#_de_concrete_states"></a>De concrete states</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_menustate"><a class="anchor" href="#_menustate"></a>MenuState</h3>
+<div class="paragraph">
+<p><code>MenuState</code> is klein en duidelijk: wanneer de speler op <code>Enter</code> drukt, schakelt de game naar <code>PlayState</code>. In <code>Draw</code> wordt enkel de menutekst getoond. Alle logica van het menu zit dus samen in één klasse.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class MenuState : AbstractState
+{
+    public MenuState(Game1 context) : base(context) { }
+
+    public override void Update(GameTime gameTime)
+    {
+        if (IsKeyDown(Keys.Enter))
+            Context.ChangeState(new PlayState(Context));
+    }
+
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    {
+        spriteBatch.DrawString(Context.SpriteFont,
+            "Druk op enter om te beginnen",
+            Vector2.Zero,
+            Color.White);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_playstate"><a class="anchor" href="#_playstate"></a>PlayState</h3>
+<div class="paragraph">
+<p><code>PlayState</code> bevat de eigenlijke spel-logica. In <code>Update</code> worden achtergrond, speler en vijanden geüpdatet, en wordt eventueel een nieuwe enemy gespawned. Bij <code>P</code> wordt overgeschakeld naar <code>PauseState</code>.
+In <code>Draw</code> worden achtergrond, enemies en speler getekend. Daardoor zit alle gameplay op één plaats.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Update(GameTime gameTime)
+{
+    UpdateBackgroundPosition();
+    UpdatePlayerPosition();
+    UpdateEnemyPositions();
+    SpawnEnemyIfNeeded(gameTime);
+
+    if (IsKeyDown(Keys.P))
+        Context.ChangeState(new PauseState(Context, this));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pausestate"><a class="anchor" href="#_pausestate"></a>PauseState</h3>
+<div class="paragraph">
+<p><code>PauseState</code> is hier interessant. Deze state bewaart een referentie naar <code>PreviousState</code>, gezien we enkel willen pauzeren op een <code>PlayState</code> gaan we hier een <code>PlayState</code> binnenpakken en niet <code>AbstractState</code>. In <code>Draw</code> roept ze eerst <code>PreviousState.Draw(&#8230;&#8203;)</code> op en tekent daarna de pauzetekst erbovenop. Daardoor blijft de wereld zichtbaar, maar ligt de update-logica stil want de PreviousState.Update() wordt niet opgeroepen. Als de speler op <code>Enter</code> drukt, schakelt de game terug naar de vorige state.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class PauseState : AbstractState
+{
+    public PlayState PreviousState { get; init; }
+
+    public PauseState(Game1 context, PlayState previousState) : base(context)
+    {
+        PreviousState = previousState;
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        if (IsKeyDown(Keys.Enter))
+            Context.ChangeState(PreviousState);
+    }
+
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    {
+        PreviousState.Draw(gameTime, spriteBatch);
+        spriteBatch.DrawString(Context.SpriteFont,
+            "Pause. Druk op enter om door te doen",
+            Vector2.Zero,
+            Color.White);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+Hier kiezen we bewust voor PlayState, omdat pauzeren enkel zin heeft vanuit gameplay. Een algemenere oplossing zou AbstractState gebruiken, maar dan moet je bewaken welke states pauzeerbaar zijn.
+</blockquote>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gameoverstate"><a class="anchor" href="#_gameoverstate"></a>GameOverState</h3>
+<div class="paragraph">
+<p><code>GameOverState</code> toont een game-over-boodschap en laat de speler met <code>Enter</code> terugkeren naar <code>MenuState</code>. Ook dit gedrag zit volledig apart van de andere toestanden.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wat_verandert_er_ontwerpmatig"><a class="anchor" href="#_wat_verandert_er_ontwerpmatig"></a>Wat verandert er ontwerpmatig?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De overgang van de code zonder naar met statemachine is geen cosmetische refactor. Het ontwerp verandert fundamenteel.</p>
+</div>
+<div class="sect2">
+<h3 id="_1_van_conditionele_logica_naar_polymorfisme"><a class="anchor" href="#_1_van_conditionele_logica_naar_polymorfisme"></a>1. Van conditionele logica naar polymorfisme</h3>
+<div class="paragraph">
+<p>In de oude code vraagt de code voortdurend: “In welke state zit ik nu?” In de huidige code hoeft <code>Game1</code> dat niet meer te weten. Het roept gewoon <code>Update</code> en <code>Draw</code> op de huidige state aan. Welke concrete implementatie uitgevoerd wordt, hangt af van het object waar <code>_currentState</code> naar verwijst. Dat is polymorfisme in actie.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_betere_scheiding_van_verantwoordelijkheden"><a class="anchor" href="#_2_betere_scheiding_van_verantwoordelijkheden"></a>2. Betere scheiding van verantwoordelijkheden</h3>
+<div class="paragraph">
+<p><code>Game1</code> wordt teruggebracht tot zijn rol als centrale game-context:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>resources laden;</p>
+</li>
+<li>
+<p>gedeelde data bewaren;</p>
+</li>
+<li>
+<p>de actieve state bijhouden;</p>
+</li>
+<li>
+<p>delegeren naar die state.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De concrete states nemen het gedragsaspect over. Dat maakt de code leesbaarder en lokaler: wie het menu wil begrijpen, kijkt naar <code>MenuState</code>; wie gameplay wil begrijpen, kijkt naar <code>PlayState</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_uitbreidbaarheid"><a class="anchor" href="#_3_uitbreidbaarheid"></a>3. Uitbreidbaarheid</h3>
+<div class="paragraph">
+<p>Een nieuwe toestand toevoegen, zoals bijvoorbeeld <code>SettingsState</code> of <code>HighScoreState</code>, vraagt nu geen uitbreiding van een groot <code>if/else</code>-blok in <code>Game1</code>. Je maakt gewoon een extra klasse die <code>AbstractState</code> erft en je schakelt ernaartoe wanneer nodig. Dat sluit beter aan bij het open/closed-principe: bestaande code hoeft minder aangepast te worden wanneer nieuw gedrag toegevoegd wordt.
+Dit principe werkt ook als je meerdere <code>PlayStates</code> wil bv. <code>SinglePlayState</code> of <code>MultiPlayState</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_krijgt_elke_state_een_game1_context"><a class="anchor" href="#_waarom_krijgt_elke_state_een_game1_context"></a>Waarom krijgt elke state een <code>Game1</code>-context?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De states krijgen in de constructor een <code>Game1 context</code>. Daardoor kunnen ze werken met gedeelde gegevens zoals:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PlayerPosition</code></p>
+</li>
+<li>
+<p><code>EnemyPositions</code></p>
+</li>
+<li>
+<p><code>BackgroundPosition</code></p>
+</li>
+<li>
+<p><code>SpriteFont</code></p>
+</li>
+<li>
+<p>textures</p>
+</li>
+<li>
+<p><code>GraphicsDeviceManager</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dat is praktisch, maar ook interessant. De state-objecten beheren niet alles zelf; ze gebruiken de context om met gedeelde speldata te werken. Je kan dit zien als een eenvoudige vorm van het State pattern waarbij <code>Game1</code> de context is en de concrete states het toestand-afhankelijke gedrag implementeren. De code laat dat patroon duidelijk zien via <code>Context.ChangeState(&#8230;&#8203;)</code> en de <code>AbstractState</code>-hiërarchie.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sterktes_van_deze_aanpak"><a class="anchor" href="#_sterktes_van_deze_aanpak"></a>Sterktes van deze aanpak</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_leesbaarheid"><a class="anchor" href="#_leesbaarheid"></a>Leesbaarheid</h3>
+<div class="paragraph">
+<p>Elke state bevat enkel de code die voor die toestand relevant is. Daardoor wordt de intentie van de code sneller duidelijk.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_onderhoudbaarheid"><a class="anchor" href="#_onderhoudbaarheid"></a>Onderhoudbaarheid</h3>
+<div class="paragraph">
+<p>Aanpassingen in het menu breken minder snel gameplaycode, en omgekeerd. Je werkt in kleinere, meer afgebakende klassen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_uitbreidbaarheid"><a class="anchor" href="#_uitbreidbaarheid"></a>Uitbreidbaarheid</h3>
+<div class="paragraph">
+<p>Nieuwe states kunnen toegevoegd worden zonder dat <code>Game1</code> opnieuw een beslisboom moet kennen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hergebruik_van_gedrag"><a class="anchor" href="#_hergebruik_van_gedrag"></a>Hergebruik van gedrag</h3>
+<div class="paragraph">
+<p>De abstracte basisklasse centraliseert gedeelde input-hulpjes en het gemeenschappelijke contract.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI - Inversion of Control &amp; Dependency Injection :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="21-maui_ioc-di.html">IoC, DI &amp; repository</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI - Inversion of Control &amp; Dependency Injection</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Onze JokeApp bestaat intussen uit meerdere pagina&#8217;s. <code>MainPage</code> maakt zelf een <code>AddJokePage</code> en geeft de <code>JokeService</code> manueel door. Dit werkt, maar de pagina bepaalt daardoor zelf welke concrete objecten worden aangemaakt en hoe lang ze blijven bestaan.</p>
+</div>
+<div class="paragraph">
+<p>In deze les gebruiken we Inversion of Control en Dependency Injection om die verantwoordelijkheid te verplaatsen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_huidige_ontwerp"><a class="anchor" href="#_het_huidige_ontwerp"></a>Het huidige ontwerp</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de vorige versie maakt de pagina haar dependency zelf.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public partial class MainPage : ContentPage
+{
+    private readonly JokeService _jokeService = new();
+
+    // ...
+
+    private async void OnAddJokeClicked(object? sender, EventArgs e)
+    {
+        var addJokePage = new AddJokePage(_jokeService);
+        await Navigation.PushAsync(addJokePage);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>MainPage</code> heeft hierdoor meerdere redenen om te wijzigen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de interactie op het overzichtsscherm verandert;</p>
+</li>
+<li>
+<p>een andere implementatie van de service wordt gekozen;</p>
+</li>
+<li>
+<p>de constructor van <code>AddJokePage</code> verandert;</p>
+</li>
+<li>
+<p>de levensduur van de service verandert.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De pagina draagt verantwoordelijkheden die niet bij de presentatie van het overzicht horen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inversion_of_control"><a class="anchor" href="#_inversion_of_control"></a>Inversion of Control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Inversion of Control of IoC betekent dat een object niet langer zelf de volledige controle heeft over het verkrijgen van zijn dependencies.</p>
+</div>
+<div class="sect2">
+<h3 id="_zelf_de_dependency_maken"><a class="anchor" href="#_zelf_de_dependency_maken"></a>Zelf de dependency maken</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class JokeService
+{
+    private readonly JokeRepository _jokeRepository = new();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De service kiest hier zelf:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de concrete klasse <code>JokeRepository</code>;</p>
+</li>
+<li>
+<p>het moment waarop de repository ontstaat;</p>
+</li>
+<li>
+<p>de levensduur van de repository.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dit zorgt voor een sterke koppeling.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_de_dependency_ontvangen"><a class="anchor" href="#_de_dependency_ontvangen"></a>De dependency ontvangen</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class JokeService : IJokeService
+{
+    private readonly IJokeRepository _jokeRepository;
+
+    public JokeService(IJokeRepository jokeRepository)
+    {
+        _jokeRepository = jokeRepository;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>JokeService</code> vraagt wat hij nodig heeft via zijn constructor. De klasse kent alleen het contract <code>IJokeRepository</code> en beslist niet langer welke implementatie gebruikt wordt.</p>
+</div>
+<div class="paragraph">
+<p>Dit is <strong>constructor injection</strong>: de dependency wordt via de constructor geïnjecteerd.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_repository"><a class="anchor" href="#_repository"></a>Repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een repository biedt toegang tot een collectie domeinobjecten zonder dat de gebruiker ervan moet weten hoe of waar ze bewaard worden.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface IJokeRepository
+{
+    IReadOnlyList&lt;Joke&gt; GetAll();
+    Joke? GetById(Guid id);
+    void Add(Joke joke);
+    void Remove(Guid id);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De eerste implementatie bewaart alles in het geheugen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class InMemoryJokeRepository : IJokeRepository
+{
+    private readonly List&lt;Joke&gt; _jokes = new()
+    {
+        new Joke(
+            "Er zijn 10 soorten mensen: zij die binair begrijpen en zij die dat niet doen.",
+            JokeCategory.Programming),
+        new Joke(
+            "Een SQL-query stapt naar twee tabellen en vraagt: mag ik erbij komen?",
+            JokeCategory.Programming)
+    };
+
+    public IReadOnlyList&lt;Joke&gt; GetAll()
+    {
+        return _jokes.AsReadOnly();
+    }
+
+    public Joke? GetById(Guid id)
+    {
+        return _jokes.SingleOrDefault(joke =&gt; joke.Id == id);
+    }
+
+    public void Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+        _jokes.Add(joke);
+    }
+
+    public void Remove(Guid id)
+    {
+        var joke = GetById(id);
+
+        if (joke is not null)
+            _jokes.Remove(joke);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service"><a class="anchor" href="#_service"></a>Service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De repository bewaart objecten. De service coördineert de applicatieregels.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface IJokeService
+{
+    IReadOnlyList&lt;Joke&gt; GetAll();
+    Joke? GetById(Guid id);
+    Joke GetRandom();
+    void Add(Joke joke);
+    void Remove(Guid id);
+}
+
+public sealed class JokeService : IJokeService
+{
+    private readonly IJokeRepository _jokeRepository;
+
+    public JokeService(IJokeRepository jokeRepository)
+    {
+        _jokeRepository = jokeRepository;
+    }
+
+    public IReadOnlyList&lt;Joke&gt; GetAll()
+    {
+        return _jokeRepository.GetAll();
+    }
+
+    public Joke? GetById(Guid id)
+    {
+        return _jokeRepository.GetById(id);
+    }
+
+    public Joke GetRandom()
+    {
+        var jokes = _jokeRepository.GetAll();
+
+        if (jokes.Count == 0)
+            throw new InvalidOperationException(
+                "Er zijn geen grappen beschikbaar.");
+
+        return jokes[Random.Shared.Next(jokes.Count)];
+    }
+
+    public void Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+
+        var alreadyExists = _jokeRepository
+            .GetAll()
+            .Any(existingJoke =&gt; string.Equals(
+                existingJoke.Text,
+                joke.Text,
+                StringComparison.OrdinalIgnoreCase));
+
+        if (alreadyExists)
+            throw new InvalidOperationException(
+                "Deze grap bestaat al.");
+
+        _jokeRepository.Add(joke);
+    }
+
+    public void Remove(Guid id)
+    {
+        _jokeRepository.Remove(id);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De verantwoordelijkheden zijn nu duidelijk verdeeld:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Joke</code></dt>
+<dd>
+<p>Bewaakt de geldigheid van één grap.</p>
+</dd>
+<dt class="hdlist1"><code>IJokeRepository</code></dt>
+<dd>
+<p>Beschrijft hoe grappen opgezocht en bewaard kunnen worden.</p>
+</dd>
+<dt class="hdlist1"><code>JokeService</code></dt>
+<dd>
+<p>Past regels toe op bewerkingen met grappen.</p>
+</dd>
+<dt class="hdlist1">Pagina</dt>
+<dd>
+<p>Presenteert informatie en vertaalt interactie naar aanroepen op <code>IJokeService</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependency_injection"><a class="anchor" href="#_dependency_injection"></a>Dependency Injection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dependency Injection of DI is een concrete manier om IoC toe te passen. Een container kent de beschikbare types en kan objectgrafen opbouwen.</p>
+</div>
+<div class="paragraph">
+<p>Wanneer <code>MainPage</code> een <code>IJokeService</code> vraagt en <code>JokeService</code> op zijn beurt een <code>IJokeRepository</code> vraagt, kan de container alle objecten in de juiste volgorde maken.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">MainPage
+└── IJokeService → JokeService
+    └── IJokeRepository → InMemoryJokeRepository</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_registratie"><a class="anchor" href="#_registratie"></a>Registratie</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We registreren de types in <code>MauiProgram.CreateMauiApp()</code> voordat <code>Build()</code> wordt aangeroepen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+
+        builder
+            .UseMauiApp&lt;App&gt;()
+            .ConfigureFonts(fonts =&gt;
+            {
+                fonts.AddFont(
+                    "OpenSans-Regular.ttf",
+                    "OpenSansRegular");
+            });
+
+        builder.Services.AddSingleton&lt;
+            IJokeRepository,
+            InMemoryJokeRepository&gt;();
+
+        builder.Services.AddTransient&lt;
+            IJokeService,
+            JokeService&gt;();
+
+        builder.Services.AddTransient&lt;MainPage&gt;();
+        builder.Services.AddTransient&lt;AddJokePage&gt;();
+
+        return builder.Build();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De container kent nu de mappings van interfaces naar concrete implementaties.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_levensduur"><a class="anchor" href="#_levensduur"></a>Levensduur</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>AddTransient</code></dt>
+<dd>
+<p>Bij iedere resolution wordt een nieuwe instantie gemaakt.</p>
+</dd>
+<dt class="hdlist1"><code>AddSingleton</code></dt>
+<dd>
+<p>Dezelfde instantie wordt gedurende de volledige levensduur van de applicatie gedeeld.</p>
+</dd>
+<dt class="hdlist1"><code>AddScoped</code></dt>
+<dd>
+<p>Dezelfde instantie wordt binnen één scope gedeeld. Een gewone MAUI-app heeft niet automatisch een request-scope zoals een webapplicatie.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>De in-memory repository is een singleton. Anders zou een nieuwe repository ook telkens opnieuw met de startgrappen beginnen. De service zelf bevat geen langlevende toestand en kan transient zijn.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Kies een levensduur op basis van de verantwoordelijkheid en toestand van de klasse. Registreer niet gedachteloos alles als singleton.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_injectie_in_een_pagina"><a class="anchor" href="#_injectie_in_een_pagina"></a>Injectie in een pagina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De pagina vraagt nu de interface in haar constructor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public partial class MainPage : ContentPage
+{
+    private readonly IJokeService _jokeService;
+
+    public MainPage(IJokeService jokeService)
+    {
+        InitializeComponent();
+        _jokeService = jokeService;
+    }
+
+    private void OnShowRandomJokeClicked(
+        object? sender,
+        EventArgs e)
+    {
+        var joke = _jokeService.GetRandom();
+        currentJokeLabel.Text = joke.Text;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>MainPage</code> maakt geen concrete <code>JokeService</code> meer. Ook <code>AddJokePage</code> kan op dezelfde manier <code>IJokeService</code> ontvangen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paginas_laten_maken_door_shell"><a class="anchor" href="#_paginas_laten_maken_door_shell"></a>Pagina&#8217;s laten maken door Shell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Voor een detailpagina registreren we een route, bijvoorbeeld in de constructor van <code>AppShell</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public AppShell()
+{
+    InitializeComponent();
+
+    Routing.RegisterRoute(
+        nameof(AddJokePage),
+        typeof(AddJokePage));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vervolgens navigeren we naar de route in plaats van zelf <code>new AddJokePage(&#8230;&#8203;)</code> te schrijven.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private async void OnAddJokeClicked(object? sender, EventArgs e)
+{
+    await Shell.Current.GoToAsync(nameof(AddJokePage));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tijdens Shell-navigatie kan MAUI de geregistreerde pagina via de container maken en haar dependencies injecteren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_een_interface"><a class="anchor" href="#_waarom_een_interface"></a>Waarom een interface?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een interface is vooral waardevol wanneer meerdere implementaties nuttig zijn of wanneer een afhankelijkheid aan de buitenkant van een component ligt.</p>
+</div>
+<div class="paragraph">
+<p>Voor <code>IJokeRepository</code> verwachten we meerdere implementaties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>opslag in het geheugen;</p>
+</li>
+<li>
+<p>opslag in LiteDB;</p>
+</li>
+<li>
+<p>eventueel opslag via een externe service.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>JokeService</code> hoeft niet te wijzigen wanneer de repository wisselt. Dat is een concrete toepassing van <strong>Protected Variations</strong> en <strong>Low Coupling</strong> uit GRASP.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Maak niet voor iedere klasse automatisch een interface. Een interface zonder variatie, contract of testreden voegt voornamelijk extra bestanden toe.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefening_jokeapp_via_di"><a class="anchor" href="#_oefening_jokeapp_via_di"></a>Oefening - JokeApp via DI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vertrek van de grappenapp uit de vorige les. Het gedrag en de vormgeving moeten behouden blijven.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Definieer <code>IJokeRepository</code> en implementeer <code>InMemoryJokeRepository</code>.</p>
+</li>
+<li>
+<p>Laat <code>JokeService</code> de repository via constructor injection ontvangen.</p>
+</li>
+<li>
+<p>Definieer <code>IJokeService</code> en laat de pagina&#8217;s uitsluitend van die interface afhangen.</p>
+</li>
+<li>
+<p>Registreer repository, service en pagina&#8217;s met passende lifetimes.</p>
+</li>
+<li>
+<p>Verwijder alle <code>new JokeService()</code>-aanroepen uit de pagina&#8217;s.</p>
+</li>
+<li>
+<p>Navigeer naar <code>AddJokePage</code> via een geregistreerde Shell-route.</p>
+</li>
+<li>
+<p>Controleer dat toegevoegde grappen zichtbaar blijven bij navigatie tussen pagina&#8217;s.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg een <code>DadJokeRepository</code> toe met een andere vaste reeks grappen.</p>
+</li>
+<li>
+<p>Wissel in <code>MauiProgram</code> van repository zonder pagina&#8217;s of <code>JokeService</code> te wijzigen.</p>
+</li>
+<li>
+<p>Laat de gekozen repository ook verwijderen op basis van de <code>Id</code> van een grap.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Schrijf een kleine fake repository en gebruik die in een unit test voor <code>JokeService</code>.</p>
+</li>
+<li>
+<p>Test dat de service dubbele grappen weigert.</p>
+</li>
+<li>
+<p>Groepeer de registraties in duidelijke extension methods zoals <code>RegisterServices()</code> en <code>RegisterPages()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Controleer bij iedere <code>new</code> in een pagina of de pagina werkelijk verantwoordelijk is voor het maken van dat object.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

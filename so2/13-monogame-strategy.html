@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MonoGame – Strategy Pattern :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MonoGame</li>
+    <li><a href="13-monogame-strategy.html">Strategy</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MonoGame – Strategy Pattern</h1>
+<div class="sect1">
+<h2 id="_situering"><a class="anchor" href="#_situering"></a>Situering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We gaan verder met de code van de vorige les en gaan eens kijken naar het bewegingsgedrag van de haai. Tot nu toe zit het gedrag van de haai (de beweging) rechtstreeks in de klasse zelf.</p>
+</div>
+<div class="paragraph">
+<p>Je hebt iets zoals:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Shark : Sprite
+{
+    ...
+
+    public override void Update(GameTime gameTime)
+    {
+        Position.Y += Speed;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit werkt, maar heeft een belangrijk nadeel:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+Het gedrag van de haai zit vast in de klasse zelf.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Wat als we variatie willen?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>sommige haaien bewegen recht naar links</p>
+</li>
+<li>
+<p>andere bewegen zigzag</p>
+</li>
+<li>
+<p>andere bewegen sneller of trager</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dan moeten we de klasse aanpassen of dupliceren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_zonder_strategy_pattern"><a class="anchor" href="#_zonder_strategy_pattern"></a>Zonder Strategy Pattern</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een typische (maar minder goede) oplossing is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public enum SharkMovementType
+{
+    Straight,
+    Diagonal
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Shark : Sprite
+{
+    public float Speed { get; set; }
+    public SharkMovementType MovementType { get; set; }
+
+    ...
+
+    public override void Update(GameTime gameTime)
+    {
+        if (MovementType == SharkMovementType.Straight)
+        {
+            Position.Y += Speed;
+        }
+        else if (MovementType == SharkMovementType.Diagonal)
+        {
+            Position.X -= Speed;
+            Position.Y += 1;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Problemen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Shark</code> krijgt meerdere verantwoordelijkheden</p>
+</li>
+<li>
+<p><code>if/else</code> groeit naarmate er meer types bijkomen</p>
+</li>
+<li>
+<p>elke nieuwe beweging vereist aanpassing van de klasse</p>
+</li>
+<li>
+<p>moeilijk uitbreidbaar</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strategy_pattern"><a class="anchor" href="#_strategy_pattern"></a>Strategy Pattern</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In plaats van het gedrag in de klasse zelf te stoppen:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+We halen het gedrag eruit en stoppen het in aparte objecten.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>De haai krijgt dan een <strong>strategie</strong> die bepaalt hoe hij beweegt door middel van het toepassen van het <a href="https://refactoring.guru/design-patterns/strategy"><strong>Strategy Pattern</strong></a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_1_interface"><a class="anchor" href="#_stap_1_interface"></a>Stap 1 – Interface</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface ISharkMovementStrategy
+{
+    void Update(Shark shark);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deze interface zegt:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+Elke beweging moet weten hoe ze een haai moet updaten.
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_2_concrete_strategieën"><a class="anchor" href="#_stap_2_concrete_strategieën"></a>Stap 2 – Concrete strategieën</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rechte_beweging"><a class="anchor" href="#_rechte_beweging"></a>Rechte beweging</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class StraightMovementStrategy : IMovementStrategy
+{
+    public void Update(Shark shark)
+    {
+        shark.UpdatePositionX( - shark.Speed);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagonal_beweging"><a class="anchor" href="#_diagonal_beweging"></a>Diagonal beweging</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class DiagonalMovementStrategy : IMovementStrategy
+{
+    public void Update(Shark shark)
+    {
+        shark.UpdatePosition(-shark.Speed, shark.Speed * 0.25F);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_3_integratie_in_shark"><a class="anchor" href="#_stap_3_integratie_in_shark"></a>Stap 3 – Integratie in Shark</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Shark : Sprite
+{
+    private IMovementStrategy _movementStrategy;
+
+    public Shark(Texture2D texture,
+                 Vector2 position,
+                 IMovementStrategy movementStrategy)
+        : base(texture, position)
+    {
+        _movementStrategy = movementStrategy;
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        _movementStrategy.Update(this);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De haai weet nu <strong>niet meer hoe hij beweegt</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Hij delegeert dat aan de strategie.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_4_gebruik_via_factory"><a class="anchor" href="#_stap_4_gebruik_via_factory"></a>Stap 4 – Gebruik via Factory</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Shark Create(Texture2D texture, float x, float y)
+{
+    // Typisch zou je hier de movementStrategy meekrijgen, maar om het voorbeeld eenvoudig te houden maken we een
+    // willekeurig getal
+    IMovementStrategy movementStrategy;
+
+    if (Random.Shared.Next(2) == 0)
+    {
+        movementStrategy = new StraightMovementStrategy();
+    }
+    else
+    {
+        movementStrategy = new DiagonalMovement();
+    }
+
+    return new Shark(texture, new Vector2(x, y), movementStrategy);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nu kunnen we eenvoudig variëren:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>verschillende snelheden</p>
+</li>
+<li>
+<p>verschillende bewegingen</p>
+</li>
+<li>
+<p>combinaties</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>zonder de <code>Shark</code> klasse aan te passen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strategy_vs_state_waarom_hier_strategy"><a class="anchor" href="#_strategy_vs_state_waarom_hier_strategy"></a>Strategy vs State – waarom hier Strategy?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Op het eerste zicht lijkt dit probleem ook oplosbaar met het state pattern.</p>
+</div>
+<div class="paragraph">
+<p>We zouden kunnen zeggen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de haai zit in <code>StraightState</code></p>
+</li>
+<li>
+<p>of in <code>DiagonalState</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_is_dit_dan_géén_goede_state_case"><a class="anchor" href="#_waarom_is_dit_dan_géén_goede_state_case"></a>Waarom is dit dan géén goede State case?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het verschil zit niet in de code, maar in de <strong>betekenis</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="_wat_is_een_state"><a class="anchor" href="#_wat_is_een_state"></a>Wat is een state?</h3>
+<div class="paragraph">
+<p>Een state stelt een <strong>toestand van een object</strong> voor.</p>
+</div>
+<div class="paragraph">
+<p>Typisch:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>een vijand die idle → chase → attack gaat</p>
+</li>
+<li>
+<p>een speler die springt → valt → landt</p>
+</li>
+<li>
+<p>een game die menu → play → pause gaat</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Belangrijk:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+States veranderen tijdens de levensduur van het object.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Er is meestal:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>overgangslogica</p>
+</li>
+<li>
+<p>afhankelijkheid van input of events</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wat_gebeurt_er_bij_onze_haai"><a class="anchor" href="#_wat_gebeurt_er_bij_onze_haai"></a>Wat gebeurt er bij onze haai?</h3>
+<div class="paragraph">
+<p>Bij de haai:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hij is gewoon een haai</p>
+</li>
+<li>
+<p>hij blijft een haai</p>
+</li>
+<li>
+<p>zijn gedrag verandert niet tijdens runtime - dit kan in principe wel, maar is niet de focus</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We kiezen enkel bij creatie:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>deze haai beweegt recht</p>
+</li>
+<li>
+<p>deze haai beweegt diagonal</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Er zijn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>geen transitions</p>
+</li>
+<li>
+<p>geen events die gedrag veranderen</p>
+</li>
+<li>
+<p>geen “toestanden” in de betekenis van een lifecycle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wanneer_zou_state_wél_logisch_zijn"><a class="anchor" href="#_wanneer_zou_state_wél_logisch_zijn"></a>Wanneer zou State wél logisch zijn?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Als we dit zouden hebben:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>haai start met rechte beweging</p>
+</li>
+<li>
+<p>bij bepaalde conditie → diagonal</p>
+</li>
+<li>
+<p>bij andere conditie → versnellen</p>
+</li>
+<li>
+<p>bij collision → andere reactie</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dan krijgen we:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>transitions</p>
+</li>
+<li>
+<p>lifecycle</p>
+</li>
+<li>
+<p>toestand van het object</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dan wordt State wél logisch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_samenvatting"><a class="anchor" href="#_samenvatting"></a>Samenvatting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kernidee:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+De haai weet <strong>dat</strong> hij beweegt, maar niet <strong>hoe</strong> hij beweegt.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Dit is een typisch voorbeeld van het Strategy Pattern:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>gedrag wordt losgekoppeld van de klasse</p>
+</li>
+<li>
+<p>gedrag wordt uitwisselbaar</p>
+</li>
+<li>
+<p>de juiste strategie wordt gekozen bij creatie</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Belangrijk onderscheid:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+State = gedrag op basis van veranderende toestand.
+Strategy = uitwisselbaar gedrag gekozen door configuratie of creatie.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>In deze les gebruiken we Strategy omdat we <strong>variatie in gedrag</strong> modelleren, niet een <strong>toestand van het object</strong>.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

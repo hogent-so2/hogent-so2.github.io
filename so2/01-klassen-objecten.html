@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Herhaling OO - Klassen, Objecten &amp; Relaties :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>Basis OO Ontwerp</li>
+    <li><a href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Herhaling OO - Klassen, Objecten &amp; Relaties</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Deze les herneemt de belangrijkste objectgeoriënteerde bouwstenen uit het vorige semester. We behandelen de syntax niet opnieuw als volledig nieuwe leerstof. We bouwen stap voor stap een klein domein en staan vooral stil bij de ontwerpkeuzes.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Gebruik deze les als diagnostische herhaling. Wanneer de basis snel terugkomt, kan je meer tijd investeren in de toepassing op het einde.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_klassen_gebruiken"><a class="anchor" href="#_waarom_klassen_gebruiken"></a>Waarom klassen gebruiken?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We hebben in .NET toegang tot elementaire datatypes zoals <code>int</code>, <code>string</code>, <code>double</code> en <code>bool</code>. In combinatie met controlestructuren zoals <code>if</code>, <code>switch</code> en lussen kunnen we daarmee nagenoeg alle denkbare problemen oplossen.</p>
+</div>
+<div class="paragraph">
+<p>Toch ontstaat al snel de behoefte om <strong>datatypes te definiëren die eigen zijn aan het probleemdomein</strong>. Denk bijvoorbeeld aan coördinaten in een systeem dat informatie op een raster presenteert.</p>
+</div>
+<div class="paragraph">
+<p>Beschouw onderstaand raster. Het kasteel bevindt zich op positie (2,1).</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-grid-1-klein.png" alt="klassen en objecten grid 1 klein">
+</div>
+</div>
+<div class="paragraph">
+<p>We kunnen die informatie bijhouden met losse variabelen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">int rasterBreedte = 3;
+int rasterHoogte = 3;
+
+int positieKasteelX = 2;
+int positieKasteelY = 1;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit werkt voor één kasteel. Bij meerdere kastelen groeit de hoeveelheid losse, onderling gerelateerde data snel.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-grid-2-klein.png" alt="klassen en objecten grid 2 klein">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">int positieKasteel1X = 0;
+int positieKasteel1Y = 2;
+
+int positieKasteel2X = 1;
+int positieKasteel2Y = 0;
+
+int positieKasteel3X = 2;
+int positieKasteel3Y = 1;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De X- en Y-waarde vormen samen één concept: een coördinaat. We maken dat concept expliciet met een klasse.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_klasse_en_object"><a class="anchor" href="#_klasse_en_object"></a>Klasse en object</h2>
+<div class="sectionbody">
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-uml-coordinate-1.png" alt="klassen en objecten uml coordinate 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Een klasse beschrijft welke gegevens en welk gedrag een bepaald soort object heeft.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Een klasse is zoals een bouwplan. Een object is het concrete ding dat volgens dat plan werd gemaakt. Met hetzelfde bouwplan kunnen meerdere objecten worden gemaakt.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We definiëren een eerste versie van <code>Coordinate</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Coordinate
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Met <code>new</code> maken we een object of <strong>instantie</strong> van die klasse.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var positieKasteel1 = new Coordinate { X = 0, Y = 2 };
+var positieKasteel2 = new Coordinate { X = 1, Y = 0 };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Beide objecten zijn gemaakt op basis van dezelfde klasse, maar hebben een eigen identiteit en toestand.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Toestand</dt>
+<dd>
+<p>De verzameling van de huidige waarden van de properties van een object.</p>
+</dd>
+<dt class="hdlist1">Identiteit</dt>
+<dd>
+<p>Het ene object blijft een ander object dan het andere, ook wanneer hun properties toevallig dezelfde waarden bevatten.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_constructor"><a class="anchor" href="#_constructor"></a>Constructor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een constructor maakt duidelijk welke gegevens nodig zijn om een object te maken.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-uml-coordinate-2.png" alt="klassen en objecten uml coordinate 2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Coordinate
+{
+    public int X { get; init; }
+    public int Y { get; init; }
+
+    public Coordinate(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Het gebruik wordt compacter en de vereiste waarden kunnen niet worden vergeten.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var positieKasteel1 = new Coordinate(x: 0, y: 2);
+var positieKasteel2 = new Coordinate(x: 1, y: 0);
+var positieKasteel3 = new Coordinate(x: 2, y: 1);</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Je kan de parameter naam gebruiken om een waarde mee te geven in de constructor/methode (<code>x: 0</code>). Hiermee kan je code beter leesbaarder maken voor jezelf en collega&#8217;s: <code>new Coordinate(x: 0, y: 2)</code> vs <code>new Coordinate(0, 2)</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_init_en_private_set"><a class="anchor" href="#_init_en_private_set"></a><code>init</code> en <code>private set</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Beide onderstaande properties kunnen van buiten de klasse worden gelezen, maar niet op dezelfde manier worden gewijzigd.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public int X { get; init; }
+public int AantalVlaggetjes { get; private set; }</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>get; init;</code></dt>
+<dd>
+<p>De waarde kan tijdens de constructie worden ingesteld. Daarna kan ze niet meer met een gewone toekenning worden veranderd. Dit past bij informatie die na creatie vastligt.</p>
+</dd>
+<dt class="hdlist1"><code>get; private set;</code></dt>
+<dd>
+<p>Alleen code binnen de klasse kan de waarde na constructie nog veranderen. Dit past bij toestand die via gedrag van de klasse evolueert.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Bijvoorbeeld:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Kasteel
+{
+    public Coordinate Positie { get; init; }
+    public int AantalVlaggetjes { get; private set; }
+
+    public Kasteel(Coordinate positie, int aantalVlaggetjes)
+    {
+        Positie = positie;
+        AantalVlaggetjes = aantalVlaggetjes;
+    }
+
+    public void HangVlagBij()
+    {
+        AantalVlaggetjes++;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De positie ligt vast na constructie. Het aantal vlaggetjes kan wijzigen, maar alleen via gedrag dat door <code>Kasteel</code> wordt aangeboden.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>init</code> is niet automatisch beter dan <code>private set</code>. Kies op basis van de vraag of de toestand na constructie nog legitiem kan veranderen.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gedrag"><a class="anchor" href="#_gedrag"></a>Gedrag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een klasse kan behalve gegevens ook logica bevatten. Logica die inherent bij het concept hoort, noemen we vaak het <strong>gedrag</strong> van de klasse.</p>
+</div>
+<div class="paragraph">
+<p>We zouden <code>Coordinate</code> kunnen laten controleren of de positie binnen gegeven grenzen ligt.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public bool LigtBinnenRasterVan(int breedte, int hoogte)
+{
+    return X &gt;= 0
+        &amp;&amp; X &lt; breedte
+        &amp;&amp; Y &gt;= 0
+        &amp;&amp; Y &lt; hoogte;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deze oplossing kan werken, maar is niet de enige mogelijke ontwerpkeuze. We hebben nog geen klasse die het raster zelf voorstelt. Zodra die bestaat, kan het gedrag daar misschien natuurlijker terechtkomen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encapsulatie_en_abstractie"><a class="anchor" href="#_encapsulatie_en_abstractie"></a>Encapsulatie en abstractie</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Encapsulatie schermt de interne toestand en implementatie van een klasse af. In C# gebruiken we daarvoor onder meer <code>public</code>, <code>private</code> en <code>protected</code>.</p>
+</div>
+<div class="paragraph">
+<p>In UML worden de meest gebruikte visibility-symbolen als volgt genoteerd:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-</code> voor <code>private</code>;</p>
+</li>
+<li>
+<p><code>+</code> voor <code>public</code>;</p>
+</li>
+<li>
+<p><code>#</code> voor <code>protected</code>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-uml-coordinate-4.png" alt="klassen en objecten uml coordinate 4">
+</div>
+</div>
+<div class="paragraph">
+<p>De buitenwereld mag een publieke methode gebruiken, maar hoeft de implementatiedetails niet te kennen. Dat is abstractie.</p>
+</div>
+<div class="paragraph">
+<p>Door toestand en gedrag samen te brengen, kan de klasse haar eigen regels bewaken. Wanneer implementatiedetails toch overal gekend moeten zijn, spreken we van een <a href="https://en.wikipedia.org/wiki/Leaky_abstraction">leaky abstraction</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_rijker_concept_kasteel"><a class="anchor" href="#_een_rijker_concept_kasteel"></a>Een rijker concept: Kasteel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een coördinaat vertelt alleen <strong>waar</strong> iets staat. Ons probleemdomein bevat kastelen met een positie, een kleur en een aantal vlaggetjes.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-grid-3-klein.png" alt="klassen en objecten grid 3 klein">
+</div>
+</div>
+<div class="paragraph">
+<p>We maken ook de mogelijke kleuren expliciet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public enum KasteelKleur
+{
+    Grijs,
+    Blauw,
+    Rood
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vervolgens definiëren we <code>Kasteel</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Kasteel
+{
+    public Coordinate Positie { get; init; }
+    public KasteelKleur Kleur { get; init; }
+    public int AantalVlaggetjes { get; private set; }
+
+    public Kasteel(
+        Coordinate positie,
+        KasteelKleur kleur,
+        int aantalVlaggetjes)
+    {
+        Positie = positie;
+        Kleur = kleur;
+        AantalVlaggetjes = aantalVlaggetjes;
+    }
+
+    public void HangVlagBij()
+    {
+        AantalVlaggetjes++;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Een zelf gedefinieerde klasse kan dus het datatype van een property zijn. Een <code>Kasteel</code> <strong>heeft een</strong> <code>Coordinate</code> als positie.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/klassen-objecten/klassen-en-objecten-uml-kasteel.png" alt="klassen en objecten uml kasteel">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_raster"><a class="anchor" href="#_het_raster"></a>Het Raster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We willen niet langer losse variabelen voor breedte en hoogte gebruiken. Daarom introduceren we het raster als een volgend domeinconcept.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Raster
+{
+    public int Breedte { get; init; }
+    public int Hoogte { get; init; }
+
+    public Raster(int breedte, int hoogte)
+    {
+        Breedte = breedte;
+        Hoogte = hoogte;
+    }
+
+    public bool Bevat(Coordinate coordinate)
+    {
+        return coordinate.X &gt;= 0
+            &amp;&amp; coordinate.X &lt; Breedte
+            &amp;&amp; coordinate.Y &gt;= 0
+            &amp;&amp; coordinate.Y &lt; Hoogte;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We hebben nu twee mogelijke ontwerpen gezien.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">coordinate.LigtBinnenRasterVan(breedte, hoogte);
+
+raster.Bevat(coordinate);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In het tweede ontwerp kent <code>Raster</code> zijn eigen grenzen en bezit het dus alle informatie om de vraag te beantwoorden. <code>Coordinate</code> blijft onafhankelijk van het concept raster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Er is bij softwareontwerp niet altijd exact één juiste oplossing. Plaats gedrag waar een andere developer het verwacht, kies een klasse die over de nodige informatie beschikt en blijf consistent binnen het domein.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In deze cursus kiezen we voor <code>raster.Bevat(coordinate)</code>. In de volgende les benoemen we deze redenering als <strong>Information Expert</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_associaties"><a class="anchor" href="#_associaties"></a>Associaties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een programma bestaat uit samenwerkende objecten. Een Domain Class Diagram of DCD brengt de relevante klassen, properties, methoden en hun associaties in kaart.</p>
+</div>
+<div class="paragraph">
+<p>Het raster moet zijn kastelen beheren. Dit is een associatie met multipliciteit <code>0..*</code>: een raster kan geen, één of meerdere kastelen bevatten.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dcd/dcd-raster.png" alt="dcd raster">
+</div>
+</div>
+<div class="paragraph">
+<p>De meest voorkomende multipliciteiten zijn:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>1</code></dt>
+<dd>
+<p>Exact één object.</p>
+</dd>
+<dt class="hdlist1"><code>0..1</code></dt>
+<dd>
+<p>Geen of één object.</p>
+</dd>
+<dt class="hdlist1"><code>*</code></dt>
+<dd>
+<p>Eén of meerdere objecten.</p>
+</dd>
+<dt class="hdlist1"><code>0..*</code></dt>
+<dd>
+<p>Geen, één of meerdere objecten.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_collectie_encapsuleren"><a class="anchor" href="#_een_collectie_encapsuleren"></a>Een collectie encapsuleren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een eerste implementatie zou een publieke lijst kunnen aanbieden.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public List&lt;Kasteel&gt; Kastelen { get; set; } = new();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Aanroepende code kan dan rechtstreeks wijzigingen uitvoeren.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">raster.Kastelen.Add(kasteel);
+raster.Kastelen.Clear();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Raster</code> krijgt daardoor geen kans om zijn eigen regels te bewaken. We schermen de wijzigbare lijst af en bieden een gerichte methode aan.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Raster
+{
+    private readonly List&lt;Kasteel&gt; _kastelen = new();
+
+    public int Breedte { get; init; }
+    public int Hoogte { get; init; }
+    public IReadOnlyList&lt;Kasteel&gt; Kastelen =&gt; _kastelen.AsReadOnly();
+
+    public Raster(int breedte, int hoogte)
+    {
+        Breedte = breedte;
+        Hoogte = hoogte;
+    }
+
+    public bool Bevat(Coordinate coordinate)
+    {
+        return coordinate.X &gt;= 0
+            &amp;&amp; coordinate.X &lt; Breedte
+            &amp;&amp; coordinate.Y &gt;= 0
+            &amp;&amp; coordinate.Y &lt; Hoogte;
+    }
+
+    public void VoegKasteelToe(Kasteel kasteel)
+    {
+        ArgumentNullException.ThrowIfNull(kasteel);
+
+        if (!Bevat(kasteel.Positie))
+            throw new ArgumentException("Het kasteel ligt buiten het raster.", nameof(kasteel));
+
+        var positieIsBezet = _kastelen.Any(bestaandKasteel =&gt;
+            bestaandKasteel.Positie.X == kasteel.Positie.X
+            &amp;&amp; bestaandKasteel.Positie.Y == kasteel.Positie.Y);
+
+        if (positieIsBezet)
+            throw new InvalidOperationException("Op deze positie staat al een kasteel.");
+
+        _kastelen.Add(kasteel);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>VoegKasteelToe()</code> biedt één gecontroleerde toegangspoort voor iedere wijziging. Vandaag controleert de methode positie en duplicaten. Nieuwe regels kunnen later op dezelfde verwachte plaats worden toegevoegd.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Een read-only collectie en gerichte methoden maken duidelijk wie verantwoordelijk is voor het bewaken van de collectie.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_nieuwe_requirement_de_prinses"><a class="anchor" href="#_een_nieuwe_requirement_de_prinses"></a>Een nieuwe requirement: de prinses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een kasteel kan bewoond zijn door één prinses. Een prinses heeft een naam en een beschrijving.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dcd/kasteel-prinses.png" alt="kasteel prinses">
+</div>
+</div>
+<div class="paragraph">
+<p>We voegen eerst de nieuwe klasse toe.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Prinses
+{
+    public string Naam { get; init; }
+    public string Beschrijving { get; init; }
+
+    public Prinses(string naam, string beschrijving)
+    {
+        Naam = naam;
+        Beschrijving = beschrijving;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De relatie is optioneel. Het kasteel kan dus zonder prinses bestaan.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Prinses? Prinses { get; private set; }
+
+public void LaatPrinsesIntrekken(Prinses prinses)
+{
+    ArgumentNullException.ThrowIfNull(prinses);
+    Prinses = prinses;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De multipliciteit aan de kant van <code>Prinses</code> is <code>0..1</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meer_bewoners"><a class="anchor" href="#_meer_bewoners"></a>Meer bewoners</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het kasteel heeft natuurlijk meer bewoners nodig. We voegen een ridder, kok en stalknecht toe.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Iedere bewoner heeft een naam.</p>
+</li>
+<li>
+<p>Een ridder heeft een zwaardlengte.</p>
+</li>
+<li>
+<p>Een kok heeft een specialiteit.</p>
+</li>
+<li>
+<p>Een stalknecht heeft voorlopig geen bijkomende eigenschappen.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We zouden voor ieder type een afzonderlijke collectie kunnen toevoegen, maar dan moet <code>Kasteel</code> ieder concreet type kennen. Alle genoemde types zijn in de eerste plaats bewoners. We maken dat gemeenschappelijke concept expliciet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public abstract class Bewoner
+{
+    public string Naam { get; init; }
+
+    protected Bewoner(string naam)
+    {
+        Naam = naam;
+    }
+}
+
+public sealed class Prinses : Bewoner
+{
+    public string Beschrijving { get; init; }
+
+    public Prinses(string naam, string beschrijving)
+        : base(naam)
+    {
+        Beschrijving = beschrijving;
+    }
+}
+
+public sealed class Ridder : Bewoner
+{
+    public int ZwaardLengte { get; init; }
+
+    public Ridder(string naam, int zwaardLengte)
+        : base(naam)
+    {
+        ZwaardLengte = zwaardLengte;
+    }
+}
+
+public sealed class Kok : Bewoner
+{
+    public string Specialiteit { get; init; }
+
+    public Kok(string naam, string specialiteit)
+        : base(naam)
+    {
+        Specialiteit = specialiteit;
+    }
+}
+
+public sealed class Stalknecht : Bewoner
+{
+    public Stalknecht(string naam) : base(naam)
+    {
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Overerving stelt hier een <strong>is een</strong>-relatie voor: een <code>Ridder</code> is een <code>Bewoner</code>. Daardoor kan <code>Kasteel</code> alle bewoners in één collectie beheren.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private readonly List&lt;Bewoner&gt; _bewoners = new();
+
+public IReadOnlyList&lt;Bewoner&gt; Bewoners =&gt; _bewoners.AsReadOnly();
+
+public void VoegBewonerToe(Bewoner bewoner)
+{
+    ArgumentNullException.ThrowIfNull(bewoner);
+    _bewoners.Add(bewoner);
+}
+
+public bool IsBewoond()
+{
+    return _bewoners.Count &gt; 0;
+}</code></pre>
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dcd/overerving-post.png" alt="overerving post">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Gebruik overerving voor een werkelijke substitueerbare <strong>is een</strong>-relatie. Gebruik ze niet alleen om enkele properties te hergebruiken.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_volgende_requirement_er_moet_gevochten_worden"><a class="anchor" href="#_een_volgende_requirement_er_moet_gevochten_worden"></a>Een volgende requirement: er moet gevochten worden</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Er breekt onrust uit rond het kasteel. Niet iedere bewoner strijdt. Een ridder en stalknecht doen dat wel; een prinses en kok niet.</p>
+</div>
+<div class="paragraph">
+<p>Een interface beschrijft gedrag dat verschillende, verder mogelijk onverwante, klassen beloven aan te bieden.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface IStrijder
+{
+    void Strijd();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Ridder</code> en <code>Stalknecht</code> implementeren het contract elk op hun eigen manier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class Ridder : Bewoner, IStrijder
+{
+    public int ZwaardLengte { get; init; }
+
+    public Ridder(string naam, int zwaardLengte)
+        : base(naam)
+    {
+        ZwaardLengte = zwaardLengte;
+    }
+
+    public void Strijd()
+    {
+        Console.WriteLine($"{Naam} trekt een zwaard.");
+    }
+}
+
+public sealed class Stalknecht : Bewoner, IStrijder
+{
+    public Stalknecht(string naam) : base(naam)
+    {
+    }
+
+    public void Strijd()
+    {
+        Console.WriteLine($"{Naam} heft een mestvork.");
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We spreken alle strijders via hetzelfde contract aan. De concrete klasse bepaalt welk gedrag wordt uitgevoerd. Dat noemen we <strong>polymorfisme</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">foreach (var strijder in kasteel.Bewoners.OfType&lt;IStrijder&gt;())
+    strijder.Strijd();</code></pre>
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/dcd/interfaces.png" alt="interfaces">
+</div>
+</div>
+<div class="paragraph">
+<p>Een klasse hoeft geen <code>Bewoner</code> te zijn om <code>IStrijder</code> te implementeren. Overerving beschrijft wat een object <strong>is</strong>; een interface beschrijft welk gedrag het <strong>aanbiedt</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dcd_en_code_controleren"><a class="anchor" href="#_dcd_en_code_controleren"></a>DCD en code controleren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een DCD en de implementatie moeten hetzelfde ontwerp uitdrukken. Controleer systematisch:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bestaat iedere relevante klasse uit het diagram in de code?</p>
+</li>
+<li>
+<p>Komen properties, methoden en visibility overeen?</p>
+</li>
+<li>
+<p>Zijn associaties in de juiste richting geïmplementeerd?</p>
+</li>
+<li>
+<p>Komen enkelvoudige en meervoudige relaties overeen met hun multipliciteit?</p>
+</li>
+<li>
+<p>Zijn overerving en interfaces correct vertaald?</p>
+</li>
+<li>
+<p>Bevat de code geen publieke setters of associaties die niet in het ontwerp passen?</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Een diagram is geen versiering achteraf. Het is een compact communicatiemiddel waarmee we ontwerpbeslissingen bespreken vóór en tijdens het programmeren.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefening_kasteelsimulatie_fundament"><a class="anchor" href="#_oefening_kasteelsimulatie_fundament"></a>Oefening - Kasteelsimulatie, fundament</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Werk verder op de code en het DCD die tijdens de les werden opgebouwd. Het resultaat vormt het vertrekpunt voor de volgende herhalingsles.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementeer <code>Coordinate</code>, <code>Raster</code>, <code>Kasteel</code> en de verschillende bewoners in een nieuwe .NET-solution.</p>
+</li>
+<li>
+<p>Gebruik <code>init</code> voor properties die na constructie niet meer veranderen.</p>
+</li>
+<li>
+<p>Houd wijzigbare collecties private en bied alleen read-only toegang aan.</p>
+</li>
+<li>
+<p>Laat <code>Raster.VoegKasteelToe()</code> weigeren dat een kasteel buiten het raster of op een bezette positie wordt toegevoegd.</p>
+</li>
+<li>
+<p>Laat <code>Kasteel</code> zijn eigen bewoners beheren via <code>VoegBewonerToe()</code>.</p>
+</li>
+<li>
+<p>Modelleer gemeenschappelijke bewonersinformatie met overerving.</p>
+</li>
+<li>
+<p>Modelleer strijdgedrag met <code>IStrijder</code> en polymorfisme.</p>
+</li>
+<li>
+<p>Werk het DCD bij zodat het overeenkomt met de uiteindelijke code.</p>
+</li>
+<li>
+<p>Schrijf een testscenario met minstens twee kastelen en verschillende soorten bewoners.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voorzie <code>Raster.ZoekKasteelOp(Coordinate positie)</code>.</p>
+</li>
+<li>
+<p>Voorzie <code>Kasteel.IsBewoond()</code>.</p>
+</li>
+<li>
+<p>Laat alle strijders van één kasteel strijden zonder op concrete bewonertypes te controleren.</p>
+</li>
+<li>
+<p>Valideer dat rasterafmetingen, namen en andere verplichte waarden geldig zijn.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Onderzoek hoe je value equality voor <code>Coordinate</code> kan implementeren, zodat twee coördinaten met dezelfde X- en Y-waarde als gelijk worden beschouwd.</p>
+</li>
+<li>
+<p>Gebruik die gelijkheid om de controle op een bezette positie leesbaarder te maken.</p>
+</li>
+<li>
+<p>Teken na de implementatie opnieuw een DCD vanuit de code en vergelijk dit met je oorspronkelijke diagram.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+De volgende les voegt systeemoperaties en een domeincontroller toe. Zorg dus vooral dat het domeinmodel helder en uitvoerbaar is. Er wordt een referentieversie voorzien zodat iedereen vanuit hetzelfde correcte startpunt kan verderwerken.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI - Details, bewerken &amp; messaging :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="27-maui_webapi.html">Details, bewerken &amp; messaging</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI - Details, bewerken &amp; messaging</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Startcode nodig? Je vindt de code van vorige les op <a href="https://github.com">Github</a>. Heb je zelf een werkende vorige versie, dan is het sterk aangeraden om daarin verder te werken.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We werken onze JokeApp verder af. Vanuit het overzicht openen we een bestaande grap, passen haar aan en bewaren of annuleren de wijziging. Daarna laten we onderdelen via een bericht weten dat de verzameling gewijzigd is.</p>
+</div>
+<div class="paragraph">
+<p>WebAPI staat verderop als <strong>facultatieve preview</strong> op andere lessen. De preview is uitgewerkt als sluitstuk van onze app, maar is geen verplicht onderdeel en wordt alleen behandeld als er tijd over is. Details, bewerken en messaging vormen de kern; een internetverbinding is daarvoor niet nodig.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vertrekpunt_één_app_en_één_bron_van_gegevens"><a class="anchor" href="#_vertrekpunt_één_app_en_één_bron_van_gegevens"></a>Vertrekpunt: één app en één bron van gegevens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Behoud alle models, validatieregels, repositories, services, styles en ViewModels. <code>MainPage</code> blijft het overzicht. De thuisopdracht voegde een verwijdercommand en feedback toe; die komen ook terug in de gezamenlijke overzichtsversie verderop.</p>
+</div>
+<div class="paragraph">
+<p>Onze <code>ObservableCollection&lt;Joke&gt;</code> is een weergave van de gegevens, geen tweede opslagplaats. Een detailscherm krijgt daarom een id en vraagt de actuele grap aan de service.</p>
+</div>
+<div class="paragraph">
+<p>We bouwen eerst de detail- en bewerkstroom met de bestaande <code>OnAppearing</code>-refresh. Pas wanneer die werkt, voegen we messaging toe. Zo lossen we niet tegelijk een navigatie-, opslag- en notificatieprobleem op.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eerst_voorspellen_wat_betekent_annuleren"><a class="anchor" href="#_eerst_voorspellen_wat_betekent_annuleren"></a>Eerst voorspellen: wat betekent Annuleren?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We willen een grap kunnen wijzigen zonder dat iedere toetsaanslag al de bewaarde grap verandert. Stel dat het invoerveld rechtstreeks aan <code>Joke.Text</code> gebonden is. Je typt een andere, geldige tekst en klikt daarna op <strong>Annuleren</strong>. Is het oorspronkelijke object dan nog ongewijzigd?</p>
+</div>
+<div class="paragraph">
+<p>Onderzoek dit kort met de <code>InMemoryJokeRepository</code> uit de vorige les. Onderstaande tijdelijke proef hoort bij het vertrekpunt, vóór we messaging toevoegen. Ze gebruikt haar eigen repository met startgrappen en wijzigt dus niet de gegevens van je draaiende app.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var repository = new InMemoryJokeRepository();
+var service = new JokeService(repository);
+var original = service.GetAll()[0];
+var editing = service.GetById(original.Id)!;
+
+editing.Text = "Deze gewijzigde grap is nog niet expliciet opgeslagen.";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voorspel eerst wat <code>original.Text</code> nu bevat. Controleer daarna met een breakpoint zowel de tekst als <code>ReferenceEquals(original, editing)</code>. Die laatste controle is <code>true</code>: twee variabelen verwijzen naar hetzelfde object. Er is nergens <code>Update</code> aangeroepen, maar het object in de in-memory collectie is al gewijzigd.</p>
+</div>
+<div class="paragraph">
+<p>Deze proef toont geen schrijfactie naar LiteDB. Ze toont dat <strong>een object wijzigen</strong> en <strong>een wijziging bewust laten bewaren</strong> verschillende handelingen zijn. We willen dat de app met beide repositories hetzelfde gedrag voor <strong>Opslaan</strong> en <strong>Annuleren</strong> aanbiedt.</p>
+</div>
+<div class="paragraph">
+<p>Daarom maken we een onderscheid:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Het formulier bewaart eigen invoer die nog mag veranderen.</p>
+</li>
+<li>
+<p><strong>Opslaan</strong> vraagt de service om die invoer te controleren en de wijziging te bewaren.</p>
+</li>
+<li>
+<p><strong>Annuleren</strong> verlaat het formulier zonder die bewerking te vragen.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bewaar geen kopie van de volledige bibliotheek in het formulier en probeer bij annuleren niet achteraf alle wijzigingen terug te draaien. Alleen tekst en categorie vormen hier de tijdelijke invoer. De oorspronkelijke grap blijft tot een geslaagde opslag onaangeroerd. Verwijder de tijdelijke proefcode voordat je verderwerkt.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_detailroute_met_een_id"><a class="anchor" href="#_een_detailroute_met_een_id"></a>Een detailroute met een id</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Breid het bestaande navigatiecontract uit. De ViewModels blijven vrij van routenamen en <code>Shell.Current</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Navigation/INavigationService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
+
+public interface INavigationService
+{
+    Task ShowAddJokeAsync();
+    Task ShowJokeDetailAsync(Guid jokeId);
+    Task GoBackAsync();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Navigation/ShellNavigationService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
+
+public sealed class ShellNavigationService : INavigationService
+{
+    public Task ShowAddJokeAsync() =&gt;
+        Shell.Current.GoToAsync(nameof(AddJokePage));
+
+    public Task ShowJokeDetailAsync(Guid jokeId) =&gt;
+        Shell.Current.GoToAsync(
+            nameof(JokeDetailPage),
+            new Dictionary&lt;string, object&gt;
+            {
+                ["JokeId"] = jokeId
+            });
+
+    public Task GoBackAsync() =&gt;
+        Shell.Current.GoToAsync("..");
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We geven geen verwijzing naar een rij of een te bewerken model door. De vraag aan het detailscherm is: <strong>open de grap met deze identiteit</strong>, niet: <strong>gebruik dit object uit mijn lijst</strong>. Met de <code>Guid</code> vraagt het detailscherm de grap opnieuw aan de service en kan het expliciet afhandelen dat ze niet meer bestaat.</p>
+</div>
+<div class="paragraph">
+<p>Een id doorgeven is hier een bewuste keuze, geen algemene MVVM-verplichting. Ook een model doorgeven is technisch mogelijk. De id houdt deze navigatie onafhankelijk van de objecten die het overzicht op dat moment heeft geladen en helpt ons de formulierinvoer van het bewaarde model te scheiden.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+De <code>Task</code>-, <code>async</code>- en <code>await</code>-syntax nemen we opnieuw over als vast recept. Deze les behandelt navigatie en verantwoordelijkheden, niet asynchroon programmeren.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voeg in <code>AppShell</code> na de bestaande route deze registratie toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Routing.RegisterRoute(nameof(JokeDetailPage), typeof(JokeDetailPage));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Registreer vóór <code>Build()</code> in <code>MauiProgram</code> ook:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddTransient&lt;JokeDetailPage&gt;();
+builder.Services.AddTransient&lt;JokeDetailViewModel&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De pagina en het ViewModel maken we hieronder. Werk een eventuele testdouble van <code>INavigationService</code> mee bij: ook die moet de nieuwe methode aanbieden.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bewaren_is_iets_anders_dan_toevoegen"><a class="anchor" href="#_bewaren_is_iets_anders_dan_toevoegen"></a>Bewaren is iets anders dan toevoegen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een bestaande grap bewerken via <code>Add</code> zou een tweede record opleveren. Daarom breiden we het repositorycontract uit met:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">bool Update(Joke joke);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg deze methode toe aan <code>InMemoryJokeRepository</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public bool Update(Joke joke)
+{
+    ArgumentNullException.ThrowIfNull(joke);
+    var index = _jokes.FindIndex(existing =&gt; existing.Id == joke.Id);
+
+    if (index &lt; 0)
+        return false;
+
+    _jokes[index] = joke;
+    return true;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg de overeenkomstige implementatie toe aan <code>LiteDbJokeRepository</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public bool Update(Joke joke)
+{
+    ArgumentNullException.ThrowIfNull(joke);
+    return _jokes.Update(joke);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Beide implementaties zoeken op <code>Id</code>. Ze vervangen een bestaand object en melden of dat gelukt is. Ze voegen bij een onbekende id niet stilzwijgend een nieuwe grap toe.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_service_bewaakt_de_bewerking"><a class="anchor" href="#_de_service_bewaakt_de_bewerking"></a>De service bewaakt de bewerking</h3>
+<div class="paragraph">
+<p>Voeg aan <code>IJokeService</code> toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">ValidationResult Update(Guid id, string text, JokeCategory category);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En voeg deze methode toe aan <code>JokeService</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public ValidationResult Update(Guid id, string text, JokeCategory category)
+{
+    var existingJoke = _jokeRepository.GetById(id);
+
+    if (existingJoke is null)
+        return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+    var validation = JokeTextValidator.Validate(text);
+
+    if (!validation.IsValid)
+        return validation;
+
+    var normalizedText = text.Trim();
+    var duplicateExists = _jokeRepository.GetAll().Any(other =&gt;
+        other.Id != id &amp;&amp;
+        string.Equals(other.Text, normalizedText,
+            StringComparison.OrdinalIgnoreCase));
+
+    if (duplicateExists)
+        return ValidationResult.Failure("Deze grap bestaat al.");
+
+    var updatedJoke = new Joke(normalizedText, category)
+    {
+        Id = existingJoke.Id
+    };
+
+    if (!_jokeRepository.Update(updatedJoke))
+        return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+    return ValidationResult.Success();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De uitzondering <code>other.Id != id</code> is essentieel. Anders zou <strong>Opslaan</strong> zonder tekstwijziging de grap als duplicaat van zichzelf weigeren.</p>
+</div>
+<div class="paragraph">
+<p>We maken pas na de controles een vervangend model, met <strong>dezelfde id</strong>. Een nieuw C#-object is hier dus <strong>geen nieuwe grap</strong>: het vervangt de voorstelling van dezelfde grap in onze bibliotheek. <code>init</code> laat toe die id bij het maken mee te geven, maar niet later op het object te wijzigen.</p>
+</div>
+<div class="paragraph">
+<p>Voorspel het verschil: wat gebeurt er als we <code>Id = existingJoke.Id</code> weglaten? De constructor maakt dan een nieuwe id. Onze repository vindt onder die id geen bestaande grap om bij te werken; <code>Update</code> meldt een mislukking. Een nieuwe objectreferentie en een nieuwe domeinidentiteit zijn niet hetzelfde.</p>
+</div>
+<div class="paragraph">
+<p>We wijzigen het opgezochte object niet eerst om daarna te controleren of alles mag. Dat is vooral bij de in-memory repository belangrijk: die kan hetzelfde object aan meerdere gebruikers teruggeven. Bij een mislukte bewerking moet de oorspronkelijke grap intact blijven.</p>
+</div>
+<div class="paragraph">
+<p>Waarom ontvangt <code>Update</code> losse formulierwaarden terwijl <code>Add</code> een nieuw model ontvangt? We behouden het toevoegcontract uit de vorige les: het toevoegformulier valideert en maakt daarna een nieuw model. Voor bewerken kiezen we een verzoek met een bestaande id en voorgestelde tekst en categorie. De service controleert dat verzoek en maakt pas bij geldige invoer het vervangende model.</p>
+</div>
+<div class="paragraph">
+<p>Dat zijn ontwerpkeuzes, geen technische verplichtingen. Je kan beide servicebewerkingen ook consequent invoerwaarden laten ontvangen. Een <code>Update</code> die een model ontvangt is eveneens mogelijk. Het bewaken van identiteit verplicht ons op zichzelf niet tot losse parameters. In deze opbouw veranderen we het bestaande toevoegcontract niet tegelijk met de nieuwe bewerkstroom.</p>
+</div>
+<div class="paragraph">
+<p>Belangrijker dan die parameterkeuze zijn de vaste afspraken: dezelfde tekstregels hergebruiken, duplicaten bij de service controleren en de oorspronkelijke grap intact laten bij een geweigerde wijziging.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Test deze methode eerst zonder navigatie: bewaar ongewijzigd, wijzig naar de tekst van een andere grap, gebruik een onbekende id en geef ongeldige tekst door. Controleer na iedere mislukking zowel de tekst als het aantal records.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_detailscherm_bewaart_eigen_formulierinvoer"><a class="anchor" href="#_het_detailscherm_bewaart_eigen_formulierinvoer"></a>Het detailscherm bewaart eigen formulierinvoer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We lossen nu het probleem uit de beginproef op. <code>JokeDetailViewModel</code> kopieert tekst en categorie naar eigen properties. <code>TwoWay</code> schrijft alleen naar die properties, niet rechtstreeks naar <code>Joke.Text</code>. Een lege formuliertekst mag dus tijdelijk bestaan zonder dat we een ongeldig model maken.</p>
+</div>
+<div class="paragraph">
+<p>Dit maakt <strong>Annuleren</strong> eenvoudig: we keren terug zonder de service een wijziging te laten bewaren. Er hoeft niets in de database teruggedraaid te worden.</p>
+</div>
+<div class="paragraph">
+<p>Controleer straks vóór je op <strong>Opslaan</strong> klikt: de tekst in het ViewModel mag verschillen van de tekst die <code>GetById</code> teruggeeft. Juist dat verschil toont dat de gebruiker nog een voorstel aan het bewerken is.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/JokeDetailViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Windows.Input;
+using JokeApp.Models;
+using JokeApp.Navigation;
+using JokeApp.Services;
+
+namespace JokeApp.ViewModels;
+
+public sealed class JokeDetailViewModel : ViewModelBase
+{
+    private readonly IJokeService _jokeService;
+    private readonly INavigationService _navigationService;
+    private Guid _jokeId;
+    private bool _isLoaded;
+    private string _text = string.Empty;
+    private JokeCategory _selectedCategory;
+    private string _errorMessage = string.Empty;
+
+    public IReadOnlyList&lt;JokeCategory&gt; Categories { get; } =
+        Enum.GetValues&lt;JokeCategory&gt;();
+
+    public string Text
+    {
+        get =&gt; _text;
+        set
+        {
+            if (SetProperty(ref _text, value))
+                ErrorMessage = string.Empty;
+        }
+    }
+
+    public JokeCategory SelectedCategory
+    {
+        get =&gt; _selectedCategory;
+        set =&gt; SetProperty(ref _selectedCategory, value);
+    }
+
+    public string ErrorMessage
+    {
+        get =&gt; _errorMessage;
+        private set
+        {
+            if (SetProperty(ref _errorMessage, value))
+                OnPropertyChanged(nameof(HasError));
+        }
+    }
+
+    public bool HasError =&gt; ErrorMessage.Length &gt; 0;
+
+    public bool IsLoaded
+    {
+        get =&gt; _isLoaded;
+        private set
+        {
+            if (SetProperty(ref _isLoaded, value))
+            {
+                SaveCommand.ChangeCanExecute();
+                DeleteCommand.ChangeCanExecute();
+            }
+        }
+    }
+
+    public Command SaveCommand { get; }
+    public Command DeleteCommand { get; }
+    public ICommand CancelCommand { get; }
+
+    public JokeDetailViewModel(
+        IJokeService jokeService,
+        INavigationService navigationService)
+    {
+        _jokeService = jokeService;
+        _navigationService = navigationService;
+        SaveCommand = new Command(async () =&gt; await SaveAsync(), () =&gt; IsLoaded);
+        DeleteCommand = new Command(async () =&gt; await DeleteAsync(), () =&gt; IsLoaded);
+        CancelCommand = new Command(async () =&gt; await navigationService.GoBackAsync());
+    }
+
+    public void Load(Guid jokeId)
+    {
+        IsLoaded = false;
+        _jokeId = jokeId;
+        Text = string.Empty;
+        ErrorMessage = string.Empty;
+
+        var joke = _jokeService.GetById(jokeId);
+
+        if (joke is null)
+        {
+            ErrorMessage = "Deze grap bestaat niet meer.";
+            return;
+        }
+
+        Text = joke.Text;
+        SelectedCategory = joke.Category;
+        IsLoaded = true;
+    }
+
+    private async Task SaveAsync()
+    {
+        ErrorMessage = string.Empty;
+        var result = _jokeService.Update(_jokeId, Text, SelectedCategory);
+
+        if (!result.IsValid)
+        {
+            ErrorMessage = result.ErrorMessage;
+            return;
+        }
+
+        await _navigationService.GoBackAsync();
+    }
+
+    private async Task DeleteAsync()
+    {
+        ErrorMessage = string.Empty;
+        var result = _jokeService.Remove(_jokeId);
+
+        if (!result.IsValid)
+        {
+            ErrorMessage = result.ErrorMessage;
+            return;
+        }
+
+        await _navigationService.GoBackAsync();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>IsLoaded</code> bepaalt of er een bestaande grap is om te bewaren of verwijderen. Het zegt niets over de geldigheid van de ingevoerde tekst. Met een leeg tekstveld blijft <strong>Opslaan</strong> dus beschikbaar zolang er een grap geladen is.</p>
+</div>
+<div class="paragraph">
+<p><code>Command</code> is de ingebouwde MAUI-klasse. Voor deze commands installeren we geen extra package. De vorm <code>new Command(async () &#8658; await SaveAsync(), &#8230;&#8203;)</code> verbindt het command met het bestaande navigatierecept. Geef de <code>Task</code>-methode niet rechtstreeks door als <code>new Command(SaveAsync, &#8230;&#8203;)</code>; de callbackvorm met <code>async () &#8658; await &#8230;&#8203;</code> hoort bij dat recept.</p>
+</div>
+<div class="paragraph">
+<p>Waarom bewaren we <code>SaveCommand</code> en <code>DeleteCommand</code> hier als <code>Command</code>, niet alleen als <code>ICommand</code>? De View heeft genoeg aan <code>ICommand</code>, maar het ViewModel moet <code>ChangeCanExecute()</code> kunnen aanroepen. Die hulpmethode staat op <code>Command</code>, niet op de interface.</p>
+</div>
+<div class="paragraph">
+<p><code>ChangeCanExecute()</code> laat de View de beschikbaarheid opnieuw opvragen. <code>CanExecuteChanged</code> is het event dat daarbij wordt verstuurd, geen methode die we zelf aanroepen. Een wijziging van <code>IsLoaded</code> wordt niet automatisch door het command opgemerkt. Zie <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/commanding?view=net-maui-10.0">Microsoft: commanding</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_pagina_en_de_navigatieparameter"><a class="anchor" href="#_de_pagina_en_de_navigatieparameter"></a>De pagina en de navigatieparameter</h3>
+<div class="paragraph">
+<p>Maak een nieuwe ContentPage <code>JokeDetailPage</code> naast de andere pagina&#8217;s.</p>
+</div>
+<div class="listingblock">
+<div class="title">JokeDetailPage.xaml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:JokeApp.ViewModels"
+             x:Class="JokeApp.JokeDetailPage"
+             x:DataType="vm:JokeDetailViewModel"
+             Title="Grap bewerken"&gt;
+    &lt;ScrollView&gt;
+        &lt;VerticalStackLayout Padding="24" Spacing="12"&gt;
+            &lt;Label Text="Grap" /&gt;
+            &lt;Editor Text="{Binding Text, Mode=TwoWay}"
+                    IsEnabled="{Binding IsLoaded}"
+                    AutoSize="TextChanges" /&gt;
+            &lt;Label Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding HasError}"
+                   TextColor="{StaticResource DangerColor}"
+                   SemanticProperties.Description="{Binding ErrorMessage}" /&gt;
+            &lt;Label Text="Categorie" /&gt;
+            &lt;Picker ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                    IsEnabled="{Binding IsLoaded}" /&gt;
+            &lt;Button Text="Opslaan" Command="{Binding SaveCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}" /&gt;
+            &lt;Button Text="Annuleren" Command="{Binding CancelCommand}" /&gt;
+            &lt;Button Text="Verwijderen" Command="{Binding DeleteCommand}"
+                    Style="{StaticResource DangerButtonStyle}" /&gt;
+        &lt;/VerticalStackLayout&gt;
+    &lt;/ScrollView&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">JokeDetailPage.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.ViewModels;
+
+namespace JokeApp;
+
+public partial class JokeDetailPage : ContentPage, IQueryAttributable
+{
+    private readonly JokeDetailViewModel _viewModel;
+
+    public JokeDetailPage(JokeDetailViewModel viewModel)
+    {
+        InitializeComponent();
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+    }
+
+    public void ApplyQueryAttributes(IDictionary&lt;string, object&gt; query)
+    {
+        var jokeId = query.TryGetValue("JokeId", out var value)
+            &amp;&amp; value is Guid id
+                ? id
+                : Guid.Empty;
+
+        _viewModel.Load(jokeId);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>IQueryAttributable</code> is hier een MAUI-verantwoordelijkheid van de pagina. Zij vertaalt de navigatiegegevens naar een gewone <code>Guid</code> voor het ViewModel. Bij een ontbrekende of verkeerd getypeerde parameter levert <code>Guid.Empty</code> in onze app een niet-gevondenmelding op.</p>
+</div>
+<div class="paragraph">
+<p>We laden niet opnieuw bij iedere toetsaanslag of zomaar bij elk verschijnen van de pagina. Dat zou nog niet opgeslagen formulierinvoer kunnen overschrijven.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_command_om_de_selectie_te_openen"><a class="anchor" href="#_een_command_om_de_selectie_te_openen"></a>Een command om de selectie te openen</h3>
+<div class="paragraph">
+<p>Voeg aan <code>JokeListViewModel</code> een veld <code>_navigationService</code> toe en bewaar de ontvangen navigatieservice daarin. Voeg vervolgens toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Command OpenDetailsCommand { get; }
+
+private async Task OpenDetailsAsync()
+{
+    if (SelectedJoke is not null)
+        await _navigationService.ShowJokeDetailAsync(SelectedJoke.Id);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Initialiseer in de constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">OpenDetailsCommand = new Command(
+    async () =&gt; await OpenDetailsAsync(), () =&gt; SelectedJoke is not null);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Roep in de setter van <code>SelectedJoke</code>, binnen de bestaande <code>if</code>, ook <code>OpenDetailsCommand.ChangeCanExecute()</code> aan. Zonder selectie is er niets om te openen; dat is een beschikbaarheidsvoorwaarde, geen invoervalidatie.</p>
+</div>
+<div class="paragraph">
+<p>Voeg een knop <strong>Details</strong> met <code>Command="{Binding OpenDetailsCommand}"</code> toe aan de actiebalk. Geef de Grid daarvoor een extra kolom. De volledige overzichtsversie verderop toont dit samen met de verwijderfunctie.</p>
+</div>
+<div class="paragraph">
+<p>Test nu de volledige stroom terwijl <code>MainPage.OnAppearing</code> nog gewoon <code>Reload</code> oproept:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open een grap, wijzig tekst en categorie en sla op.</p>
+</li>
+<li>
+<p>Controleer dat het aantal gelijk blijft en de wijziging na een herstart bewaard is.</p>
+</li>
+<li>
+<p>Open dezelfde grap, wijzig de invoer en annuleer. Het origineel blijft intact.</p>
+</li>
+<li>
+<p>Sla een grap ongewijzigd op: dit moet lukken.</p>
+</li>
+<li>
+<p>Probeer de tekst van een andere grap en controleer dat de oude tekst behouden blijft.</p>
+</li>
+<li>
+<p>Bewerk een grap zodat ze niet meer aan de actieve zoekopdracht voldoet. Ze verdwijnt uit de resultaten, niet uit de opslag.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wanneer_is_messaging_nuttig"><a class="anchor" href="#_wanneer_is_messaging_nuttig"></a>Wanneer is messaging nuttig?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tot nu toe vernieuwt het overzicht wanneer het opnieuw verschijnt. Dat is voor deze kleine app een goede, eenvoudige oplossing. Ze koppelt het detailscherm ook niet rechtstreeks aan het overzicht. We vervangen haar niet omdat ze fout is.</p>
+</div>
+<div class="sect2">
+<h3 id="_een_nieuwe_behoefte_twee_presentaties_bijwerken"><a class="anchor" href="#_een_nieuwe_behoefte_twee_presentaties_bijwerken"></a>Een nieuwe behoefte: twee presentaties bijwerken</h3>
+<div class="paragraph">
+<p>We willen naast de zoekresultaten een klein statistiekpaneel tonen met aantallen per categorie. De lijst toont bijvoorbeeld alleen grappen met <code>koffie</code>; het paneel blijft de <strong>volledige bibliotheek</strong> tellen. Beide presentaties hebben dus hun eigen toestand.</p>
+</div>
+<div class="paragraph">
+<p>Voorspel wat moet gebeuren wanneer een grap van <code>Programming</code> naar <code>Other</code> verhuist en haar tekst niet meer bij de zoekopdracht past. De lijst moet een rij weglaten, het totale aantal grappen blijft gelijk en twee categorietellers veranderen. Later kan ook een ander scherm belangstelling hebben voor die wijziging.</p>
+</div>
+<div class="paragraph">
+<p>Wie moet nu weten welke onderdelen moeten reageren? Bespreek eerst de mogelijkheden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Het detailscherm kan elk ander onderdeel expliciet laten verversen. Dan moet iedere invoerroute al die ontvangers kennen.</p>
+</li>
+<li>
+<p>De pagina kan bij terugkeer beide presentaties opnieuw laden. Dat blijft een bruikbare eenvoudige keuze als vernieuwen op dat moment volstaat.</p>
+</li>
+<li>
+<p>De service kan melden dat de gegevens gewijzigd zijn. Elk geïnteresseerd onderdeel bepaalt dan zelf wat het moet bijwerken.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We onderzoeken de derde mogelijkheid. Het doel is dat een nieuwe ontvanger kan aansluiten zonder dat de afzender alle schermen hoeft op te sommen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_we_hebben_toch_al_wijzigingsmeldingen"><a class="anchor" href="#_we_hebben_toch_al_wijzigingsmeldingen"></a>We hebben toch al wijzigingsmeldingen?</h3>
+<div class="paragraph">
+<p>Uit de vorige les kennen we twee soorten meldingen. Die hebben niet dezelfde rol als ons nieuwe bericht:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>PropertyChanged</code></dt>
+<dd>
+<p>Een propertywaarde is gewijzigd. Een binding kan bijvoorbeeld <code>CountText</code> opnieuw lezen en een label bijwerken.</p>
+</dd>
+<dt class="hdlist1"><code>CollectionChanged</code> van <code>ObservableCollection</code></dt>
+<dd>
+<p>Items zijn in <strong>die collectie</strong> toegevoegd, verwijderd of vervangen. De <code>CollectionView</code> kan haar rijen aanpassen.</p>
+</dd>
+<dt class="hdlist1"><code>JokesChangedMessage</code></dt>
+<dd>
+<p>Een bewerking op de opgeslagen grappen is geslaagd. Geïnteresseerde ViewModels bepalen welke gegevens ze opnieuw moeten lezen.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Een wijziging in LiteDB roept geen <code>Jokes.Add</code> op en berekent geen nieuwe categorietellers. Ook het vervangen van een object in de in-memory repository wijzigt niet vanzelf een eerder gevulde <code>ObservableCollection</code>. Dat blijft een afzonderlijke weergave.</p>
+</div>
+<div class="paragraph">
+<p>Het nieuwe bericht vervangt binding dus niet. Het laat een ViewModel reageren op gewijzigde gegevens. Dat ViewModel werkt vervolgens zijn properties of collectie bij; <strong>hun</strong> meldingen zorgen dat de UI mee verandert.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wat_winnen_we_en_wat_kost_het"><a class="anchor" href="#_wat_winnen_we_en_wat_kost_het"></a>Wat winnen we, en wat kost het?</h3>
+<div class="paragraph">
+<p>In deze les gebruiken we een command als <strong>verzoek</strong> om iets te doen en een wijzigingsbericht als melding van een <strong>feit</strong>: een bewerking is geslaagd. Een bericht als <code>JokesChangedMessage</code> vraagt de ontvanger niet om de grap nog eens te bewaren. De repository blijft de bron van gegevens.</p>
+</div>
+<div class="paragraph">
+<p>De afzender kent de concrete ontvangers niet meer. Afzender en ontvangers delen wel het berichttype en dezelfde messenger. We maken afhankelijkheden kleiner en explicieter; we laten ze niet verdwijnen.</p>
+</div>
+<div class="paragraph">
+<p>Messaging heeft ook een prijs: aan een methodeaanroep zie je niet meer onmiddellijk welke ontvangers zullen reageren. Registraties en breakpoints worden belangrijk om de uitvoeringsstroom te volgen. Voor één overzicht dat alleen bij terugkeer moet vernieuwen, kan <code>OnAppearing</code> eenvoudiger blijven.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Gebruik niet voor iedere methodeaanroep een bericht. Voor een gerichte vraag om een bewerking uit te voeren gebruiken we nog steeds het servicecontract. Ons wijzigingsbericht meldt pas ná succes wat gebeurd is.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_klein_bericht_en_een_geïnjecteerde_messenger"><a class="anchor" href="#_een_klein_bericht_en_een_geïnjecteerde_messenger"></a>Een klein bericht en een geïnjecteerde messenger</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pas voor dit onderdeel installeren we het NuGet-package <code>CommunityToolkit.Mvvm</code>. We gebruiken er alleen <code>IMessenger</code> en <code>WeakReferenceMessenger</code> van. De commands blijven de ingebouwde MAUI-<code>Command</code>; daarvoor is dit package niet nodig.</p>
+</div>
+<div class="listingblock">
+<div class="title">Messages/JokesChangedMessage.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Messages;
+
+public class JokesChangedMessage
+{
+    public Guid JokeId { get; }
+
+    public JokesChangedMessage(Guid jokeId)
+    {
+        JokeId = jokeId;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Het bericht bevat een id, geen control, pagina of wijzigbaar formulierobject. De ontvanger kan de relevante gegevens opnieuw bij de service opvragen.</p>
+</div>
+<div class="paragraph">
+<p>Voeg <code>using CommunityToolkit.Mvvm.Messaging;</code> toe aan <code>MauiProgram.cs</code> en registreer één gedeelde messenger:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddSingleton&lt;IMessenger, WeakReferenceMessenger&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Waarom een singleton? Registraties horen bij een <strong>messenger-instantie</strong>. Als de lijst zich bij instantie A registreert en de service via instantie B verzendt, ontvangt de lijst dat bericht niet. Binnen deze app moeten de afzender en beide ontvangers dus dezelfde instantie delen.</p>
+</div>
+<div class="paragraph">
+<p>We gebruiken geen verborgen <code>WeakReferenceMessenger.Default</code> in onze klassen. Constructor injection maakt die gedeelde afhankelijkheid zichtbaar en laat een test een eigen messenger gebruiken. <code>Register</code> betekent straks: dit object wil reageren op dit berichttype. <code>Send</code> laat dezelfde messenger de geregistreerde ontvangers aanroepen.</p>
+</div>
+<div class="sect2">
+<h3 id="_alleen_na_een_geslaagde_opslag_publiceren"><a class="anchor" href="#_alleen_na_een_geslaagde_opslag_publiceren"></a>Alleen na een geslaagde opslag publiceren</h3>
+<div class="paragraph">
+<p>Waarom laat de service het bericht versturen? Hier komen de toepassingsregels en de opslagbewerking samen. De service kan na het bewaren vaststellen dat de gevraagde bewerking geslaagd is, ongeacht of de vraag uit het toevoegscherm, het detailscherm of later een import komt.</p>
+</div>
+<div class="paragraph">
+<p>Als iedere pagina zelf publiceert, moet iedere nieuwe invoerroute dat opnieuw correct doen. We kiezen evenmin voor de repository: die bewaart gegevens, maar organiseert hier niet de communicatie over onze toepassingsbewerkingen. De service is in dit ontwerp de plaats die het geslaagde resultaat meldt.</p>
+</div>
+<div class="paragraph">
+<p>Voorspel vóór je de code leest: mag een geweigerde dubbele tekst een bericht veroorzaken? En wat als het bewaren mislukt? Zoek straks in elke methode waarom <code>Send</code> dan niet bereikt wordt.</p>
+</div>
+<div class="paragraph">
+<p>Vervang <code>JokeService</code> door deze versie. De bestaande regels en resultaten blijven behouden; bij iedere geslaagde mutatie komt één bericht.</p>
+</div>
+<div class="listingblock">
+<div class="title">Services/JokeService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using CommunityToolkit.Mvvm.Messaging;
+using JokeApp.Messages;
+using JokeApp.Models;
+using JokeApp.Repositories;
+using JokeApp.Validation;
+
+namespace JokeApp.Services;
+
+public sealed class JokeService : IJokeService
+{
+    private readonly IJokeRepository _jokeRepository;
+    private readonly IMessenger _messenger;
+
+    public JokeService(IJokeRepository jokeRepository, IMessenger messenger)
+    {
+        _jokeRepository = jokeRepository;
+        _messenger = messenger;
+    }
+
+    public IReadOnlyList&lt;Joke&gt; GetAll() =&gt; _jokeRepository.GetAll();
+
+    public IReadOnlyList&lt;Joke&gt; Search(string? searchText)
+    {
+        var query = searchText?.Trim() ?? string.Empty;
+        return _jokeRepository.GetAll()
+            .Where(joke =&gt; joke.Text.Contains(
+                query, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    public Joke? GetById(Guid id) =&gt; _jokeRepository.GetById(id);
+
+    public ValidationResult Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+
+        var duplicateExists = _jokeRepository.GetAll().Any(existing =&gt;
+            string.Equals(existing.Text, joke.Text,
+                StringComparison.OrdinalIgnoreCase));
+
+        if (duplicateExists)
+            return ValidationResult.Failure("Deze grap bestaat al.");
+
+        _jokeRepository.Add(joke);
+        _messenger.Send(new JokesChangedMessage(joke.Id));
+        return ValidationResult.Success();
+    }
+
+    public ValidationResult Update(Guid id, string text, JokeCategory category)
+    {
+        var existingJoke = _jokeRepository.GetById(id);
+
+        if (existingJoke is null)
+            return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+        var validation = JokeTextValidator.Validate(text);
+
+        if (!validation.IsValid)
+            return validation;
+
+        var normalizedText = text.Trim();
+        var duplicateExists = _jokeRepository.GetAll().Any(other =&gt;
+            other.Id != id &amp;&amp;
+            string.Equals(other.Text, normalizedText,
+                StringComparison.OrdinalIgnoreCase));
+
+        if (duplicateExists)
+            return ValidationResult.Failure("Deze grap bestaat al.");
+
+        var updatedJoke = new Joke(normalizedText, category)
+        {
+            Id = existingJoke.Id
+        };
+
+        if (!_jokeRepository.Update(updatedJoke))
+            return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+        _messenger.Send(new JokesChangedMessage(id));
+        return ValidationResult.Success();
+    }
+
+    public ValidationResult Remove(Guid id)
+    {
+        if (!_jokeRepository.Remove(id))
+            return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+        _messenger.Send(new JokesChangedMessage(id));
+        return ValidationResult.Success();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Een validatiefout verstuurt geen bericht. Gooit de opslag een exception, dan wordt de <code>Send</code> erna evenmin uitgevoerd. Dat maakt verwachte validatiefouten en technische opslagproblemen niet hetzelfde: de eerste zijn resultaten, de tweede vragen in een productieapp een afzonderlijke foutafhandeling.</p>
+</div>
+<div class="paragraph">
+<p>Werk servicetests bij door een eigen <code>new WeakReferenceMessenger()</code> mee te geven. De DI-registratie van <code>JokeService</code> hoeft niet te veranderen: de container kan de extra dependency nu invullen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_het_overzicht_ontvangt_de_wijziging"><a class="anchor" href="#_het_overzicht_ontvangt_de_wijziging"></a>Het overzicht ontvangt de wijziging</h3>
+<div class="paragraph">
+<p>Hieronder staat de gezamenlijke versie van <code>JokeListViewModel</code>, inclusief verwijderen en statusfeedback uit de thuisopdracht. Ze laadt eenmaal bij het maken en daarna bij een bericht of expliciete zoekactie.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/JokeListViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Collections.ObjectModel;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using JokeApp.Messages;
+using JokeApp.Models;
+using JokeApp.Navigation;
+using JokeApp.Services;
+
+namespace JokeApp.ViewModels;
+
+public sealed class JokeListViewModel : ViewModelBase
+{
+    private readonly IJokeService _jokeService;
+    private readonly INavigationService _navigationService;
+    private string _searchText = string.Empty;
+    private string _appliedSearchText = string.Empty;
+    private string _countText = string.Empty;
+    private string _statusMessage = string.Empty;
+    private Joke? _selectedJoke;
+
+    public ObservableCollection&lt;Joke&gt; Jokes { get; } = new();
+
+    public string SearchText
+    {
+        get =&gt; _searchText;
+        set =&gt; SetProperty(ref _searchText, value);
+    }
+
+    public string CountText
+    {
+        get =&gt; _countText;
+        private set =&gt; SetProperty(ref _countText, value);
+    }
+
+    public string StatusMessage
+    {
+        get =&gt; _statusMessage;
+        private set =&gt; SetProperty(ref _statusMessage, value);
+    }
+
+    public Joke? SelectedJoke
+    {
+        get =&gt; _selectedJoke;
+        set
+        {
+            if (SetProperty(ref _selectedJoke, value))
+            {
+                OnPropertyChanged(nameof(SelectedJokeText));
+                OpenDetailsCommand.ChangeCanExecute();
+                DeleteJokeCommand.ChangeCanExecute();
+            }
+        }
+    }
+
+    public string SelectedJokeText =&gt;
+        SelectedJoke?.Text ?? "Selecteer een grap.";
+
+    public ICommand SearchCommand { get; }
+    public ICommand ShowAllCommand { get; }
+    public ICommand AddJokeCommand { get; }
+    public Command OpenDetailsCommand { get; }
+    public Command DeleteJokeCommand { get; }
+
+    public JokeListViewModel(
+        IJokeService jokeService,
+        INavigationService navigationService,
+        IMessenger messenger)
+    {
+        _jokeService = jokeService;
+        _navigationService = navigationService;
+        SearchCommand = new Command(ApplySearch);
+        ShowAllCommand = new Command(ShowAll);
+        AddJokeCommand = new Command(
+            async () =&gt; await navigationService.ShowAddJokeAsync());
+        OpenDetailsCommand = new Command(
+            async () =&gt; await OpenDetailsAsync(), () =&gt; SelectedJoke is not null);
+        DeleteJokeCommand = new Command(
+            DeleteSelectedJoke, () =&gt; SelectedJoke is not null);
+
+        messenger.Register&lt;JokeListViewModel, JokesChangedMessage&gt;(
+            this, static (recipient, message) =&gt; recipient.Receive(message));
+
+        Reload();
+    }
+
+    private void Receive(JokesChangedMessage message)
+    {
+        Reload();
+        StatusMessage = "De grappenverzameling is bijgewerkt.";
+    }
+
+    public void Reload()
+    {
+        var matchingJokes = _jokeService.Search(_appliedSearchText);
+        SelectedJoke = null;
+        Jokes.Clear();
+
+        foreach (var joke in matchingJokes)
+            Jokes.Add(joke);
+
+        CountText = $"{Jokes.Count} van {_jokeService.GetAll().Count} grappen";
+    }
+
+    private void ApplySearch()
+    {
+        _appliedSearchText = SearchText.Trim();
+        StatusMessage = string.Empty;
+        Reload();
+    }
+
+    private void ShowAll()
+    {
+        SearchText = string.Empty;
+        _appliedSearchText = string.Empty;
+        StatusMessage = string.Empty;
+        Reload();
+    }
+
+    private async Task OpenDetailsAsync()
+    {
+        if (SelectedJoke is not null)
+            await _navigationService.ShowJokeDetailAsync(SelectedJoke.Id);
+    }
+
+    private void DeleteSelectedJoke()
+    {
+        if (SelectedJoke is null)
+            return;
+
+        var result = _jokeService.Remove(SelectedJoke.Id);
+
+        if (!result.IsValid)
+            StatusMessage = result.ErrorMessage;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bij verwijderen vernieuwt de succesmelding van de service de lijst via <code>Receive</code>. We roepen niet daarnaast nogmaals <code>Reload</code> aan in het verwijdercommand.</p>
+</div>
+<div class="paragraph">
+<p>Waarom opnieuw de zoekopdracht uitvoeren en niet zomaar een rij toevoegen of verwijderen? Een bewerkte grap kan wel of niet meer aan de actieve filter voldoen. De teller en selectie moeten ook kloppen. Voor deze kleine verzameling is één gerichte herlaadactie eenvoudiger dan alle gevallen afzonderlijk bijhouden.</p>
+</div>
+<div class="paragraph">
+<p>De parameter <code>message</code> bevat de gewijzigde id. Deze ontvanger heeft voor het opnieuw laden geen afzonderlijk object nodig; een andere ontvanger kan die id wel gebruiken. Messaging verplicht ons niet tot ingewikkelde incrementele updates.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_tweede_ontvanger_aantallen_per_categorie"><a class="anchor" href="#_een_tweede_ontvanger_aantallen_per_categorie"></a>Een tweede ontvanger: aantallen per categorie</h3>
+<div class="paragraph">
+<p>We bouwen nu het statistiekpaneel dat de aanleiding was voor onze ontwerpkeuze. Het telt altijd de <strong>volledige bibliotheek</strong>, ook wanneer de lijst gefilterd is.</p>
+</div>
+<div class="paragraph">
+<p>Voor drie tellers op dezelfde pagina is een apart ViewModel niet verplicht. We kiezen er hier bewust voor om een tweede, zelfstandige presentatie te maken: haar telling hangt niet af van de zoektoestand van het overzicht. Daardoor kunnen we ook onderzoeken of een tweede ontvanger kan reageren zonder de eerste aan te passen.</p>
+</div>
+<div class="paragraph">
+<p>Dit paneel krijgt een eigen ViewModel. Het ontvangt dezelfde <code>IJokeService</code>-abstractie en dezelfde gedeelde messenger, maar kent <code>JokeListViewModel</code> niet. De lijst hoeft het paneel dus niet na iedere bewerking zelf te verversen.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/JokeStatisticsViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using CommunityToolkit.Mvvm.Messaging;
+using JokeApp.Messages;
+using JokeApp.Models;
+using JokeApp.Services;
+
+namespace JokeApp.ViewModels;
+
+public sealed class JokeStatisticsViewModel : ViewModelBase
+{
+    private readonly IJokeService _jokeService;
+    private int _programmingCount;
+    private int _dadJokeCount;
+    private int _otherCount;
+
+    public int ProgrammingCount
+    {
+        get =&gt; _programmingCount;
+        private set =&gt; SetProperty(ref _programmingCount, value);
+    }
+
+    public int DadJokeCount
+    {
+        get =&gt; _dadJokeCount;
+        private set =&gt; SetProperty(ref _dadJokeCount, value);
+    }
+
+    public int OtherCount
+    {
+        get =&gt; _otherCount;
+        private set =&gt; SetProperty(ref _otherCount, value);
+    }
+
+    public JokeStatisticsViewModel(
+        IJokeService jokeService,
+        IMessenger messenger)
+    {
+        _jokeService = jokeService;
+
+        messenger.Register&lt;JokeStatisticsViewModel, JokesChangedMessage&gt;(
+            this, static (recipient, message) =&gt; recipient.Receive(message));
+
+        Reload();
+    }
+
+    private void Receive(JokesChangedMessage message)
+    {
+        Reload();
+    }
+
+    private void Reload()
+    {
+        var jokes = _jokeService.GetAll();
+        ProgrammingCount = jokes.Count(
+            joke =&gt; joke.Category == JokeCategory.Programming);
+        DadJokeCount = jokes.Count(
+            joke =&gt; joke.Category == JokeCategory.DadJoke);
+        OtherCount = jokes.Count(
+            joke =&gt; joke.Category == JokeCategory.Other);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Reload</code> leest de volledige verzameling eenmaal en berekent de drie aantallen. Dit is presentatietoestand voor het paneel; er komen geen nieuwe validatieregels of een extra opslagplaats bij.</p>
+</div>
+<div class="paragraph">
+<p>Registreer dit ViewModel in <code>MauiProgram</code> vóór <code>Build()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddTransient&lt;JokeStatisticsViewModel&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De pagina ontvangt straks zowel <code>JokeListViewModel</code> als <code>JokeStatisticsViewModel</code>. Beide ViewModels worden bij het maken eenmaal geladen. Daarna reageren ze onafhankelijk op hetzelfde bericht.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">JokeService bewaart een wijziging
+└── IMessenger verstuurt JokesChangedMessage
+    ├── JokeListViewModel → resultaten van de toegepaste zoekopdracht
+    └── JokeStatisticsViewModel → aantallen in de volledige bibliotheek</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De service kent geen van beide ontvangers. Er is ook geen aanroep van het ene ViewModel naar het andere. De volgorde waarin ze een bericht ontvangen, mag geen invloed hebben op het resultaat.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_levensduur_en_thread"><a class="anchor" href="#_levensduur_en_thread"></a>Levensduur en thread</h3>
+<div class="paragraph">
+<p><code>WeakReferenceMessenger</code> bewaart ontvangers via zwakke referenties. De registratie alleen houdt een verder ongebruikt ViewModel daardoor niet in leven. De statische callback gebruikt de doorgegeven <code>recipient</code> in plaats van <code>this</code> vast te houden in een closure.</p>
+</div>
+<div class="paragraph">
+<p>Dat bepaalt niet automatisch <strong>wanneer</strong> een scherm berichten hoort te verwerken. Ons overzicht en het statistiekpaneel blijven bewust luisteren terwijl een detailpagina erboven staat. Wil je een ontvanger tijdelijk uitschakelen, meld hem dan expliciet af met <code>Unregister</code> of gebruik een passende activatieaanpak. Registreer niet bij ieder verschijnen opnieuw zonder bijbehorend afmelden.</p>
+</div>
+<div class="paragraph">
+<p>Berichten zijn geen automatische UI-thread-dispatcher. In de kernversie komen de mutaties uit UI-commands en gebruiken we geen achtergrondtaken. Voeg je later achtergrondwerk toe, dan moeten wijzigingen aan gebonden collecties naar de UI-thread worden gebracht.</p>
+</div>
+<div class="paragraph">
+<p>Zie <a href="https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/messenger">Microsoft: messenger</a> voor registratie, afmelding en het onderscheid tussen sterke en zwakke referenties.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_de_uiteindelijke_overzichtspagina"><a class="anchor" href="#_de_uiteindelijke_overzichtspagina"></a>De uiteindelijke overzichtspagina</h3>
+<div class="paragraph">
+<p>Deze versie bevat de detailknop, de statusmelding en het statistiekpaneel. De lijst toont zoekresultaten; het paneel toont altijd de aantallen in de volledige bibliotheek. Neem eventuele extra styling en de bevestigingsdialoog uit je eigen thuisopdracht mee.</p>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:JokeApp.ViewModels"
+             xmlns:models="clr-namespace:JokeApp.Models"
+             x:Class="JokeApp.MainPage"
+             x:DataType="vm:JokeListViewModel"
+             Title="Mijn grappen"&gt;
+    &lt;Grid Padding="24" RowSpacing="12"
+          RowDefinitions="Auto,*,Auto,Auto,Auto,Auto"&gt;
+        &lt;Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8"&gt;
+            &lt;Entry Placeholder="Zoek in de tekst"
+                   Text="{Binding SearchText, Mode=TwoWay}" /&gt;
+            &lt;Button Grid.Column="1" Text="Zoeken"
+                    Command="{Binding SearchCommand}" /&gt;
+            &lt;Button Grid.Column="2" Text="Toon alles"
+                    Command="{Binding ShowAllCommand}" /&gt;
+        &lt;/Grid&gt;
+        &lt;CollectionView Grid.Row="1" ItemsSource="{Binding Jokes}"
+                        SelectedItem="{Binding SelectedJoke, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        EmptyView="Geen grappen gevonden."&gt;
+            &lt;CollectionView.ItemTemplate&gt;
+                &lt;DataTemplate x:DataType="models:Joke"&gt;
+                    &lt;Border Padding="16" Margin="0,4"&gt;
+                        &lt;VerticalStackLayout Spacing="4"&gt;
+                            &lt;Label Text="{Binding Text}" MaxLines="2"
+                                   LineBreakMode="TailTruncation" /&gt;
+                            &lt;Label Text="{Binding Category}" FontSize="12" /&gt;
+                        &lt;/VerticalStackLayout&gt;
+                    &lt;/Border&gt;
+                &lt;/DataTemplate&gt;
+            &lt;/CollectionView.ItemTemplate&gt;
+        &lt;/CollectionView&gt;
+        &lt;Label Grid.Row="2" Text="{Binding SelectedJokeText}" /&gt;
+        &lt;Border x:Name="statisticsPanel" Grid.Row="3" Padding="12"
+                x:DataType="vm:JokeStatisticsViewModel"&gt;
+            &lt;VerticalStackLayout Spacing="4"&gt;
+                &lt;Label Text="Categorieën in de volledige bibliotheek"
+                       FontAttributes="Bold" /&gt;
+                &lt;Label Text="{Binding ProgrammingCount, StringFormat='Programming: {0}'}" /&gt;
+                &lt;Label Text="{Binding DadJokeCount, StringFormat='DadJoke: {0}'}" /&gt;
+                &lt;Label Text="{Binding OtherCount, StringFormat='Other: {0}'}" /&gt;
+            &lt;/VerticalStackLayout&gt;
+        &lt;/Border&gt;
+        &lt;VerticalStackLayout Grid.Row="4" Spacing="4"&gt;
+            &lt;Label Text="{Binding CountText}" /&gt;
+            &lt;Label Text="{Binding StatusMessage}" /&gt;
+        &lt;/VerticalStackLayout&gt;
+        &lt;Grid Grid.Row="5" ColumnDefinitions="*,*,*" ColumnSpacing="8"&gt;
+            &lt;Button Text="Details" Command="{Binding OpenDetailsCommand}" /&gt;
+            &lt;Button Grid.Column="1" Text="Toevoegen"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Command="{Binding AddJokeCommand}" /&gt;
+            &lt;Button Grid.Column="2" Text="Verwijderen"
+                    Style="{StaticResource DangerButtonStyle}"
+                    Command="{Binding DeleteJokeCommand}" /&gt;
+        &lt;/Grid&gt;
+    &lt;/Grid&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vervang nu ook de code-behind. De automatische <code>OnAppearing</code>-refresh verdwijnt <strong>in deze messagingvariant</strong>: de eerste lading en de reacties op wijzigingen zitten in het ViewModel.</p>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.ViewModels;
+
+namespace JokeApp;
+
+public partial class MainPage : ContentPage
+{
+    public MainPage(
+        JokeListViewModel viewModel,
+        JokeStatisticsViewModel statisticsViewModel)
+    {
+        InitializeComponent();
+        statisticsPanel.BindingContext = statisticsViewModel;
+        BindingContext = viewModel;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De pagina stelt twee binding contexts in: één voor het statistiekpaneel, één voor de rest van de pagina. <code>x:DataType</code> beschrijft daarbij het verwachte type, maar maakt zelf geen ViewModel. Deze code-behind stelt alleen de View samen; ze berekent geen aantallen en verwerkt geen berichten. De twee ViewModels hoeven elkaar niet te kennen.</p>
+</div>
+<div class="paragraph">
+<p>Deze keuze veronderstelt dat wijzigingen tijdens het draaien via onze service gebeuren. Wanneer een ander proces de database kan wijzigen, volstaat deze messenger niet: zo&#8217;n proces verstuurt hier geen bericht. Een refresh bij terugkeer kan in een andere app dus nog steeds zinvol zijn.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_samen_onderzoeken_één_bericht_twee_reacties"><a class="anchor" href="#_samen_onderzoeken_één_bericht_twee_reacties"></a>Samen onderzoeken: één bericht, twee reacties</h3>
+<div class="paragraph">
+<p>We gaan de werking niet alleen bekijken wanneer alles toevallig goed lijkt te gaan. Voorspel eerst welke gegevens, rijen en tellers veranderen en controleer daarna de uitvoering.</p>
+</div>
+<div class="sect3">
+<h4 id="_het_vertrekpunt_vastleggen"><a class="anchor" href="#_het_vertrekpunt_vastleggen"></a>Het vertrekpunt vastleggen</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Voeg een unieke grap toe in <code>Programming</code>, bijvoorbeeld: <strong>Deze programmeur bewaart zijn koffie in een variabele.</strong></p>
+</li>
+<li>
+<p>Zoek op <code>koffie</code> en noteer het aantal resultaten en de drie categorie-aantallen. De statistieken tellen ook de grappen die niet in de resultaten staan.</p>
+</li>
+<li>
+<p>Plaats breakpoints bij <code>_jokeRepository.Update(updatedJoke)</code>, bij de <code>Send</code> onmiddellijk erna en in <code>Receive</code> van <strong>beide</strong> ViewModels.</p>
+</li>
+<li>
+<p>Open de grap, verander haar tekst in <strong>Een woordgrap over thee zet iedereen aan het denken.</strong> en kies <code>Other</code>. Klik nog niet op <strong>Opslaan</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Wat verwacht je? Tot nu toe zijn alleen de formulierproperties gewijzigd. De opgeslagen grap, zoekresultaten en statistieken moeten nog dezelfde zijn.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eén_opslagpoging_volgen"><a class="anchor" href="#_eén_opslagpoging_volgen"></a>Eén opslagpoging volgen</h4>
+<div class="paragraph">
+<p>Klik op <strong>Opslaan</strong> en stap door de code.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>De service controleert de invoer en maakt het vervangende model met dezelfde id.</p>
+</li>
+<li>
+<p>De repository bewaart de wijziging.</p>
+</li>
+<li>
+<p>Pas daarna verstuurt de service één bericht met die id.</p>
+</li>
+<li>
+<p>De twee ontvangers lezen elk de gegevens die zij nodig hebben opnieuw in.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>De grap verdwijnt uit de resultaten voor <code>koffie</code>. Ze is niet verwijderd: het totale aantal blijft gelijk. In het statistiekpaneel daalt <code>Programming</code> met één en stijgt <code>Other</code> met één.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Eén verstuurd bericht veroorzaakt hier twee callbacks: één per ontvanger. Dat is geen dubbele verzending. De ontvangers gebruiken niet elkaars resultaat; hun ontvangstvolgorde mag het eindresultaat niet bepalen. Onafhankelijk betekent hier niet dat we ze parallel uitvoeren.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_voorspellen_en_controleren"><a class="anchor" href="#_voorspellen_en_controleren"></a>Voorspellen en controleren</h4>
+<div class="paragraph">
+<p>Noteer vóór iedere handeling de begintoestand. Controleer vervolgens onderstaande verwachtingen. Gebruik voor een duplicaat de tekst van een <strong>andere</strong> bestaande grap.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Handeling</th>
+<th class="tableblock halign-left valign-top">Berichten</th>
+<th class="tableblock halign-left valign-top">Lijst</th>
+<th class="tableblock halign-left valign-top">Statistieken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een unieke grap toevoegen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verschijnt alleen als de tekst bij de actieve zoekopdracht past.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De passende categorie stijgt met één.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Te korte tekst opslaan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blijft ongewijzigd.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blijven ongewijzigd.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewerken naar een dubbele tekst</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De oorspronkelijke grap blijft behouden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blijven ongewijzigd.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tekst en categorie wijzigen en annuleren</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De oorspronkelijke grap blijft behouden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blijven ongewijzigd.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alleen de categorie wijzigen en opslaan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De grap blijft bij dezelfde tekstzoekopdracht zichtbaar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De oude categorie daalt, de nieuwe stijgt.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een grap verwijderen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De rij verdwijnt als ze zichtbaar was; selectie en teller worden bijgewerkt.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De passende categorie daalt met één.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een andere zoekopdracht uitvoeren</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De resultaten veranderen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blijven de volledige bibliotheek tellen.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Open en sluit vervolgens enkele keren het detailscherm. Bewaar daarna één wijziging. De service moet nog steeds één bericht versturen en elk ViewModel mag zijn <code>Receive</code> maar één keer uitvoeren. Meer callbacks wijzen bijvoorbeeld op extra ontvangers of herhaalde registraties.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_waarom_pas_na_de_opslag"><a class="anchor" href="#_waarom_pas_na_de_opslag"></a>Waarom pas na de opslag?</h4>
+<div class="paragraph">
+<p>Bekijk de twee regels voor bewaren en verzenden opnieuw. Wat zou er gebeuren als <code>Send</code> vóór <code>Update</code> stond? De ontvangers zouden opnieuw laden terwijl de oude gegevens nog in de repository staan. Een bericht vóór de controles zou bovendien een geslaagde wijziging suggereren die mogelijk helemaal niet wordt toegestaan.</p>
+</div>
+<div class="paragraph">
+<p>Je kan de onafhankelijkheid ook aantonen door tijdelijk alleen de messengerregistratie van <code>JokeStatisticsViewModel</code> weg te laten en de app opnieuw te starten. Na een wijziging werkt de lijst nog bij, maar het paneel blijft op zijn beginwaarden staan. Herstel daarna de registratie en start opnieuw. Aan <code>JokeService</code> en <code>JokeListViewModel</code> hoef je niets te veranderen.</p>
+</div>
+<div class="paragraph">
+<p>Voer de belangrijkste controles ook met de andere repository uit. Het berichtencontract blijft gelijk; alleen het bewaren over een herstart heen verschilt.</p>
+</div>
+<div class="paragraph">
+<p>Het detailscherm roept nergens <code>MainPage.RefreshJokes</code> aan. De pagina verbindt de twee ViewModels met hun eigen UI, de service publiceert een gebeurtenis en iedere ontvanger bepaalt zelf wat die voor zijn presentatie betekent.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_facultatieve_preview_online_grappen_via_webapi"><a class="anchor" href="#_facultatieve_preview_online_grappen_via_webapi"></a>Facultatieve preview - Online grappen via WebAPI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Onze JokeApp kan nu grappen toevoegen, bewerken en bewaren. Als logisch sluitstuk laten we ook een externe bron nieuwe grappen aanleveren. De bestaande service, repository en berichtontvangers blijven hun werk doen.</p>
+</div>
+<div class="paragraph">
+<p>WebAPI wordt uitgebreider behandeld in andere lessen. Deze preview is volledig uitgewerkt, maar behoort niet tot de verplichte leerstof en wordt alleen klassikaal behandeld als er tijd voor is. Je kan ze ook zelfstandig volgen. We concentreren ons hier op het aansluiten van een bron en het onderscheid tussen een <strong>DTO</strong> en ons <strong>model</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We veronderstellen in dit voorbeeld een geslaagde HTTP-aanroep. Laadindicatoren, netwerkfouten en verdere asynchrone afhandeling horen bij de andere lessen. Neem <code>Task</code>, <code>async</code> en <code>await</code> hier over als hetzelfde vaste recept dat we voor navigatie gebruiken.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_het_antwoord_van_de_externe_bron_bekijken"><a class="anchor" href="#_het_antwoord_van_de_externe_bron_bekijken"></a>Het antwoord van de externe bron bekijken</h3>
+<div class="paragraph">
+<p>We gebruiken <a href="https://v2.jokeapi.dev/">JokeAPI</a>. Het verzoek naar <code><a href="https://v2.jokeapi.dev/joke/Any?safe-mode&amp;type=single" class="bare">https://v2.jokeapi.dev/joke/Any?safe-mode&amp;type=single</a></code> vraagt één grap. <code>Any</code> laat de categorie vrij; <code>type=single</code> vraagt één tekst in plaats van een vraag en antwoord in aparte velden. <code>safe-mode</code> beperkt de aangeboden inhoud, maar blijft geen garantie dat elke grap geschikt is voor de klas.</p>
+</div>
+<div class="paragraph">
+<p>Een vereenvoudigd antwoord ziet er zo uit. De tekst en id hieronder zijn illustratief, geen werkelijk opgehaalde grap.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "error": false,
+  "category": "Programming",
+  "type": "single",
+  "joke": "Deze programmeur bewaart zijn koffie in een variabele.",
+  "id": 123,
+  "safe": true,
+  "lang": "en"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit is JSON: gegevens met veldnamen en waarden, geen C#-object. Vergelijk het antwoord met <code>Joke</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>De tekst staat in <code>joke</code>, terwijl onze property <code>Text</code> heet.</p>
+</li>
+<li>
+<p>De externe <code>id</code> is een getal; onze <code>Id</code> is een <code>Guid</code> voor onze eigen bibliotheek.</p>
+</li>
+<li>
+<p>De externe categorie is tekst en volgt niet noodzakelijk onze <code>JokeCategory</code>-enum.</p>
+</li>
+<li>
+<p>De bron levert ook gegevens die onze app momenteel niet gebruikt, zoals taal en type.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Een extern gegevensformaat hoeft dus niet overeen te komen met het model dat voor onze app het beste past.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_dto_beschrijft_de_overdracht"><a class="anchor" href="#_een_dto_beschrijft_de_overdracht"></a>Een DTO beschrijft de overdracht</h3>
+<div class="paragraph">
+<p>DTO staat voor <strong>Data Transfer Object</strong>: een object dat gegevens voor de overdracht tussen onderdelen of systemen beschrijft. Hier gebruiken we het om het externe JSON-antwoord in C# te kunnen lezen.</p>
+</div>
+<div class="paragraph">
+<p>Maak een apart bestand:</p>
+</div>
+<div class="listingblock">
+<div class="title">Providers/JokeResponse.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Text.Json.Serialization;
+
+namespace JokeApp.Providers;
+
+public sealed class JokeResponse
+{
+    [JsonPropertyName("id")]
+    public int ExternalId { get; init; }
+
+    [JsonPropertyName("joke")]
+    public string? Text { get; init; }
+
+    [JsonPropertyName("category")]
+    public string? Category { get; init; }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>JsonPropertyName</code> koppelt de naam in JSON aan de C#-property. Zo wordt <code>"joke"</code> gelezen in <code>Text</code> en <code>"id"</code> in <code>ExternalId</code>. We kunnen duidelijke C#-namen kiezen zonder te eisen dat de externe dienst haar antwoord verandert. Zie <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/customize-properties">Microsoft: propertynamen bij JSON-serialisatie</a>.</p>
+</div>
+<div class="paragraph">
+<p>Niet elk extern veld moet een property krijgen. Velden waarvoor dit DTO geen property aanbiedt, worden bij deze standaarddeserialisatie genegeerd. De <code>init</code>-properties kunnen bij het maken door de deserializer ingevuld worden en worden daarna niet door onze code aangepast.</p>
+</div>
+<div class="paragraph">
+<p><code>JokeResponse</code> en <code>Joke</code> hebben verschillende verantwoordelijkheden:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">DTO: <code>JokeResponse</code></th>
+<th class="tableblock halign-left valign-top">Model: <code>Joke</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beschrijft gegevens van een externe bron.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beschrijft een geldige grap in onze applicatie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volgt het formaat en de betekenis van de externe velden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volgt onze eigen identiteit, categorieën en tekstregels.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kan nog ontbrekende of voor onze app onbruikbare tekst bevatten.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewaakt zijn tekstregels, ook wanneer een andere aanroeper het model gebruikt.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wordt hier gebruikt bij het inlezen van het antwoord.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wordt via de bestaande repository bewaard.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Voeg dus geen JSON-attributen aan <code>Joke</code> toe alleen om dit antwoord passend te maken. Wanneer de bron haar veldnamen wijzigt, willen we de aansluiting kunnen aanpassen zonder alle schermen en ons model te wijzigen. Dit is opnieuw <strong>Protected Variations</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Bekijk met een breakpoint een ingelezen DTO. Wijs aan waar de externe id en tekst staan. Leg vervolgens uit waarom <code>ExternalId = 123</code> niet betekent dat we de id van een bestaande lokale grap mogen overschrijven.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_provider_haalt_de_tekst_op"><a class="anchor" href="#_een_provider_haalt_de_tekst_op"></a>Een provider haalt de tekst op</h3>
+<div class="paragraph">
+<p>Een provider haalt een suggestie op; een repository bewaart de grappen van onze app. We vervangen LiteDB dus niet door een WebAPI-repository.</p>
+</div>
+<div class="listingblock">
+<div class="title">Providers/IRandomJokeProvider.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Providers;
+
+public interface IRandomJokeProvider
+{
+    Task&lt;string?&gt; GetTextAsync();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Providers/JokeApiProvider.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Net.Http.Json;
+
+namespace JokeApp.Providers;
+
+public sealed class JokeApiProvider : IRandomJokeProvider
+{
+    private readonly HttpClient _httpClient;
+
+    public JokeApiProvider(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
+
+    public async Task&lt;string?&gt; GetTextAsync()
+    {
+        var response = await _httpClient.GetFromJsonAsync&lt;JokeResponse&gt;(
+            "joke/Any?safe-mode&amp;type=single");
+
+        return response?.Text;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GetFromJsonAsync&lt;JokeResponse&gt;</code> vraagt het antwoord op en laat de JSON omzetten naar ons DTO. De provider geeft voor deze eerste import alleen de tekst door. De service hoeft het externe antwoordformaat dus niet te kennen.</p>
+</div>
+<div class="paragraph">
+<p>We lezen <code>ExternalId</code> en <code>Category</code> in het DTO om het verschil met ons model zichtbaar te maken. De eerste import gebruikt ze nog niet: elke geïmporteerde grap krijgt een nieuwe lokale id en voorlopig de lokale categorie <code>Other</code>. De externe categorieën hoeven we niet aan onze enum toe te voegen.</p>
+</div>
+<div class="paragraph">
+<p>Voeg <code>using JokeApp.Providers;</code> toe aan <code>MauiProgram</code> en registreer vóór <code>Build()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddSingleton(_ =&gt; new HttpClient
+{
+    BaseAddress = new Uri("https://v2.jokeapi.dev/")
+});
+builder.Services.AddTransient&lt;IRandomJokeProvider, JokeApiProvider&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We hergebruiken één client. De provider bevat de kennis van het verzoek; het ViewModel krijgt geen URL of <code>HttpClient</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_de_bestaande_service_blijft_het_toevoegen_bewaken"><a class="anchor" href="#_de_bestaande_service_blijft_het_toevoegen_bewaken"></a>De bestaande service blijft het toevoegen bewaken</h3>
+<div class="paragraph">
+<p>Voeg aan <code>IJokeService</code> toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Task&lt;ValidationResult&gt; ImportRandomAsync();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg <code>using JokeApp.Providers;</code> en dit veld toe aan <code>JokeService</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private readonly IRandomJokeProvider _randomJokeProvider;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vervang de constructor door:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public JokeService(
+    IJokeRepository jokeRepository,
+    IMessenger messenger,
+    IRandomJokeProvider randomJokeProvider)
+{
+    _jokeRepository = jokeRepository;
+    _messenger = messenger;
+    _randomJokeProvider = randomJokeProvider;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg vervolgens de importmethode toe. Behoud alle bestaande methoden voor zoeken, toevoegen, bewerken en verwijderen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public async Task&lt;ValidationResult&gt; ImportRandomAsync()
+{
+    var text = await _randomJokeProvider.GetTextAsync();
+    var validation = JokeTextValidator.Validate(text);
+
+    if (!validation.IsValid)
+        return ValidationResult.Failure(
+            $"De opgehaalde grap past niet bij onze tekstregels: {validation.ErrorMessage}");
+
+    return Add(new Joke(text!, JokeCategory.Other));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We hergebruiken hier de validatie uit onze eigen app; we bouwen geen nieuw hoofdstuk over WebAPI-foutafhandeling. Ook tekst van een externe bron moet aan onze modelregels voldoen voordat we een <code>Joke</code> maken.</p>
+</div>
+<div class="paragraph">
+<p><code>text!</code> vertelt de compiler dat de succesvolle validatie een ontbrekende tekst uitsluit. Dat teken voert zelf geen runtimecontrole uit.</p>
+</div>
+<div class="paragraph">
+<p>Daarna doet <code>Add</code> precies wat het al deed: controleren op dubbele tekst, bewaren en na succes een bericht versturen. Zowel de lijst als het statistiekpaneel reageren vanzelf. Bij een duplicaat geven we het mislukte resultaat door in plaats van toch succes te melden.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_de_importknop_aansluiten"><a class="anchor" href="#_de_importknop_aansluiten"></a>De importknop aansluiten</h3>
+<div class="paragraph">
+<p>Voeg aan <code>JokeListViewModel</code> de commandproperty toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public ICommand ImportJokeCommand { get; }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Initialiseer ze in de bestaande constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">ImportJokeCommand = new Command(async () =&gt; await ImportAsync());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg de methode toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private async Task ImportAsync()
+{
+    var result = await _jokeService.ImportRandomAsync();
+    StatusMessage = result.IsValid
+        ? "Een nieuwe grap is toegevoegd."
+        : result.ErrorMessage;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De bestaande statusmelding toont het resultaat van de import. We voegen geen laadstatus of afzonderlijke netwerkafhandeling toe.</p>
+</div>
+<div class="paragraph">
+<p>Voeg in <code>MainPage.xaml</code> een laatste <code>Auto</code>-rij aan de hoofd-Grid toe. Na het statistiekpaneel en de actiebalk heeft die rij index <code>6</code>. Plaats daarin:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Button Grid.Row="6" Text="Online grap ophalen"
+        Command="{Binding ImportJokeCommand}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_het_sluitstuk_uitproberen"><a class="anchor" href="#_het_sluitstuk_uitproberen"></a>Het sluitstuk uitproberen</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start met een werkende internetverbinding en klik op <strong>Online grap ophalen</strong>.</p>
+</li>
+<li>
+<p>Kijk met een breakpoint naar <code>JokeResponse</code> en volg de tekst naar de service.</p>
+</li>
+<li>
+<p>Controleer na een geslaagde toevoeging de lijst en het statistiekpaneel. Met een actieve zoekopdracht hoeft de nieuwe grap niet in de resultaten te verschijnen.</p>
+</li>
+<li>
+<p>Open de geïmporteerde grap en wijzig haar categorie. De bestaande bewerkstroom werkt ook voor online grappen.</p>
+</li>
+<li>
+<p>Herstart de app: de grap is in dezelfde lokale database bewaard als de handmatig ingevoerde grappen.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>De verschillende bronnen veranderen niets aan de rest van de app. Een gebruiker voert tekst in via het formulier of een provider haalt tekst op; vanaf de service volgen beide dezelfde regels en dezelfde opslag- en berichtenstroom.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thuisopdracht_werk_de_bewerkervaring_af"><a class="anchor" href="#_thuisopdracht_werk_de_bewerkervaring_af"></a>Thuisopdracht - Werk de bewerkervaring af</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Deze opdracht gebruikt alleen de kern van de les; WebAPI is niet verplicht. Je werkt verder in dezelfde JokeApp en levert geen tweede demonstratieproject op.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Behoud de werkende stroom overzicht → details → opslaan of annuleren, met dezelfde id en gedeelde validatieregels.</p>
+</li>
+<li>
+<p>Voeg <code>HasChanges</code> toe aan <code>JokeDetailViewModel</code>. Bewaar bij het laden de oorspronkelijke tekst en categorie; vergelijk daarmee de huidige formulierwaarden.</p>
+</li>
+<li>
+<p>Toon met binding een melding <strong>Niet-opgeslagen wijzigingen</strong> wanneer <code>HasChanges</code> waar is. Werk die afgeleide property bij na een tekst- of categoriewijziging.</p>
+</li>
+<li>
+<p>Voeg een command <strong>Herstellen</strong> toe dat de oorspronkelijke formulierwaarden terugzet, zonder iets naar de repository te schrijven. Het command is alleen beschikbaar wanneer er wijzigingen zijn.</p>
+</li>
+<li>
+<p>Behoud validatie bij <strong>Opslaan</strong>. <code>HasChanges</code> is feedback over verschillen, geen bewijs dat de invoer geldig is.</p>
+</li>
+<li>
+<p>Bewijs dat alleen geslaagde toevoegingen, wijzigingen en verwijderingen een <code>JokesChangedMessage</code> versturen.</p>
+</li>
+<li>
+<p>Licht je ontwerp kort toe aan de hand van je eigen code:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Waarom schrijft <strong>Herstellen</strong> niets naar de repository?</p>
+</li>
+<li>
+<p>Waarom betekent <code>HasChanges</code> niet dat de invoer geldig is?</p>
+</li>
+<li>
+<p>Stel dat een derde onderdeel moet reageren op gewijzigde grappen. Waar voeg je code toe, en waarom hoef je de afzender daarvoor niet aan te passen?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Vraag via een apart dialoogcontract bevestiging wanneer de gebruiker met <strong>Annuleren</strong> niet-opgeslagen wijzigingen zou weggooien. De gewone terugknop valt niet automatisch onder dat command; onderschep die alleen als afzonderlijke uitbreiding.</p>
+</li>
+<li>
+<p>Behoud een bevestiging vóór definitief verwijderen en controleer het detailscherm op een smal venster.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Schrijf tests die ook na een geweigerde wijziging de oorspronkelijke tekst en id controleren.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_facultatieve_uitbreiding_kies_de_online_categorie"><a class="anchor" href="#_facultatieve_uitbreiding_kies_de_online_categorie"></a>Facultatieve uitbreiding - Kies de online categorie</h3>
+<div class="paragraph">
+<p>Deze uitbreiding hoort bij de WebAPI-preview. Ze is geen verplicht onderdeel van de opdracht. Vertrek van de werkende importknop en laat de gebruiker bepalen uit welke online categorie een grap wordt opgehaald.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maak een aparte <code>OnlineJokeCategory</code>-enum in <code>Providers</code> met <code>All</code>, <code>Programming</code>, <code>Wordplay</code> en <code>Miscellaneous</code>. Dit zijn keuzes voor de bron, geen extra waarden voor de lokale <code>JokeCategory</code>.</p>
+</li>
+<li>
+<p>Toon de keuzes via een gebonden <code>Picker</code> in het overzicht en selecteer standaard <code>All</code>. Haal nog niets op wanneer de selectie verandert; dat gebeurt pas via de importknop.</p>
+</li>
+<li>
+<p>Geef de gekozen waarde vanuit het ViewModel via <code>ImportRandomAsync(OnlineJokeCategory category)</code> door aan <code>GetTextAsync(OnlineJokeCategory category)</code> van de provider. Werk beide interfaces en implementaties samen bij.</p>
+</li>
+<li>
+<p>Vertaal uitsluitend in <code>JokeApiProvider</code> de keuzes naar de namen uit <a href="https://v2.jokeapi.dev/">de API-documentatie</a>: <code>All</code> → <code>Any</code>, <code>Programming</code> → <code>Programming</code>, <code>Wordplay</code> → <code>Pun</code> en <code>Miscellaneous</code> → <code>Misc</code>.</p>
+</li>
+<li>
+<p>Bouw in de provider het pad <code>joke/{categoryName}?safe-mode&amp;type=single</code> op. Behoud de filters uit het voorbeeld. De pagina en het ViewModel bouwen geen URL.</p>
+</li>
+<li>
+<p>Voor deze oefening blijft de <strong>lokale opslagcategorie</strong> <code>Other</code>, zoals in de preview. De online keuze filtert de bron; een lokale categorie toekennen is een afzonderlijke beslissing. Gebruik dus niet zomaar <code>Enum.Parse&lt;JokeCategory&gt;</code> op de externe categorienaam.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Een <code>switch</code>-expressie in de provider kan de vier online keuzes naar API-namen vertalen. De bindings en de beginselectie volgen hetzelfde patroon als de categoriepicker op het toevoegscherm.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Controleer met een breakpoint welk verzoek de provider maakt. Bij <code>Programming</code> moet het DTO een programmeergrap beschrijven; bij <code>Wordplay</code> heet de categorie in het antwoord <code>Pun</code>. De service ontvangt nog steeds alleen de tekst van de provider. Na een geslaagde import werken opslag, lijst en categorietellers zonder extra aanroepen vanuit de pagina.</p>
+</div>
+<div class="paragraph">
+<p>Leg ten slotte uit waarom het DTO, de online filterkeuze en <code>JokeCategory</code> drie verschillende rollen hebben.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eindcontrole_van_de_reeks"><a class="anchor" href="#_eindcontrole_van_de_reeks"></a>Eindcontrole van de reeks</h3>
+<div class="paragraph">
+<p>Loop de app door als gebruiker: toevoegen, zoeken, details openen, bewerken, herstellen, annuleren, verwijderen en herstarten. Controleer ook lege invoer, dubbele tekst, geen selectie en een onbekende id.</p>
+</div>
+<div class="paragraph">
+<p>Leg bij één handeling uit welke verantwoordelijkheid in de View, het ViewModel, de service, het model en de repository zit. Toon waar DI de objecten samenstelt, waarom een wijzigingsbericht pas na succesvolle opslag wordt verstuurd en hoe beide ontvangers er onafhankelijk op reageren.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

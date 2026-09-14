@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Objectgeoriënteerd programmeren :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MonoGame</li>
+    <li><a href="12-monogame-more_oo.html">Objectgeoriënteerd</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Objectgeoriënteerd programmeren</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>We vertrekken vanuit de code van vorige week. In de vorige les hebben we een <strong>state machine</strong> geïntroduceerd:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MenuState</code></p>
+</li>
+<li>
+<p><code>PlayState</code></p>
+</li>
+<li>
+<p><code>PauseState</code></p>
+</li>
+<li>
+<p><code>GameOverState</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Elke state bevat zijn eigen gedrag (<code>Update</code> en <code>Draw</code>). <code>Game1</code> delegeert enkel nog naar de actieve state.</p>
+</div>
+<div class="paragraph">
+<p>Hoewel dit al een duidelijke verbetering was, zit er nog steeds veel logica rechtstreeks in MonoGame-objecten:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Keyboard.GetState()</code></p>
+</li>
+<li>
+<p><code>Content.Load</code></p>
+</li>
+<li>
+<p><code>SpriteBatch.Draw</code></p>
+</li>
+<li>
+<p><code>Vector2</code> creatie overal in de code</p>
+</li>
+<li>
+<p>constanten verspreid doorheen de code</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In deze les gaan we de code <strong>verder objectgeoriënteerd structureren</strong>.</p>
+</div>
+<div class="paragraph">
+<p>We willen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>verantwoordelijkheden beter scheiden</p>
+</li>
+<li>
+<p>MonoGame afhankelijkheden isoleren</p>
+</li>
+<li>
+<p>objecten modelleren</p>
+</li>
+<li>
+<p>objectcreatie centraliseren</p>
+</li>
+<li>
+<p>configuratie centraliseren</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We introduceren hiervoor een aantal nieuwe concepten, alsook houden we in gedachten dat we de MonoGame-objecten zoveel mogelijk willen verbergen achter onze eigen klassen om onze code los te koppelen van het framework.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>De code hieronder toont <strong>één mogelijke implementatie</strong> van het ontwerp dat we bespreken.</p>
+</div>
+<div class="paragraph">
+<p>Neem deze dus niet zomaar over.
+Denk na over de gemaakte keuzes en hoe ze passen binnen de architectuur.</p>
+</div>
+<div class="paragraph">
+<p>In softwareontwerp bestaan er vaak meerdere correcte oplossingen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_input_detecteren"><a class="anchor" href="#_input_detecteren"></a>Input detecteren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MonoGame gebruikt:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Keyboard.GetState().IsKeyDown(Keys.P)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Het probleem met deze code is dat zolang een toets ingedrukt blijft, blijft deze <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Voor veel gameplay acties willen we echter de actie slechts één keer uitvoeren wanneer de toets net werd ingedrukt.</p>
+</div>
+<div class="paragraph">
+<p>Voorbeeld:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>menu starten</p>
+</li>
+<li>
+<p>pauze togglen</p>
+</li>
+<li>
+<p>schieten</p>
+</li>
+<li>
+<p>interactie</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Als we de vorige keyboard state bijhouden, dan kunnen we deze vergelijken met de huidige state. Op deze manier weten we of een toets nieuw ingedrukt is.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private KeyboardState _previous;
+private KeyboardState _current;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Elke frame (de <code>update</code> method):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_previous = _current;
+_current = Keyboard.GetState();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Daarna kunnen wij deze states bevragen en weten of de toets nieuw ingedrukt is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public bool WasKeyJustPressed(Keys key)
+{
+    return _current.IsKeyDown(key) &amp;&amp;
+           !_previous.IsKeyDown(key);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit is een typisch probleem in MonoGame.</p>
+</div>
+<div class="paragraph">
+<p>We gaan dit echter niet rechtstreeks in onze game code plaatsen, maar isoleren via het <a href="https://refactoring.guru/design-patterns/facade"><strong>Facade Pattern</strong></a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyboardfacade"><a class="anchor" href="#_keyboardfacade"></a>KeyboardFacade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We willen MonoGame code scheiden van onze eigen code.</p>
+</div>
+<div class="paragraph">
+<p>Daarom introduceren we:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static class KeyboardFacade
+{
+    private static KeyboardState _previous;
+    private static KeyboardState _current;
+
+    public static void Update()
+    {
+        _previous = _current;
+        _current = Keyboard.GetState();
+    }
+
+    public static bool IsKeyDown(Keys key)
+        =&gt; _current.IsKeyDown(key);
+
+    public static bool WasKeyJustPressed(Keys key)
+        =&gt; _current.IsKeyDown(key)
+           &amp;&amp; !_previous.IsKeyDown(key);
+}</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+Je kan ook de KeyboardFaca niet statisch maken, dat hangt af van de context. In dat geval zou je deze kunnen injecteren in de InputService die we later zullen bespreken.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MonoGame afhankelijkheid zit op één plaats</p>
+</li>
+<li>
+<p>testbaarheid wordt beter</p>
+</li>
+<li>
+<p>game code wordt eenvoudiger</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Gebruik:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">KeyboardFacade.WasKeyJustPressed(Keys.Space)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_graphicsfacade"><a class="anchor" href="#_graphicsfacade"></a>GraphicsFacade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de standaard MonoGame template bevat <code>Game1</code> een variabele:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">GraphicsDeviceManager _graphics;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit object beheert onder andere:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>resolutie</p>
+</li>
+<li>
+<p>fullscreen</p>
+</li>
+<li>
+<p>backbuffer grootte</p>
+</li>
+<li>
+<p>toepassen van grafische wijzigingen</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In veel MonoGame projecten wordt deze variabele rechtstreeks gebruikt vanuit <code>Game1</code>.
+Wanneer andere klassen grafische instellingen nodig hebben, moeten ze vaak opnieuw via <code>Game1</code> gaan.</p>
+</div>
+<div class="paragraph">
+<p>Dat creëert twee problemen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>veel code wordt afhankelijk van <code>Game1</code></p>
+</li>
+<li>
+<p>de MonoGame <code>GraphicsDeviceManager</code> lekt doorheen de hele codebase</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Daarom introduceren we een <strong>GraphicsFacade</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Het idee van een facade is dat we een <strong>eenvoudige interface</strong> aanbieden naar een complexer systeem.
+In dit geval maken we voor`GraphicsDeviceManager` een eigen klasse.</p>
+</div>
+<div class="paragraph">
+<p>Omdat er in een MonoGame game meestal maar één graphics manager bestaat, maken we deze facade <strong>static</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="_implementatie"><a class="anchor" href="#_implementatie"></a>Implementatie</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static class GraphicsFacade
+{
+    private static GraphicsDeviceManager _graphics;
+
+    public static void Initialize(GraphicsDeviceManager graphics)
+    {
+        _graphics = graphics;
+    }
+
+    public static int ScreenWidth
+        =&gt; _graphics.PreferredBackBufferWidth;
+
+    public static int ScreenHeight
+        =&gt; _graphics.PreferredBackBufferHeight;
+
+    public static void SetResolution(int width, int height)
+    {
+        _graphics.PreferredBackBufferWidth = width;
+        _graphics.PreferredBackBufferHeight = height;
+        _graphics.ApplyChanges();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Initialisatie gebeurt één keer in <code>Game1</code> (dit vervangt de vroegere initializatie van <code>_graphics</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">GraphicsFacade.Initialize(_graphics);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Daarna kan de rest van de code grafische informatie opvragen zonder <code>Game1</code> of <code>GraphicsDeviceManager</code> te kennen.</p>
+</div>
+<div class="paragraph">
+<p>Voorbeeld:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var screenWidth = GraphicsFacade.ScreenWidth;
+var screenHeight = GraphicsFacade.ScreenHeight;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">GraphicsFacade.SetResolution(1920, 1080);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_voordelen"><a class="anchor" href="#_voordelen"></a>Voordelen</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>andere klassen hoeven <code>Game1</code> niet te kennen</p>
+</li>
+<li>
+<p>MonoGame-specifieke code zit op één plaats</p>
+</li>
+<li>
+<p>grafische configuratie kan centraal beheerd worden</p>
+</li>
+<li>
+<p>de code wordt eenvoudiger leesbaar</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_context_object"><a class="anchor" href="#_context_object"></a>Context object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In onze code zitten nog heel wat class-level variabelen rechtstreeks in <code>Game1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Denk bijvoorbeeld aan:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de speler</p>
+</li>
+<li>
+<p>de vijanden</p>
+</li>
+<li>
+<p>de achtergrond</p>
+</li>
+<li>
+<p>lijsten met objecten</p>
+</li>
+<li>
+<p>timers</p>
+</li>
+<li>
+<p>settings</p>
+</li>
+<li>
+<p>assets</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dat is op zich niet vreemd: <code>Game1</code> is vaak de eerste plaats waar al die gegevens terechtkomen.
+Maar naarmate een game groeit, wordt <code>Game1</code> dan al snel een soort verzamelbak van alles wat de game nodig heeft.</p>
+</div>
+<div class="paragraph">
+<p>Dat zorgt voor enkele duidelijke nadelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Game1</code> krijgt te veel verantwoordelijkheden</p>
+</li>
+<li>
+<p>states en andere objecten moeten voortdurend via <code>Game1</code> werken</p>
+</li>
+<li>
+<p>class-level variabelen raken verspreid en moeilijk beheersbaar</p>
+</li>
+<li>
+<p>het wordt onduidelijk welke data echt deel uitmaakt van de actuele spelcontext</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Daarom halen we die gedeelde toestand uit <code>Game1</code> en brengen we die onder in een apart <strong>Context object</strong>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+De context bevat de gedeelde toestand van de game: de objecten, de services en de instellingen die op dat moment nodig zijn.
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="_wat_hoort_in_de_context"><a class="anchor" href="#_wat_hoort_in_de_context"></a>Wat hoort in de context?</h3>
+<div class="paragraph">
+<p>De context is de plaats waar we zaken bijhouden zoals:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Player</code></p>
+</li>
+<li>
+<p><code>Background</code></p>
+</li>
+<li>
+<p>collectie van <code>Shark</code> objecten</p>
+</li>
+<li>
+<p>eventueel andere game objecten</p>
+</li>
+<li>
+<p><code>AssetsManager</code></p>
+</li>
+<li>
+<p><code>GameSettings</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Met andere woorden: alles wat verschillende delen van de game nodig kunnen hebben en wat vroeger als class-level variabele in <code>Game1</code> stond.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_voorbeeld"><a class="anchor" href="#_voorbeeld"></a>Voorbeeld</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class GameContext
+{
+    public Player Player { get; set; }
+    public Background Background { get; set; }
+
+    public List&lt;Shark&gt; Sharks { get; } = new();
+
+    ...
+
+    public AssetsManager Assets { get; }
+    public GameSettings Settings { get; }
+
+    // Een facade kan ook niet-statisch zijn. Deze kan je dan via bv. Context object ter beschikking stellen
+    // public KeyboardFacade Keyboard { get; }
+
+    public GameContext(
+        AssetsManager assets, // Dit kan ook static zijn
+        //KeyboardFacade keyboard,
+        GameSettings settings)
+    {
+        Assets = assets;
+        Settings = settings;
+        //Keyboard = keyboard;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Omdat <code>GraphicsFacade</code> &amp; <code>KeyboardFacade</code> static zijn, hoeven die niet noodzakelijk als instantie in de context te zitten.
+Die kan rechtstreeks statisch gebruikt worden, maar onthoud dat een facade niet static hoeft te zijn.
+Conceptueel hoort die wel bij dezelfde laag van gedeelde infrastructuur.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gebruik_in_game1"><a class="anchor" href="#_gebruik_in_game1"></a>Gebruik in <code>Game1</code></h3>
+<div class="paragraph">
+<p>In plaats van losse velden zoals:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private Player _player;
+private Background _background;
+private List&lt;Shark&gt; _enemies;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>krijgen we:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private GameContext _context;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tijdens de initialisatie vullen we die context op.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_context = new GameContext(
+    assetsManager,
+    gameSettings);
+
+_context.Player = PlayerFactory.Create(_playerTexture, 100, 300);
+_context.Background = BackgroundFactory.Create(_backgroundTexture, 0, 0, BACKGROUND_SCALE);
+_context.Sharks.Add(SharkFactory.Create(_sharkTexture, 400, 100, SHARK_SCALE));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_waarom_is_dit_nuttig"><a class="anchor" href="#_waarom_is_dit_nuttig"></a>Waarom is dit nuttig?</h3>
+<div class="paragraph">
+<p>Door de gedeelde toestand te bundelen in een context:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>wordt <code>Game1</code> kleiner en overzichtelijker</p>
+</li>
+<li>
+<p>weten we duidelijk welke data tot de actuele gamecontext behoort</p>
+</li>
+<li>
+<p>kunnen states en andere objecten werken met één context in plaats van met allerlei losse velden</p>
+</li>
+<li>
+<p>wordt de code eenvoudiger uitbreidbaar</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In plaats van allerlei losse parameters door te geven zoals:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">new PlayState(player, sharks, background, ...)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>kunnen we gewoon werken met:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">new PlayState(context)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ontwerpmatig_voordeel"><a class="anchor" href="#_ontwerpmatig_voordeel"></a>Ontwerpmatig voordeel</h3>
+<div class="paragraph">
+<p>Het context object is geen “magische oplossing”, maar wel een nuttige stap om orde te brengen in gedeelde toestand.</p>
+</div>
+<div class="paragraph">
+<p>Het centrale idee is:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+Wat vroeger als class-level variabelen verspreid in <code>Game1</code> zat, brengen we samen in één object dat de actuele spelwereld en infrastructuur voorstelt.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Zo wordt <code>Game1</code> minder een opslagplaats van alles, en meer de plaats waar de game-loop draait en de context beheerd wordt.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gamesettings"><a class="anchor" href="#_gamesettings"></a>GameSettings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In veel games zitten constanten verspreid doorheen de code:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>snelheden</p>
+</li>
+<li>
+<p>spawn tijden</p>
+</li>
+<li>
+<p>schaal</p>
+</li>
+<li>
+<p>schermlimieten</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dit maakt de code moeilijk aanpasbaar.</p>
+</div>
+<div class="paragraph">
+<p>Daarom centraliseren we alle constanten.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class GameSettings
+{
+    public const float PlayerSpeed = 200f;
+    public const float SharkSpeed = 150f;
+
+    public const int SharkSpawnInterval = 2000;
+
+    public const float PlayerScale = 1f;
+    public const float SharkScale = 1f;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>configuratie op één plaats</p>
+</li>
+<li>
+<p>eenvoudiger balancen van gameplay</p>
+</li>
+<li>
+<p>duidelijk onderscheid tussen code en configuratie</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Dit hoeven geen constanten te zijn, dit kan ook aanpasbare eigenschappen zijn binnen de GameSettings zodat deze bv. uit een bestand komen, of aanpasbaar zijn tijdens het spel.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assetsmanager"><a class="anchor" href="#_assetsmanager"></a>AssetsManager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MonoGame gebruikt:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Content.Load&lt;Texture2D&gt;("player")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Problemen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>strings overal in code</p>
+</li>
+<li>
+<p>assets kunnen meerdere keren geladen worden</p>
+</li>
+<li>
+<p>refactoring is moeilijk</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We maken een <strong>AssetsManager</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class AssetsManager
+{
+    private ContentManager _content;
+
+    private Dictionary&lt;string, Texture2D&gt; _textures
+        = new();
+
+    public AssetsManager(ContentManager content)
+    {
+        _content = content;
+    }
+
+    public Texture2D GetTexture(string name)
+    {
+        if (!_textures.ContainsKey(name))
+        {
+            _textures[name] =
+                _content.Load&lt;Texture2D&gt;(name);
+        }
+
+        return _textures[name];
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assets namen worden constanten.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static class AssetNames
+{
+    public const string Player = "player";
+    public const string Shark = "shark";
+    public const string Background = "background";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>lazy loading</p>
+</li>
+<li>
+<p>caching</p>
+</li>
+<li>
+<p>minder string fouten</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Gebruik:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var tex = _context.Assets.GetTexture(AssetNames.Player);</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Kan ook als static klasse, hangt van de context af. Bij voorkeur proberen we wel statische klassen te vermijden
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sprite_basis_klasse"><a class="anchor" href="#_sprite_basis_klasse"></a>Sprite basis klasse</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Momenteel worden objecten vaak voorgesteld door losse data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>texture</p>
+</li>
+<li>
+<p>positie</p>
+</li>
+<li>
+<p>schaal</p>
+</li>
+<li>
+<p>snelheid</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dit is niet objectgeoriënteerd (en komt al rap slordig en onoverzichtelijk over)</p>
+</div>
+<div class="paragraph">
+<p>We introduceren een <strong>basis Sprite klasse</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Sprite
+{
+    protected const float DEFAULT_SCALE = 1f;
+
+    public Texture2D Texture { get; init; }
+
+    public float Scale { get; init; }
+    public float Speed { get; init; }
+
+    // 'private set': we willen dat de positie enkel via methoden aangepast kan worden, niet rechtstreeks van buitenaf. Dit hangt natuurlijk af van de context, in sommige gevallen kan een publieke setter ook prima zijn.
+    public Vector2 Position { get; private set; }
+
+    public Sprite(Texture2D texture, Vector2 position, float speed, float scale = DEFAULT_SCALE)
+    {
+        Texture = texture;
+        Position = position;
+        Speed = speed;
+        Scale = scale;
+    }
+
+    public virtual void Update(GameTime gameTime)
+    {
+    }
+
+    public virtual void Draw(SpriteBatch spriteBatch)
+    {
+        spriteBatch.Draw(Texture, Position);
+    }
+
+    protected void UpdatePositionX(float delta)
+    {
+        Position = new Vector2(Position.X + delta, Position.Y);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit wordt de basis voor alle objecten.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_player_object"><a class="anchor" href="#_player_object"></a>Player object</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Player : Sprite
+{
+    private InputService _input;
+
+    public Player(Texture2D texture,
+                  Vector2 position,
+                  float speed,
+                  InputService input)
+        : base(texture, position, speed)
+    {
+        _input = input;
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        if (_input.ShouldGoRight())
+            UpdatePositionX(+Speed);
+
+        if (_input.ShouldGoLeft())
+            UpdatePositionX(-Speed);
+
+        ...
+        // We hebben natuurlijk ook nog Up &amp; Down
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Belangrijk:</p>
+</div>
+<div class="paragraph">
+<p>De player gebruikt <strong>InputService</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inputservice"><a class="anchor" href="#_inputservice"></a>InputService</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De player moet niet weten hoe input precies werkt.</p>
+</div>
+<div class="paragraph">
+<p>We maken daarom een <strong>InputService</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class InputService
+{
+    // We hoeven de KeyboardFacade niet altijd als static te implementeren, je kan deze ook niet statisch maken en meegeven aan de InputService
+    private KeyboardFacade _keyboard;
+
+    public InputService(KeyboardFacade keyboard)
+    {
+        _keyboard = keyboard;
+    }
+
+    public bool ShouldGoLeft()
+        =&gt; _keyboard.IsKeyDown(Keys.Left);
+
+    public bool ShouldGoRight()
+        =&gt; _keyboard.IsKeyDown(Keys.Right);
+
+    ... // Andere methods
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>player kent keyboard niet</p>
+</li>
+<li>
+<p>input kan later vervangen worden</p>
+</li>
+<li>
+<p>duidelijke mapping van acties</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shark_object"><a class="anchor" href="#_shark_object"></a>Shark object</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Shark : Sprite
+{
+    public Shark(Texture2D texture,
+                 Vector2 position,
+                 float speed)
+        : base(texture, position, speed)
+    {
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        UpdatePositionX( - Speed);
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_background_object"><a class="anchor" href="#_background_object"></a>Background object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ook de achtergrond kan een sprite zijn.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Background : Sprite
+{
+    public Background(Texture2D texture,
+                      Vector2 position)
+        : base(texture, position, 2f, DEFAULT_SCALE)
+    {
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_factory_pattern"><a class="anchor" href="#_factory_pattern"></a>Factory pattern</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Object creatie kan complex worden.</p>
+</div>
+<div class="paragraph">
+<p>Bijvoorbeeld:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">new Shark(texture, new Vector2(x,y))
+{
+    Speed = 150f,
+    Scale = 1f
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wanneer dit op meerdere plaatsen gebeurt, krijgen we duplicatie.</p>
+</div>
+<div class="paragraph">
+<p>Daarom gebruiken we een <a href="https://refactoring.guru/design-patterns/factory-method"><strong>Factory Pattern</strong></a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Factories kunnen gemaakt worden per object type, of per domein. We kunnen een SharkFactory hebben, maar we zouden evengoed kunnen groeperen en een SpriteFactory of EnemyFactory hebben.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sharkfactory"><a class="anchor" href="#_sharkfactory"></a>SharkFactory</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class SharkFactory
+{
+    public Shark Create(Texture2D texture, float x, float y, float speed, float scale)
+    {
+        return new Shark(texture, new Vector2(x, y), speed, scale);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>objectcreatie gecentraliseerd</p>
+</li>
+<li>
+<p>minder duplicatie</p>
+</li>
+<li>
+<p>zeer gemakkelijk om variaties te maken</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bijvoorbeeld:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CreateFastShark</code></p>
+</li>
+<li>
+<p><code>CreateBossShark</code></p>
+</li>
+<li>
+<p><code>CreateRandomShark</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_samenvatting"><a class="anchor" href="#_samenvatting"></a>Samenvatting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We hebben een aantal belangrijke OO concepten toegepast:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Inheritance</strong></p>
+</li>
+<li>
+<p><code>Sprite → Player</code></p>
+</li>
+<li>
+<p><code>Sprite → Shark</code></p>
+</li>
+<li>
+<p><code>Sprite → Background</code></p>
+</li>
+<li>
+<p><strong>Facade pattern</strong></p>
+</li>
+<li>
+<p><code>GraphicsFacade</code></p>
+</li>
+<li>
+<p><code>KeyboardFacade</code></p>
+</li>
+<li>
+<p><strong>Factory pattern</strong></p>
+</li>
+<li>
+<p><code>SharkFactory</code></p>
+</li>
+<li>
+<p><code>PlayerFactory</code></p>
+</li>
+<li>
+<p><strong>Service pattern</strong></p>
+</li>
+<li>
+<p><code>InputService</code></p>
+</li>
+<li>
+<p><strong>Context object</strong></p>
+</li>
+<li>
+<p>bundelt alle globale services</p>
+</li>
+<li>
+<p><strong>Assets manager</strong></p>
+</li>
+<li>
+<p>centraliseert asset loading</p>
+</li>
+<li>
+<p><strong>GameSettings</strong></p>
+</li>
+<li>
+<p>centraliseert configuratie</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deze aanpak maakt de game:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>beter uitbreidbaar</p>
+</li>
+<li>
+<p>beter onderhoudbaar</p>
+</li>
+<li>
+<p>minder afhankelijk van MonoGame</p>
+</li>
+<li>
+<p>duidelijker qua verantwoordelijkheden</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

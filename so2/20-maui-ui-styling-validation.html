@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI UI - Layout, Styling &amp; Validatie :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI UI - Layout, Styling &amp; Validatie</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>De eerste versie van onze grappenapp werkt, maar een werkende gebruikersinterface is nog niet automatisch een <strong>bruikbare</strong> gebruikersinterface. In deze les verdelen we de app over meerdere schermen, brengen we herhaalde vormgeving samen in styles en geven we gerichte feedback wanneer invoer ongeldig is.</p>
+</div>
+<div class="paragraph">
+<p>We blijven voorlopig werken met events en code-behind. Later behouden we de schermen en vervangen we de manier waarop de UI met de applicatielogica communiceert.</p>
+</div>
+<div class="paragraph">
+<p>Aan het einde van deze les kan je:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>een scherm robuust indelen met een <code>Grid</code>;</p>
+</li>
+<li>
+<p>een collectie tonen en selectie verwerken met een <code>CollectionView</code>;</p>
+</li>
+<li>
+<p>styles en resources lokaal of applicatiebreed hergebruiken;</p>
+</li>
+<li>
+<p>geldigheid bewaken in het model en de service;</p>
+</li>
+<li>
+<p>validatiefouten op een bruikbare manier in de UI presenteren;</p>
+</li>
+<li>
+<p>eenvoudig navigeren tussen twee pagina&#8217;s;</p>
+</li>
+<li>
+<p>een aantal fundamentele UI-richtlijnen toepassen.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_van_werkend_naar_bruikbaar"><a class="anchor" href="#_van_werkend_naar_bruikbaar"></a>Van werkend naar bruikbaar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een gebruiker ziet onze klassen en methoden niet. Die ervaart de applicatie via het scherm. Daarom stellen we bij ieder scherm enkele concrete vragen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Wat is het doel van dit scherm?</p>
+</li>
+<li>
+<p>Welke informatie is het belangrijkst?</p>
+</li>
+<li>
+<p>Welke actie is de primaire actie?</p>
+</li>
+<li>
+<p>Is zichtbaar wat de applicatie verwacht?</p>
+</li>
+<li>
+<p>Krijgt de gebruiker feedback na een actie of fout?</p>
+</li>
+<li>
+<p>Blijft het scherm bruikbaar bij lange tekst en op een smaller venster?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We bouwen geen kunstwerk. We proberen de inhoud wel voorspelbaar, consistent en leesbaar te presenteren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layout_met_grid"><a class="anchor" href="#_layout_met_grid"></a>Layout met Grid</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een <code>StackLayout</code> plaatst controls achter elkaar en is ideaal voor eenvoudige inhoud. Een <code>Grid</code> geeft meer controle over de verdeling van de beschikbare ruimte.</p>
+</div>
+<div class="paragraph">
+<p>Een Grid bestaat uit rijen en kolommen. Hun grootte kan op drie manieren worden bepaald.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Vaste waarde</dt>
+<dd>
+<p>De rij of kolom krijgt een exact aantal device-independent units, bijvoorbeeld <code>80</code>.</p>
+</dd>
+<dt class="hdlist1"><code>Auto</code></dt>
+<dd>
+<p>De grootte wordt afgestemd op de inhoud.</p>
+</dd>
+<dt class="hdlist1"><code>*</code></dt>
+<dd>
+<p>De resterende ruimte wordt proportioneel verdeeld. <code>2*</code> krijgt tweemaal zoveel resterende ruimte als <code>*</code>.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Grid RowDefinitions="Auto,*,Auto"
+      ColumnDefinitions="*,Auto"
+      Padding="24"
+      RowSpacing="16"
+      ColumnSpacing="12"&gt;
+
+    &lt;Label Grid.Row="0"
+           Grid.ColumnSpan="2"
+           Text="Mijn grappen" /&gt;
+
+    &lt;CollectionView Grid.Row="1"
+                    Grid.ColumnSpan="2" /&gt;
+
+    &lt;Label Grid.Row="2"
+           Grid.Column="0"
+           Text="3 grappen" /&gt;
+
+    &lt;Button Grid.Row="2"
+            Grid.Column="1"
+            Text="Toevoegen" /&gt;
+&lt;/Grid&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De titel en onderste actiebalk nemen enkel de nodige ruimte in. De lijst krijgt alle resterende hoogte.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Gebruik vaste afmetingen alleen wanneer daar een duidelijke reden voor is. Een scherm met veel vaste hoogtes werkt vaak slechts op het toestel waarop het ontworpen werd.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_margin_padding_en_spacing"><a class="anchor" href="#_margin_padding_en_spacing"></a>Margin, Padding en Spacing</h3>
+<div class="paragraph">
+<p>Deze drie begrippen worden vaak verward.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Margin</code></dt>
+<dd>
+<p>Vrije ruimte <strong>buiten</strong> een element, tussen het element en zijn omgeving.</p>
+</dd>
+<dt class="hdlist1"><code>Padding</code></dt>
+<dd>
+<p>Vrije ruimte <strong>binnen</strong> een element, tussen zijn rand en inhoud.</p>
+</dd>
+<dt class="hdlist1"><code>Spacing</code></dt>
+<dd>
+<p>Ruimte die een layout automatisch tussen zijn children plaatst.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Consistente ruimte maakt de structuur van een scherm zichtbaar. Gebruik daarom liever een klein aantal herbruikbare waarden dan op iedere plaats een willekeurig getal.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_lijst_met_collectionview"><a class="anchor" href="#_een_lijst_met_collectionview"></a>Een lijst met CollectionView</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een <code>CollectionView</code> toont een collectie en maakt efficiënt scrollen en selecteren mogelijk. Iedere rij wordt opgebouwd volgens een <code>DataTemplate</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;CollectionView x:Name="jokesCollectionView"
+                SelectionMode="Single"
+                SelectionChanged="OnJokeSelectionChanged"&gt;
+    &lt;CollectionView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;Border Padding="16"
+                    Margin="0,4"&gt;
+                &lt;VerticalStackLayout Spacing="4"&gt;
+                    &lt;Label Text="{Binding Text}"
+                           MaxLines="2"
+                           LineBreakMode="TailTruncation" /&gt;
+                    &lt;Label Text="{Binding Category}"
+                           FontSize="12" /&gt;
+                &lt;/VerticalStackLayout&gt;
+            &lt;/Border&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/CollectionView.ItemTemplate&gt;
+&lt;/CollectionView&gt;</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>ItemsSource</code></dt>
+<dd>
+<p>De collectie die wordt getoond.</p>
+</dd>
+<dt class="hdlist1"><code>ItemTemplate</code></dt>
+<dd>
+<p>Beschrijft hoe één item eruitziet.</p>
+</dd>
+<dt class="hdlist1"><code>SelectionMode</code></dt>
+<dd>
+<p>Bepaalt of geen, één of meerdere items geselecteerd kunnen worden.</p>
+</dd>
+<dt class="hdlist1"><code>SelectionChanged</code></dt>
+<dd>
+<p>Wordt uitgevoerd wanneer de selectie verandert.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>De bindings binnen het <code>DataTemplate</code> verwijzen naar één <code>Joke</code> uit de collectie. Volledige MVVM-binding behandelen we later; hier vullen we de lijst nog vanuit code-behind.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void RefreshJokes()
+{
+    jokesCollectionView.ItemsSource = _jokeService.GetAll();
+    countLabel.Text = $"{_jokeService.GetAll().Count} grappen";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wanneer de onderliggende <code>List&lt;Joke&gt;</code> achteraf wijzigt, weet de <code>CollectionView</code> dat in deze versie niet automatisch. We roepen daarom zelf <code>RefreshJokes()</code> aan. Later lost <code>ObservableCollection&lt;T&gt;</code> dit probleem op.</p>
+</div>
+<div class="sect2">
+<h3 id="_selectie_verwerken"><a class="anchor" href="#_selectie_verwerken"></a>Selectie verwerken</h3>
+<div class="paragraph">
+<p>Een <code>SelectionChangedEventArgs</code> bevat de vorige en huidige selectie.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void OnJokeSelectionChanged(
+    object? sender,
+    SelectionChangedEventArgs e)
+{
+    var selectedJoke = e.CurrentSelection
+        .FirstOrDefault() as Joke;
+
+    if (selectedJoke is null)
+        return;
+
+    selectedJokeLabel.Text = selectedJoke.Text;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Merk op dat dit event andere informatie nodig heeft dan een gewone <code>Clicked</code>. Daarom is <code>e</code> hier een <code>SelectionChangedEventArgs</code> en geen gewone <code>EventArgs</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_styles"><a class="anchor" href="#_waarom_styles"></a>Waarom styles?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zonder styles krijgt iedere knop zijn volledige vormgeving afzonderlijk.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Button Text="Opslaan"
+        BackgroundColor="#512BD4"
+        TextColor="White"
+        CornerRadius="8"
+        Padding="16,12" /&gt;
+
+&lt;Button Text="Nieuwe grap"
+        BackgroundColor="#512BD4"
+        TextColor="White"
+        CornerRadius="8"
+        Padding="16,12" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit leidt tot duplicatie en kleine visuele afwijkingen. Wanneer de kleur wijzigt, moeten we iedere knop afzonderlijk terugvinden.</p>
+</div>
+<div class="paragraph">
+<p>Een <code>Style</code> groepeert setters voor een bepaald type control.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage.Resources&gt;
+    &lt;Style x:Key="PrimaryButtonStyle"
+           TargetType="Button"&gt;
+        &lt;Setter Property="BackgroundColor" Value="#512BD4" /&gt;
+        &lt;Setter Property="TextColor" Value="White" /&gt;
+        &lt;Setter Property="CornerRadius" Value="8" /&gt;
+        &lt;Setter Property="Padding" Value="16,12" /&gt;
+    &lt;/Style&gt;
+&lt;/ContentPage.Resources&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De knop verwijst met <code>StaticResource</code> naar de style.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Button Text="Opslaan"
+        Style="{StaticResource PrimaryButtonStyle}" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De naam beschrijft de functie van de style, niet één toevallige eigenschap. <code>PrimaryButtonStyle</code> blijft bruikbaar wanneer de primaire kleur later niet meer paars is.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scope_van_resources"><a class="anchor" href="#_scope_van_resources"></a>Scope van resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Resources zijn beschikbaar binnen een bepaalde scope.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Control</dt>
+<dd>
+<p>Alleen beschikbaar voor het element zelf en zijn children.</p>
+</dd>
+<dt class="hdlist1">Pagina</dt>
+<dd>
+<p>Beschikbaar binnen de volledige <code>ContentPage</code>.</p>
+</dd>
+<dt class="hdlist1">Applicatie</dt>
+<dd>
+<p>Beschikbaar in alle pagina&#8217;s van de app.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Een style die alleen betekenis heeft op één scherm kan in <code>ContentPage.Resources</code> staan. Kleuren, typografie en algemene knopstyles horen doorgaans bij de applicatie.</p>
+</div>
+<div class="paragraph">
+<p>Een nieuw MAUI-project bevat standaard resource dictionaries in <code>Resources/Styles</code>. We kunnen de bestaande bestanden uitbreiden in plaats van alle styles rechtstreeks in iedere pagina te plaatsen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"&gt;
+
+    &lt;Color x:Key="PrimaryColor"&gt;#512BD4&lt;/Color&gt;
+    &lt;Color x:Key="DangerColor"&gt;#B42318&lt;/Color&gt;
+    &lt;Color x:Key="SurfaceColor"&gt;#F5F3FF&lt;/Color&gt;
+
+    &lt;Style x:Key="BaseButtonStyle"
+           TargetType="Button"&gt;
+        &lt;Setter Property="CornerRadius" Value="8" /&gt;
+        &lt;Setter Property="Padding" Value="16,12" /&gt;
+        &lt;Setter Property="FontAttributes" Value="Bold" /&gt;
+    &lt;/Style&gt;
+
+    &lt;Style x:Key="PrimaryButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}"&gt;
+        &lt;Setter Property="BackgroundColor"
+                Value="{StaticResource PrimaryColor}" /&gt;
+        &lt;Setter Property="TextColor" Value="White" /&gt;
+    &lt;/Style&gt;
+
+    &lt;Style x:Key="DangerButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource BaseButtonStyle}"&gt;
+        &lt;Setter Property="BackgroundColor"
+                Value="{StaticResource DangerColor}" /&gt;
+        &lt;Setter Property="TextColor" Value="White" /&gt;
+    &lt;/Style&gt;
+&lt;/ResourceDictionary&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Met <code>BasedOn</code> erven gespecialiseerde knopstyles de gemeenschappelijke vormgeving van <code>BaseButtonStyle</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Dit lijkt op overerving tussen klassen, maar betreft hier uitsluitend het combineren van style-setters. Een style is geen nieuwe subklasse van <code>Button</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_impliciete_styles"><a class="anchor" href="#_impliciete_styles"></a>Impliciete styles</h3>
+<div class="paragraph">
+<p>Een style zonder <code>x:Key</code> wordt automatisch toegepast op controls van het opgegeven <code>TargetType</code> binnen zijn scope.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Style TargetType="Entry"&gt;
+    &lt;Setter Property="ClearButtonVisibility" Value="WhileEditing" /&gt;
+    &lt;Setter Property="MinimumHeightRequest" Value="48" /&gt;
+&lt;/Style&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Impliciete styles zijn nuttig voor echte standaardwaarden. Gebruik expliciete styles wanneer meerdere betekenisvolle varianten bestaan, zoals een primaire en destructieve knop.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Een style bevordert consistentie, maar verbergt ook waar een waarde vandaan komt. Geef expliciete styles daarom duidelijke namen en houd het aantal lagen beperkt.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geldige_modellen"><a class="anchor" href="#_geldige_modellen"></a>Geldige modellen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de vorige les kon iedere tekst aan een <code>Joke</code> worden toegekend. Ons model moet zijn eigen geldigheid bewaken.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Models;
+
+public enum JokeCategory
+{
+    Programming,
+    DadJoke,
+    Other
+}
+
+public sealed class Joke
+{
+    private string _text = string.Empty;
+
+    public Guid Id { get; init; } = Guid.NewGuid();
+
+    public string Text
+    {
+        get =&gt; _text;
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException(
+                    "Een grap mag niet leeg zijn.",
+                    nameof(value));
+
+            var normalizedText = value.Trim();
+
+            if (normalizedText.Length &lt; 10)
+                throw new ArgumentException(
+                    "Een grap bevat minstens 10 tekens.",
+                    nameof(value));
+
+            if (normalizedText.Length &gt; 280)
+                throw new ArgumentException(
+                    "Een grap bevat maximaal 280 tekens.",
+                    nameof(value));
+
+            _text = normalizedText;
+        }
+    }
+
+    public JokeCategory Category { get; set; }
+
+    public Joke(string text, JokeCategory category)
+    {
+        Text = text;
+        Category = category;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De constructor gebruikt de property en dus dezelfde validatie. De controle gebeurt vóór <code>_text</code> wordt aangepast. Na een mislukte wijziging behoudt een bestaand object zijn vorige geldige toestand.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Een model gooit een exception om te verhinderen dat een ongeldige toestand ontstaat. Het model bepaalt niet welk label rood wordt of welke tekst een pagina toont. Dat is de verantwoordelijkheid van de UI.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_regels_in_de_service"><a class="anchor" href="#_regels_in_de_service"></a>Regels in de service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Niet iedere regel hoort in één <code>Joke</code>. Om te weten of een grap dubbel voorkomt, moet de volledige collectie gekend zijn. Dat is een verantwoordelijkheid van <code>JokeService</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public void Add(Joke joke)
+{
+    ArgumentNullException.ThrowIfNull(joke);
+
+    var alreadyExists = _jokes.Any(existingJoke =&gt;
+        string.Equals(
+            existingJoke.Text,
+            joke.Text,
+            StringComparison.OrdinalIgnoreCase));
+
+    if (alreadyExists)
+        throw new InvalidOperationException(
+            "Deze grap bestaat al.");
+
+    _jokes.Add(joke);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We onderscheiden zo verschillende soorten controles.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Invoerformaat</dt>
+<dd>
+<p>Kan de tekst uit een invoerveld worden omgezet naar het verwachte datatype? Dit gebeurt aan de grens van de UI.</p>
+</dd>
+<dt class="hdlist1">Modelinvariant</dt>
+<dd>
+<p>Kan één object geldig bestaan? Het model bewaakt deze regel.</p>
+</dd>
+<dt class="hdlist1">Applicatieregel</dt>
+<dd>
+<p>Is de bewerking toegestaan in de huidige collectie of workflow? Een service coördineert dit.</p>
+</dd>
+<dt class="hdlist1">Presentatie</dt>
+<dd>
+<p>Hoe maken we een fout begrijpelijk en zichtbaar? De UI beslist dit.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validatiefouten_tonen"><a class="anchor" href="#_validatiefouten_tonen"></a>Validatiefouten tonen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Voeg onder het invoerveld een label toe. Het neemt alleen ruimte in wanneer er een fout is.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Editor x:Name="jokeTextEditor"
+        Placeholder="Typ hier een grap"
+        AutoSize="TextChanges"
+        TextChanged="OnJokeTextChanged" /&gt;
+
+&lt;Label x:Name="validationLabel"
+       IsVisible="False"
+       TextColor="{StaticResource DangerColor}"
+       SemanticProperties.Description="Validatiefout" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De event handler maakt het model en laat het model de regels bewaken.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private async void OnSaveJokeClicked(object? sender, EventArgs e)
+{
+    ClearValidationError();
+
+    try
+    {
+        var category = (JokeCategory)categoryPicker.SelectedItem;
+        var joke = new Joke(jokeTextEditor.Text, category);
+
+        _jokeService.Add(joke);
+        await Navigation.PopAsync();
+    }
+    catch (ArgumentException exception)
+    {
+        ShowValidationError(exception.Message);
+        jokeTextEditor.Focus();
+    }
+    catch (InvalidOperationException exception)
+    {
+        ShowValidationError(exception.Message);
+    }
+}
+
+private void ShowValidationError(string message)
+{
+    validationLabel.Text = message;
+    validationLabel.IsVisible = true;
+}
+
+private void ClearValidationError()
+{
+    validationLabel.Text = string.Empty;
+    validationLabel.IsVisible = false;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We vangen alleen exceptions op die we op deze plaats verwachten en kunnen afhandelen. Een onverwachte programmeerfout mag niet worden verborgen achter de boodschap "Er ging iets mis".</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Het uitschakelen van de knop bij lege invoer is snelle feedback. De validatie in het model blijft toch noodzakelijk: niet iedere toekomstige aanroeper is deze pagina.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_tweede_pagina"><a class="anchor" href="#_een_tweede_pagina"></a>Een tweede pagina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het overzicht en het formulier hebben verschillende doelen. We maken daarom een nieuwe <code>ContentPage</code> met de naam <code>AddJokePage</code>.</p>
+</div>
+<div class="paragraph">
+<p>De pagina ontvangt voorlopig dezelfde <code>JokeService</code> via haar constructor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public partial class AddJokePage : ContentPage
+{
+    private readonly JokeService _jokeService;
+
+    public AddJokePage(JokeService jokeService)
+    {
+        InitializeComponent();
+        _jokeService = jokeService;
+
+        categoryPicker.ItemsSource = Enum
+            .GetValues&lt;JokeCategory&gt;()
+            .ToList();
+        categoryPicker.SelectedIndex = 0;
+    }
+
+    // Event handlers voor opslaan en validatie ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>MainPage</code> navigeert naar het formulier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private async void OnAddJokeClicked(object? sender, EventArgs e)
+{
+    var addJokePage = new AddJokePage(_jokeService);
+    await Navigation.PushAsync(addJokePage);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dezelfde service-instantie wordt doorgegeven. Daardoor ziet het overzicht ook de grap die op het toevoegscherm werd bewaard.</p>
+</div>
+<div class="paragraph">
+<p>Wanneer de gebruiker terugkeert, vernieuwen we de lijst.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void OnAppearing()
+{
+    base.OnAppearing();
+    RefreshJokes();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit is voor een kleine app begrijpelijk. We zien tegelijk enkele aankomende ontwerpproblemen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MainPage</code> maakt zelf de volgende pagina;</p>
+</li>
+<li>
+<p>de service wordt manueel doorgegeven;</p>
+</li>
+<li>
+<p>de pagina moet onthouden wanneer de lijst vernieuwd wordt;</p>
+</li>
+<li>
+<p>controls worden op verschillende plaatsen rechtstreeks aangepast.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Later gebruiken we DI, MVVM en een navigation service om deze verantwoordelijkheden anders te verdelen.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Wacht het resultaat van <code>PushAsync</code> en <code>PopAsync</code> af met <code>await</code>. Navigatie is asynchroon.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enkele_ui_richtlijnen"><a class="anchor" href="#_enkele_ui_richtlijnen"></a>Enkele UI-richtlijnen</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_maak_de_primaire_actie_herkenbaar"><a class="anchor" href="#_maak_de_primaire_actie_herkenbaar"></a>Maak de primaire actie herkenbaar</h3>
+<div class="paragraph">
+<p>Een scherm heeft meestal één voornaamste actie. Geef niet iedere knop dezelfde visuele nadruk. Een destructieve actie, zoals verwijderen, moet herkenbaar zijn en voldoende afstand hebben van de primaire actie.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_geef_zichtbare_feedback"><a class="anchor" href="#_geef_zichtbare_feedback"></a>Geef zichtbare feedback</h3>
+<div class="paragraph">
+<p>Na <strong>Opslaan</strong> moet duidelijk zijn of de actie gelukt is. Bij een fout moet zichtbaar zijn wat fout ging en waar de gebruiker dit kan oplossen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schrijf_labels_voor_de_gebruiker"><a class="anchor" href="#_schrijf_labels_voor_de_gebruiker"></a>Schrijf labels voor de gebruiker</h3>
+<div class="paragraph">
+<p>Gebruik concrete teksten zoals <strong>Grap opslaan</strong> in plaats van <strong>Bevestigen</strong>. Een placeholder kan een voorbeeld geven, maar vervangt niet altijd een blijvend label.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_houd_rekening_met_variabele_inhoud"><a class="anchor" href="#_houd_rekening_met_variabele_inhoud"></a>Houd rekening met variabele inhoud</h3>
+<div class="paragraph">
+<p>Een grap kan kort of lang zijn. Vermijd vaste hoogtes voor tekst, gebruik waar nodig een <code>ScrollView</code> en test met realistische randgevallen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bouw_een_logische_hiërarchie"><a class="anchor" href="#_bouw_een_logische_hiërarchie"></a>Bouw een logische hiërarchie</h3>
+<div class="paragraph">
+<p>Een titel, subtitel, inhoud en actie moeten visueel van elkaar te onderscheiden zijn. Gebruik hiervoor eerst spacing, positie en typografie. Extra kleuren en randen zijn niet altijd nodig.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_denk_aan_toegankelijkheid"><a class="anchor" href="#_denk_aan_toegankelijkheid"></a>Denk aan toegankelijkheid</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Gebruik voldoende leesbare tekst en contrast.</p>
+</li>
+<li>
+<p>Maak klikbare elementen groot genoeg.</p>
+</li>
+<li>
+<p>Geef afbeeldingen en niet-vanzelfsprekende controls een semantische beschrijving.</p>
+</li>
+<li>
+<p>Vertrouw niet uitsluitend op kleur om een fout of selectie aan te duiden.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefening_joke_library"><a class="anchor" href="#_oefening_joke_library"></a>Oefening - Joke Library</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vertrek van de app uit de vorige les en bouw ze om tot een kleine, consistente grappenbibliotheek.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Toon alle grappen in een <code>CollectionView</code> op <code>MainPage</code>.</p>
+</li>
+<li>
+<p>Gebruik een <code>Grid</code> zodat titel, lijst en actiebalk de beschikbare ruimte correct verdelen.</p>
+</li>
+<li>
+<p>Maak een afzonderlijke <code>AddJokePage</code> en navigeer ernaartoe.</p>
+</li>
+<li>
+<p>Laat <code>Joke</code> lege, te korte en te lange teksten weigeren via exceptions in de property.</p>
+</li>
+<li>
+<p>Laat <code>JokeService</code> dubbele grappen weigeren.</p>
+</li>
+<li>
+<p>Toon verwachte validatiefouten bij het invoerveld zonder de applicatie te laten crashen.</p>
+</li>
+<li>
+<p>Maak globale resources voor minstens de primaire kleur, foutkleur en buttonstyles.</p>
+</li>
+<li>
+<p>Zorg dat de lijst na een succesvolle toevoeging wordt vernieuwd.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Toon de categorie in elk item van de <code>CollectionView</code>.</p>
+</li>
+<li>
+<p>Toon een duidelijke lege toestand wanneer de collectie leeg is.</p>
+</li>
+<li>
+<p>Toon de volledige tekst van het geselecteerde item onder de lijst of in een apart detailvlak.</p>
+</li>
+<li>
+<p>Pas minstens één impliciete style en twee expliciete styles toe.</p>
+</li>
+<li>
+<p>Gebruik <code>BasedOn</code> om duplicatie tussen buttonstyles te vermijden.</p>
+</li>
+<li>
+<p>Maak tijdens het typen een eerdere validatiefout opnieuw onzichtbaar.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg een favorietenstatus toe aan <code>Joke</code> en maak die zichtbaar in de lijst.</p>
+</li>
+<li>
+<p>Laat de gebruiker de geselecteerde grap verwijderen en vraag eerst bevestiging.</p>
+</li>
+<li>
+<p>Voorzie een filter op categorie.</p>
+</li>
+<li>
+<p>Controleer de app met een zeer smal venster, een lange grap en een lege collectie en verbeter de layout waar nodig.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Behoud de verantwoordelijkheden. Het model bewaakt zijn toestand, de service bewaakt de collectie en de pagina bepaalt hoe de gebruiker de uitkomst ziet.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI - IoC, Dependency Injection &amp; opslag :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI - IoC, Dependency Injection &amp; opslag</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Startcode nodig? Je vindt de code van vorige les op <a href="https://github.com">Github</a>. Heb je zelf een werkende vorige versie, dan is het sterk aangeraden om daarin verder te werken.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We bouwen verder aan dezelfde JokeApp uit <a href="21-maui-ui-styling-validation.html" class="xref page">Layout, styling &amp; validatie</a>. De gebruiker kan grappen bekijken, zoeken en toevoegen. In deze les verandert vooral de binnenkant: we verdelen verantwoordelijkheden en bewaren de grappen uiteindelijk op schijf.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vertrekpunt_en_werkafspraken"><a class="anchor" href="#_vertrekpunt_en_werkafspraken"></a>Vertrekpunt en werkafspraken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Behoud <code>Models/Joke.cs</code>, <code>JokeCategory</code>, <code>JokeTextValidator</code> en <code>ValidationResult</code> uit de vorige les. Ook de styles blijven bestaan. We starten geen nieuw project en keren niet terug naar het scherm met één willekeurige grap.</p>
+</div>
+<div class="paragraph">
+<p>De thuisopdracht voegde zoeken toe. We gebruiken hiervoor vanaf nu <code>Search(string? searchText)</code> op de service. Heb je een andere methodenaam gekozen, pas dan de aanroep en het contract samen aan.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+De validatieafspraak verandert niet: klik op <strong>Opslaan</strong>, valideer de invoer, maak pas daarna een <code>Joke</code> en vraag de service om die toe te voegen. Een dubbele grap geeft een <code>ValidationResult</code> terug; we keren niet terug naar exceptions als normale formulierfeedback.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We werken in controleerbare stappen: eerst opslag losmaken, dan dependencies laten aanmaken en ten slotte de opslag vervangen. Start de app na iedere stap.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wie_is_waarvoor_verantwoordelijk"><a class="anchor" href="#_wie_is_waarvoor_verantwoordelijk"></a>Wie is waarvoor verantwoordelijk?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de huidige versie bevat <code>JokeService</code> zowel de lijst als de regel dat dezelfde tekst niet tweemaal mag voorkomen. <code>MainPage</code> maakt bovendien zelf de service en de toevoegpagina.</p>
+</div>
+<div class="paragraph">
+<p>Bespreek wat er zou moeten wijzigen als de grappen niet langer in een <code>List&lt;Joke&gt;</code> maar in een bestand bewaard worden. Moet een pagina daarvoor worden aangepast? Moet de regel over dubbele grappen veranderen?</p>
+</div>
+<div class="paragraph">
+<p>We maken dit onderscheid:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Joke</code></dt>
+<dd>
+<p>Bewaakt de geldigheid van één grap. De setter beschermt bijvoorbeeld de tekst.</p>
+</dd>
+<dt class="hdlist1"><code>JokeService</code></dt>
+<dd>
+<p>Coördineert bewerkingen en bewaakt regels over meerdere grappen, zoals uniciteit.</p>
+</dd>
+<dt class="hdlist1">Repository</dt>
+<dd>
+<p>Zoekt, bewaart en verwijdert grappen. We verbergen de concrete opslag achter een contract.</p>
+</dd>
+<dt class="hdlist1">Pagina</dt>
+<dd>
+<p>Toont informatie en verwerkt interactie. Voorlopig gebeurt dit nog met code-behind.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Dit sluit aan bij <strong>Information Expert</strong> en <strong>Low Coupling</strong>: kennis over opslag hoort bij de repository, kennis over een scherm bij de pagina.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_contract_voor_opslag"><a class="anchor" href="#_een_contract_voor_opslag"></a>Een contract voor opslag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maak de map <code>Repositories</code>. We beginnen met de bewerkingen die onze app nodig heeft, niet met een algemene repository voor alle mogelijke toepassingen.</p>
+</div>
+<div class="listingblock">
+<div class="title">Repositories/IJokeRepository.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+
+namespace JokeApp.Repositories;
+
+public interface IJokeRepository
+{
+    IReadOnlyList&lt;Joke&gt; GetAll();
+    Joke? GetById(Guid id);
+    void Add(Joke joke);
+    bool Remove(Guid id);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GetById</code> kan <code>null</code> teruggeven: de gevraagde grap bestaat mogelijk niet meer. <code>Remove</code> meldt met een <code>bool</code> of er werkelijk iets verwijderd werd. Een ontbrekende grap is hier geen programmeerfout waarvoor we moeten throwen.</p>
+</div>
+<div class="paragraph">
+<p><code>IReadOnlyList&lt;Joke&gt;</code> biedt geen <code>Add</code>-methode. Dat maakt de objecten in die lijst niet automatisch onveranderlijk: het contract schermt de <strong>collectie</strong> af. Wijzigingen laten we via de service verlopen.</p>
+</div>
+<div class="sect2">
+<h3 id="_eerst_dezelfde_opslag_anders_georganiseerd"><a class="anchor" href="#_eerst_dezelfde_opslag_anders_georganiseerd"></a>Eerst dezelfde opslag, anders georganiseerd</h3>
+<div class="paragraph">
+<p>Verplaats de startgrappen uit <code>JokeService</code> naar onderstaande klasse. Gebruik gerust je eigen geldige startgrappen.</p>
+</div>
+<div class="listingblock">
+<div class="title">Repositories/InMemoryJokeRepository.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+
+namespace JokeApp.Repositories;
+
+public sealed class InMemoryJokeRepository : IJokeRepository
+{
+    private readonly List&lt;Joke&gt; _jokes =
+    [
+        new Joke(
+            "Er zijn 10 soorten mensen: zij die binair begrijpen en zij die dat niet doen.",
+            JokeCategory.Programming),
+        new Joke(
+            "Een SQL-query stapt naar twee tabellen en vraagt: mag ik erbij komen?",
+            JokeCategory.Programming),
+        new Joke(
+            "Ik vertelde een grap over papier, maar die was nogal plat.",
+            JokeCategory.DadJoke)
+    ];
+
+    public IReadOnlyList&lt;Joke&gt; GetAll() =&gt; _jokes.AsReadOnly();
+
+    public Joke? GetById(Guid id) =&gt;
+        _jokes.SingleOrDefault(joke =&gt; joke.Id == id);
+
+    public void Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+        _jokes.Add(joke);
+    }
+
+    public bool Remove(Guid id)
+    {
+        var joke = GetById(id);
+        return joke is not null &amp;&amp; _jokes.Remove(joke);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Waarom controleert <code>Add</code> hier niet op dezelfde tekst? Dat is een applicatieregel, geen bijzonderheid van een <code>List</code>. Straks moet die regel ook met een andere opslag gelden.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_service_ontvangt_zijn_dependency"><a class="anchor" href="#_de_service_ontvangt_zijn_dependency"></a>De service ontvangt zijn dependency</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maak het servicecontract en vervang daarna de bestaande <code>JokeService</code>. Voeg geen tweede klasse met dezelfde naam toe.</p>
+</div>
+<div class="listingblock">
+<div class="title">Services/IJokeService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+using JokeApp.Validation;
+
+namespace JokeApp.Services;
+
+public interface IJokeService
+{
+    IReadOnlyList&lt;Joke&gt; GetAll();
+    IReadOnlyList&lt;Joke&gt; Search(string? searchText);
+    Joke? GetById(Guid id);
+    ValidationResult Add(Joke joke);
+    ValidationResult Remove(Guid id);
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Services/JokeService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+using JokeApp.Repositories;
+using JokeApp.Validation;
+
+namespace JokeApp.Services;
+
+public sealed class JokeService : IJokeService
+{
+    private readonly IJokeRepository _jokeRepository;
+
+    public JokeService(IJokeRepository jokeRepository)
+    {
+        _jokeRepository = jokeRepository;
+    }
+
+    public IReadOnlyList&lt;Joke&gt; GetAll() =&gt; _jokeRepository.GetAll();
+
+    public IReadOnlyList&lt;Joke&gt; Search(string? searchText)
+    {
+        var query = searchText?.Trim() ?? string.Empty;
+
+        return _jokeRepository.GetAll()
+            .Where(joke =&gt; joke.Text.Contains(
+                query, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    public Joke? GetById(Guid id) =&gt; _jokeRepository.GetById(id);
+
+    public ValidationResult Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+
+        var duplicateExists = _jokeRepository.GetAll().Any(existing =&gt;
+            string.Equals(existing.Text, joke.Text,
+                StringComparison.OrdinalIgnoreCase));
+
+        if (duplicateExists)
+            return ValidationResult.Failure("Deze grap bestaat al.");
+
+        _jokeRepository.Add(joke);
+        return ValidationResult.Success();
+    }
+
+    public ValidationResult Remove(Guid id)
+    {
+        if (!_jokeRepository.Remove(id))
+            return ValidationResult.Failure("Deze grap bestaat niet meer.");
+
+        return ValidationResult.Success();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Search</code> geeft een nieuwe lijst met resultaten, maar verwijdert niets uit de repository. Een lege zoektekst komt in iedere tekst voor en levert dus alle grappen op.</p>
+</div>
+<div class="paragraph">
+<p>De oude <code>GetRandom</code>-methode is niet nodig voor het huidige overzicht. Had je die als uitbreiding behouden, laat ze dan eveneens via de repository werken; voeg geen tweede lijst toe.</p>
+</div>
+<div class="sect2">
+<h3 id="_dependency_injection_zonder_container"><a class="anchor" href="#_dependency_injection_zonder_container"></a>Dependency Injection zonder container</h3>
+<div class="paragraph">
+<p>De service maakt geen <code>new InMemoryJokeRepository()</code>. Hij ontvangt een <code>IJokeRepository</code>. Dat heet <strong>constructor injection</strong>: de dependency wordt via de constructor doorgegeven.</p>
+</div>
+<div class="paragraph">
+<p>Je kan deze objecten zelf samenstellen, bijvoorbeeld in een aparte consoleproef of test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">IJokeRepository repository = new InMemoryJokeRepository();
+IJokeService service = new JokeService(repository);
+
+var before = service.GetAll().Count;
+var joke = new Joke(
+    "Waarom houdt een programmeur van koffie? Omdat Java hem wakker houdt.",
+    JokeCategory.Programming);
+
+var firstResult = service.Add(joke);
+var duplicateResult = service.Add(
+    new Joke(joke.Text.ToUpperInvariant(), joke.Category));
+
+Console.WriteLine(firstResult.IsValid);          // True
+Console.WriteLine(duplicateResult.ErrorMessage);  // Deze grap bestaat al.
+Console.WriteLine(service.GetAll().Count == before + 1); // True</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dit is al DI. Daar is geen framework voor nodig. <strong>Inversion of Control</strong> is het ruimere principe: de service kiest niet langer zelf hoe zijn dependencies worden gemaakt. Een DI-container zal het samenstellen straks overnemen.</p>
+</div>
+<div class="paragraph">
+<p>Voer deze proef samen uit en voorspél de uitkomst voordat je ze start. Voeg ook een zoekopdracht en het verwijderen van een onbekende <code>Guid</code> toe. Geen van die proeven heeft een venster nodig.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_container_stelt_de_objecten_samen"><a class="anchor" href="#_de_container_stelt_de_objecten_samen"></a>De container stelt de objecten samen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De container moet weten welke concrete klasse bij een interface hoort.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">MainPage
+└── IJokeService → JokeService
+    └── IJokeRepository → InMemoryJokeRepository
+
+AddJokePage
+└── IJokeService → JokeService
+    └── IJokeRepository → dezelfde InMemoryJokeRepository</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg bovenaan <code>MauiProgram.cs</code> de namespaces <code>JokeApp.Repositories</code> en <code>JokeApp.Services</code> toe. Voeg deze registraties toe vóór <code>return builder.Build();</code>. Behoud de bestaande configuratie van fonts en logging.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddSingleton&lt;IJokeRepository, InMemoryJokeRepository&gt;();
+builder.Services.AddTransient&lt;IJokeService, JokeService&gt;();
+builder.Services.AddTransient&lt;MainPage&gt;();
+builder.Services.AddTransient&lt;AddJokePage&gt;();</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>AddSingleton</code></dt>
+<dd>
+<p>Eén instantie per container. Onze pagina&#8217;s moeten dezelfde in-memory gegevens zien.</p>
+</dd>
+<dt class="hdlist1"><code>AddTransient</code></dt>
+<dd>
+<p>Een nieuwe instantie telkens wanneer de container het type opvraagt. De service heeft geen eigen lijst of schermtoestand.</p>
+</dd>
+<dt class="hdlist1"><code>AddScoped</code></dt>
+<dd>
+<p>Eén instantie binnen een expliciet gemaakte scope. Een gewone MAUI-app maakt niet automatisch voor iedere pagina een scope zoals een webapp dat voor een request doet.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Een transient pagina die eenmaal gemaakt is, wordt niet spontaan vervangen bij iedere terugkeer. De navigatiestack kan datzelfde pagina-object behouden.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Laat tijdelijk het aantal gemaakte repositories zien met een breakpoint in de constructor. Vergelijk singleton met transient, voeg een grap toe en open opnieuw het formulier. Verklaar het verschil en zet de repository daarna terug op singleton.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Zie ook de <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection">Microsoft-documentatie over DI in MAUI</a> voor constructor injection en de beschikbare lifetimes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_bestaande_paginas_aansluiten"><a class="anchor" href="#_de_bestaande_paginas_aansluiten"></a>De bestaande pagina&#8217;s aansluiten</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vervang in <code>AddJokePage.xaml.cs</code> het type van het veld én de constructorparameter <code>JokeService</code> door <code>IJokeService</code>. Verwijder daar geen validatiecode. De constructor blijft de categorieën instellen.</p>
+</div>
+<div class="paragraph">
+<p>Een pagina vragen we voortaan aan via een route. Vervang de inhoud van <code>AppShell.xaml.cs</code> door:</p>
+</div>
+<div class="listingblock">
+<div class="title">AppShell.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp;
+
+public partial class AppShell : Shell
+{
+    public AppShell()
+    {
+        InitializeComponent();
+        Routing.RegisterRoute(nameof(AddJokePage), typeof(AddJokePage));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Behoud in <code>AppShell.xaml</code> de <code>ShellContent</code> voor <code>MainPage</code> met <code>ContentTemplate="{DataTemplate local:MainPage}"</code>. Die pagina staat al in de Shell-structuur; registreer haar niet nog eens als detailroute.</p>
+</div>
+<div class="paragraph">
+<p>Vervang in de save-handler van <code>AddJokePage</code> de terugkeer met:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">await Shell.Current.GoToAsync("..");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>".."</code> betekent één pagina terug in deze navigatiestack. Neem <code>async</code> en <code>await</code> over zoals in de vorige les; asynchroon programmeren zelf is geen leerdoel van deze reeks.</p>
+</div>
+<div class="sect2">
+<h3 id="_het_overzicht_met_de_bestaande_zoekfunctie"><a class="anchor" href="#_het_overzicht_met_de_bestaande_zoekfunctie"></a>Het overzicht met de bestaande zoekfunctie</h3>
+<div class="paragraph">
+<p>Onderstaande versie is een gezamenlijk vertrekpunt, inclusief de verplichte zoekfunctie uit de thuisopdracht. Vergelijk ze met je eigen oplossing; behoud bijkomende werkende uitbreidingen en styles.</p>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JokeApp.MainPage"
+             Title="Mijn grappen"&gt;
+    &lt;Grid Padding="24" RowSpacing="12"
+          RowDefinitions="Auto,*,Auto,Auto"&gt;
+        &lt;Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8"&gt;
+            &lt;Entry x:Name="searchEntry" Placeholder="Zoek in de tekst" /&gt;
+            &lt;Button Grid.Column="1" Text="Zoeken"
+                    Clicked="OnSearchClicked" /&gt;
+            &lt;Button Grid.Column="2" Text="Toon alles"
+                    Clicked="OnShowAllClicked" /&gt;
+        &lt;/Grid&gt;
+        &lt;CollectionView x:Name="jokesCollectionView" Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="OnJokeSelectionChanged"
+                        EmptyView="Geen grappen gevonden."&gt;
+            &lt;CollectionView.ItemTemplate&gt;
+                &lt;DataTemplate&gt;
+                    &lt;Border Padding="16" Margin="0,4"&gt;
+                        &lt;VerticalStackLayout Spacing="4"&gt;
+                            &lt;Label Text="{Binding Text}" MaxLines="2"
+                                   LineBreakMode="TailTruncation" /&gt;
+                            &lt;Label Text="{Binding Category}" FontSize="12" /&gt;
+                        &lt;/VerticalStackLayout&gt;
+                    &lt;/Border&gt;
+                &lt;/DataTemplate&gt;
+            &lt;/CollectionView.ItemTemplate&gt;
+        &lt;/CollectionView&gt;
+        &lt;Label x:Name="selectedJokeLabel" Grid.Row="2" /&gt;
+        &lt;Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="8"&gt;
+            &lt;Label x:Name="countLabel" VerticalOptions="Center" /&gt;
+            &lt;Button Grid.Column="1" Text="Toevoegen"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnAddJokeClicked" /&gt;
+        &lt;/Grid&gt;
+    &lt;/Grid&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+using JokeApp.Services;
+
+namespace JokeApp;
+
+public partial class MainPage : ContentPage
+{
+    private readonly IJokeService _jokeService;
+    private string _appliedSearchText = string.Empty;
+
+    public MainPage(IJokeService jokeService)
+    {
+        InitializeComponent();
+        _jokeService = jokeService;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        RefreshJokes();
+    }
+
+    private void RefreshJokes()
+    {
+        var jokes = _jokeService.Search(_appliedSearchText);
+        jokesCollectionView.SelectedItem = null;
+        jokesCollectionView.ItemsSource = jokes;
+        selectedJokeLabel.Text = "Selecteer een grap.";
+        countLabel.Text = $"{jokes.Count} van {_jokeService.GetAll().Count} grappen";
+    }
+
+    private void OnSearchClicked(object? sender, EventArgs e)
+    {
+        _appliedSearchText = searchEntry.Text?.Trim() ?? string.Empty;
+        RefreshJokes();
+    }
+
+    private void OnShowAllClicked(object? sender, EventArgs e)
+    {
+        searchEntry.Text = string.Empty;
+        _appliedSearchText = string.Empty;
+        RefreshJokes();
+    }
+
+    private void OnJokeSelectionChanged(
+        object? sender, SelectionChangedEventArgs e)
+    {
+        var joke = e.CurrentSelection.FirstOrDefault() as Joke;
+        selectedJokeLabel.Text = joke?.Text ?? "Selecteer een grap.";
+    }
+
+    private async void OnAddJokeClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(AddJokePage));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Er staat geen <code>new JokeService</code> of <code>new AddJokePage</code> meer in de pagina&#8217;s. Shell kan de geregistreerde pagina met haar dependencies laten maken.</p>
+</div>
+<div class="paragraph">
+<p>Test nu toevoegen, terugkeren, zoeken, een lege resultatenlijst en dubbele invoer. Typ ook een andere zoektekst zonder op <strong>Zoeken</strong> te klikken en navigeer heen en terug. De <strong>toegepaste</strong> zoekopdracht blijft bepalend; tekst in het invoerveld is niet automatisch een uitgevoerde zoekopdracht.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grappen_bewaren_met_litedb"><a class="anchor" href="#_grappen_bewaren_met_litedb"></a>Grappen bewaren met LiteDB</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sluit de app volledig en start haar opnieuw. De zelf toegevoegde grappen zijn weg: een singleton leeft slechts zolang de applicatie draait. Een singleton is geen permanente opslag.</p>
+</div>
+<div class="paragraph">
+<p>We gebruiken <a href="https://www.litedb.org">LiteDB</a>, een documentdatabase in één lokaal bestand. Installeer het NuGet-package <code>LiteDB</code>. Dit is geen aparte databaseserver. Voor deze oefening houden we de bewerkingen klein en synchroon; grotere of tragere opslag vraagt bijkomende aandacht die buiten deze les valt.</p>
+</div>
+<div class="paragraph">
+<p>Maak een tweede implementatie van hetzelfde contract:</p>
+</div>
+<div class="listingblock">
+<div class="title">Repositories/LiteDbJokeRepository.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+using LiteDB;
+
+namespace JokeApp.Repositories;
+
+public sealed class LiteDbJokeRepository : IJokeRepository, IDisposable
+{
+    private readonly LiteDatabase _database;
+    private readonly ILiteCollection&lt;Joke&gt; _jokes;
+
+    public LiteDbJokeRepository(string databasePath)
+    {
+        _database = new LiteDatabase(databasePath);
+        _jokes = _database.GetCollection&lt;Joke&gt;("jokes");
+    }
+
+    public IReadOnlyList&lt;Joke&gt; GetAll() =&gt;
+        _jokes.FindAll().ToList();
+
+    public Joke? GetById(Guid id) =&gt; _jokes.FindById(id);
+
+    public void Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+        _jokes.Insert(joke);
+    }
+
+    public bool Remove(Guid id) =&gt; _jokes.Delete(id);
+
+    public void Dispose() =&gt; _database.Dispose();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>LiteDatabase</code> beheert het bestand. <code>ILiteCollection&lt;Joke&gt;</code> biedt bewerkingen op de collectie <code>"jokes"</code>. LiteDB vertaalt onze objecten naar documenten en terug; de repository verbergt die API voor de rest van de app.</p>
+</div>
+<div class="paragraph">
+<p>De property <code>Id</code> wordt volgens LiteDB&#8217;s naamconventie de document-id. De bestaande constructor <code>Joke(string text, JokeCategory category)</code> kan bij het teruglezen gebruikt worden omdat de parameters bij de documentvelden passen. We voegen geen lege constructor toe die een ongeldig model zou toelaten. Zie <a href="https://www.litedb.org/docs/object-mapping/">LiteDB: object mapping</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>IDisposable</code> laat het databasebestand sluiten. Omdat de container de repository beheert, hoort een pagina hier geen <code>using</code> rond haar service of repository te plaatsen.</p>
+</div>
+<div class="sect2">
+<h3 id="_eén_registratie_vervangen"><a class="anchor" href="#_eén_registratie_vervangen"></a>Eén registratie vervangen</h3>
+<div class="paragraph">
+<p>Vervang uitsluitend de registratie van <code>IJokeRepository</code> in <code>MauiProgram</code>. Registreer niet beide implementaties tegelijk voor hetzelfde contract.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddSingleton&lt;IJokeRepository&gt;(_ =&gt;
+{
+    var databasePath = Path.Combine(
+        FileSystem.AppDataDirectory, "jokes.db");
+
+    return new LiteDbJokeRepository(databasePath);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De factory maakt het object en geeft het bestandspad door. Alleen het samenstelpunt kent <code>FileSystem.AppDataDirectory</code>; de repository zelf hoeft niets over MAUI te weten.</p>
+</div>
+<div class="paragraph">
+<p>De nieuwe database begint leeg. Dat is een geldige toestand, geen fout. Voeg via het formulier enkele grappen toe, sluit de app helemaal af en start opnieuw. Herhaald opstarten mag geen kopieën van startgrappen invoegen.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Dit wisselt de opslagimplementatie, maar migreert geen gegevens uit de oude in-memory lijst. Beide repositories hebben hun eigen gegevens.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controleren_dat_het_contract_echt_werkt"><a class="anchor" href="#_controleren_dat_het_contract_echt_werkt"></a>Controleren dat het contract echt werkt</h3>
+<div class="paragraph">
+<p>Voer met beide registraties dezelfde handelingen uit:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Voeg een geldige grap toe en controleer de teller.</p>
+</li>
+<li>
+<p>Probeer dezelfde tekst met andere hoofdletters. Verwacht een melding en geen extra record.</p>
+</li>
+<li>
+<p>Zoek een deel van de tekst en controleer de toegepaste filter na navigatie.</p>
+</li>
+<li>
+<p>Zoek iets dat niet bestaat. De lege resultatenlijst moet bruikbaar blijven.</p>
+</li>
+<li>
+<p>Vergelijk het gedrag na het volledig herstarten van de app.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Plaats een breakpoint in <code>JokeService.Add</code> en vervolgens in de concrete repository. Volg één klik op <strong>Opslaan</strong> door alle lagen. Wijs aan waar invoervalidatie, uniciteit, opslag en schermfeedback plaatsvinden.</p>
+</div>
+<div class="paragraph">
+<p>Dat we hiervoor geen formulier of zoekmethode moesten herschrijven, is de concrete winst van <strong>Protected Variations</strong>. Een interface is geen doel op zich: hier beschermt ze de app tegen een echte variatie in opslag.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thuisopdracht_verwijderen_zonder_de_lagen_te_doorbreken"><a class="anchor" href="#_thuisopdracht_verwijderen_zonder_de_lagen_te_doorbreken"></a>Thuisopdracht - Verwijderen zonder de lagen te doorbreken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Werk verder in deze JokeApp. De service en beide repositories ondersteunen verwijderen al; jij sluit die bewerking aan op het overzicht.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg een knop <strong>Verwijderen</strong> toe voor de geselecteerde grap, met de bestaande <code>DangerButtonStyle</code>.</p>
+</li>
+<li>
+<p>Zonder selectie is de knop niet beschikbaar. Laat de beschikbaarheid mee veranderen bij selectie en vernieuwen.</p>
+</li>
+<li>
+<p>Laat de pagina uitsluitend <code>IJokeService.Remove(id)</code> aanroepen. Gebruik het <code>ValidationResult</code> voor feedback; benader de repository niet vanuit de pagina.</p>
+</li>
+<li>
+<p>Vernieuw na succes de lijst en teller met behoud van de toegepaste zoektekst. Wis ook de selectie en oude detailtekst.</p>
+</li>
+<li>
+<p>Controleer het gedrag met in-memory opslag én LiteDB. Lever de app op met LiteDB als actieve registratie.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Toon een bevestiging voordat je definitief verwijdert. Een dialoogaanroep mag je als vast navigatieachtig recept overnemen.</p>
+</li>
+<li>
+<p>Maak onderscheid tussen een lege verzameling en een zoekopdracht zonder resultaten.</p>
+</li>
+<li>
+<p>Laat de knoppen ook in een smaller venster bruikbaar blijven.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Schrijf een servicetest met een zelfgemaakte testrepository voor toevoegen, dubbele tekst en een onbekende id.</p>
+</li>
+<li>
+<p>Verklaar in enkele zinnen waarom twee transient services toch dezelfde grappen zien.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controle_vóór_de_volgende_les"><a class="anchor" href="#_controle_vóór_de_volgende_les"></a>Controle vóór de volgende les</h3>
+<div class="paragraph">
+<p>Voeg toe, zoek, verwijder de laatste zichtbare grap en herstart. De teller klopt, een oude selectie blijft niet staan en de verwijdering is bewaard. Ongeldige invoer blijft pas na <strong>Opslaan</strong> een melding opleveren.</p>
+</div>
+<div class="paragraph">
+<p>Bewaar deze versie. In <a href="26-maui_mvvm.html" class="xref page">de volgende les</a> vervangen we events en rechtstreekse control-updates door binding en commands; de repository, service en validatieregels blijven behouden.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI UI - XAML, Controls &amp; Events :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="20-maui_basics.html">XAML, controls &amp; events</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI UI - XAML, Controls &amp; Events</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tot nu toe werkten we met console-applicaties. Een grafische applicatie reageert anders op de gebruiker: de applicatie blijft actief en wacht op invoer via knoppen, tekstvelden, selectie en andere <strong>events</strong>.</p>
+</div>
+<div class="paragraph">
+<p>In deze les bouwen we de eerste versie van een kleine grappenapp. We concentreren ons bewust op de gebruikersinterface en werken nog met code-behind.</p>
+</div>
+<div class="paragraph">
+<p>Deze app groeit doorheen vijf opeenvolgende lessen: events en controls, layout en validatie, DI en opslag, MVVM en ten slotte details en messaging. We verbeteren telkens dezelfde app; we starten niet bij ieder onderwerp opnieuw. Iedere les eindigt met een thuisopdracht die op de lesversie verderbouwt. WebAPI vormt aan het einde een facultatieve preview op andere lessen, voor wanneer er tijd over is.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_maui_workload"><a class="anchor" href="#_de_maui_workload"></a>De MAUI-workload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een workload breidt de .NET SDK en de ontwikkelomgeving uit met templates, build tools en platformondersteuning.</p>
+</div>
+<div class="paragraph">
+<p>Open de Visual Studio Installer, kies <strong>Modify</strong> bij de gebruikte Visual Studio-installatie en activeer de workload <strong>.NET Multi-platform App UI development</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Tijdens de installatie bekijken we het doel van MAUI, de ondersteunde platformen en de structuur van een project. De duur van de installatie is afhankelijk van de computer en de onderdelen die al aanwezig zijn.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_korte_geschiedenis"><a class="anchor" href="#_een_korte_geschiedenis"></a>Een korte geschiedenis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Desktop- en mobiele platformen bieden elk hun eigen technologie om een gebruikersinterface te bouwen. Een Windows-app, Android-app en iOS-app gebruiken daardoor traditioneel verschillende projecten, programmeertalen en UI-frameworks.</p>
+</div>
+<div class="paragraph">
+<p>Xamarin maakte het mogelijk om mobiele applicaties in C# te schrijven. Xamarin.Forms voegde daar een gedeelde, declaratieve gebruikersinterface aan toe. .NET MAUI is de opvolger van Xamarin.Forms en maakt deel uit van het moderne .NET-platform.</p>
+</div>
+<div class="paragraph">
+<p>MAUI staat voor <strong>Multi-platform App UI</strong>. Het framework laat toe om vanuit één project toepassingen te bouwen voor onder meer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Android;</p>
+</li>
+<li>
+<p>iOS;</p>
+</li>
+<li>
+<p>Windows;</p>
+</li>
+<li>
+<p>macOS.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De meeste code en XAML worden gedeeld. Wanneer een platform werkelijk afwijkend gedrag nodig heeft, kan er nog steeds platformspecifieke code worden voorzien.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Eén gedeeld project betekent niet dat elk platform er exact hetzelfde uitziet. MAUI gebruikt waar mogelijk de mogelijkheden en conventies van het doelplatform.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_eerste_project"><a class="anchor" href="#_een_eerste_project"></a>Een eerste project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maak een nieuw project met de template <strong>.NET MAUI App</strong> en noem het project <code>JokeApp</code>.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/maui/maui_basics_solution-explorer-new-project.jpg" alt="maui basics solution explorer new project">
+</div>
+</div>
+<div class="paragraph">
+<p>Een nieuw project bevat veel bestanden. We hoeven ze niet allemaal onmiddellijk te begrijpen.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Platforms</code></dt>
+<dd>
+<p>Bevat code en configuratie die enkel voor een specifiek platform geldt. Het grootste deel van onze code komt hier niet terecht.</p>
+</dd>
+<dt class="hdlist1"><code>Resources</code></dt>
+<dd>
+<p>Bevat afbeeldingen, fonts, kleuren, styles en andere bestanden die de app gebruikt.</p>
+</dd>
+<dt class="hdlist1"><code>App.xaml</code></dt>
+<dd>
+<p>Bevat resources die voor de volledige applicatie beschikbaar zijn. De gekoppelde code-behind bevat de opstartlogica van de app.</p>
+</dd>
+<dt class="hdlist1"><code>AppShell.xaml</code></dt>
+<dd>
+<p>Beschrijft de globale navigatiestructuur van een Shell-applicatie.</p>
+</dd>
+<dt class="hdlist1"><code>MainPage.xaml</code></dt>
+<dd>
+<p>Beschrijft de inhoud van het eerste scherm.</p>
+</dd>
+<dt class="hdlist1"><code>MainPage.xaml.cs</code></dt>
+<dd>
+<p>Is de code-behind van <code>MainPage.xaml</code>. Hier reageren we voorlopig op UI-events.</p>
+</dd>
+<dt class="hdlist1"><code>MauiProgram.cs</code></dt>
+<dd>
+<p>Configureert en bouwt de applicatie. Later registreren we hier onze dependencies.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Start het project eerst ongewijzigd. Kies bovenaan Visual Studio een doelplatform en controleer of de standaardapp opent.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Bouw en start regelmatig. Wanneer je tientallen wijzigingen tegelijk uitvoert, wordt het veel moeilijker om de oorzaak van een fout terug te vinden.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_van_console_naar_event_driven"><a class="anchor" href="#_van_console_naar_event_driven"></a>Van console naar event-driven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een consoleprogramma wordt vaak gelezen als een opeenvolging van instructies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Console.Write("Geef een grap: ");
+var text = Console.ReadLine();
+Console.WriteLine(text);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Een grafische applicatie moet intussen blijven tekenen, invoer verwerken en op het platform reageren. Onze eigen code wordt daarom meestal uitgevoerd wanneer er <strong>iets gebeurt</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de gebruiker klikt op een knop;</p>
+</li>
+<li>
+<p>de tekst in een invoerveld verandert;</p>
+</li>
+<li>
+<p>de gebruiker maakt een keuze;</p>
+</li>
+<li>
+<p>een pagina verschijnt;</p>
+</li>
+<li>
+<p>een timer loopt af.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Zo&#8217;n gebeurtenis noemen we een <strong>event</strong>. Een methode die als reactie wordt uitgevoerd, heet een <strong>event handler</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void OnShowRandomJokeClicked(object? sender, EventArgs e)
+{
+    // Wordt uitgevoerd nadat de gebruiker op de knop klikt.
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De applicatie roept deze methode aan. We schrijven dus niet zelf een lus die voortdurend controleert of de knop is ingedrukt.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_xaml_en_code_behind"><a class="anchor" href="#_xaml_en_code_behind"></a>XAML en code-behind</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>XAML is een declaratieve taal op basis van XML. We beschrijven welke objecten samen de gebruikersinterface vormen en welke properties ze krijgen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JokeApp.MainPage"&gt;
+
+    &lt;VerticalStackLayout Padding="24"
+                         Spacing="16"&gt;
+        &lt;Label Text="JokeApp"
+               FontSize="32"
+               FontAttributes="Bold" /&gt;
+
+        &lt;Button Text="Toon een grap" /&gt;
+    &lt;/VerticalStackLayout&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ieder element stelt een object voor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ContentPage</code> is de pagina;</p>
+</li>
+<li>
+<p><code>VerticalStackLayout</code> rangschikt zijn <code>children</code> verticaal;</p>
+</li>
+<li>
+<p><code>Label</code> en <code>Button</code> zijn zichtbare controls;</p>
+</li>
+<li>
+<p>attributen zoals <code>Text</code>, <code>Padding</code> en <code>FontSize</code> stellen properties in.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De nesting vormt een boomstructuur. De pagina bevat een layout en de layout bevat twee controls.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_gekoppelde_klasse"><a class="anchor" href="#_de_gekoppelde_klasse"></a>De gekoppelde klasse</h3>
+<div class="paragraph">
+<p>De waarde van <code>x:Class</code> verwijst naar de bijbehorende C#-klasse.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp;
+
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>InitializeComponent()</code> initialiseert de objecten uit de XAML, bouwt hun onderlinge relaties op en koppelt gedeclareerde event handlers. De klasse is <code>partial</code> omdat een deel vanuit de XAML wordt gegenereerd.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Verwijder <code>InitializeComponent()</code> niet. Zonder deze aanroep bestaan de controls uit de XAML nog niet wanneer de constructor verder wordt uitgevoerd.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layouts"><a class="anchor" href="#_layouts"></a>Layouts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een layout bepaalt waar en hoe zijn <code>children</code> worden geplaatst. Veelgebruikte layouts zijn:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>VerticalStackLayout</code></dt>
+<dd>
+<p>Plaatst controls onder elkaar.</p>
+</dd>
+<dt class="hdlist1"><code>HorizontalStackLayout</code></dt>
+<dd>
+<p>Plaatst controls naast elkaar.</p>
+</dd>
+<dt class="hdlist1"><code>Grid</code></dt>
+<dd>
+<p>Verdeelt ruimte in rijen en kolommen.</p>
+</dd>
+<dt class="hdlist1"><code>ScrollView</code></dt>
+<dd>
+<p>Maakt een enkel child-element scrolbaar wanneer de inhoud niet op het scherm past.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Een layout is zelf ook een element en kan dus andere layouts bevatten.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;VerticalStackLayout Spacing="12"&gt;
+    &lt;Label Text="Nieuwe grap" /&gt;
+
+    &lt;HorizontalStackLayout Spacing="8"&gt;
+        &lt;Entry Placeholder="Typ een grap"
+               HorizontalOptions="Fill" /&gt;
+        &lt;Button Text="Toevoegen" /&gt;
+    &lt;/HorizontalStackLayout&gt;
+&lt;/VerticalStackLayout&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deze oplossing werkt op een breed scherm, maar op een smal toestel krijgt het invoerveld mogelijk te weinig plaats. In de volgende les gebruiken we een <code>Grid</code> om dergelijke schermen robuuster op te bouwen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_veelgebruikte_controls"><a class="anchor" href="#_veelgebruikte_controls"></a>Veelgebruikte controls</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Label</code></dt>
+<dd>
+<p>Toont tekst.</p>
+</dd>
+<dt class="hdlist1"><code>Button</code></dt>
+<dd>
+<p>Voert een actie uit wanneer de gebruiker erop klikt.</p>
+</dd>
+<dt class="hdlist1"><code>Entry</code></dt>
+<dd>
+<p>Laat invoer op één regel toe.</p>
+</dd>
+<dt class="hdlist1"><code>Editor</code></dt>
+<dd>
+<p>Laat invoer over meerdere regels toe.</p>
+</dd>
+<dt class="hdlist1"><code>Picker</code></dt>
+<dd>
+<p>Laat de gebruiker één waarde uit een lijst kiezen.</p>
+</dd>
+<dt class="hdlist1"><code>Image</code></dt>
+<dd>
+<p>Toont een afbeelding uit de resources of van een andere bron.</p>
+</dd>
+<dt class="hdlist1"><code>Border</code></dt>
+<dd>
+<p>Groepeert inhoud in een visueel vlak met een achtergrond en rand.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Een volledig overzicht is beschikbaar in de <a href="https://learn.microsoft.com/dotnet/maui/user-interface/controls/?view=net-maui-10.0">documentatie van MAUI-controls</a>. Probeer niet alle controls uit het hoofd te leren. Leer vooral documentatie lezen en de juiste control voor een interactie kiezen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_events_koppelen"><a class="anchor" href="#_events_koppelen"></a>Events koppelen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We koppelen in XAML het <code>Clicked</code>-event van een knop aan een methode in de code-behind.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Button Text="Toon een grap"
+        Clicked="OnShowRandomJokeClicked" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De code-behind bevat een methode met de verwachte signatuur.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void OnShowRandomJokeClicked(object? sender, EventArgs e)
+{
+    // Reactie op de klik.
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>sender</code></dt>
+<dd>
+<p>Verwijst naar het object dat het event verstuurde. In dit geval is dat de knop.</p>
+</dd>
+<dt class="hdlist1"><code>e</code></dt>
+<dd>
+<p>Bevat bijkomende informatie over het event. Een gewone klik heeft geen extra gegevens nodig, waardoor het type <code>EventArgs</code> volstaat.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Events kunnen ook vanuit C# worden gekoppeld.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">showRandomJokeButton.Clicked += OnShowRandomJokeClicked;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In deze cursus gebruiken we voorlopig de declaratie in XAML. Zo blijft in én oogopslag zichtbaar op welk event een control reageert.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controls_aanspreken"><a class="anchor" href="#_controls_aanspreken"></a>Controls aanspreken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Geef een control met <code>x:Name</code> een naam wanneer de code-behind hem rechtstreeks moet aanspreken.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Label x:Name="currentJokeLabel"
+       Text="Klik op de knop voor een grap." /&gt;
+
+&lt;Button Text="Toon een grap"
+        Clicked="OnShowRandomJokeClicked" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Na <code>InitializeComponent()</code> is <code>currentJokeLabel</code> beschikbaar in de gekoppelde partial class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void OnShowRandomJokeClicked(object? sender, EventArgs e)
+{
+    currentJokeLabel.Text = "Een byte bestelt acht bits.";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Gebruik duidelijke namen. <code>currentJokeLabel</code> vertelt meer dan <code>label1</code> en maakt event handlers gemakkelijker te lezen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_model"><a class="anchor" href="#_het_model"></a>Het model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een grap is een concept uit ons probleemdomein en verdient vanaf het begin een eigen klasse. We starten eenvoudig, maar vermijden bewust een overgang van losse <code>string</code>-waarden naar een model in een latere les.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Models;
+
+public sealed class Joke
+{
+    public Guid Id { get; init; } = Guid.NewGuid();
+    public string Text { get; set; }
+
+    public Joke(string text)
+    {
+        Text = text;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De validatieregels worden in de volgende les toegevoegd. Het belangrijke punt is nu dat de UI werkt met <code>Joke</code>-objecten en niet met een lijst losse teksten.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_de_grappen_beheren"><a class="anchor" href="#_de_grappen_beheren"></a>De grappen beheren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De pagina is verantwoordelijk voor interactie met de gebruiker. Het beheren en kiezen van grappen is een andere verantwoordelijkheid. We plaatsen die in een eenvoudige <code>JokeService</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+
+namespace JokeApp.Services;
+
+public sealed class JokeService
+{
+    private readonly List&lt;Joke&gt; _jokes = new()
+    {
+        new Joke("Er zijn 10 soorten mensen: zij die binair begrijpen en zij die dat niet doen."),
+        new Joke("Een SQL-query loopt een café binnen, stapt naar twee tabellen en vraagt: mag ik erbij komen?")
+    };
+
+    public IReadOnlyList&lt;Joke&gt; GetAll()
+    {
+        return _jokes.AsReadOnly();
+    }
+
+    public Joke GetRandom()
+    {
+        var index = Random.Shared.Next(_jokes.Count);
+        return _jokes[index];
+    }
+
+    public void Add(Joke joke)
+    {
+        ArgumentNullException.ThrowIfNull(joke);
+        _jokes.Add(joke);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De klasse is nog geen repository. Ze biedt wel een duidelijke plaats voor de verantwoordelijkheid en voorkomt dat de pagina zelf een <code>List&lt;Joke&gt;</code> beheert.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_een_eerste_werkend_scherm"><a class="anchor" href="#_een_eerste_werkend_scherm"></a>Een eerste werkend scherm</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vervang de standaardinhoud van <code>MainPage.xaml</code> door een compact scherm.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JokeApp.MainPage"
+             Title="JokeApp"&gt;
+
+    &lt;ScrollView&gt;
+        &lt;VerticalStackLayout Padding="24"
+                             Spacing="16"&gt;
+            &lt;Label Text="JokeApp"
+                   FontSize="32"
+                   FontAttributes="Bold" /&gt;
+
+            &lt;Border Padding="20"
+                    StrokeThickness="1"&gt;
+                &lt;Label x:Name="currentJokeLabel"
+                       Text="Klik op de knop voor een grap."
+                       FontSize="18" /&gt;
+            &lt;/Border&gt;
+
+            &lt;Button Text="Toon een willekeurige grap"
+                    Clicked="OnShowRandomJokeClicked" /&gt;
+
+            &lt;Label Text="Zelf een grap toevoegen"
+                   FontAttributes="Bold" /&gt;
+
+            &lt;Entry x:Name="jokeTextEntry"
+                   Placeholder="Typ hier een grap"
+                   TextChanged="OnJokeTextChanged"
+                   Completed="OnJokeTextCompleted" /&gt;
+
+            &lt;Button x:Name="addJokeButton"
+                    Text="Toevoegen"
+                    IsEnabled="False"
+                    Clicked="OnAddJokeClicked" /&gt;
+
+            &lt;Label x:Name="statusLabel"
+                   Text="2 grappen beschikbaar" /&gt;
+        &lt;/VerticalStackLayout&gt;
+    &lt;/ScrollView&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De pagina heeft een <code>JokeService</code> nodig. We maken die voorlopig zelf aan.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Models;
+using JokeApp.Services;
+
+namespace JokeApp;
+
+public partial class MainPage : ContentPage
+{
+    private readonly JokeService _jokeService = new();
+
+    public MainPage()
+    {
+        InitializeComponent();
+        UpdateStatus();
+    }
+
+    private void OnShowRandomJokeClicked(object? sender, EventArgs e)
+    {
+        var joke = _jokeService.GetRandom();
+        currentJokeLabel.Text = joke.Text;
+    }
+
+    private void OnJokeTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        addJokeButton.IsEnabled = !string.IsNullOrWhiteSpace(e.NewTextValue);
+    }
+
+    private void OnJokeTextCompleted(object? sender, EventArgs e)
+    {
+        TryAddJoke();
+    }
+
+    private void OnAddJokeClicked(object? sender, EventArgs e)
+    {
+        TryAddJoke();
+    }
+
+    private void TryAddJoke()
+    {
+        var joke = new Joke(jokeTextEntry.Text);
+        _jokeService.Add(joke);
+
+        jokeTextEntry.Text = string.Empty;
+        currentJokeLabel.Text = joke.Text;
+        UpdateStatus();
+    }
+
+    private void UpdateStatus()
+    {
+        var count = _jokeService.GetAll().Count;
+        statusLabel.Text = $"{count} grappen beschikbaar";
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Merk op hoe verschillende events dezelfde private methode <code>TryAddJoke()</code> gebruiken. De knop en de Enter-toets bieden twee interacties, maar de logica staat slechts op één plaats.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>TextChangedEventArgs</code> bevat onder meer <code>OldTextValue</code> en <code>NewTextValue</code>. Het specifieke type van <code>e</code> hangt af van het event.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ui_toestand"><a class="anchor" href="#_ui_toestand"></a>UI-toestand</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een scherm heeft op ieder moment een zichtbare toestand. In ons eenvoudige scherm zijn bijvoorbeeld deze vragen relevant:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Welke grap wordt momenteel getoond?</p>
+</li>
+<li>
+<p>Wat staat in het invoerveld?</p>
+</li>
+<li>
+<p>Kan de knop <strong>Toevoegen</strong> worden gebruikt?</p>
+</li>
+<li>
+<p>Hoeveel grappen zijn beschikbaar?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Op dit moment passen event handlers de controls rechtstreeks aan. Dat is overzichtelijk voor een klein scherm. Naarmate het aantal controls en events groeit, wordt het moeilijker om die toestand consistent te houden. Dat probleem lossen we later met MVVM op.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Code-behind is niet automatisch slechte code. Houd er voorlopig wel uitsluitend UI-interactie in en verplaats domeinlogica naar de passende domein- of serviceklasse.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thuisopdracht_geef_je_jokeapp_categorieën"><a class="anchor" href="#_thuisopdracht_geef_je_jokeapp_categorieën"></a>Thuisopdracht - Geef je JokeApp categorieën</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vertrek van de werkende app uit de les. Je hoeft de getoonde code niet opnieuw over te typen: breid ze zelfstandig uit zodat gebruikers grappen kunnen indelen. Deze opdracht is bedoeld als inoefening thuis. Als er lestijd overblijft, kan je al beginnen.</p>
+</div>
+<div class="paragraph">
+<p>Behoud het tonen en toevoegen van grappen, de uitgeschakelde toevoegknop bij lege invoer en het bijgewerkte aantal grappen.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Maak in <code>Models/JokeCategory.cs</code> een <code>JokeCategory</code>-enum met <code>Programming</code>, <code>DadJoke</code> en <code>Other</code>.</p>
+</li>
+<li>
+<p>Geef <code>Joke</code> een property <code>Category</code> en pas de constructor aan zodat die tekst en categorie ontvangt. Pas ook de bestaande constructor-aanroepen aan.</p>
+</li>
+<li>
+<p>Laat de gebruiker via een <code>Picker</code> een categorie kiezen bij het toevoegen. Selecteer bij het openen van de pagina een standaardcategorie.</p>
+</li>
+<li>
+<p>Toon bij de willekeurige grap ook haar categorie. Bewaar die categorie in het <code>Joke</code>-object, niet uitsluitend in een label.</p>
+</li>
+<li>
+<p>Voorzie minstens drie startgrappen, verspreid over de categorieën.</p>
+</li>
+<li>
+<p>Voeg een knop <strong>Invoer wissen</strong> toe. Die wist het invoerveld en herstelt de standaardcategorie, zonder een grap toe te voegen.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Raadpleeg de <a href="https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/picker?view=net-maui-10.0#set-the-itemssource-property">documentatie van Picker</a>. Vul <code>ItemsSource</code> in de constructor na <code>InitializeComponent()</code>. Met <code>Enum.GetValues&lt;JokeCategory&gt;().ToList()</code> krijg je de categorieën; met <code>SelectedIndex</code> stel je een beginselectie in en via <code>SelectedItem</code> lees je de keuze uit.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Toon in een apart label welke categorie momenteel voor de nieuwe grap gekozen is. Werk dat label bij via <code>SelectedIndexChanged</code>.</p>
+</li>
+<li>
+<p>Geef na toevoegen het invoerveld opnieuw focus met <code>Focus()</code>, zodat de gebruiker meteen een volgende grap kan typen.</p>
+</li>
+<li>
+<p>Werk het categorielabel ook bij wanneer <strong>Invoer wissen</strong> de beginselectie herstelt.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Houd bij hoe vaak een willekeurige grap werd opgevraagd.</p>
+</li>
+<li>
+<p>Voeg een knop toe om de laatst opgevraagde willekeurige grap opnieuw te tonen nadat een nieuwe grap werd toegevoegd. Bewaar hiervoor een verwijzing naar het passende <code>Joke</code>-object en schakel de knop uit zolang nog geen willekeurige grap werd opgevraagd.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controleer_je_uitbreiding"><a class="anchor" href="#_controleer_je_uitbreiding"></a>Controleer je uitbreiding</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg een grap toe in elke categorie en controleer of tekst en categorie samen worden bewaard en getoond.</p>
+</li>
+<li>
+<p>Kies een andere categorie en druk op <strong>Invoer wissen</strong>: het invoerveld is leeg, de standaardcategorie is opnieuw geselecteerd en het aantal grappen is niet veranderd.</p>
+</li>
+<li>
+<p>Controleer of de bestaande knop voor een willekeurige grap en de teller nog werken.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Bewaar deze versie. In <a href="21-maui-ui-styling-validation.html" class="xref page">de volgende les</a> gebruiken we dezelfde categorieën in een lijst en verplaatsen we het invoerformulier naar een eigen pagina. DI, MVVM en modelvalidatie zijn voor deze opdracht nog niet nodig.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

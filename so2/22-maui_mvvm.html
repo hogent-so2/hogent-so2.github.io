@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI – MVVM &amp; CollectionView :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui_ioc-di.html">IoC, DI &amp; repository</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="22-maui_mvvm.html">MVVM &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="23-maui_webapi.html">Navigatie &amp; berichten</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="10-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="11-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="12-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="13-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="22-maui_mvvm.html">MVVM &amp; opslag</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI – MVVM &amp; CollectionView</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de vorige les hebben we Inversion of Control, Dependency Injection en onze JokeService uitgewerkt.
+Vanaf deze les schakelen we over naar MVVM, de standaardarchitectuur voor MAUI-apps.</p>
+</div>
+<div class="paragraph">
+<p>We gebruiken dezelfde oefening (de Joke-app) om MVVM stap voor stap te introduceren.
+Zo groeit de app les na les mee, zonder dat we telkens helemaal opnieuw beginnen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mvvm"><a class="anchor" href="#_mvvm"></a>MVVM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MVVM is een architecturaal patroon dat staat voor Model – View – ViewModel.
+Het wordt veel gebruikt in frameworks zoals MAUI, WPF, Xamarin, Avalonia, enz.
+Het doel is om UI en logica strikt te scheiden, zodat applicaties overzichtelijker, testbaar en uitbreidbaar worden.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Model</dt>
+<dd>
+<p>Data en domeinlogica, de BL. Het model kent de UI niet.</p>
+</dd>
+<dt class="hdlist1">View</dt>
+<dd>
+<p>De UI, dus de XAML-pagina&#8217;s en hun views. Deze toont de gegevens van het ViewModel.
+Bevat geen logica behalve UI-logica (animaties, opmaak, simpele event-afhandeling die puur visueel is).</p>
+</dd>
+<dt class="hdlist1">ViewModel</dt>
+<dd>
+<p>De brug tussen Model en View. Het ViewModel haalt of bewaart data via services of repositories. Deze stelt properties en commands beschikbaar voor de View via binding. Het ViewModel kent de view niet rechtstreeks, enkel via binding.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Belangrijke principes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>De View kent het ViewModel via <code>BindingContext</code>.</p>
+</li>
+<li>
+<p>Het ViewModel kent de View niet.</p>
+</li>
+<li>
+<p>Modellen kennen noch View, noch ViewModel.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_concreet_onze_joke_app_in_mvvm"><a class="anchor" href="#_concreet_onze_joke_app_in_mvvm"></a>Concreet: onze Joke-app in MVVM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We gebruiken het <code>Joke</code>-model al sinds de eerste MAUI-les. Het model hoeft voor MVVM niet te veranderen. De data van het model wordt gebruikt om ViewModels op te bouwen. Deze ViewModels stellen via hun eigen properties precies de informatie ter beschikking die de UI nodig heeft.</p>
+</div>
+<div class="paragraph">
+<p>Deze ViewModels zijn dus ook wel terug models, maar voor de view: vandaar de naam viewMODEL. De eigenschappen van de ViewModels kunnen gelijklopen met de eigenschappen van het model, maar dit hoeft niet.
+Hiermee bedoelen we dat als je model een eigenschap <code>Naam</code> heeft, dan zal je ViewModel dit waarschijnlijk ook hebben. Het kan zijn dat je model een eigenschap <code>Geboortedatum</code> heeft en in je ViewModel kan dit bv. eerder de berekende waarde <code>Leeftijd</code> zijn.</p>
+</div>
+<div class="paragraph">
+<p>De UI zal zich <em>binden</em> aan een ViewModel. Binnen MAUI kan je dit doen via <code>Binding</code>.</p>
+</div>
+<div class="paragraph">
+<p>We vertrekken van de Joke-app uit de vorige les, waar de logica grotendeels in code-behind stond.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_binding"><a class="anchor" href="#_data_binding"></a>Data binding</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data binding is het mechanisme waarmee de UI (XAML) automatisch verbonden wordt met properties in het ViewModel.</p>
+</div>
+<div class="paragraph">
+<p>De View leest dus niet meer rechtstreeks uit C#-code-behind, maar uit het ViewModel.</p>
+</div>
+<div class="paragraph">
+<p>Dit zorgt ervoor dat de UI automatisch verandert wanneer het ViewModel verandert en dat het ViewModel verandert wanneer de gebruiker in de UI iets aanpast.</p>
+</div>
+<div class="paragraph">
+<p>Stel dat je een ViewModel <code>JokeListViewModel</code> hebt, dan stel je in de view de BindingContext in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public partial class JokeListPage : ContentPage
+{
+    public JokeListPage(JokeListViewModel vm)
+    {
+        InitializeComponent();
+
+        BindingContext = vm;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En in XAML bind je:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="JokeApp.Views.JokeListPage"&gt;
+    &lt;VerticalStackLayout Padding="20"&gt;
+        &lt;Label Text="{Binding CurrentJoke}" /&gt;
+    &lt;/VerticalStackLayout&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hier wordt <code>Text</code> automatisch geüpdatet wanneer <code>CurrentJoke</code> wijzigt, op voorwaarde dat het ViewModel <code>INotifyPropertyChanged</code> correct implementeert. Op <code>INotifyPropertyChanged</code> komen we later nog terug.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_binding"><a class="anchor" href="#_command_binding"></a>Command binding</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In plaats van click-events in code-behind gebruiken we commands in het ViewModel via de interface <code>ICommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>De ViewModel wordt iets zoals:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class JokeListViewModel : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private readonly IJokeService _jokeService;
+
+    public ICommand NewJokeCommand { get; }
+
+    public JokeListViewModel(IJokeService jokeService)
+    {
+        _jokeService = jokeService;
+
+        NewJokeCommand = new Command(() =&gt; OnNewJoke());
+    }
+
+    private void OnNewJoke()
+    {
+        ...
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En in de XAML gebruiken we dan de <code>Command</code> eigenschap op bv. een button:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Button Text="Nieuwe grap"
+        Command="{Binding NewJokeCommand}" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De knop roept nu de command aan in het ViewModel, zonder dat we een event handler in de code-behind nodig hebben.</p>
+</div>
+<div class="paragraph">
+<p>Voordelen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Minder code-behind</p>
+</li>
+<li>
+<p>Makkelijker te testen</p>
+</li>
+<li>
+<p>Duidelijke scheiding tussen UI en logica</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inotifypropertychanged"><a class="anchor" href="#_inotifypropertychanged"></a>INotifyPropertyChanged</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>INotifyPropertyChanged is een interface die aangeeft dat een object kan laten weten wanneer één van zijn properties verandert.</p>
+</div>
+<div class="paragraph">
+<p>Het is een kernonderdeel van MVVM:Zonder INotifyPropertyChanged wordt de UI niet automatisch vernieuwd wanneer een property na de initiële binding wijzigt.
+Databinding betekent dat de UI (bijv. een Label of Entry) automatisch geüpdatet wordt wanneer de onderliggende property in het ViewModel wijzigt.
+MAUI moet dus weten wanneer een property veranderd is.</p>
+</div>
+<div class="paragraph">
+<p>Dat 'ik ben gewijzigd' signaal wordt gegeven door INotifyPropertyChanged.</p>
+</div>
+<div class="paragraph">
+<p>INotifyPropertyChanged bevat maar één eigenschap:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public event PropertyChangedEventHandler PropertyChanged;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Als een property verandert, moet je zelf het bijhorende event activeren.
+Dit gebeurt door alle subscribers van het event aan te roepen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentJoke)));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De UI <em>luistert</em> naar deze events en weet dan:</p>
+</div>
+<div class="paragraph">
+<p>"Ah, de property CurrentJoke is veranderd, ik moet de UI updaten."</p>
+</div>
+<div class="paragraph">
+<p>Een volledige bindbare property ziet er concreet zo uit:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class JokeListViewModel : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string _currentJoke = string.Empty;
+    public string CurrentJoke
+    {
+        get =&gt; _currentJoke;
+        set
+        {
+            if (_currentJoke == value) return;
+            _currentJoke = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentJoke)));
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De check <code>if (_currentJoke == value) return;</code> voorkomt dat het event onnodig afgevuurd wordt wanneer de waarde niet veranderd is.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_collectionview"><a class="anchor" href="#_collectionview"></a>CollectionView</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CollectionView is de control in MAUI om lijsten efficiënt te tonen.</p>
+</div>
+<div class="paragraph">
+<p>Belangrijkste eigenschappen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ItemsSource</code>: de ViewModel collectie</p>
+</li>
+<li>
+<p><code>ItemTemplate</code>: de template die gebruikt wordt om de view op te bouwen voor de items van de collectie</p>
+</li>
+<li>
+<p><code>SelectionMode</code>: wat voor selectie is mogelijk</p>
+</li>
+<li>
+<p><code>SelectedItem</code>: het geselecteerde item</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Voorbeeld XAML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;CollectionView ItemsSource="{Binding Jokes}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedJoke}"&gt;
+    &lt;CollectionView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;Border Padding="10" Margin="4"&gt;
+                &lt;Label Text="{Binding Text}" /&gt;
+            &lt;/Border&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/CollectionView.ItemTemplate&gt;
+&lt;/CollectionView&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Voor de DataTemplate wordt het item (één <code>JokeViewModel</code>) als BindingContext gezet. De <code>Label</code> binnen de DataTemplate heeft dus <em>niet</em> de pagina-ViewModel als BindingContext, maar 1 enkele <code>JokeViewModel</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Item-ViewModel:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class JokeViewModel
+{
+    public Guid Id { get; }
+    public string Text { get; }
+    public string Category { get; }
+
+    public JokeViewModel(Joke joke)
+    {
+        Id = joke.Id;
+        Text = joke.Text;
+        Category = joke.Category.ToString();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Een GUID is een Globally Unique Identifier, een 128-bit waarde die vrijwel gegarandeerd uniek is.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We gebruiken hier een <code>JokeViewModel</code> in plaats van de domeinklasse <code>Joke</code> rechtstreeks.
+Dit scherm heeft mogelijk niet alle properties van <code>Joke</code> nodig, of wil ze anders presenteren — bv. een afgekorte tekst of een berekende waarde.
+Door een apart item-ViewModel te maken, blijft de domeinklasse ongewijzigd en bevat de UI-klasse precies wat ze nodig heeft.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observablecollectiont"><a class="anchor" href="#_observablecollectiont"></a>ObservableCollection&lt;T&gt;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wanneer de lijst in het ViewModel kan veranderen (items toevoegen, verwijderen, enz.), gebruik je ObservableCollection.</p>
+</div>
+<div class="paragraph">
+<p>ViewModel:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class JokeListViewModel : INotifyPropertyChanged
+{
+    ...
+
+    public ObservableCollection&lt;JokeViewModel&gt; Jokes { get; };
+
+    ...
+
+    public JokeListViewModel(IJokeService jokeService)
+    {
+        var jokes = jokeService.GetAll()
+                               .Select(joke =&gt; new JokeViewModel(joke));
+        Jokes = new ObservableCollection&lt;JokeViewModel&gt;(jokes);
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>XAML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;CollectionView ItemsSource="{Binding Jokes}"&gt;
+    &lt;CollectionView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;Border Padding="10" Margin="4"&gt;
+                &lt;Label Text="{Binding Text}" /&gt;
+            &lt;/Border&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/CollectionView.ItemTemplate&gt;
+&lt;/CollectionView&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Omdat we ObservableCollection gebruiken, wordt de CollectionView automatisch geüpdatet zonder extra code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_repository_en_data_opslag_met_litedb"><a class="anchor" href="#_repository_en_data_opslag_met_litedb"></a>Repository en data-opslag met LiteDB</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tot nu toe bewaarden we de grappen in het geheugen.
+We kunnen hetzelfde DI-principe toepassen voor echte data-opslag, via een repository en een database zoals LiteDB.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.litedb.org/">LiteDB</a> is een eenvoudige <a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL-database</a> in één enkel bestand.
+Je kan er rechtstreeks C#-objecten in bewaren zonder tabellen of SQL te definiëren.</p>
+</div>
+<div class="sect2">
+<h3 id="_litedb_implementatie_van_de_repository"><a class="anchor" href="#_litedb_implementatie_van_de_repository"></a>LiteDB-implementatie van de repository</h3>
+<div class="paragraph">
+<p>Je voegt ondersteuning toe voor LiteDB via NuGet in je project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using LiteDB;
+
+public class LiteDBJokeRepository : IJokeRepository, IDisposable
+{
+    private const string DatabaseFileName = "joke_db.db";
+
+    private readonly LiteDatabase _database;
+
+    // Een collection is vergelijkbaar met een tabel in een relationele databank.
+    private ILiteCollection&lt;Joke&gt; JokeCollection
+        =&gt; _database.GetCollection&lt;Joke&gt;();
+
+    public LiteDBJokeRepository()
+    {
+        var databasePath = Path.Combine(
+            FileSystem.AppDataDirectory,
+            DatabaseFileName);
+
+        _database = new LiteDatabase(databasePath);
+    }
+
+    public void Add(Joke joke)
+        =&gt; JokeCollection.Insert(joke);
+
+    public Joke? GetById(Guid id)
+        =&gt; JokeCollection.FindById(id);
+
+    public IReadOnlyList&lt;Joke&gt; GetAll()
+        =&gt; JokeCollection.FindAll().ToList().AsReadOnly();
+
+    public void Remove(Guid id)
+        =&gt; JokeCollection.Delete(id);
+
+    public void Dispose()
+    {
+        _database.Dispose();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_registratie_in_mauiprogram"><a class="anchor" href="#_registratie_in_mauiprogram"></a>Registratie in MauiProgram</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Singleton omdat we willen vermijden dat we meerdere connecties openen naar LiteDB
+builder.Services.AddSingleton&lt;IJokeRepository, LiteDBJokeRepository&gt;();
+
+builder.Services.AddTransient&lt;IJokeService, JokeService&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voor de ViewModel en de pagina verandert er niets: die werken nog altijd via <code>IJokeService</code>, onbewust van LiteDB.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefening"><a class="anchor" href="#_oefening"></a>Oefening</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vertrek van de Joke-app uit de vorige les en breng de bestaande schermen over naar MVVM. De zichtbare werking en de globale styles blijven behouden.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Maak een <code>JokeListViewModel</code> voor het overzicht en een ViewModel voor het toevoegscherm.</p>
+</li>
+<li>
+<p>Vervang <code>Clicked</code>-handlers voor applicatieacties door commands.</p>
+</li>
+<li>
+<p>Bind invoer, validatieboodschap en knoptoestand aan properties van het ViewModel.</p>
+</li>
+<li>
+<p>Toon de grappen via een <code>ObservableCollection&lt;JokeViewModel&gt;</code> in de bestaande <code>CollectionView</code>.</p>
+</li>
+<li>
+<p>Laat ieder item maximaal twee lijnen tekst tonen met <code>MaxLines</code>.</p>
+</li>
+<li>
+<p>Registreer ViewModels en pagina&#8217;s via de DI-container.</p>
+</li>
+<li>
+<p>Vervang de in-memory repository door een <code>LiteDBJokeRepository</code>. De pagina&#8217;s en ViewModels mogen daardoor niet wijzigen.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Vertaal verwachte model- en service-exceptions naar een bindbare validatieboodschap.</p>
+</li>
+<li>
+<p>Maak de toevoegcommand alleen uitvoerbaar wanneer er potentieel geldige invoer aanwezig is.</p>
+</li>
+<li>
+<p>Toon de volledig geselecteerde grap in een afzonderlijk detailvlak.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Maak een herbruikbare <code>BaseViewModel</code> die <code>INotifyPropertyChanged</code> implementeert.</p>
+</li>
+<li>
+<p>Voeg een filter op categorie toe zonder filtering in de View te plaatsen.</p>
+</li>
+<li>
+<p>Schrijf een unit test voor minstens één command in een ViewModel.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

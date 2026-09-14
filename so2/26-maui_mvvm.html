@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MAUI - MVVM, binding &amp; commands :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://dev.azure.com/hogent-web4-stefancourteaux/">Azure DevOps</a>
+                  <a class="navbar-item" target="_blank" href="https://portal.azure.com">Azure Portal</a>
+                  <a class="navbar-item" target="_blank" href="https://chamilo.hogent.be">Chamilo</a>
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://jwt.io">JWT.io</a>                  
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active is-current-page" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li>MAUI</li>
+    <li><a href="26-maui_mvvm.html">MVVM, binding &amp; commands</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MAUI - MVVM, binding &amp; commands</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Startcode nodig? Je vindt de code van vorige les op <a href="https://github.com">Github</a>. Heb je zelf een werkende vorige versie, dan is het sterk aangeraden om daarin verder te werken.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Onze JokeApp bewaart haar gegevens via een repository en ontvangt dependencies via DI. De schermen werken nog met events: een handler leest controls uit, roept de service aan en past andere controls aan.</p>
+</div>
+<div class="paragraph">
+<p>In deze les behouden we de app en vervangen we die communicatie stap voor stap door <strong>MVVM</strong>. De opslag uit <a href="25-maui_ioc-di.html" class="xref page">de vorige les</a> blijft ongewijzigd.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vertrekpunt"><a class="anchor" href="#_vertrekpunt"></a>Vertrekpunt</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Behoud <code>MainPage</code>, <code>AddJokePage</code>, de models, validation-klassen, services, repositories en gedeelde styles. LiteDB blijft geregistreerd. We blijven in dezelfde pagina&#8217;s werken en gebruiken de gegevens van de bestaande service.</p>
+</div>
+<div class="paragraph">
+<p>Open eerst de werkende versie: zoeken, toevoegen, dubbele invoer en opnieuw opstarten moeten werken. Heb je verwijderen als thuisopdracht toegevoegd, bewaar die code; aan het einde migreer je ook die uitbreiding naar MVVM.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Dit is een refactoring. Dezelfde handeling moet voor de gebruiker hetzelfde resultaat blijven geven. Na elke stap controleren we dat, niet pas wanneer alle bestanden vervangen zijn.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_waarom_een_viewmodel"><a class="anchor" href="#_waarom_een_viewmodel"></a>Waarom een ViewModel?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bekijk <code>RefreshJokes</code> en de save-handler. Ze mengen verschillende soorten werk:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>schermtoestand bijhouden, zoals de toegepaste zoektekst;</p>
+</li>
+<li>
+<p>de service aanroepen;</p>
+</li>
+<li>
+<p>controls aanspreken, zoals <code>countLabel.Text</code> en <code>validationLabel.IsVisible</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Een ViewModel biedt de toestand en acties van een scherm aan zonder zelf labels, editors of pagina&#8217;s aan te spreken.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Model</dt>
+<dd>
+<p>De domeinobjecten, bijvoorbeeld <code>Joke</code>. De tekstregels horen nog steeds bij het domein.</p>
+</dd>
+<dt class="hdlist1">View</dt>
+<dd>
+<p>De XAML-pagina en haar beperkte code-behind. Ze bepaalt welke controls de toestand presenteren.</p>
+</dd>
+<dt class="hdlist1">ViewModel</dt>
+<dd>
+<p>Biedt properties en commands voor de View aan. Het gebruikt services voor applicatiegedrag, maar kent geen <code>Label</code>, <code>Editor</code> of <code>ContentPage</code>.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">View ── binding ──&gt; ViewModel ──&gt; IJokeService ──&gt; IJokeRepository
+                      │
+                      └──&gt; INavigationService</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De binding wordt in de View gelegd. Het ViewModel krijgt geen verwijzing naar de View. Een property <code>ErrorMessage</code> hoort bijvoorbeeld bij de presentatie; een regel over dubbele grappen blijft in de service.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_binding_en_bindingcontext"><a class="anchor" href="#_binding_en_bindingcontext"></a>Binding en BindingContext</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In de vorige les gebruikte het <code>DataTemplate</code> al <code>{Binding Text}</code>. Binnen één rij was het bijbehorende <code>Joke</code>-object de bron.</p>
+</div>
+<div class="paragraph">
+<p>Voor een hele pagina stellen we straks een ViewModel in als <code>BindingContext</code>. Een label met <code>Text="{Binding CountText}"</code> leest dan <code>CountText</code> van dat ViewModel. Child-controls erven die context, behalve waar een control zoals een itemtemplate een eigen context aanbiedt.</p>
+</div>
+<div class="sect2">
+<h3 id="_eerst_zien_waarom_een_melding_nodig_is"><a class="anchor" href="#_eerst_zien_waarom_een_melding_nodig_is"></a>Eerst zien waarom een melding nodig is</h3>
+<div class="paragraph">
+<p>Probeer tijdelijk onderstaande kleine klasse uit in <code>ViewModels</code>. Stel in <code>MainPage</code> na <code>InitializeComponent()</code> het <code>BindingContext</code> in op <code>new BindingProbeViewModel()</code> en bind één label aan <code>Message</code>. Een tijdelijke button-handler verandert <code>Message</code> in <code>"Gewijzigd"</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class FirstBindingViewModel
+{
+    public string Message { get; set; } = "Eerste waarde";
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De eerste waarde verschijnt, maar de latere wijziging wordt niet automatisch zichtbaar. De binding leest een property; ze blijft niet voortdurend alle properties opnieuw opvragen.</p>
+</div>
+<div class="paragraph">
+<p>Gebruik een breakpoint: is de C#-waarde gewijzigd? Ja. Heeft de UI een melding ontvangen? Nee. Verwijder deze proefklasse en de tijdelijke wijzigingen weer voordat je het echte overzicht aansluit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inotifypropertychanged"><a class="anchor" href="#_inotifypropertychanged"></a>INotifyPropertyChanged</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>INotifyPropertyChanged</code> biedt één event, <code>PropertyChanged</code>. Via de eventgegevens vertel je <strong>welke property</strong> gewijzigd is.</p>
+</div>
+<div class="paragraph">
+<p>We brengen de herhaalde code samen in een basisklasse.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/ViewModelBase.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace JokeApp.ViewModels;
+
+public abstract class ViewModelBase : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged(
+        [CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(
+            this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetProperty&lt;T&gt;(
+        ref T field, T value,
+        [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer&lt;T&gt;.Default.Equals(field, value))
+            return false;
+
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>SetProperty</code> vergelijkt de oude en nieuwe waarde, wijzigt het veld en meldt de wijziging. De teruggegeven <code>bool</code> is handig wanneer ook een afgeleide property of command opnieuw bekeken moet worden.</p>
+</div>
+<div class="paragraph">
+<p><code>CallerMemberName</code> vult de naam van de aanroepende property in. Zo hoef je niet overal zelf strings als <code>"SearchText"</code> te schrijven. Voor een <strong>andere</strong>, afgeleide property gebruiken we expliciet <code>nameof(&#8230;&#8203;)</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_binding_modes"><a class="anchor" href="#_binding_modes"></a>Binding modes</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>OneWay</code></dt>
+<dd>
+<p>Waarden gaan van de bron naar de UI. Een teller is een typisch voorbeeld.</p>
+</dd>
+<dt class="hdlist1"><code>TwoWay</code></dt>
+<dd>
+<p>Ook wijzigingen in de control gaan naar de bron. De tekst van een invoerveld moet naar een ViewModel-property kunnen.</p>
+</dd>
+<dt class="hdlist1"><code>OneTime</code></dt>
+<dd>
+<p>De waarde wordt bij het leggen van de binding gelezen, zonder de gewone voortdurende wijzigingsmeldingen te volgen.</p>
+</dd>
+<dt class="hdlist1"><code>OneWayToSource</code></dt>
+<dd>
+<p>Waarden gaan van de control naar de bron, zonder de omgekeerde richting.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>We vermelden <code>Mode=TwoWay</code> bij invoer expliciet om de bedoeling zichtbaar te maken. Voor <code>Entry.Text</code> en <code>Editor.Text</code> is dit al de standaard. Zie <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/binding-mode">Microsoft: binding modes</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>TwoWay</code> betekent niet dat we iedere toetsaanslag moeten valideren of bewaren. De invoer gaat naar een <strong>formulierproperty</strong>. De command achter <strong>Opslaan</strong> beslist wanneer we valideren en de service aanroepen.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_van_een_event_naar_een_command"><a class="anchor" href="#_van_een_event_naar_een_command"></a>Van een event naar een command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Een button kan in plaats van <code>Clicked</code> een <code>Command</code> krijgen. Het ViewModel biedt de actie aan via <code>ICommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Een command heeft twee belangrijke vragen:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Execute</code></dt>
+<dd>
+<p>Wat moet gebeuren wanneer de gebruiker de actie uitvoert?</p>
+</dd>
+<dt class="hdlist1"><code>CanExecute</code></dt>
+<dd>
+<p>Is de actie op dit moment beschikbaar?</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>We gebruiken de ingebouwde MAUI-<code>Command</code>. Voor binding en commands installeren we geen extra package.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Neem <code>Task</code>, <code>async</code> en <code>await</code> in de navigatievoorbeelden als een vast recept over. De command roept zo&#8217;n methode aan via <code>new Command(async () &#8658; await &#8230;&#8203;)</code>. Asynchroon programmeren wordt buiten deze reeks behandeld. Geef een methode die <code>Task</code> teruggeeft niet rechtstreeks aan <code>new Command</code> door; de callbackvorm hoort bij het recept.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_navigatie_zonder_een_pagina_in_het_viewmodel"><a class="anchor" href="#_navigatie_zonder_een_pagina_in_het_viewmodel"></a>Navigatie zonder een pagina in het ViewModel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De event handler sprak rechtstreeks <code>Shell.Current</code> aan. We willen die kennis niet naar het ViewModel kopiëren.</p>
+</div>
+<div class="paragraph">
+<p>Maak een kleine navigatieservice met de acties die we nu nodig hebben. Een algemeen contract voor elk denkbaar soort navigatie is niet nodig.</p>
+</div>
+<div class="listingblock">
+<div class="title">Navigation/INavigationService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
+
+public interface INavigationService
+{
+    Task ShowAddJokeAsync();
+    Task GoBackAsync();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Navigation/ShellNavigationService.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
+
+public sealed class ShellNavigationService : INavigationService
+{
+    public Task ShowAddJokeAsync() =&gt;
+        Shell.Current.GoToAsync(nameof(AddJokePage));
+
+    public Task GoBackAsync() =&gt;
+        Shell.Current.GoToAsync("..");
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De service kent Shell en de routenaam; het ViewModel kent alleen de bedoeling. De route in <code>AppShell</code> en de DI-registratie van <code>AddJokePage</code> blijven behouden.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_overzicht_omzetten"><a class="anchor" href="#_het_overzicht_omzetten"></a>Het overzicht omzetten</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We houden twee waarden uit elkaar: <code>SearchText</code> is wat momenteel in het veld staat; <code>_appliedSearchText</code> is de zoekopdracht die de gebruiker werkelijk heeft uitgevoerd. Terugkeren van het formulier mag niet stilzwijgend een nog niet uitgevoerde zoektekst toepassen.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/JokeListViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Collections.ObjectModel;
+using System.Windows.Input;
+using JokeApp.Models;
+using JokeApp.Navigation;
+using JokeApp.Services;
+
+namespace JokeApp.ViewModels;
+
+public sealed class JokeListViewModel : ViewModelBase
+{
+    private readonly IJokeService _jokeService;
+    private string _searchText = string.Empty;
+    private string _appliedSearchText = string.Empty;
+    private string _countText = string.Empty;
+    private Joke? _selectedJoke;
+
+    public ObservableCollection&lt;Joke&gt; Jokes { get; } = new();
+
+    public string SearchText
+    {
+        get =&gt; _searchText;
+        set =&gt; SetProperty(ref _searchText, value);
+    }
+
+    public string CountText
+    {
+        get =&gt; _countText;
+        private set =&gt; SetProperty(ref _countText, value);
+    }
+
+    public Joke? SelectedJoke
+    {
+        get =&gt; _selectedJoke;
+        set
+        {
+            if (SetProperty(ref _selectedJoke, value))
+                OnPropertyChanged(nameof(SelectedJokeText));
+        }
+    }
+
+    public string SelectedJokeText =&gt;
+        SelectedJoke?.Text ?? "Selecteer een grap.";
+
+    public ICommand SearchCommand { get; }
+    public ICommand ShowAllCommand { get; }
+    public ICommand AddJokeCommand { get; }
+
+    public JokeListViewModel(
+        IJokeService jokeService,
+        INavigationService navigationService)
+    {
+        _jokeService = jokeService;
+        SearchCommand = new Command(ApplySearch);
+        ShowAllCommand = new Command(ShowAll);
+        AddJokeCommand = new Command(async () =&gt; await navigationService.ShowAddJokeAsync());
+    }
+
+    public void Reload()
+    {
+        var matchingJokes = _jokeService.Search(_appliedSearchText);
+        SelectedJoke = null;
+        Jokes.Clear();
+
+        foreach (var joke in matchingJokes)
+            Jokes.Add(joke);
+
+        CountText = $"{Jokes.Count} van {_jokeService.GetAll().Count} grappen";
+    }
+
+    private void ApplySearch()
+    {
+        _appliedSearchText = SearchText.Trim();
+        Reload();
+    }
+
+    private void ShowAll()
+    {
+        SearchText = string.Empty;
+        _appliedSearchText = string.Empty;
+        Reload();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Volg eerst alleen <code>SearchCommand</code>: klik, <code>ApplySearch</code>, service, collectie en teller. Bekijk daarna de selectie. Wanneer <code>SelectedJoke</code> verandert, moet ook <code>SelectedJokeText</code> opnieuw gelezen worden; daarom melden we beide properties.</p>
+</div>
+<div class="paragraph">
+<p>We tonen hier de modellen rechtstreeks in de lijst. Een extra ViewModel per rij is pas nodig wanneer een rij eigen presentatietoestand of gedrag krijgt. Maak niet automatisch een extra klasse voor drie properties die je alleen kopieert.</p>
+</div>
+<div class="sect2">
+<h3 id="_wat_observablecollection_wel_en_niet_doet"><a class="anchor" href="#_wat_observablecollection_wel_en_niet_doet"></a>Wat ObservableCollection wel en niet doet</h3>
+<div class="paragraph">
+<p>De <code>CollectionView</code> luistert naar wijzigingen in <code>ObservableCollection&lt;T&gt;</code>. <code>Add</code>, <code>Remove</code> en <code>Clear</code> kunnen daardoor de zichtbare rijen bijwerken zonder telkens een andere <code>ItemsSource</code> in te stellen.</p>
+</div>
+<div class="paragraph">
+<p>Maar:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>een insert in LiteDB roept niet automatisch <code>Jokes.Add</code> aan;</p>
+</li>
+<li>
+<p>een wijziging van <code>Joke.Text</code> is geen wijziging van de collectie;</p>
+</li>
+<li>
+<p>de modellen in onze lijst implementeren geen <code>INotifyPropertyChanged</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Daarom laden we de gegevens voorlopig opnieuw wanneer het overzicht verschijnt. <code>Reload</code> leest de repository via de service en past vervolgens de observeerbare collectie aan. Dit is een bewuste synchronisatiestap, geen automatische databasebinding.</p>
+</div>
+<div class="paragraph">
+<p>Voor een kleine lokale lijst is opnieuw laden een prima keuze. In de volgende les bekijken we wanneer een expliciet bericht nuttig wordt. Zie ook <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1">Microsoft: ObservableCollection</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_de_view_koppelen"><a class="anchor" href="#_de_view_koppelen"></a>De View koppelen</h3>
+<div class="paragraph">
+<p>Vervang de basisversie van <code>MainPage.xaml</code> door deze versie. De layout en styles blijven herkenbaar; namen en event handlers maken plaats voor bindings. Bewaar je eigen verwijderknop voor de thuisopdracht.</p>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:JokeApp.ViewModels"
+             xmlns:models="clr-namespace:JokeApp.Models"
+             x:Class="JokeApp.MainPage"
+             x:DataType="vm:JokeListViewModel"
+             Title="Mijn grappen"&gt;
+    &lt;Grid Padding="24" RowSpacing="12"
+          RowDefinitions="Auto,*,Auto,Auto"&gt;
+        &lt;Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8"&gt;
+            &lt;Entry Placeholder="Zoek in de tekst"
+                   Text="{Binding SearchText, Mode=TwoWay}" /&gt;
+            &lt;Button Grid.Column="1" Text="Zoeken"
+                    Command="{Binding SearchCommand}" /&gt;
+            &lt;Button Grid.Column="2" Text="Toon alles"
+                    Command="{Binding ShowAllCommand}" /&gt;
+        &lt;/Grid&gt;
+        &lt;CollectionView Grid.Row="1" ItemsSource="{Binding Jokes}"
+                        SelectedItem="{Binding SelectedJoke, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        EmptyView="Geen grappen gevonden."&gt;
+            &lt;CollectionView.ItemTemplate&gt;
+                &lt;DataTemplate x:DataType="models:Joke"&gt;
+                    &lt;Border Padding="16" Margin="0,4"&gt;
+                        &lt;VerticalStackLayout Spacing="4"&gt;
+                            &lt;Label Text="{Binding Text}" MaxLines="2"
+                                   LineBreakMode="TailTruncation" /&gt;
+                            &lt;Label Text="{Binding Category}" FontSize="12" /&gt;
+                        &lt;/VerticalStackLayout&gt;
+                    &lt;/Border&gt;
+                &lt;/DataTemplate&gt;
+            &lt;/CollectionView.ItemTemplate&gt;
+        &lt;/CollectionView&gt;
+        &lt;Label Grid.Row="2" Text="{Binding SelectedJokeText}" /&gt;
+        &lt;Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="8"&gt;
+            &lt;Label Text="{Binding CountText}" VerticalOptions="Center" /&gt;
+            &lt;Button Grid.Column="1" Text="Toevoegen"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Command="{Binding AddJokeCommand}" /&gt;
+        &lt;/Grid&gt;
+    &lt;/Grid&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>x:DataType</code> vertelt de XAML-compiler welk type een binding verwacht. Op de pagina is dat <code>JokeListViewModel</code>, in het itemtemplate <code>Joke</code>. Het maakt zelf geen object en vervangt <code>BindingContext</code> niet.</p>
+</div>
+<div class="listingblock">
+<div class="title">MainPage.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.ViewModels;
+
+namespace JokeApp;
+
+public partial class MainPage : ContentPage
+{
+    private readonly JokeListViewModel _viewModel;
+
+    public MainPage(JokeListViewModel viewModel)
+    {
+        InitializeComponent();
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _viewModel.Reload();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Code-behind is niet verboden. Een lifecycle-event van een pagina doorgeven is iets anders dan de validatieregels of opslag daar implementeren.</p>
+</div>
+<div class="paragraph">
+<p>Voeg <code>using JokeApp.Navigation;</code> en <code>using JokeApp.ViewModels;</code> toe aan <code>MauiProgram.cs</code> en registreer vóór <code>Build()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">builder.Services.AddTransient&lt;INavigationService, ShellNavigationService&gt;();
+builder.Services.AddTransient&lt;JokeListViewModel&gt;();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De bestaande registraties van services, repositories en pagina&#8217;s blijven staan; registreer ze niet dubbel. Test nu het overzicht. Het toevoegscherm werkt op dit tussenpunt nog met zijn bestaande code-behind.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_toevoegformulier_omzetten"><a class="anchor" href="#_het_toevoegformulier_omzetten"></a>Het toevoegformulier omzetten</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We gebruiken gewone properties voor formulierinvoer. Een lege <code>Text</code> mag bestaan in dit ViewModel: de gebruiker heeft nog niets opgeslagen.</p>
+</div>
+<div class="paragraph">
+<p>De setter van het <strong>model</strong> blijft ongeldige modeltoestand tegenhouden. De setter van het <strong>formulier</strong> bewaart wat de gebruiker typt en wist eventueel een oude foutmelding. Die setter probeert nog geen <code>Joke</code> te wijzigen.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/AddJokeViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Windows.Input;
+using JokeApp.Models;
+using JokeApp.Navigation;
+using JokeApp.Services;
+using JokeApp.Validation;
+
+namespace JokeApp.ViewModels;
+
+public sealed class AddJokeViewModel : ViewModelBase
+{
+    private readonly IJokeService _jokeService;
+    private readonly INavigationService _navigationService;
+    private string _text = string.Empty;
+    private JokeCategory _selectedCategory = JokeCategory.Programming;
+    private string _errorMessage = string.Empty;
+
+    public IReadOnlyList&lt;JokeCategory&gt; Categories { get; } =
+        Enum.GetValues&lt;JokeCategory&gt;();
+
+    public string Text
+    {
+        get =&gt; _text;
+        set
+        {
+            if (SetProperty(ref _text, value))
+                ErrorMessage = string.Empty;
+        }
+    }
+
+    public JokeCategory SelectedCategory
+    {
+        get =&gt; _selectedCategory;
+        set =&gt; SetProperty(ref _selectedCategory, value);
+    }
+
+    public string ErrorMessage
+    {
+        get =&gt; _errorMessage;
+        private set
+        {
+            if (SetProperty(ref _errorMessage, value))
+                OnPropertyChanged(nameof(HasError));
+        }
+    }
+
+    public bool HasError =&gt; ErrorMessage.Length &gt; 0;
+    public ICommand SaveCommand { get; }
+
+    public AddJokeViewModel(
+        IJokeService jokeService,
+        INavigationService navigationService)
+    {
+        _jokeService = jokeService;
+        _navigationService = navigationService;
+        SaveCommand = new Command(async () =&gt; await SaveAsync());
+    }
+
+    private async Task SaveAsync()
+    {
+        ErrorMessage = string.Empty;
+        var validation = JokeTextValidator.Validate(Text);
+
+        if (!validation.IsValid)
+        {
+            ErrorMessage = validation.ErrorMessage;
+            return;
+        }
+
+        var joke = new Joke(Text, SelectedCategory);
+        var addResult = _jokeService.Add(joke);
+
+        if (!addResult.IsValid)
+        {
+            ErrorMessage = addResult.ErrorMessage;
+            return;
+        }
+
+        await _navigationService.GoBackAsync();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg nu ook <code>builder.Services.AddTransient&lt;AddJokeViewModel&gt;();</code> toe vóór <code>Build()</code> in <code>MauiProgram</code>. De pagina gaat dit ViewModel straks via haar constructor ontvangen.</p>
+</div>
+<div class="paragraph">
+<p>Vergelijk <code>SaveAsync</code> regel voor regel met de vorige event handler. De beslissingen blijven dezelfde. <code>ShowValidationError</code> wordt een waarde in <code>ErrorMessage</code>; terugkeren verloopt via de navigatieservice.</p>
+</div>
+<div class="paragraph">
+<p>De categorie heeft een geldige beginwaarde en de picker biedt alleen enumwaarden aan. We vragen hier geen vrije tekst voor een categorie.</p>
+</div>
+<div class="listingblock">
+<div class="title">AddJokePage.xaml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:JokeApp.ViewModels"
+             x:Class="JokeApp.AddJokePage"
+             x:DataType="vm:AddJokeViewModel"
+             Title="Grap toevoegen"&gt;
+    &lt;ScrollView&gt;
+        &lt;VerticalStackLayout Padding="24" Spacing="12"&gt;
+            &lt;Label Text="Grap" /&gt;
+            &lt;Editor Text="{Binding Text, Mode=TwoWay}"
+                    AutoSize="TextChanges"
+                    Placeholder="Typ een grap van 10 tot 280 tekens" /&gt;
+            &lt;Label Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding HasError}"
+                   TextColor="{StaticResource DangerColor}"
+                   SemanticProperties.Description="{Binding ErrorMessage}" /&gt;
+            &lt;Label Text="Categorie" /&gt;
+            &lt;Picker ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" /&gt;
+            &lt;Button Text="Opslaan"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Command="{Binding SaveCommand}" /&gt;
+        &lt;/VerticalStackLayout&gt;
+    &lt;/ScrollView&gt;
+&lt;/ContentPage&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">AddJokePage.xaml.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.ViewModels;
+
+namespace JokeApp;
+
+public partial class AddJokePage : ContentPage
+{
+    public AddJokePage(AddJokeViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De View verwijdert dus niet de validatie. Ze <strong>presenteert</strong> het resultaat ervan via binding. Een gewenste focusverplaatsing is wel View-gedrag; laat een ViewModel daarvoor geen <code>Editor</code> ontvangen.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_volledige_weg_van_één_klik"><a class="anchor" href="#_de_volledige_weg_van_één_klik"></a>De volledige weg van één klik</h3>
+<div class="paragraph">
+<p>Volg met breakpoints een lege, een geldige en een dubbele invoer:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>De editor werkt <code>Text</code> bij via <code>TwoWay</code>.</p>
+</li>
+<li>
+<p>De gebruiker klikt op <strong>Opslaan</strong>.</p>
+</li>
+<li>
+<p><code>SaveCommand</code> voert <code>SaveAsync</code> uit.</p>
+</li>
+<li>
+<p>De gedeelde validator controleert de tekst.</p>
+</li>
+<li>
+<p>Alleen bij geldige invoer maken we het model.</p>
+</li>
+<li>
+<p>De service controleert uniciteit en laat de repository bewaren.</p>
+</li>
+<li>
+<p>Bij een fout verandert <code>ErrorMessage</code>; bij succes keren we terug.</p>
+</li>
+<li>
+<p><code>OnAppearing</code> laat het overzicht opnieuw laden.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Let op: een lege tekst moet <strong>vóór</strong> de klik nog geen foutmelding opleveren. Een foutmelding verdwijnt wanneer de gebruiker de tekst aanpast; we voeren dan niet opnieuw de volledige validatie uit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testen_zonder_het_scherm_te_bedienen"><a class="anchor" href="#_testen_zonder_het_scherm_te_bedienen"></a>Testen zonder het scherm te bedienen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het ViewModel krijgt interfaces. Daardoor kan een test een in-memory repository en een navigatieservice gebruiken die alleen bijhoudt of terugkeren gevraagd werd.</p>
+</div>
+<div class="paragraph">
+<p>Een mogelijke testdouble:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Navigation;
+
+public class RecordingNavigationService : INavigationService
+{
+    public int BackCount { get; private set; }
+
+    public Task ShowAddJokeAsync() =&gt; Task.CompletedTask;
+
+    public Task GoBackAsync()
+    {
+        BackCount++;
+        return Task.CompletedTask;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voer in een testproject of begeleide test onderstaande controles uit via <code>SaveCommand.Execute(null)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Deze recording navigation service geeft onmiddellijk een voltooide <code>Task</code> terug. De validatie en opslag zijn hier ook synchroon. Daardoor kunnen we in <strong>deze tests</strong> meteen na <code>Execute(null)</code> de toestand controleren. Een gewone <code>Command</code> biedt zelf geen methode om een asynchrone uitvoering af te wachten; trek uit deze testopstelling dus geen algemene conclusie over echte navigatie of netwerkverzoeken.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Lege tekst: <code>HasError</code> is waar, aantal grappen blijft gelijk en <code>BackCount</code> blijft nul.</p>
+</li>
+<li>
+<p>Geldige unieke tekst: aantal grappen stijgt met één en <code>BackCount</code> stijgt met één.</p>
+</li>
+<li>
+<p>Dubbele tekst: melding verschijnt, aantal grappen en <code>BackCount</code> stijgen niet.</p>
+</li>
+<li>
+<p>Na een fout de tekst aanpassen: oude melding verdwijnt, er wordt nog niets bewaard.</p>
+</li>
+<li>
+<p>Zoeken: de resultaten veranderen pas wanneer het zoekcommand uitgevoerd wordt.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Het doel is de verantwoordelijkheid kunnen testen, niet in deze les een nieuw testframework aanleren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thuisopdracht_ook_je_eigen_uitbreiding_via_mvvm"><a class="anchor" href="#_thuisopdracht_ook_je_eigen_uitbreiding_via_mvvm"></a>Thuisopdracht - Ook je eigen uitbreiding via MVVM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vertrek van de gemigreerde JokeApp. Breng de verwijderfunctie uit de vorige thuisopdracht over naar deze structuur en werk de feedback af.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg <code>DeleteJokeCommand</code> toe aan <code>JokeListViewModel</code> en bind je verwijderknop eraan.</p>
+</li>
+<li>
+<p>Laat <code>CanExecute</code> afhangen van <code>SelectedJoke</code>. Bewaar de concrete <code>Command</code> zodat je <code>ChangeCanExecute()</code> kan aanroepen wanneer de selectie verandert.</p>
+</li>
+<li>
+<p>Roep <code>IJokeService.Remove</code> aan, toon een mislukt resultaat via een gebonden <code>StatusMessage</code> en vernieuw bij succes de lijst en teller.</p>
+</li>
+<li>
+<p>Behoud de toegepaste zoektekst, wis de oude selectie en geef ook bij succes een korte bevestiging.</p>
+</li>
+<li>
+<p>Voeg in <code>AddJokeViewModel</code> een afgeleide <code>CharacterCountText</code> toe en bind er een label aan. Meld die property mee wanneer <code>Text</code> wijzigt. Een teller is informatie, geen continue validatie; <strong>Opslaan</strong> blijft beschikbaar bij lege of te lange invoer.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Behoud een eventuele bevestigingsdialoog via een klein servicecontract; laat het ViewModel geen pagina opzoeken.</p>
+</li>
+<li>
+<p>Controleer met breakpoints dat <code>PropertyChanged</code> de juiste propertynamen meldt.</p>
+</li>
+<li>
+<p>Test een zoekopdracht zonder resultaten en het verwijderen van de laatste grap met beide repositories.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg een command toe dat het formulier wist en de standaardcategorie herstelt, zonder iets op te slaan.</p>
+</li>
+<li>
+<p>Schrijf de beschreven tests met een recording navigation service.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controle_vóór_de_volgende_les"><a class="anchor" href="#_controle_vóór_de_volgende_les"></a>Controle vóór de volgende les</h3>
+<div class="paragraph">
+<p>Zoeken, toevoegen en verwijderen werken met binding en commands. De invoer wordt bij <strong>Opslaan</strong> gevalideerd, de styles zijn behouden en de gegevens overleven een herstart. In ViewModels staan geen namen van controls of concrete repositories.</p>
+</div>
+<div class="paragraph">
+<p>Bewaar deze versie. In <a href="27-maui_webapi.html" class="xref page">de volgende les</a> openen en bewerken we een bestaande grap. We breiden de navigatieservice uit en bekijken hoe onderdelen elkaar over een bewaarde wijziging kunnen informeren.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
