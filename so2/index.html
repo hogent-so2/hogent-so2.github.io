@@ -1,276 +1,303 @@
 <!DOCTYPE html>
-
-<html lang="nl">
-
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width,initial-scale=1" name="viewport" />
-  <title>Welkom bij Softwareontwerp 2! :: Softwareontwerp 2 (BETA)</title>
-  <meta content="Antora 3.1.14" name="generator" />
-  <link href="../_/css/site.css" rel="stylesheet" />
-</head>
-
-<body class="article home">
-  <header class="header">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="index.html">Softwareontwerp 2 (BETA)</a>
-        <button aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu" class="navbar-burger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-      <div class="navbar-menu" id="topbar-nav">
-        <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="#hulpmiddelen">Hulpmiddelen</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="20-maui_basics.html#_de_maui_workload">MAUI klaarzetten</a>
-              <a class="navbar-item" href="30-monogame-basics.html#_monogame_setup">MonoGame klaarzetten</a>
-              <a class="navbar-item" href="https://code.visualstudio.com/download" rel="noopener noreferrer"
-                target="_blank">VS Code</a>
-              <a class="navbar-item" href="https://refactoring.guru/design-patterns" rel="noopener noreferrer"
-                target="_blank">Refactoring.Guru</a>
-              <a class="navbar-item" href="https://docs.monogame.net/articles/getting_to_know/howto/"
-                rel="noopener noreferrer" target="_blank">MonoGame-documentatie</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <div class="body">
-    <div class="nav-container" data-component="so2" data-version="">
-      <aside class="nav">
-        <div class="panels">
-          <div class="nav-panel-menu is-active" data-panel="menu">
-            <nav class="nav-menu">
-              <button aria-label="Toggle expand/collapse all" class="nav-menu-toggle"></button>
-              <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
-              <ul class="nav-list">
-                <li class="nav-item is-active" data-depth="0">
-                  <ul class="nav-list">
-                    <li class="nav-item is-active" data-depth="1">
-                      <button class="nav-item-toggle"></button>
-                      <span class="nav-text">Basis OO Ontwerp</span>
-                      <ul class="nav-list">
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item is-active" data-depth="1">
-                      <button class="nav-item-toggle"></button>
-                      <span class="nav-text">MAUI</span>
-                      <ul class="nav-list">
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp;
-                            validatie</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item is-active" data-depth="1">
-                      <button class="nav-item-toggle"></button>
-                      <span class="nav-text">MonoGame</span>
-                      <ul class="nav-list">
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="30-monogame-basics.html">Basis</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
-                        </li>
-                        <li class="nav-item is-active" data-depth="2">
-                          <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="nav-panel-explore" data-panel="explore">
-            <div class="context">
-              <span class="title">Softwareontwerp 2</span>
-              <span class="version"></span>
-            </div>
-            <ul class="components">
-              <li class="component is-current">
-                <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </aside>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Welkom bij Softwareontwerp 2! :: Softwareontwerp 2 (BETA)</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article home">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">Softwareontwerp 2 (BETA)</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <main class="article">
-      <div class="toolbar" role="navigation">
-        <button class="nav-toggle"></button>
-        <nav aria-label="breadcrumbs" class="breadcrumbs">
-          <ul>
-            <li><a href="index.html">Softwareontwerp 2</a></li>
-            <li><a href="index.html">Welkom bij Softwareontwerp 2!</a></li>
-          </ul>
-        </nav>
+      
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Producten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://learn.microsoft.com/en-us/cli/azure/">Azure CLI</a>
+                  <a class="navbar-item" target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://desktop.github.com/download">GitHub Desktop</a>
+                  <a class="navbar-item" target="_blank" href="https://www.mysql.com/products/workbench">MySQL Workbench</a>
+                  <a class="navbar-item" target="_blank" href="https://www.postman.com/downloads/">Postman</a>
+                  <a class="navbar-item" target="_blank" href="https://www.jetbrains.com/rider/download">Rider</a>
+                  <a class="navbar-item" target="_blank" href="https://code.visualstudio.com/download">VS Code</a>
+              </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">Diensten</a>
+              <div class="navbar-dropdown">
+                  <a class="navbar-item" target="_blank" href="https://github.com">GitHub</a>
+                  <a class="navbar-item" target="_blank" href="https://dotnet.microsoft.com">MS Docs</a>
+              </div>
+          </div>
       </div>
-      <div class="content">
-        <aside class="toc sidebar" data-levels="2" data-title="Contents">
-          <div class="toc-menu"></div>
-        </aside>
-        <article class="doc">
-          <h1 class="page">Welkom bij Softwareontwerp 2!</h1>
-          <div class="sect1">
-            <h2 id="_doel"><a class="anchor" href="#_doel"></a>Van werkende code naar goed ontworpen software</h2>
-            <div class="sectionbody">
-              <div class="paragraph">
-                <p>Een programma laten werken is één ding. Het helder, aanpasbaar en uitbreidbaar houden vraagt om een
-                  goed ontwerp.</p>
-              </div>
-              <div class="paragraph">
-                <p>In dit vak verdiepen we objectgeoriënteerd ontwerpen en passen we het toe in een .NET MAUI-app en een
-                  kleine MonoGame-game.</p>
-              </div>
-            </div>
-          </div>
-          <div class="sect1" id="cursus">
-            <h2 id="_inhoud"><a class="anchor" href="#_inhoud"></a>Wat doen we in dit vak?</h2>
-            <div class="sectionbody">
-              <div class="paragraph">
-                <p>Drie onderdelen, met dezelfde focus: begrijpen waarom je code zo ontwerpt.</p>
-              </div>
-              <div class="sect2">
-                <h3 id="_deel_1_basis_oo_diagrammen_en_ontwerptechnieken"><a class="anchor"
-                    href="#_deel_1_basis_oo_diagrammen_en_ontwerptechnieken"></a>Basis OO-ontwerp</h3>
-                <div class="paragraph">
-                  <p>We verdiepen klassen, relaties, overerving en interfaces. Met diagrammen en GRASP leren we
-                    structuur aanbrengen en verantwoordelijkheden verdelen.</p>
-                </div>
-                <div class="paragraph">
-                  <p>Klassen &amp; objecten · DCD · GRASP · SSD</p>
-                </div>
-              </div>
-              <div class="sect2">
-                <h3 id="_deel_3_van_ontwerp_naar_architectuur"><a class="anchor"
-                    href="#_deel_3_van_ontwerp_naar_architectuur"></a>Apps met .NET MAUI</h3>
-                <div class="paragraph">
-                  <p>We bouwen een grappenapp en breiden die les na les uit. Van XAML en events groeien we naar
-                    gescheiden verantwoordelijkheden, opslag en MVVM.</p>
-                </div>
-                <div class="paragraph">
-                  <p>XAML · Validatie · DI · LiteDB · MVVM</p>
-                </div>
-              </div>
-              <div class="sect2">
-                <h3 id="_deel_2_design_patterns_refactoring"><a class="anchor"
-                    href="#_deel_2_design_patterns_refactoring"></a>Games met MonoGame</h3>
-                <div class="paragraph">
-                  <p>We bouwen een kleine game waarin een surfer haaien ontwijkt. Met State en Strategy verbeteren we de
-                    structuur van speltoestanden en bewegingsgedrag.</p>
-                </div>
-                <div class="paragraph">
-                  <p>Objectoriëntatie · State · Strategy</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sect1" id="hulpmiddelen">
-            <h2 id="_tooling"><a class="anchor" href="#_tooling"></a>Hulpmiddelen bij de lessen</h2>
-            <div class="sectionbody">
-              <div class="paragraph">
-                <p>Je ontwikkelomgeving klaarzetten of iets opzoeken tijdens het programmeren.</p>
-              </div>
-              <div class="ulist">
-                <ul>
-                  <li>
-                    <p><strong>Visual Studio &amp; .NET MAUI</strong><br />
-                      Activeer de MAUI-workload en maak je eerste app. De stappen staan in de eerste MAUI-les.<br />
-                      <a href="20-maui_basics.html#_de_maui_workload">MAUI klaarzetten</a>
-                    </p>
-                  </li>
-                  <li>
-                    <p><strong>VS Code &amp; MonoGame</strong><br />
-                      De omgeving voor het gamevoorbeeld, met C# Dev Kit, de MonoGame-extensie en templates.<br />
-                      <a href="30-monogame-basics.html#_monogame_setup">MonoGame klaarzetten</a> ·
-                      <a href="https://code.visualstudio.com/download" rel="noopener noreferrer" target="_blank">VS
-                        Code</a>
-                    </p>
-                  </li>
-                  <li>
-                    <p><strong>Refactoring.Guru</strong><br />
-                      Uitleg over ontwerppatronen, met onder meer de State- en Strategy-patronen uit de cursus.<br />
-                      <a href="https://refactoring.guru/design-patterns" rel="noopener noreferrer"
-                        target="_blank">Bekijk de ontwerppatronen</a>
-                    </p>
-                  </li>
-                  <li>
-                    <p><strong>MonoGame-documentatie</strong><br />
-                      De aanvullende documentatie waarnaar de MonoGame-les verwijst, voor verdere uitleg bij het
-                      framework.<br />
-                      <a href="https://docs.monogame.net/articles/getting_to_know/howto/" rel="noopener noreferrer"
-                        target="_blank">Open de documentatie</a>
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="sect1" id="praktisch">
-            <h2 id="_praktisch"><a class="anchor" href="#_praktisch"></a>Praktisch</h2>
-            <div class="sectionbody">
-              <div class="paragraph">
-                <p>Over het studiemateriaal, de lescode en de evaluatie.</p>
-              </div>
-              <div class="sect2">
-                <h3 id="_studiemateriaal"><a class="anchor" href="#_studiemateriaal"></a>Cursus &amp; lesmateriaal</h3>
-                <div class="paragraph">
-                  <p>Deze online cursus is integraal beschikbaar. Relevante code wordt online beschikbaar
-                    gesteld.
-                </div>
-              </div>
-              <div class="sect2">
-                <h3 id="_broncode_in_deze_cursus"><a class="anchor" href="#_broncode_in_deze_cursus"></a>Code uit de les
-                </h3>
-                <div class="paragraph">
-                  <p>We programmeren live tijdens de lessen. Daardoor kan de lescode op details afwijken van de cursus.
-                    De concepten en ontwerpprincipes blijven dezelfde.</p>
-                </div>
-                <div class="paragraph">
-                  <p><strong>De lessen volgen de cursus, niet omgekeerd.</strong> Gebruik de cursus als inhoudelijke
-                    leidraad bij de voorbeelden uit de les.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </main>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="so2" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="0">
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Basis OO Ontwerp</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="01-klassen-objecten.html">Klassen, objecten &amp; relaties</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="03-RDD-GRASP.html">Verantwoordelijkheden, GRASP &amp; SSD</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MAUI</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="20-maui_basics.html">XAML, controls &amp; events</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="21-maui-ui-styling-validation.html">Layout, styling &amp; validatie</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="25-maui_ioc-di.html">IoC, DI &amp; opslag</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="26-maui_mvvm.html">MVVM, binding &amp; commands</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="27-maui_webapi.html">Details, bewerken &amp; messaging</a>
+  </li>
+</ul>
+  </li>
+      <li class="nav-item is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MonoGame</span>
+<ul class="nav-list">
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="30-monogame-basics.html">Basis</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="31-monogame-statemachine.html">State pattern</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="32-monogame-more_oo.html">Objectgeoriënteerd</a>
+  </li>
+      <li class="nav-item is-active" data-depth="2">
+    <a class="nav-link" href="33-monogame-strategy.html">Strategy</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Softwareontwerp 2</span>
+    <span class="version"></span>
   </div>
-  <footer class="footer">
-    <p>This page was built using a customized version of the Antora default UI.</p>
-    <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
-    <p>Content by Tommy Uytterhaegen and Stefan Courteaux unless otherwise noted. </p>
-  </footer>
-  <script data-ui-root-path="../_" id="site-script" src="../_/js/site.js"></script>
-  <script async="" src="../_/js/vendor/highlight.js"></script>
-</body>
-
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li><a href="index.html">Welkom bij Softwareontwerp 2!</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Welkom bij Softwareontwerp 2!</h1>
+<div class="sect1">
+<h2 id="_doel"><a class="anchor" href="#_doel"></a>Doel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Programmeren is veel meer dan coderen. Een harmonieus ontwerp is nodig om tot een goed werkende en onderhoudbare applicatie te komen.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Concepten die geïntroduceerd werden in "Softwareontwerp 1", worden in dit vak uitgediept en ingeoefend.</p>
+</li>
+<li>
+<p>Gezien "Softwareontwerp 1", "Programmeren Gevorderd" en "Programmeren Gevorderd 2" een sterke focus hebben op gebruik van relationele databanken, komt dit hier niet aan bod.</p>
+</li>
+<li>
+<p>Naar het einde van de lessenreeks toe, bekijken we op een hoger niveau de basis van enkele populaire architecturen.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_studiemateriaal"><a class="anchor" href="#_studiemateriaal"></a>Studiemateriaal</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Deze online cursus is altijd integraal beschikbaar.</p>
+</li>
+<li>
+<p>Relevante code zal na de les online beschikbaar gesteld worden.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inhoud"><a class="anchor" href="#_inhoud"></a>Inhoud</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_deel_1_basis_oo_diagrammen_en_ontwerptechnieken"><a class="anchor" href="#_deel_1_basis_oo_diagrammen_en_ontwerptechnieken"></a>Deel 1: Basis OO Diagrammen en Ontwerptechnieken</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Herhaling OO: klassen, objecten, DCD, overerving en interfaces</p>
+</li>
+<li>
+<p>Herhaling OO-ontwerp: verantwoordelijkheden, GRASP en SSD</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Voor dit deel krijg je een individuele opdracht.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deel_2_design_patterns_refactoring"><a class="anchor" href="#_deel_2_design_patterns_refactoring"></a>Deel 2: Design Patterns &amp; Refactoring</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Beknopte videogame programmeren (Klassiek)</p>
+</li>
+<li>
+<p>Beknopte videogame refactoren (State Pattern)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deel_3_van_ontwerp_naar_architectuur"><a class="anchor" href="#_deel_3_van_ontwerp_naar_architectuur"></a>Deel 3: Van ontwerp naar architectuur</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>MAUI UI: XAML, controls en events</p>
+</li>
+<li>
+<p>MAUI UI: layout, styling en validatie</p>
+</li>
+<li>
+<p>Inversion of Control, Dependency Injection, repository en LiteDB-opslag</p>
+</li>
+<li>
+<p>MVVM, binding, collecties en commands</p>
+</li>
+<li>
+<p>Details, bewerken en messaging (WebAPI als facultatieve preview)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_evaluatie"><a class="anchor" href="#_evaluatie"></a>Evaluatie</h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Consulteer de Studiewijzer voor meer informatie betreffende de evaluatie.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tooling"><a class="anchor" href="#_tooling"></a>Tooling</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Visual Paradigm / Diagrams.net</p>
+</li>
+<li>
+<p>Visual Studio / VS Code / Rider</p>
+</li>
+<li>
+<p>.NET SDK</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_broncode_in_deze_cursus"><a class="anchor" href="#_broncode_in_deze_cursus"></a>Broncode In Deze Cursus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tijdens de lessen wordt er aan live coding gedaan. Dit heeft als gevolg dat de code uit de les niet altijd exact overeen zal komen met deze cursus.</p>
+</div>
+<div class="paragraph">
+<p>Laat je hierdoor niet in de war brengen. Je zal snel ondervinden dat deze afwijkingen zeer oppervlakkig zijn en het geheel conceptueel identiek is aan de cursus. Immers: <strong>de lessen volgen de cursus, niet omgekeerd.</strong></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using a customized version of the Antora default UI.</p>
+  <p>The source code for the default UI is licensed under the terms of the MPL-2.0 license.</p>
+    <p>Content by Tommy Uytterhaegen unless otherwise noted. </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
 </html>
