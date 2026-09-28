@@ -487,7 +487,7 @@ In de praktijk zullen we de persistentie vaak iets anders gaan indelen en benoem
 <div class="sect2">
 <h3 id="_domeincontroller"><a class="anchor" href="#_domeincontroller"></a>DomeinController</h3>
 <div class="paragraph">
-<p>We hebben nog geen domeincontroller in het ontwerp. We zullen deze moeten toevoegen. Elke vraag komende van buiten ons domein zal daarlangs moeten passeren. Ook mag de domeincontroller geen instanties van domeinklassen teruggeven naar de buitenwereld.</p>
+<p>We hebben nog geen domeincontroller in het ontwerp. We zullen deze moeten toevoegen. Elke vraag komende van buiten ons domein zal daarlangs moeten passeren.</p>
 </div>
 <div class="paragraph">
 <p>Het SSD geeft ons inzicht in de mogelijkheden die de <code>DomeinController</code> moet bieden.</p>
@@ -584,7 +584,7 @@ In de praktijk zullen we de persistentie vaak iets anders gaan indelen en benoem
     //...
 
     public Kasteel(Coordinate positie)
-        : this(positie, KasteelKleur.Grijs, 3)
+        : this(positie, KasteelKleur.Grijs, aantalVlaggetjes: 3)
     {
     }
 
