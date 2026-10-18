@@ -456,46 +456,83 @@ builder.Services.AddTransient&lt;AddJokePage&gt;();</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_waarom_registreren_we_ook_de_paginas"><a class="anchor" href="#_waarom_registreren_we_ook_de_paginas"></a>Waarom registreren we ook de pagina&#8217;s?</h3>
+<h3 id="_lifetimes_gelden_voor_alle_geregistreerde_objecten"><a class="anchor" href="#_lifetimes_gelden_voor_alle_geregistreerde_objecten"></a>Lifetimes gelden voor alle geregistreerde objecten</h3>
 <div class="paragraph">
-<p>Een pagina is ook een object met dependencies. Onze <code>MainPage</code> zal via haar constructor een <code>IJokeService</code> ontvangen. Bij het samenstellen van die pagina kan de container de service voorzien, met op haar beurt de benodigde repository. De pagina hoeft die objecten niet zelf aan te maken of uit de container op te vragen.</p>
+<p>Een registratie beschrijft niet alleen <strong>welk type</strong> de container moet leveren, maar ook <strong>wanneer hij een bestaande instantie hergebruikt</strong>. Die keuze noemen we de lifetime. Ze geldt voor repositories, services, pagina&#8217;s en andere geregistreerde objecten, niet alleen voor schermen.</p>
 </div>
-<div class="paragraph">
-<p>Met <code>AddTransient&lt;MainPage&gt;()</code> registreren we het concrete paginatype zelf; daarvoor is geen <code>IMainPage</code>-interface nodig. De DI-container is dus niet uitsluitend voor services bedoeld. Een pagina registreren maakt haar ook niet tot een service: haar verantwoordelijkheid blijft het tonen van informatie en verwerken van UI-interactie.</p>
-</div>
-<div class="paragraph">
-<p>In deze les registreren we beide pagina&#8217;s expliciet om hun aanmaak samen met die van de services te configureren en bewust hun lifetime te kiezen.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_welke_lifetime_kiezen_we"><a class="anchor" href="#_welke_lifetime_kiezen_we"></a>Welke lifetime kiezen we?</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>AddSingleton</code></dt>
 <dd>
-<p>Eén instantie per container. Onze pagina&#8217;s moeten dezelfde in-memory gegevens zien.</p>
+<p>Voor die registratie wordt binnen dezelfde container één instantie gedeeld. Wanneer verschillende objecten die dependency ontvangen, krijgen ze dezelfde instantie.</p>
 </dd>
 <dt class="hdlist1"><code>AddTransient</code></dt>
 <dd>
-<p>Een nieuwe instantie telkens wanneer de container het type opvraagt. De service heeft geen eigen lijst of schermtoestand.</p>
+<p>Bij iedere aanvraag aan de container wordt een nieuwe instantie gemaakt. Een object dat die instantie ontvangen heeft, kan haar vervolgens blijven gebruiken; een methode aanroepen maakt niet telkens een nieuwe dependency.</p>
 </dd>
 <dt class="hdlist1"><code>AddScoped</code></dt>
 <dd>
-<p>Eén instantie binnen een expliciet gemaakte scope. Een gewone MAUI-app maakt niet automatisch voor iedere pagina een scope zoals een webapp dat voor een request doet.</p>
+<p>Binnen één scope wordt voor die registratie dezelfde instantie hergebruikt. Een andere scope krijgt een andere instantie. Een scope bakent dus een groep samenhangende bewerkingen af die dependencies delen.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Voor de pagina&#8217;s kiezen we <code>Transient</code>: wanneer een nieuwe instantie wordt opgevraagd, krijgt die haar eigen schermtoestand. Zo hoeft een nieuw toevoegformulier geen oude invoer te hergebruiken. Een transient pagina die eenmaal gemaakt is, wordt niet spontaan vervangen bij iedere terugkeer. De navigatiestack kan datzelfde pagina-object behouden.</p>
+<p>De keuze volgt uit het gewenste gebruik: moet toestand gedeeld worden, moet iedere aanvraag een eigen object krijgen, of moeten objecten alleen binnen een bepaalde scope samenwerken? Het soort klasse legt de lifetime niet automatisch vast. Een service is bijvoorbeeld niet per definitie een singleton.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Een gewone MAUI-app maakt niet automatisch voor iedere pagina een scope aan, zoals een ASP.NET Core-webapp dat doorgaans voor een HTTP-request doet. <code>AddScoped</code> betekent hier dus niet 'één instantie per scherm'. In deze les maken we geen eigen scopes en gebruiken we die lifetime niet.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Meer over dit algemene DI-concept vind je bij <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/service-lifetimes">Microsoft over lifetimes</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_is_paginaregistratie_bij_shell_verplicht"><a class="anchor" href="#_is_paginaregistratie_bij_shell_verplicht"></a>Is paginaregistratie bij Shell verplicht?</h3>
+<h3 id="_onze_keuzes_voor_de_jokeapp"><a class="anchor" href="#_onze_keuzes_voor_de_jokeapp"></a>Onze keuzes voor de JokeApp</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Registratie</th>
+<th class="tableblock halign-left valign-top">Lifetime</th>
+<th class="tableblock halign-left valign-top">Waarom in deze app?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IJokeRepository</code> → <code>InMemoryJokeRepository</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Singleton</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De repository bevat de lijst grappen. Alle service-instanties moeten dezelfde lijst gebruiken; anders zouden toevoegingen via de ene instantie ontbreken bij een andere.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IJokeService</code> → <code>JokeService</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De service bevat zelf geen lijst of schermtoestand. Iedere aanvraag mag een eigen service-instantie krijgen, terwijl die instanties dezelfde singleton repository gebruiken. Transient is hier een keuze, geen verplichting voor iedere service.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MainPage</code> en <code>AddJokePage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een nieuw opgevraagde pagina krijgt eigen schermtoestand. Zo hoeft een nieuw toevoegformulier geen oude invoer te hergebruiken.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>Nee. Shell kan ook een pagina zonder expliciete DI-registratie aanmaken en haar geregistreerde dependencies via de constructor meegeven. De registraties voor <code>IJokeService</code> en <code>IJokeRepository</code> blijven in ons voorbeeld wel nodig.</p>
+<p>Twee verschillende <code>JokeService</code>-objecten kunnen dus naar <strong>hetzelfde</strong> repository-object verwijzen. Een nieuwe service-instantie betekent hier niet dat ook haar repository opnieuw wordt gemaakt: die heeft een eigen registratie als singleton.</p>
 </div>
 <div class="paragraph">
-<p>De twee paginaregistraties zijn hier dus een expliciete ontwerpkeuze, geen voorwaarde om constructor injection met Shell te gebruiken. Ze leggen onder meer onze lifetimekeuze vast. Microsoft vermeldt deze uitzondering voor Shell in <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection?view=net-maui-10.0#registration">de documentatie over registratie</a>.</p>
+<p>Ook een transient pagina die eenmaal gemaakt is, wordt niet spontaan vervangen bij iedere terugkeer. De navigatiestack kan datzelfde pagina-object behouden.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -508,6 +545,27 @@ Laat tijdelijk het aantal gemaakte repositories zien met een breakpoint in de co
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_waarom_registreren_we_ook_de_paginas"><a class="anchor" href="#_waarom_registreren_we_ook_de_paginas"></a>Waarom registreren we ook de pagina&#8217;s?</h3>
+<div class="paragraph">
+<p>Een pagina is ook een object met dependencies. Onze <code>MainPage</code> zal via haar constructor een <code>IJokeService</code> ontvangen. Bij het samenstellen van die pagina kan de container de service voorzien, met op haar beurt de benodigde repository. De pagina hoeft die objecten niet zelf aan te maken of uit de container op te vragen.</p>
+</div>
+<div class="paragraph">
+<p>Met <code>AddTransient&lt;MainPage&gt;()</code> registreren we het concrete paginatype zelf; daarvoor is geen <code>IMainPage</code>-interface nodig. De DI-container is dus niet uitsluitend voor services bedoeld. Een pagina registreren maakt haar ook niet tot een service: haar verantwoordelijkheid blijft het tonen van informatie en verwerken van UI-interactie.</p>
+</div>
+<div class="paragraph">
+<p>In deze les registreren we beide pagina&#8217;s expliciet om hun aanmaak samen met die van de services te configureren en bewust hun lifetime te kiezen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_is_paginaregistratie_bij_shell_verplicht"><a class="anchor" href="#_is_paginaregistratie_bij_shell_verplicht"></a>Is paginaregistratie bij Shell verplicht?</h3>
+<div class="paragraph">
+<p>Nee. Shell kan ook een pagina zonder expliciete DI-registratie aanmaken en haar geregistreerde dependencies via de constructor meegeven. De registraties voor <code>IJokeService</code> en <code>IJokeRepository</code> blijven in ons voorbeeld wel nodig.</p>
+</div>
+<div class="paragraph">
+<p>De twee paginaregistraties zijn hier dus een expliciete ontwerpkeuze, geen voorwaarde om constructor injection met Shell te gebruiken. Ze leggen onder meer onze lifetimekeuze vast. Microsoft vermeldt deze uitzondering voor Shell in <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection?view=net-maui-10.0#registration">de documentatie over registratie</a>.</p>
 </div>
 <div class="paragraph">
 <p>Zie ook de <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection">Microsoft-documentatie over DI in MAUI</a> voor constructor injection en de beschikbare lifetimes.</p>
@@ -840,7 +898,7 @@ Dit wisselt de opslagimplementatie, maar migreert geen gegevens uit de oude in-m
 <p>Vernieuw na succes de lijst en teller met behoud van de toegepaste zoektekst. Wis ook de selectie en oude detailtekst.</p>
 </li>
 <li>
-<p>Controleer het gedrag met in-memory opslag én LiteDB. Lever de app op met LiteDB als actieve registratie.</p>
+<p>Controleer het gedrag met in-memory opslag én LiteDB. Zorg ervoor dat LiteDB als actieve registratie gebruikt wordt.</p>
 </li>
 </ul>
 </div>
@@ -872,15 +930,6 @@ Dit wisselt de opslagimplementatie, maar migreert geen gegevens uit de oude in-m
 <p>Verklaar in enkele zinnen waarom twee transient services toch dezelfde grappen zien.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_controle_vóór_de_volgende_les"><a class="anchor" href="#_controle_vóór_de_volgende_les"></a>Controle vóór de volgende les</h3>
-<div class="paragraph">
-<p>Voeg toe, zoek, verwijder de laatste zichtbare grap en herstart. De teller klopt, een oude selectie blijft niet staan en de verwijdering is bewaard. Ongeldige invoer blijft pas na <strong>Opslaan</strong> een melding opleveren.</p>
-</div>
-<div class="paragraph">
-<p>Bewaar deze versie. In <a href="26-maui_mvvm.html" class="xref page">de volgende les</a> vervangen we events en rechtstreekse control-updates door binding en commands; de repository, service en validatieregels blijven behouden.</p>
 </div>
 </div>
 </div>
