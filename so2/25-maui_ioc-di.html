@@ -194,7 +194,7 @@ De validatieafspraak verandert niet: klik op <strong>Opslaan</strong>, valideer 
 <p>In de huidige versie bevat <code>JokeService</code> zowel de lijst als de regel dat dezelfde tekst niet tweemaal mag voorkomen. <code>MainPage</code> maakt bovendien zelf de service en de toevoegpagina.</p>
 </div>
 <div class="paragraph">
-<p>Bespreek wat er zou moeten wijzigen als de grappen niet langer in een <code>List&lt;Joke&gt;</code> maar in een bestand bewaard worden. Moet een pagina daarvoor worden aangepast? Moet de regel over dubbele grappen veranderen?</p>
+<p>Wat zou er moeten wijzigen als de grappen niet langer in een <code>List&lt;Joke&gt;</code> maar in een bestand bewaard worden. Moet een pagina daarvoor worden aangepast? Moet de regel over dubbele grappen veranderen?</p>
 </div>
 <div class="paragraph">
 <p>We maken dit onderscheid:</p>
@@ -455,6 +455,20 @@ builder.Services.AddTransient&lt;MainPage&gt;();
 builder.Services.AddTransient&lt;AddJokePage&gt;();</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_waarom_registreren_we_ook_de_paginas"><a class="anchor" href="#_waarom_registreren_we_ook_de_paginas"></a>Waarom registreren we ook de pagina&#8217;s?</h3>
+<div class="paragraph">
+<p>Een pagina is ook een object met dependencies. Onze <code>MainPage</code> zal via haar constructor een <code>IJokeService</code> ontvangen. Bij het samenstellen van die pagina kan de container de service voorzien, met op haar beurt de benodigde repository. De pagina hoeft die objecten niet zelf aan te maken of uit de container op te vragen.</p>
+</div>
+<div class="paragraph">
+<p>Met <code>AddTransient&lt;MainPage&gt;()</code> registreren we het concrete paginatype zelf; daarvoor is geen <code>IMainPage</code>-interface nodig. De DI-container is dus niet uitsluitend voor services bedoeld. Een pagina registreren maakt haar ook niet tot een service: haar verantwoordelijkheid blijft het tonen van informatie en verwerken van UI-interactie.</p>
+</div>
+<div class="paragraph">
+<p>In deze les registreren we beide pagina&#8217;s expliciet om hun aanmaak samen met die van de services te configureren en bewust hun lifetime te kiezen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_welke_lifetime_kiezen_we"><a class="anchor" href="#_welke_lifetime_kiezen_we"></a>Welke lifetime kiezen we?</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>AddSingleton</code></dt>
@@ -472,7 +486,16 @@ builder.Services.AddTransient&lt;AddJokePage&gt;();</code></pre>
 </dl>
 </div>
 <div class="paragraph">
-<p>Een transient pagina die eenmaal gemaakt is, wordt niet spontaan vervangen bij iedere terugkeer. De navigatiestack kan datzelfde pagina-object behouden.</p>
+<p>Voor de pagina&#8217;s kiezen we <code>Transient</code>: wanneer een nieuwe instantie wordt opgevraagd, krijgt die haar eigen schermtoestand. Zo hoeft een nieuw toevoegformulier geen oude invoer te hergebruiken. Een transient pagina die eenmaal gemaakt is, wordt niet spontaan vervangen bij iedere terugkeer. De navigatiestack kan datzelfde pagina-object behouden.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_is_paginaregistratie_bij_shell_verplicht"><a class="anchor" href="#_is_paginaregistratie_bij_shell_verplicht"></a>Is paginaregistratie bij Shell verplicht?</h3>
+<div class="paragraph">
+<p>Nee. Shell kan ook een pagina zonder expliciete DI-registratie aanmaken en haar geregistreerde dependencies via de constructor meegeven. De registraties voor <code>IJokeService</code> en <code>IJokeRepository</code> blijven in ons voorbeeld wel nodig.</p>
+</div>
+<div class="paragraph">
+<p>De twee paginaregistraties zijn hier dus een expliciete ontwerpkeuze, geen voorwaarde om constructor injection met Shell te gebruiken. Ze leggen onder meer onze lifetimekeuze vast. Microsoft vermeldt deze uitzondering voor Shell in <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/dependency-injection?view=net-maui-10.0#registration">de documentatie over registratie</a>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -491,14 +514,17 @@ Laat tijdelijk het aantal gemaakte repositories zien met een breakpoint in de co
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_de_bestaande_paginas_aansluiten"><a class="anchor" href="#_de_bestaande_paginas_aansluiten"></a>De bestaande pagina&#8217;s aansluiten</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vervang in <code>AddJokePage.xaml.cs</code> het type van het veld én de constructorparameter <code>JokeService</code> door <code>IJokeService</code>. Verwijder daar geen validatiecode. De constructor blijft de categorieën instellen.</p>
 </div>
+<div class="sect2">
+<h3 id="_een_route_is_geen_di_registratie"><a class="anchor" href="#_een_route_is_geen_di_registratie"></a>Een route is geen DI-registratie</h3>
 <div class="paragraph">
-<p>Een pagina vragen we voortaan aan via een route. Vervang de inhoud van <code>AppShell.xaml.cs</code> door:</p>
+<p>DI beschrijft hoe objecten worden samengesteld; navigatie bepaalt welk scherm we willen openen. Een pagina vragen we voortaan aan via een Shell-route. Vervang de inhoud van <code>AppShell.xaml.cs</code> door:</p>
 </div>
 <div class="listingblock">
 <div class="title">AppShell.xaml.cs</div>
@@ -516,7 +542,25 @@ public partial class AppShell : Shell
 </div>
 </div>
 <div class="paragraph">
-<p>Behoud in <code>AppShell.xaml</code> de <code>ShellContent</code> voor <code>MainPage</code> met <code>ContentTemplate="{DataTemplate local:MainPage}"</code>. Die pagina staat al in de Shell-structuur; registreer haar niet nog eens als detailroute.</p>
+<p>Vergelijk de twee registraties:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>AddTransient&lt;AddJokePage&gt;()</code></dt>
+<dd>
+<p>Vertelt de DI-container hoe hij het pagina-object moet leveren, met zijn dependencies en de gekozen lifetime. Dit voegt geen navigatieroute toe en opent geen scherm.</p>
+</dd>
+<dt class="hdlist1"><code>Routing.RegisterRoute(&#8230;&#8203;)</code></dt>
+<dd>
+<p>Koppelt een routenaam aan een paginatype, zodat Shell weet welke pagina bij die bestemming hoort. Dit registreert geen services in de DI-container en opent evenmin een scherm.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Pas bij <code>Shell.Current.GoToAsync(nameof(AddJokePage))</code> navigeren we naar die bestemming. Wanneer Shell daarvoor een pagina moet aanmaken, kan het de DI-registratie gebruiken. Zonder paginaregistratie kan Shell de pagina zelf samenstellen met de geregistreerde dependencies.</p>
+</div>
+<div class="paragraph">
+<p>Behoud in <code>AppShell.xaml</code> de <code>ShellContent</code> voor <code>MainPage</code> met <code>ContentTemplate="{DataTemplate local:MainPage}"</code>. Die pagina staat al in de Shell-structuur; registreer haar niet nog eens als detailroute. De registratie van <code>MainPage</code> in de DI-container blijft daarvan een afzonderlijke keuze.</p>
 </div>
 <div class="paragraph">
 <p>Vervang in de save-handler van <code>AddJokePage</code> de terugkeer met:</p>
@@ -528,6 +572,7 @@ public partial class AppShell : Shell
 </div>
 <div class="paragraph">
 <p><code>".."</code> betekent één pagina terug in deze navigatiestack. Neem <code>async</code> en <code>await</code> over zoals in de vorige les; asynchroon programmeren zelf is geen leerdoel van deze reeks.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_het_overzicht_met_de_bestaande_zoekfunctie"><a class="anchor" href="#_het_overzicht_met_de_bestaande_zoekfunctie"></a>Het overzicht met de bestaande zoekfunctie</h3>
