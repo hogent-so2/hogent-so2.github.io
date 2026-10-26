@@ -436,6 +436,112 @@ public sealed class ShellNavigationService : INavigationService
 </div>
 </div>
 <div class="sect1">
+<h2 id="_wijzigingen_in_een_collectie_zichtbaar_maken"><a class="anchor" href="#_wijzigingen_in_een_collectie_zichtbaar_maken"></a>Wijzigingen in een collectie zichtbaar maken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <a href="21-maui-ui-styling-validation.html" class="xref page">de les over layout, styling en validatie</a> leerden we dat een gewone <code>List&lt;T&gt;</code> toevoegingen niet automatisch aan de UI meldt. Daarom stelden we bij het vernieuwen <code>ItemsSource</code> opnieuw in. Een binding naar een lijst verandert dat gedrag niet: de UI moet nog steeds weten dat er een item bijgekomen is.</p>
+</div>
+<div class="sect2">
+<h3 id="_een_kleine_proef_list_tegenover_observablecollection"><a class="anchor" href="#_een_kleine_proef_list_tegenover_observablecollection"></a>Een kleine proef: List tegenover ObservableCollection</h3>
+<div class="paragraph">
+<p>Maak tijdelijk dit ViewModel. We gebruiken strings om alleen het gedrag van de collectie te bekijken.</p>
+</div>
+<div class="listingblock">
+<div class="title">ViewModels/CollectionExampleViewModel.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System.Windows.Input;
+
+namespace JokeApp.ViewModels;
+
+public sealed class CollectionExampleViewModel
+{
+    public List&lt;string&gt; Items { get; } = new() { "Eerste item" };
+
+    public ICommand AddItemCommand { get; }
+
+    public CollectionExampleViewModel()
+    {
+        AddItemCommand = new Command(() =&gt; Items.Add("Nieuw item"));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Maak daarnaast een tijdelijke <strong>.NET MAUI ContentPage (XAML)</strong> met de naam <code>CollectionExamplePage</code>. Vervang haar standaardinhoud door onderstaande <code>Grid</code>; behoud de buitenste <code>ContentPage</code>. Stel in haar constructor na <code>InitializeComponent()</code> het <code>BindingContext</code> in op <code>new JokeApp.ViewModels.CollectionExampleViewModel()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Toon de proefpagina door in <code>AppShell.xaml</code> tijdelijk <code>ContentTemplate="{DataTemplate local:MainPage}"</code> te vervangen door <code>ContentTemplate="{DataTemplate local:CollectionExamplePage}"</code>. De bestaande pagina&#8217;s en hun code blijven zo intact.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Grid Padding="24" RowDefinitions="Auto,*" RowSpacing="12"&gt;
+    &lt;Button Text="Item toevoegen" Command="{Binding AddItemCommand}" /&gt;
+    &lt;CollectionView Grid.Row="1" ItemsSource="{Binding Items}"&gt;
+        &lt;CollectionView.ItemTemplate&gt;
+            &lt;DataTemplate&gt;
+                &lt;Label Text="{Binding .}" /&gt;
+            &lt;/DataTemplate&gt;
+        &lt;/CollectionView.ItemTemplate&gt;
+    &lt;/CollectionView&gt;
+&lt;/Grid&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>{Binding .}</code> toont het item zelf: hier is dat een string. De eerste rij verschijnt. Klik op <strong>Item toevoegen</strong> en controleer met een breakpoint dat <code>Items.Count</code> stijgt. De lijst verandert in het geheugen, maar meldt de toevoeging niet aan de control.</p>
+</div>
+<div class="paragraph">
+<p>Voeg nu <code>using System.Collections.ObjectModel;</code> toe aan het ViewModel en vervang uitsluitend de collectieproperty:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public ObservableCollection&lt;string&gt; Items { get; } = new() { "Eerste item" };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Start opnieuw en klik op dezelfde knop. Het nieuwe item verschijnt nu wel. <code>ObservableCollection&lt;T&gt;</code> is een .NET-collectie die wijzigingen meldt via het event <code>CollectionChanged</code> van <code>INotifyCollectionChanged</code>. De <code>CollectionView</code> luistert naar die meldingen. Zo kunnen <code>Add</code>, <code>Remove</code> en <code>Clear</code> de zichtbare rijen bijwerken terwijl dezelfde collectie aan <code>ItemsSource</code> gekoppeld blijft.</p>
+</div>
+<div class="paragraph">
+<p><code>CollectionView</code> is dus de <strong>control</strong> die items toont; <code>ObservableCollection&lt;T&gt;</code> is de <strong>collectie</strong> die wijzigingen meldt. Je hoeft die meldingen niet zelf te implementeren. Zie ook <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1">Microsoft: ObservableCollection</a>.</p>
+</div>
+<div class="paragraph">
+<p>Zet na de proef in <code>AppShell.xaml</code> de template terug op <code>local:MainPage</code> en verwijder de tijdelijke pagina en het tijdelijke ViewModel. Hieronder passen we het principe toe op de echte grappenlijst.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_propertymelding_is_geen_collectiemelding"><a class="anchor" href="#_een_propertymelding_is_geen_collectiemelding"></a>Een propertymelding is geen collectiemelding</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Wat verandert?</th>
+<th class="tableblock halign-left valign-top">Wie meldt de wijziging?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een ViewModel-property, zoals <code>CountText</code>, krijgt een andere waarde.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Het ViewModel meldt <code>PropertyChanged</code>, zoals we eerder in deze les implementeerden.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een item wordt toegevoegd aan of verwijderd uit dezelfde collectie.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ObservableCollection&lt;T&gt;</code> meldt zelf <code>CollectionChanged</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een property van een item verandert, als dat item wijzigbaar is.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dat item moet zelf een passende propertymelding geven. De collectie meldt dit niet automatisch voor haar items.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Ons voorbeeld heeft geen setter voor <code>Items</code>: we behouden dezelfde collectie. Toch kan <code>Items.Add(&#8230;&#8203;)</code> haar inhoud wijzigen. Een property met alleen <code>get</code> maakt de teruggegeven collectie dus niet read-only. Omdat de verwijzing naar de collectie bij toevoegen gelijk blijft, hoeft het ViewModel daarvoor geen <code>PropertyChanged</code> voor <code>Items</code> te sturen.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_het_overzicht_omzetten"><a class="anchor" href="#_het_overzicht_omzetten"></a>Het overzicht omzetten</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -535,31 +641,15 @@ public sealed class JokeListViewModel : ViewModelBase
 <p>We tonen hier de modellen rechtstreeks in de lijst. Een extra ViewModel per rij is pas nodig wanneer een rij eigen presentatietoestand of gedrag krijgt. Maak niet automatisch een extra klasse voor drie properties die je alleen kopieert.</p>
 </div>
 <div class="sect2">
-<h3 id="_wat_observablecollection_wel_en_niet_doet"><a class="anchor" href="#_wat_observablecollection_wel_en_niet_doet"></a>Wat ObservableCollection wel en niet doet</h3>
+<h3 id="_de_weergavecollectie_synchroniseren_met_de_opslag"><a class="anchor" href="#_de_weergavecollectie_synchroniseren_met_de_opslag"></a>De weergavecollectie synchroniseren met de opslag</h3>
 <div class="paragraph">
-<p>De <code>CollectionView</code> luistert naar wijzigingen in <code>ObservableCollection&lt;T&gt;</code>. <code>Add</code>, <code>Remove</code> en <code>Clear</code> kunnen daardoor de zichtbare rijen bijwerken zonder telkens een andere <code>ItemsSource</code> in te stellen.</p>
+<p><code>Jokes</code> bevat de grappen die dit ViewModel wil tonen. Een toevoeging in LiteDB verandert die weergavecollectie niet vanzelf. Omgekeerd verwijdert <code>Jokes.Clear()</code> alleen items uit de weergavecollectie; de opgeslagen grappen blijven bestaan.</p>
 </div>
 <div class="paragraph">
-<p>Maar:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>een insert in LiteDB roept niet automatisch <code>Jokes.Add</code> aan;</p>
-</li>
-<li>
-<p>een wijziging van <code>Joke.Text</code> is geen wijziging van de collectie;</p>
-</li>
-<li>
-<p>de modellen in onze lijst implementeren geen <code>INotifyPropertyChanged</code>.</p>
-</li>
-</ul>
+<p>Daarom vraagt <code>Reload()</code> via de service de resultaten voor de toegepaste zoekopdracht op, wist het de selectie en vult het dezelfde <code>Jokes</code>-collectie opnieuw. De collectiemeldingen werken de zichtbare rijen bij. Daarna passen we <code>CountText</code> apart aan: die samengestelde tekst is een ViewModel-property en wordt niet door de collectie berekend.</p>
 </div>
 <div class="paragraph">
-<p>Daarom laden we de gegevens voorlopig opnieuw wanneer het overzicht verschijnt. <code>Reload</code> leest de repository via de service en past vervolgens de observeerbare collectie aan. Dit is een bewuste synchronisatiestap, geen automatische databasebinding.</p>
-</div>
-<div class="paragraph">
-<p>Voor een kleine lokale lijst is opnieuw laden een prima keuze. In de volgende les bekijken we wanneer een expliciet bericht nuttig wordt. Zie ook <a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1">Microsoft: ObservableCollection</a>.</p>
+<p>Wanneer de pagina verschijnt, roepen we straks <code>Reload()</code> aan. Dit is een expliciete synchronisatiestap tussen opslag en schermtoestand. Voor deze kleine lokale lijst is opnieuw laden een passende keuze. In de volgende les bekijken we wanneer een expliciet bericht nuttig wordt.</p>
 </div>
 </div>
 <div class="sect2">
@@ -592,7 +682,7 @@ public sealed class JokeListViewModel : ViewModelBase
                         SelectionMode="Single"
                         EmptyView="Geen grappen gevonden."&gt;
             &lt;CollectionView.ItemTemplate&gt;
-                &lt;DataTemplate x:DataType="models:Joke"&gt;
+                &lt;DataTemplate&gt;
                     &lt;Border Padding="16" Margin="0,4"&gt;
                         &lt;VerticalStackLayout Spacing="4"&gt;
                             &lt;Label Text="{Binding Text}" MaxLines="2"
@@ -613,9 +703,6 @@ public sealed class JokeListViewModel : ViewModelBase
     &lt;/Grid&gt;
 &lt;/ContentPage&gt;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p><code>x:DataType</code> vertelt de XAML-compiler welk type een binding verwacht. Op de pagina is dat <code>JokeListViewModel</code>, in het itemtemplate <code>Joke</code>. Het maakt zelf geen object en vervangt <code>BindingContext</code> niet.</p>
 </div>
 <div class="listingblock">
 <div class="title">MainPage.xaml.cs</div>
@@ -854,63 +941,6 @@ public partial class AddJokePage : ContentPage
 </div>
 </div>
 <div class="sect1">
-<h2 id="_testen_zonder_het_scherm_te_bedienen"><a class="anchor" href="#_testen_zonder_het_scherm_te_bedienen"></a>Testen zonder het scherm te bedienen</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Het ViewModel krijgt interfaces. Daardoor kan een test een in-memory repository en een navigatieservice gebruiken die alleen bijhoudt of terugkeren gevraagd werd.</p>
-</div>
-<div class="paragraph">
-<p>Een mogelijke testdouble:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using JokeApp.Navigation;
-
-public class RecordingNavigationService : INavigationService
-{
-    public int BackCount { get; private set; }
-
-    public Task ShowAddJokeAsync() =&gt; Task.CompletedTask;
-
-    public Task GoBackAsync()
-    {
-        BackCount++;
-        return Task.CompletedTask;
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Voer in een testproject of begeleide test onderstaande controles uit via <code>SaveCommand.Execute(null)</code>.</p>
-</div>
-<div class="paragraph">
-<p>Deze recording navigation service geeft onmiddellijk een voltooide <code>Task</code> terug. De validatie en opslag zijn hier ook synchroon. Daardoor kunnen we in <strong>deze tests</strong> meteen na <code>Execute(null)</code> de toestand controleren. Een gewone <code>Command</code> biedt zelf geen methode om een asynchrone uitvoering af te wachten; trek uit deze testopstelling dus geen algemene conclusie over echte navigatie of netwerkverzoeken.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Lege tekst: <code>HasError</code> is waar, aantal grappen blijft gelijk en <code>BackCount</code> blijft nul.</p>
-</li>
-<li>
-<p>Geldige unieke tekst: aantal grappen stijgt met één en <code>BackCount</code> stijgt met één.</p>
-</li>
-<li>
-<p>Dubbele tekst: melding verschijnt, aantal grappen en <code>BackCount</code> stijgen niet.</p>
-</li>
-<li>
-<p>Na een fout de tekst aanpassen: oude melding verdwijnt, er wordt nog niets bewaard.</p>
-</li>
-<li>
-<p>Zoeken: de resultaten veranderen pas wanneer het zoekcommand uitgevoerd wordt.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Het doel is de verantwoordelijkheid kunnen testen, niet in deze les een nieuw testframework aanleren.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_thuisopdracht_ook_je_eigen_uitbreiding_via_mvvm"><a class="anchor" href="#_thuisopdracht_ook_je_eigen_uitbreiding_via_mvvm"></a>Thuisopdracht - Ook je eigen uitbreiding via MVVM</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -960,9 +990,6 @@ public class RecordingNavigationService : INavigationService
 <ul>
 <li>
 <p>Voeg een command toe dat het formulier wist en de standaardcategorie herstelt, zonder iets op te slaan.</p>
-</li>
-<li>
-<p>Schrijf de beschreven tests met een recording navigation service.</p>
 </li>
 </ul>
 </div>
