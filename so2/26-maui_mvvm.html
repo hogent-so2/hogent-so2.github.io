@@ -253,7 +253,7 @@ Dit is een refactoring. Dezelfde handeling moet voor de gebruiker hetzelfde resu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class FirstBindingViewModel
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class FirstBindingViewModel
 {
     public string Message { get; set; } = "Eerste waarde";
 }</code></pre>
@@ -420,7 +420,7 @@ public interface INavigationService
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
 
-public sealed class ShellNavigationService : INavigationService
+public class ShellNavigationService : INavigationService
 {
     public Task ShowAddJokeAsync() =&gt;
         Shell.Current.GoToAsync(nameof(AddJokePage));
@@ -453,7 +453,7 @@ public sealed class ShellNavigationService : INavigationService
 
 namespace JokeApp.ViewModels;
 
-public sealed class CollectionExampleViewModel
+public class CollectionExampleViewModel
 {
     public List&lt;string&gt; Items { get; } = new() { "Eerste item" };
 
@@ -558,7 +558,7 @@ using JokeApp.Services;
 
 namespace JokeApp.ViewModels;
 
-public sealed class JokeListViewModel : ViewModelBase
+public class JokeListViewModel : ViewModelBase
 {
     private readonly IJokeService _jokeService;
     private string _searchText = string.Empty;
@@ -768,7 +768,7 @@ using JokeApp.Validation;
 
 namespace JokeApp.ViewModels;
 
-public sealed class AddJokeViewModel : ViewModelBase
+public class AddJokeViewModel : ViewModelBase
 {
     private readonly IJokeService _jokeService;
     private readonly INavigationService _navigationService;

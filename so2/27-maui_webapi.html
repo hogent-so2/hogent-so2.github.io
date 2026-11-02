@@ -248,7 +248,7 @@ public interface INavigationService
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace JokeApp.Navigation;
 
-public sealed class ShellNavigationService : INavigationService
+public class ShellNavigationService : INavigationService
 {
     public Task ShowAddJokeAsync() =&gt;
         Shell.Current.GoToAsync(nameof(AddJokePage));
@@ -456,7 +456,7 @@ using JokeApp.Services;
 
 namespace JokeApp.ViewModels;
 
-public sealed class JokeDetailViewModel : ViewModelBase
+public class JokeDetailViewModel : ViewModelBase
 {
     private readonly IJokeService _jokeService;
     private readonly INavigationService _navigationService;
@@ -656,7 +656,16 @@ public partial class JokeDetailPage : ContentPage, IQueryAttributable
 </div>
 </div>
 <div class="paragraph">
-<p><code>IQueryAttributable</code> is hier een MAUI-verantwoordelijkheid van de pagina. Zij vertaalt de navigatiegegevens naar een gewone <code>Guid</code> voor het ViewModel. Bij een ontbrekende of verkeerd getypeerde parameter levert <code>Guid.Empty</code> in onze app een niet-gevondenmelding op.</p>
+<p>We kiezen ervoor <code>IQueryAttributable</code> op de pagina te implementeren. De pagina vertaalt de Shell-navigatieparameters naar een gewone <code>Guid</code> en roept <code>Load(Guid jokeId)</code> aan. Het ViewModel vraagt vervolgens de grap aan de service en vult de formulierproperties of stelt een foutmelding in.</p>
+</div>
+<div class="paragraph">
+<p>Deze verdeling past bij GRASP <strong>Low Coupling</strong>: het ViewModel hoeft de Shell-interface, de parameterdictionary en de sleutel <code>"JokeId"</code> niet te kennen. Ze sluit aan bij de navigatieservice uit de vorige les, die de Shell-details eveneens buiten het ViewModel houdt. Zulke verbindingscode mag in de code-behind staan bij MVVM.</p>
+</div>
+<div class="paragraph">
+<p><code>IQueryAttributable</code> rechtstreeks op het ViewModel implementeren is ook mogelijk. Als dat ViewModel het <code>BindingContext</code> van de pagina is, kan Shell daar <code>ApplyQueryAttributes</code> aanroepen. Dan vervalt de doorgeefcode op de pagina, maar kent het ViewModel zelf het Shell-contract. Onze plaatsing is dus een ontwerpkeuze, geen MVVM-verplichting. Zie <a href="https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/shell/navigation?view=net-maui-10.0#process-navigation-data-using-a-single-method">Microsoft: navigatiegegevens ontvangen</a>.</p>
+</div>
+<div class="paragraph">
+<p>Bij een ontbrekende of verkeerd getypeerde parameter levert <code>Guid.Empty</code> in onze app een niet-gevondenmelding op.</p>
 </div>
 <div class="paragraph">
 <p>We laden niet opnieuw bij iedere toetsaanslag of zomaar bij elk verschijnen van de pagina. Dat zou nog niet opgeslagen formulierinvoer kunnen overschrijven.</p>
@@ -665,11 +674,16 @@ public partial class JokeDetailPage : ContentPage, IQueryAttributable
 <div class="sect2">
 <h3 id="_een_command_om_de_selectie_te_openen"><a class="anchor" href="#_een_command_om_de_selectie_te_openen"></a>Een command om de selectie te openen</h3>
 <div class="paragraph">
-<p>Voeg aan <code>JokeListViewModel</code> een veld <code>_navigationService</code> toe en bewaar de ontvangen navigatieservice daarin. Voeg vervolgens toe:</p>
+<p><code>JokeListViewModel</code> ontvangt <code>INavigationService navigationService</code> al via zijn constructor. <code>AddJokeCommand</code> gebruikt die parameter om het toevoegformulier te openen. We hergebruiken deze bestaande injectie.</p>
+</div>
+<div class="paragraph">
+<p>De nieuwe methode <code>OpenDetailsAsync()</code> staat buiten de constructor en kan die constructorparameter niet rechtstreeks gebruiken. Daarom bewaren we dezelfde service nu ook in een veld. Voeg aan de klasse toe:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Command OpenDetailsCommand { get; }
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private readonly INavigationService _navigationService;
+
+public Command OpenDetailsCommand { get; }
 
 private async Task OpenDetailsAsync()
 {
@@ -679,11 +693,12 @@ private async Task OpenDetailsAsync()
 </div>
 </div>
 <div class="paragraph">
-<p>Initialiseer in de constructor:</p>
+<p>Vul de bestaande constructor aan met de toekenning aan het veld en de initialisatie van het command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">OpenDetailsCommand = new Command(
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_navigationService = navigationService;
+OpenDetailsCommand = new Command(
     async () =&gt; await OpenDetailsAsync(), () =&gt; SelectedJoke is not null);</code></pre>
 </div>
 </div>
@@ -873,7 +888,7 @@ using JokeApp.Validation;
 
 namespace JokeApp.Services;
 
-public sealed class JokeService : IJokeService
+public class JokeService : IJokeService
 {
     private readonly IJokeRepository _jokeRepository;
     private readonly IMessenger _messenger;
@@ -982,7 +997,7 @@ using JokeApp.Services;
 
 namespace JokeApp.ViewModels;
 
-public sealed class JokeListViewModel : ViewModelBase
+public class JokeListViewModel : ViewModelBase
 {
     private readonly IJokeService _jokeService;
     private readonly INavigationService _navigationService;
@@ -1140,7 +1155,7 @@ using JokeApp.Services;
 
 namespace JokeApp.ViewModels;
 
-public sealed class JokeStatisticsViewModel : ViewModelBase
+public class JokeStatisticsViewModel : ViewModelBase
 {
     private readonly IJokeService _jokeService;
     private int _programmingCount;
@@ -1566,7 +1581,7 @@ We veronderstellen in dit voorbeeld een geslaagde HTTP-aanroep. Laadindicatoren,
 
 namespace JokeApp.Providers;
 
-public sealed class JokeResponse
+public class JokeResponse
 {
     [JsonPropertyName("id")]
     public int ExternalId { get; init; }
@@ -1657,7 +1672,7 @@ public interface IRandomJokeProvider
 
 namespace JokeApp.Providers;
 
-public sealed class JokeApiProvider : IRandomJokeProvider
+public class JokeApiProvider : IRandomJokeProvider
 {
     private readonly HttpClient _httpClient;
 

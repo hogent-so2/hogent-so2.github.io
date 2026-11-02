@@ -264,7 +264,7 @@ public interface IJokeRepository
 
 namespace JokeApp.Repositories;
 
-public sealed class InMemoryJokeRepository : IJokeRepository
+public class InMemoryJokeRepository : IJokeRepository
 {
     private readonly List&lt;Joke&gt; _jokes =
     [
@@ -337,7 +337,7 @@ using JokeApp.Validation;
 
 namespace JokeApp.Services;
 
-public sealed class JokeService : IJokeService
+public class JokeService : IJokeService
 {
     private readonly IJokeRepository _jokeRepository;
 
@@ -770,7 +770,7 @@ using LiteDB;
 
 namespace JokeApp.Repositories;
 
-public sealed class LiteDbJokeRepository : IJokeRepository, IDisposable
+public class LiteDbJokeRepository : IJokeRepository, IDisposable
 {
     private readonly LiteDatabase _database;
     private readonly ILiteCollection&lt;Joke&gt; _jokes;
