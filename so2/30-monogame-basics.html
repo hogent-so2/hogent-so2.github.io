@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>State Pattern :: Softwareontwerp 2 (BETA)</title>
+    <title>MonoGame - Een eerste game met een game loop :: Softwareontwerp 2 (BETA)</title>
     <meta name="generator" content="Antora 3.1.14">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -141,38 +141,17 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">State Pattern</h1>
-<div class="sect1">
-<h2 id="_inleiding_design_patterns"><a class="anchor" href="#_inleiding_design_patterns"></a>Inleiding Design Patterns</h2>
+<h1 class="page">MonoGame - Een eerste game met een game loop</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>Design Patterns</em> (Ontwerppatronen) zijn typische oplossingen voor vaak voorkomende problemen in softwareontwerp.</p>
+<p>In de MAUI-lessen reageerden we op events en lieten we acties uitvoeren via commands. In een game blijft de wereld ook veranderen wanneer de gebruiker niets doet: water beweegt, vijanden verschijnen en animaties lopen verder. We maken kennis met een andere manier om onze code te organiseren: de <strong>game loop</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Een patroon is geen specifiek stuk code, maar wel een conceptuele oplossing. Je kan dus niet zomaar een patroon kiezen en het in je programma kopiëren, zoals je met bijvoorbeeld Nuget packages doet.</p>
+<p>We bouwen doorheen vier lessen hetzelfde spel en verbeteren het ontwerp stapsgewijs. Vandaag leren we MonoGame kennen en maken we een eerste werkende versie met een <code>enum</code> en <code>if/else</code>.</p>
 </div>
 <div class="paragraph">
-<p>Je volgt de blauwdruk van het patroon en bouwt zelf een concrete oplossing die past bij de realiteit van je eigen programma.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://refactoring.guru/design-patterns">Refactoring Guru</a> is een prachtige bron om meer te leren over <em>Design Patterns</em> en <em>Refactoring</em>.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-This site shows you the big picture, how all these subjects intersect, work together, and are still relevant. I don’t pretend to be the inventor of these concepts—most of them were invented by others during the past 20 years. But I think that the connection between refactoring, patterns and general programming principles still remains a mystery for the majority of programmers. This is the problem I would like to solve here.
-</blockquote>
-<div class="attribution">
-&#8212; Alexander Shvets<br>
-<cite>The one-man band behind Refactoring.Guru</cite>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_state_in_business_software"><a class="anchor" href="#_state_in_business_software"></a>State In Business Software</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Het <em>State Pattern</em> kan toegepast worden wanneer bepaalde domeinlogica sterk onderhevig is aan de notie van toestand, of <em>State</em>. We bedoelen daarmee <strong>niet</strong> de algemene <strong>toestand</strong> van het <strong>geheugen</strong> van de computer, maar <strong>wel</strong> het onderscheiden van <strong>discrete toestanden</strong> in de <strong>logica</strong>.</p>
+<p>Bij elke uitbreiding vertrekken we van wat de speler moet kunnen zien of doen. Daaruit leiden we af welke gegevens we moeten bewaren, welke berekening nodig is en waar die verantwoordelijkheid thuishoort. Zo passen we de ontwerpvragen uit de OO- en MAUI-lessen toe op een nieuw soort toepassing.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -181,236 +160,172 @@ This site shows you the big picture, how all these subjects intersect, work toge
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-De gedetailleerde blauwdruk voor het State Pattern kan je bekijken op <a href="https://refactoring.guru/design-patterns/state">Refactoring Guru</a>.
+De afbeeldingen en het fontbestand vind je in dezelfde <a href="https://github.com/hogent-so2/software-ontwerp-2-source">GitHub-repository</a> als bij de voorgaande lessen, in de map <code>MonoGame/Assets</code>. Download de bestanden vóór je aan de contentstap begint. Maak voor deze les een nieuw MonoGame-project.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Zo kent een document op een wiki kent bijvoorbeeld verschillende toestanden.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Draft</p>
-</li>
-<li>
-<p>Review</p>
-</li>
-<li>
-<p>Published</p>
-</li>
-<li>
-<p>Rejected</p>
-</li>
-<li>
-<p>Archived</p>
-</li>
-<li>
-<p>Etc</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Het gedrag van de applicatie zal verschillen naargelang de <em>State</em> van het document dat behandeld wordt door de logica.</p>
-</div>
-<div class="paragraph">
-<p>Dit kan je implementeren op enkele low-tech manieren</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>booleans en ifs</p>
-</li>
-<li>
-<p>strings en switches</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Code met veel states en state-afhankelijke logica kan moeilijk leesbaar en onderhoudbaar worden.</p>
-</div>
-<div class="paragraph">
-<p>Het <em>State Pattern</em> lost dit op door <em>States</em> expliciet te introduceren als klasses. State-eigen logica wordt hierin vervat. <em>States</em> erven van een gemeenschappelijke abstracte basisklasse. Het object onderhevig aan <em>State</em> krijgt een state implementatie toegewezen en delegeert vervolgens de state-afhankelijke methodeaanroepen naar het <em>State</em> object. <em>States</em> krijgen het recht om de huidige <em>State</em> op het state-afhankelijke object te veranderen.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_state_in_videogames"><a class="anchor" href="#_state_in_videogames"></a>State In Videogames</h2>
+<h2 id="_het_doel_van_de_lessenreeks"><a class="anchor" href="#_het_doel_van_de_lessenreeks"></a>Het doel van de lessenreeks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Videogames zijn een sprekend voorbeeld van logica die onderhevig is aan <em>state</em>.</strong></p>
-</div>
-<div class="paragraph">
-<p>Een klassieke videogame kent enkele duidelijk te onderscheiden states waarin de uit te voeren logica sterk verschilt.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>StartScreen</p>
-</li>
-<li>
-<p>Playing</p>
-</li>
-<li>
-<p>Paused</p>
-</li>
-<li>
-<p>Game Over</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We kunnen deze states én de toegelaten overgangen in kaart brengen.</p>
+<p>We bouwen een klein 2D-spel waarin Pikachu over de oceaan surft en haaien moet ontwijken.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/game/gamestates.png" alt="gamestates">
+<img src="_images/game/doel-klein.jpg" alt="Voorbeeld van het spel met Pikachu en haaien">
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_doel"><a class="anchor" href="#_doel"></a>Doel</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><strong>We bouwen een piepkleine videogame rond het <em>State Pattern</em>.</strong></p>
+<p>Dit is het beoogde eindresultaat <strong>na de vier MonoGame-lessen</strong>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Hersenen activeren door een nieuw soort problemen op te lossen.</p>
+<p>Het spel begint met een startscherm.</p>
 </li>
 <li>
-<p>Refactoring van klassieke code door het toepassen van een pattern.</p>
+<p>De speler beweegt in vier richtingen met het toetsenbord.</p>
+</li>
+<li>
+<p>Iedere drie seconden verschijnt een haai op een willekeurige hoogte. Haaien zwemmen van rechts naar links.</p>
+</li>
+<li>
+<p>De speler begint met drie levens. Een botsing kost een leven; bij nul levens is het spel voorbij.</p>
+</li>
+<li>
+<p>Het resterende aantal levens is zichtbaar.</p>
+</li>
+<li>
+<p>Met <code>P</code> kan de speler pauzeren; met <code>Enter</code> verder spelen.</p>
+</li>
+<li>
+<p>Na game over verschijnt een eindscherm en kan de speler met <code>S</code> terugkeren naar het startscherm.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>We maken een klein 2D spelletje waar een figuur over de oceaan surft en haaien moet ontwijken.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/game/doel-klein.jpg" alt="doel klein">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Het spel start met de boodschap "Druk Enter Om Te Spelen".</p>
-</li>
-<li>
-<p>Tijdens het spelen</p>
-<div class="ulist">
-<ul>
-<li>
-<p>De speler kan in vier richtingen bewegen met de pijltjestoetsen.</p>
-</li>
-<li>
-<p>Haaien verschijnen op een willekeurige hoogte en zwemmen van rechts naar links.</p>
-</li>
-<li>
-<p>Elke 3 seconden verschijnt er een nieuwe haai.</p>
-</li>
-<li>
-<p>Het raken van een haai vermindert het aantal levens met 1.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>De speler start met 3 levens.</p>
-</li>
-<li>
-<p>Wanneer het aantal levens 0 bereikt, is het spel voorbij..</p>
-</li>
-<li>
-<p>Het resterend aantal levens wordt op het scherm getoond.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tijdens het spelen kan het spel op pauze gezet worden met de <code>P</code> toets.</p>
-</li>
-<li>
-<p>Wanneer het spel op pauze staat, kan men verder spelen door op <code>Enter</code> te drukken.</p>
-</li>
-<li>
-<p>Wanneer het spel voorbij is, verschijnt de boodschap "Einde".</p>
-</li>
-<li>
-<p>Wanneer het spel afgelopen is, kan met op <code>S</code> drukken om terug te keren naar het startscherm.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_monogame"><a class="anchor" href="#_monogame"></a>MonoGame</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>We kiezen voor MonoGame als ondersteunende technologie.</strong></p>
-</div>
-<div class="paragraph">
-<p><a href="https://monogame.net/">MonoGame</a> is een <strong>framework</strong> om cross-platform videogames te programmeren in C#. <strong>MonoGame is géén <em>game engine</em>.</strong> De functionaliteit beperkt zich grofweg tot</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Abstraheren van calls naar de grafische kaart. Deze worden door het framework vertaald naar OpenGL, DirectX of Metal.</p>
-</li>
-<li>
-<p>Abstraheren van calls naar geluidsinfrastructuur op het systeem.</p>
-</li>
-<li>
-<p>Abstraheren van gebruikersinvoer, zoals toetsenbord en XInput.</p>
-</li>
-<li>
-<p>Inladen van <em>assets</em>, zoals prentjes en fonts, in een efficiënt formaat.</p>
-</li>
-<li>
-<p>Ter beschikking stellen van een aantal handige datastructuren zoals Rectangle, Vector2, Texture2D en SpriteFont.</p>
-</li>
-<li>
-<p>Voorzien van een basis klasse die een <em>game loop</em> bevat.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Je schrijft zelf alle logica in C#.</strong> Deze hoge graad van controle is interessant voor een bepaald professioneel doelpubliek én maakt het geheel didactisch verantwoord in een opleiding waar het zeker niet de bedoeling is met <em>game engines</em>, zoals Unreal of Unity, te leren werken.</p>
-</div>
-<div class="paragraph">
-<p>Enkele games die geschreven zijn in MonoGame.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/game/stardew.jpg" alt="stardew">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/game/celeste.png" alt="celeste">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/game/axiom.png" alt="axiom">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_implementatie"><a class="anchor" href="#_implementatie"></a>Implementatie</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_faseles_1"><a class="anchor" href="#_faseles_1"></a>Fase/Les 1</h3>
+<h3 id="_het_eindpunt_van_deze_les"><a class="anchor" href="#_het_eindpunt_van_deze_les"></a>Het eindpunt van deze les</h3>
 <div class="paragraph">
-<p>We implementeren alle (state) logica op klassieke wijze, zonder <em>State Pattern</em>.</p>
+<p>Vandaag bouwen we de basis waarmee we in de volgende lessen verder kunnen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>een venster van 768 bij 540 pixels;</p>
+</li>
+<li>
+<p>een startmenu dat met <code>Enter</code> naar het spel gaat;</p>
+</li>
+<li>
+<p>Pikachu die beweegt met de pijltjestoetsen of <code>ZQSD</code>;</p>
+</li>
+<li>
+<p>een achtergrond die naar links verschuift;</p>
+</li>
+<li>
+<p>haaien die om de drie seconden op dezelfde hoogte verschijnen en naar links bewegen;</p>
+</li>
+<li>
+<p>pauzeren met <code>P</code> en dezelfde spelwereld hervatten met <code>Enter</code>;</p>
+</li>
+<li>
+<p>afsluiten met <code>Escape</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Botsingen, levens en een werkend game-oververloop komen later. Ook het opsplitsen van toestanden in afzonderlijke klassen bewaren we voor de volgende les. Aan het einde van vandaag moet je kunnen uitleggen hoe de game loop, de invoer, de spelgegevens en het tekenen samenwerken.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wat_is_monogame"><a class="anchor" href="#_wat_is_monogame"></a>Wat is MonoGame?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://monogame.net/">MonoGame</a> is een framework om games in C# te bouwen. Het voorziet onder meer een venster, een game loop, toegang tot toetsenbord en gamepad, het laden van afbeeldingen en fonts, en het tekenen op het scherm.</p>
+</div>
+<div class="paragraph">
+<p>We hoeven het venster, de toegang tot de grafische kaart en het uitlezen van het toetsenbord niet zelf te bouwen. Daarvoor gebruiken we de bouwstenen van het framework. De spelregels, zoals wanneer een haai verschijnt en wat pauzeren betekent, bepalen we zelf. Bij het uitwerken daarvan komen we deze types tegen:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Game</code></dt>
+<dd>
+<p>De basisklasse die de levenscyclus en game loop aanbiedt.</p>
+</dd>
+<dt class="hdlist1"><code>GraphicsDeviceManager</code></dt>
+<dd>
+<p>Configureert het grafische venster, bijvoorbeeld de afmetingen.</p>
+</dd>
+<dt class="hdlist1"><code>Texture2D</code></dt>
+<dd>
+<p>Een geladen afbeelding die we kunnen tekenen.</p>
+</dd>
+<dt class="hdlist1"><code>Vector2</code></dt>
+<dd>
+<p>Een waarde met twee componenten, <code>X</code> en <code>Y</code>, bijvoorbeeld voor een positie.</p>
+</dd>
+<dt class="hdlist1"><code>SpriteBatch</code></dt>
+<dd>
+<p>Verzamelt tekenopdrachten voor afbeeldingen en tekst.</p>
+</dd>
+<dt class="hdlist1"><code>SpriteFont</code></dt>
+<dd>
+<p>Een font waarmee we tekst tekenen.</p>
+</dd>
+<dt class="hdlist1"><code>GameTime</code></dt>
+<dd>
+<p>Informatie over de verstreken speltijd.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>MonoGame is geen visuele game engine waarin we een scène samenklikken. We schrijven zelf in C# hoe het spel werkt. Dat maakt het geschikt om verantwoordelijkheden, objecttoestand en ontwerpkeuzes te onderzoeken.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_monogame_installeren_voor_visual_studio"><a class="anchor" href="#_monogame_installeren_voor_visual_studio"></a>MonoGame installeren voor Visual Studio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We gebruiken <strong>Visual Studio op Windows</strong>, zoals bij MAUI. We hebben een project nodig dat een gamevenster kan openen, de MonoGame-bibliotheken gebruikt en afbeeldingen kan verwerken. Een projecttemplate zet die samenhangende onderdelen voor ons klaar. Voor ons desktopspel kiezen we de DesktopGL-template; de MGCB Editor gebruiken we om de content te beheren.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_extension_manager_leren_kennen"><a class="anchor" href="#_de_extension_manager_leren_kennen"></a>De Extension Manager leren kennen</h3>
+<div class="paragraph">
+<p>Een <strong>extensie</strong> voegt mogelijkheden toe aan Visual Studio, bijvoorbeeld projecttemplates of ondersteuning voor een extra editor. Via de <strong>Extension Manager</strong> kan je extensies zoeken, installeren en beheren.</p>
+</div>
+<div class="paragraph">
+<p>We gebruiken de <a href="https://marketplace.visualstudio.com/items?itemName=MonoGame.MonoGame-Templates-VSExtension">MonoGame Framework C# project templates</a>-extensie van <strong>MonoGame</strong>. Die voegt de projecttemplates toe en laat ons de MGCB Editor vanuit Visual Studio openen.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start Visual Studio. Kies op het startscherm eventueel <strong>Continue without code</strong>.</p>
+</li>
+<li>
+<p>Open <strong>Extensions &gt; Manage Extensions</strong>. Dit is de Extension Manager.</p>
+</li>
+<li>
+<p>Zoek in het online aanbod (<strong>Browse</strong> of <strong>Online</strong>, afhankelijk van je Visual Studio-versie) op <code>MonoGame</code>.</p>
+</li>
+<li>
+<p>Selecteer <strong>MonoGame Framework C# project templates</strong> van <strong>MonoGame</strong>. Bekijk de beschrijving en kies <strong>Install</strong> of <strong>Download</strong>.</p>
+</li>
+<li>
+<p>Wacht tot de download klaar is. Als Visual Studio meldt dat de installatie gepland is, sluit je alle Visual Studio-vensters.</p>
+</li>
+<li>
+<p>Rond de installatie af in de <strong>VSIX Installer</strong>. Kies <strong>Modify</strong> wanneer daarom gevraagd wordt en wacht tot de installatie voltooid is.</p>
+</li>
+<li>
+<p>Start Visual Studio opnieuw. Open opnieuw <strong>Extensions &gt; Manage Extensions</strong> en controleer bij <strong>Installed</strong> of de MonoGame-extensie geïnstalleerd en ingeschakeld is.</p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -419,17 +334,117 @@ De gedetailleerde blauwdruk voor het State Pattern kan je bekijken op <a href="h
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-De code wordt na afloop van de les beschikbaar gesteld op Chamilo.
+Downloaden en installeren zijn hier niet altijd dezelfde stap. Een geplande installatie wordt pas uitgevoerd nadat Visual Studio gesloten is. Via <strong>Installed</strong> kan je later terugvinden welke extensies aanwezig zijn; via <strong>Updates</strong> kan je beschikbare updates bekijken.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_faseles_2"><a class="anchor" href="#_faseles_2"></a>Fase/Les 2</h3>
-<div class="paragraph">
-<p>We voldoen aan alle requirements én refactoren de code om het <em>State Pattern</em> te gebruiken.</p>
+<h3 id="_een_monogame_project_aanmaken"><a class="anchor" href="#_een_monogame_project_aanmaken"></a>Een MonoGame-project aanmaken</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Kies <strong>File &gt; New &gt; Project</strong> of <strong>Create a new project</strong> op het startscherm en zoek op <code>MonoGame</code>.</p>
+</li>
+<li>
+<p>Kies <strong>MonoGame Cross-Platform Desktop Application</strong>, de <strong>DesktopGL</strong>-template.</p>
+</li>
+<li>
+<p>Geef het project de naam <code>MonoGame_Pikachu</code>.</p>
+</li>
+<li>
+<p>Kies een locatie, klik op <strong>Create</strong> en wacht tot Visual Studio het project heeft aangemaakt.</p>
+</li>
+</ol>
 </div>
+<div class="paragraph">
+<p>De extensie breidt <strong>Visual Studio</strong> uit. De template maakt een project aan met de benodigde NuGet-packages en contentconfiguratie. Die instellingen nemen we over van de template.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Verschijnt de template niet? Controleer bij <strong>Extensions &gt; Manage Extensions &gt; Installed</strong> of de extensie actief is en of de VSIX-installatie volledig is afgerond. Herstart Visual Studio en wis eventuele taal- of platformfilters in <strong>Create a new project</strong> voordat je opnieuw op <code>MonoGame</code> zoekt.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_een_eerste_controle"><a class="anchor" href="#_een_eerste_controle"></a>Een eerste controle</h3>
+<div class="paragraph">
+<p>Kies <strong>Build &gt; Build Solution</strong>. Visual Studio herstelt de benodigde packages en de MonoGame-buildstappen herstellen de lokale contenttools. Bekijk bij problemen <strong>View &gt; Output</strong> met <strong>Build</strong> als uitvoerbron en de <strong>Error List</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Start het project daarna <strong>zonder code te wijzigen</strong> met <code>F5</code>. Je hoort een blauw venster te zien. Sluit het opnieuw met <code>Escape</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Ga pas verder wanneer dit werkt. Door na iedere kleine stap opnieuw te bouwen en te starten, kan je een fout koppelen aan de laatste wijziging.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_van_events_en_commands_naar_een_game_loop"><a class="anchor" href="#_van_events_en_commands_naar_een_game_loop"></a>Van events en commands naar een game loop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bij MAUI schreven we bijvoorbeeld een event handler voor <code>Clicked</code>, of een command in het viewmodel dat via een knop wordt uitgevoerd. Onze actie wordt aangeroepen wanneer die interactie plaatsvindt.</p>
+</div>
+<div class="paragraph">
+<p>Stel dat een command de X-positie van de speler één keer verhoogt. Dat levert één verplaatsing op. Voor een beweging die blijft doorgaan, moet die berekening herhaald worden. Bovendien moeten de haaien blijven zwemmen terwijl de speler het toetsenbord loslaat. Een berekening die we uitsluitend bij een gebruikersactie uitvoeren, beschrijft dat gedrag dus nog niet.</p>
+</div>
+<div class="paragraph">
+<p>We hebben een ritme nodig waarop we de wereld telkens een kleine stap laten evolueren. In MonoGame verzorgt de <strong>game loop</strong> dat ritme: het framework roept <code>Update</code> en <code>Draw</code> voortdurend opnieuw aan. Wij bepalen wat er tijdens zo&#8217;n stap verandert en hoe de resulterende toestand eruitziet.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Vraag</th>
+<th class="tableblock halign-left valign-top">MAUI in de vorige lessen</th>
+<th class="tableblock halign-left valign-top">MonoGame in deze les</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wanneer draait onze actielogica?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een event of een aanroep van een command voert een actie uit.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Update</code> wordt herhaald aangeroepen, ook zonder invoer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hoe verwerken we invoer?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een control meldt een interactie; een handler of command reageert.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We vragen in <code>Update</code> welke toetsen op dat moment ingedrukt zijn.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hoe verandert de weergave?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We wijzigen controls of properties waarop de UI gebonden is.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Draw</code> tekent de huidige speltoestand opnieuw.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wat gebeurt er zonder gebruikersactie?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Onze knopactie wordt niet opnieuw uitgevoerd.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De achtergrond, vijanden en timers kunnen blijven veranderen.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -437,57 +452,541 @@ De code wordt na afloop van de les beschikbaar gesteld op Chamilo.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-De code wordt na afloop van de les beschikbaar gesteld op Chamilo.
+MAUI verwerkt intern ook berichten, events en bijvoorbeeld animaties. Het verschil gaat hier over <strong>hoe wij onze applicatielogica schrijven</strong>. Een command is een aanroepbare actie, geen lus die vanzelf blijft draaien. Ook in een game kunnen events bestaan; in deze les lezen we het toetsenbord telkens opnieuw uit. Dat heet <strong>polling</strong>.
 </td>
 </tr>
 </table>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/game/states-type-diagram.png" alt="states type diagram">
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_zelf_compileren_uitvoeren"><a class="anchor" href="#_zelf_compileren_uitvoeren"></a>Zelf Compileren &amp; Uitvoeren</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><strong>Het is mogelijk om het spel op je eigen computer uit te voeren of aan te passen.</strong></p>
-</div>
-<div class="sect2">
-<h3 id="_monogame_setup"><a class="anchor" href="#_monogame_setup"></a>MonoGame Setup</h3>
-<div class="paragraph">
-<p>Installeer VS Code indien je dit nog niet gedaan hebt.</p>
-</div>
-<div class="paragraph">
-<p>Installeer de MonoGame templates</p>
+<p>Conceptueel gebeurt na het opstarten het volgende:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">dotnet new install MonoGame.Templates.CSharp</code></pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Zolang het spel actief is:
+    Update: lees invoer, wijzig posities en werk timers bij
+    Draw: teken de huidige toestand
+    Herhaal</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Installeer de C# DevKit plugin.</p>
+<p>Dit schema is uitleg, geen lus die je zelf moet toevoegen. <code>Game.Run()</code> laat MonoGame de timing en de herhaling regelen.</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>De standaard game loop gebruikt een vaste tijdstap en streeft naar <strong>60 updates per seconde</strong>. <code>Update</code> en <code>Draw</code> worden niet gegarandeerd even vaak uitgevoerd: bij vertraging kan MonoGame meerdere updates uitvoeren en een tekenbeurt overslaan. Zie ook de <a href="https://docs.monogame.net/articles/getting_to_know/whatis/game_loop/">uitleg over de game loop</a> en <a href="https://docs.monogame.net/articles/getting_to_know/howto/HowTo_VariableStepGameLoop.html">vaste en variabele tijdstappen</a>.</p>
+</div>
+<div class="paragraph">
+<p>Daarom spreken we in onze code over <strong>pixels per update</strong> wanneer we bij iedere <code>Update</code> een vaste afstand verplaatsen. Bij 60 updates per seconde betekent 5 pixels per update ongeveer 300 pixels per seconde. Dat is niet hetzelfde als zeggen dat ieder getekend frame een vaste verplaatsing veroorzaakt.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Zet geen eigen oneindige lus, <code>Console.ReadLine()</code> of <code>Thread.Sleep()</code> in <code>Update</code>. Een update voert een kleine stap uit en geeft de controle terug aan MonoGame. Blokkeren verhindert dat het framework tijdig verder kan tekenen en invoer verwerken. Ook drie seconden wachten op een nieuwe haai doen we later met een timerwaarde, zonder de lus stil te zetten.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_denk_eerst_even_na"><a class="anchor" href="#_denk_eerst_even_na"></a>Denk eerst even na</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Een speler houdt de rechterpijl een seconde ingedrukt. Wordt onze controle één keer of herhaald uitgevoerd?</p>
+</li>
+<li>
+<p>Waarom moet een haai ook bewegen wanneer geen enkele toets wordt ingedrukt?</p>
+</li>
+<li>
+<p>Wat zou er gebeuren als we de spelerpositie aan het begin van iedere update terug op nul zetten?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_het_project_en_de_levenscyclus"><a class="anchor" href="#_het_project_en_de_levenscyclus"></a>Het project en de levenscyclus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nu de game loop de uitvoering regelt, moeten we weten waar onze eigen code daarin past. Open <strong>Solution Explorer</strong> en volg het opstarten van de toepassing vanaf <code>Program.cs</code>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Program.cs</code></dt>
+<dd>
+<p>Maakt een <code>Game1</code>-object en roept <code>Run()</code> aan.</p>
+</dd>
+<dt class="hdlist1"><code>Game1.cs</code></dt>
+<dd>
+<p>Bevat onze gameklasse. We erven van <code>Game</code> en overschrijven de methoden die MonoGame aanroept.</p>
+</dd>
+<dt class="hdlist1"><code>Content/Content.mgcb</code></dt>
+<dd>
+<p>Beschrijft welke afbeeldingen en fonts de contenttools moeten verwerken.</p>
+</dd>
+<dt class="hdlist1"><code>MonoGame_Pikachu.csproj</code></dt>
+<dd>
+<p>Bevat onder meer het target framework en de NuGet-packages.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>De startcode in <code>Program.cs</code> is kort:</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="_images/game/devkit.png" alt="devkit">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using var game = new MonoGame_Pikachu.Game1();
+game.Run();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Installeer de MonoGame plugin.</p>
+<p>De constructor maakt en configureert het object. Daarna regelt <code>Run()</code> het opstarten en de game loop. <code>using</code> zorgt dat de game haar resources opruimt wanneer ze wordt afgesloten.</p>
 </div>
-<div class="imageblock">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plaats</th>
+<th class="tableblock halign-left valign-top">Verantwoordelijkheid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vensterinstellingen en de contentmap configureren.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Initialize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De beginwaarden van onze spelgegevens instellen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadContent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resources laden die nodig zijn om te tekenen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Update</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoer verwerken en spelgegevens veranderen, telkens één stap.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Draw</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De huidige spelgegevens weergeven, zonder de spelregels uit te voeren.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In deze toepassing gebeuren de initialisatie en het laden bij de start. <code>Update</code> en <code>Draw</code> worden daarna herhaald. Behoud de <code>base.Initialize()</code>-aanroep: de basisklasse verzorgt verdere initialisatie, waaronder het aanroepen van <code>LoadContent</code>. Roep die levenscyclusmethoden niet zelf op om bijvoorbeeld uit pauze te komen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_1_een_venster_met_een_duidelijk_startpunt"><a class="anchor" href="#_stap_1_een_venster_met_een_duidelijk_startpunt"></a>Stap 1 - Een venster met een duidelijk startpunt</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Onze eerste vraag is klein: kunnen we een speelveld tonen en het programma weer sluiten? We kiezen een venster van 768 bij 540 pixels zodat iedereen hetzelfde zichtbare speelveld heeft. Dat zijn instellingen voor het opstarten; we hoeven ze niet tijdens iedere update opnieuw toe te kennen.</p>
+</div>
+<div class="paragraph">
+<p>De verantwoordelijkheden vallen al uiteen. De constructor configureert het venster. <code>Update</code> controleert of de speler wil afsluiten. <code>Draw</code> maakt het beeld klaar voor een nieuwe tekenbeurt. Zodra we afbeeldingen hebben, zal <code>Draw</code> een <code>SpriteBatch</code> nodig hebben. Die maken we aan in <code>LoadContent</code>, waar de grafische voorzieningen beschikbaar zijn, en bewaren we voor de volgende tekenbeurten.</p>
+</div>
+<div class="paragraph">
+<p>Dit levert onderstaande basis voor <code>Game1.cs</code> op. Vervang de templatecode door deze versie en zoek de drie verantwoordelijkheden erin terug. Bij latere codeblokken vermelden we telkens of je een methode aanvult of vervangt.</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1.cs - basis</div>
 <div class="content">
-<img src="_images/game/monogame.png" alt="monogame">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace MonoGame_Pikachu;
+
+public class Game1 : Game
+{
+    private readonly GraphicsDeviceManager _graphics;
+    private SpriteBatch _spriteBatch;
+
+    public Game1()
+    {
+        _graphics = new GraphicsDeviceManager(this);
+        Content.RootDirectory = "Content";
+        IsMouseVisible = true;
+
+        _graphics.PreferredBackBufferWidth = 768;
+        _graphics.PreferredBackBufferHeight = 540;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+    }
+
+    protected override void LoadContent()
+    {
+        _spriteBatch = new SpriteBatch(GraphicsDevice);
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Exit();
+
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        _spriteBatch.Begin();
+        _spriteBatch.End();
+
+        base.Draw(gameTime);
+    }
+}</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><code>Game1 : Game</code> is overerving. Met <code>override</code> leveren we een eigen implementatie van een methode uit de basisklasse. MonoGame roept die implementatie aan: we gebruiken dus al polymorfisme, ook al schrijven we vandaag nog geen eigen stateklassen.</p>
+</div>
+<div class="paragraph">
+<p><code>GraphicsDevice.Clear</code> geeft de nieuwe tekenbeurt een egale achtergrond. We zullen straks de volledige zichtbare wereld opnieuw tekenen; we hoeven dus niet zelf bij te houden welke pixels van de vorige spelerpositie gewist moeten worden. Tussen <code>Begin</code> en <code>End</code> komen die tekenopdrachten.</p>
+</div>
+<div class="paragraph">
+<p>Het veld <code>_spriteBatch</code> verbindt twee momenten in de levenscyclus: aanmaken bij het laden en gebruiken tijdens het tekenen. Dat is dezelfde reden waarom we in een MAUI-pagina een verwijzing naar haar service bewaren. Een lokale variabele in <code>LoadContent</code> zou voor <code>Draw</code> niet rechtstreeks beschikbaar zijn.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> start het spel en wijzig daarna de achtergrondkleur. Zie je het verschil? Plaats kort een breakpoint in <code>Update</code>, hervat met <code>F5</code> en merk dat dezelfde methode opnieuw wordt bereikt zonder een toets in het spel te gebruiken. Verwijder het breakpoint daarna.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_2_een_speler_zichtbaar_maken"><a class="anchor" href="#_stap_2_een_speler_zichtbaar_maken"></a>Stap 2 - Een speler zichtbaar maken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het venster werkt, maar de speler ziet nog geen personage. Om Pikachu te tonen hebben we twee soorten informatie nodig: <strong>hoe ziet hij eruit</strong> en <strong>waar tekenen we hem</strong>? De afbeelding kan dezelfde blijven terwijl de positie later verandert. We zullen die twee gegevens daarom afzonderlijk bewaren.</p>
+</div>
+<div class="paragraph">
+<p>Eerst maken we de afbeelding beschikbaar voor het spel. Een PNG in een map is een bronbestand. Voor het tekenen gebruiken we een geladen <code>Texture2D</code>. De <strong>Content Pipeline</strong> verbindt die twee: ze verwerkt de bronbestanden tijdens het bouwen naar <code>.xnb</code>-bestanden, die onze game tijdens het uitvoeren kan laden. Daardoor staan het verwerken van de assets en het tekenen van de spelwereld los van elkaar.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_assets_ophalen"><a class="anchor" href="#_de_assets_ophalen"></a>De assets ophalen</h3>
+<div class="paragraph">
+<p>Haal uit <code>MonoGame/Assets</code> in de <a href="https://github.com/hogent-so2/software-ontwerp-2-source">repository</a> deze vier bestanden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>surfing-pikachu.png</code>;</p>
+</li>
+<li>
+<p><code>haai.png</code>;</p>
+</li>
+<li>
+<p><code>water.png</code>;</p>
+</li>
+<li>
+<p><code>game-font.spritefont</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Je kan de repository downloaden via <strong>Code &gt; Download ZIP</strong> en daarna uitpakken. Download je een afbeelding afzonderlijk, gebruik dan de downloadknop voor het oorspronkelijke bestand. Een opgeslagen GitHub-webpagina is geen PNG-afbeelding.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_solution_starten"><a class="anchor" href="#_solution_starten"></a>Solution Starten</h3>
+<h3 id="_de_mgcb_editor_openen"><a class="anchor" href="#_de_mgcb_editor_openen"></a>De MGCB Editor openen</h3>
+<div class="paragraph">
+<p>De editor om content te beheren is een lokale tool bij het project. De eerder geïnstalleerde MonoGame-extensie koppelt die editor aan Visual Studio.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Bouw het project eerst via <strong>Build &gt; Build Solution</strong>, zodat de benodigde packages en contenttools beschikbaar zijn.</p>
+</li>
+<li>
+<p>Open <strong>Solution Explorer</strong> en klap de map <strong>Content</strong> open.</p>
+</li>
+<li>
+<p>Dubbelklik op <code>Content.mgcb</code>. De <strong>MGCB Editor</strong> opent in een apart venster.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Opent de editor niet? Controleer in de Extension Manager of de MonoGame-extensie ingeschakeld is en herstart Visual Studio na een installatie of wijziging. Controleer ook of het bouwen geslaagd is via <strong>View &gt; Output &gt; Build</strong>. De <a href="https://docs.monogame.net/articles/getting_started/content_pipeline/using_mgcb_editor.html">MonoGame-documentatie over de MGCB Editor</a> beschrijft deze integratie.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_afbeeldingen_en_het_font_registreren"><a class="anchor" href="#_afbeeldingen_en_het_font_registreren"></a>Afbeeldingen en het font registreren</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Kies in de MGCB Editor <strong>Add &gt; Existing Item</strong> en voeg de drie PNG-bestanden en het meegeleverde <code>game-font.spritefont</code> toe.</p>
+</li>
+<li>
+<p>Kies <strong>Copy</strong> wanneer de editor vraagt hoe bestanden buiten de contentmap moeten worden toegevoegd. Zo komen de bestanden in de eigen <code>Content</code>-map terecht.</p>
+</li>
+<li>
+<p>Sla <code>Content.mgcb</code> op en bouw de content via <strong>Build</strong> in de editor. Controleer of er fouten gemeld worden.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Het meegeleverde fontbestand beschrijft het lettertype en de tekstgrootte. De Content Pipeline verwerkt het zodat we het later met <code>Content.Load&lt;SpriteFont&gt;("game-font")</code> kunnen laden. Ook hier gebruiken we de assetnaam zonder bestandsextensie.</p>
+</div>
+<div class="paragraph">
+<p>In <code>Content</code> staan nu de drie afbeeldingen, <code>game-font.spritefont</code> en <code>Content.mgcb</code>. Alleen bestanden naar die map kopiëren is niet voldoende: ze moeten ook in <code>Content.mgcb</code> geregistreerd zijn.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_welke_gegevens_moet_de_game_onthouden"><a class="anchor" href="#_welke_gegevens_moet_de_game_onthouden"></a>Welke gegevens moet de game onthouden?</h3>
+<div class="paragraph">
+<p>Voor het uiterlijk bewaren we een <code>Texture2D</code>. Voor de plaats gebruiken we een <code>Vector2</code>: X en Y vormen samen één positie. Dat sluit aan bij de <code>Coordinate</code> uit de OO-herhaling. MonoGame biedt hier zelf al een bruikbaar type aan.</p>
+</div>
+<div class="paragraph">
+<p>De positie moet haar waarde behouden tussen opeenvolgende updates. Een variabele die we telkens opnieuw aanmaken met de beginpositie zou de vorige beweging vergeten. Bovendien moet <code>Draw</code> de positie kunnen lezen die <code>Update</code> heeft berekend. Daarom worden de texture en de positie <strong>velden</strong> van de game. We houden ze private zodat de game zelf bepaalt wanneer ze wijzigen.</p>
+</div>
+<div class="paragraph">
+<p>Voeg de twee velden bij de bestaande velden in <code>Game1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - spelergegevens</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private Texture2D _pikachuTexture;
+private Vector2 _pikachuPosition;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Daarna kiezen we het juiste moment om die velden een waarde te geven. De <strong>beginpositie</strong> hoort bij de initialisatie van de spelgegevens. Het <strong>laden van de afbeelding</strong> hoort bij <code>LoadContent</code>. Zo vraagt een gewone tekenbeurt alleen om de al geladen texture en de actuele positie.</p>
+</div>
+<div class="paragraph">
+<p>Vervang <code>Initialize</code> en <code>LoadContent</code> door de volgende implementaties:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - speler initialiseren</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Initialize()
+{
+    _pikachuPosition = new Vector2(0, _graphics.PreferredBackBufferHeight / 2);
+
+    base.Initialize();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - speler laden</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void LoadContent()
+{
+    _spriteBatch = new SpriteBatch(GraphicsDevice);
+    _pikachuTexture = Content.Load&lt;Texture2D&gt;("surfing-pikachu");
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Content.Load&lt;Texture2D&gt;</code> geeft het gewenste type aan. De naam is relatief ten opzichte van <code>Content.RootDirectory</code>, <strong>zonder bestandsextensie</strong>. We schrijven dus <code>"surfing-pikachu"</code>, niet <code>"Content/surfing-pikachu.png"</code>.</p>
+</div>
+<div class="paragraph">
+<p>We beschikken nu over een afbeelding en een positie, maar die gegevens worden nog nergens weergegeven. <code>Draw</code> krijgt daarom de verantwoordelijkheid ze samen te gebruiken. De eenvoudige overload van <code>SpriteBatch.Draw</code> vraagt precies de afbeelding, de positie en een kleurfilter. Voeg de aanroep tussen <code>Begin</code> en <code>End</code> toe:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - speler tekenen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_spriteBatch.Draw(_pikachuTexture, _pikachuPosition, Color.White);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deze eenvoudige overload heeft drie argumenten: de afbeelding, de positie en een kleurfilter. We tekenen de volledige afbeelding op haar oorspronkelijke grootte. <code>Color.White</code> behoudt de oorspronkelijke kleuren; deze parameter maakt de afbeelding niet volledig wit.</p>
+</div>
+<div class="paragraph">
+<p>Het punt <code>(0, 0)</code> ligt linksboven in het venster. X groeit naar rechts en Y groeit naar beneden. De linkerbovenhoek van de afbeelding ligt op de opgegeven positie. De beginwaarde voor Y plaatst dus de <strong>bovenkant</strong> van Pikachu halverwege het venster.</p>
+</div>
+<div class="paragraph">
+<p><strong>Onderzoek:</strong> Pikachu verschijnt links, met zijn bovenkant halverwege het venster. Verhoog alleen X en voorspel waar hij terechtkomt; doe daarna hetzelfde met Y. Leg uit waarom de texture bij deze wijziging dezelfde kan blijven. Herstel vervolgens de beginpositie.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_3_de_tekenaanroep_aanpassen_aan_ons_spel"><a class="anchor" href="#_stap_3_de_tekenaanroep_aanpassen_aan_ons_spel"></a>Stap 3 - De tekenaanroep aanpassen aan ons spel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pikachu staat op het scherm. Nu willen we zijn getekende grootte kunnen kiezen, zodat er ook plaats is voor de andere spelonderdelen. We kunnen daarvoor de bronafbeelding bewerken, maar een schaal bij het tekenen laat ons dezelfde asset op verschillende groottes gebruiken. De eenvoudige <code>Draw</code>-overload uit de vorige stap blijft bruikbaar wanneer de oorspronkelijke grootte volstaat.</p>
+</div>
+<div class="paragraph">
+<p>Voor schalen biedt MonoGame een uitgebreidere overload aan. Die vraagt ook instellingen voor onder meer rotatie en spiegeling. Onze game gebruikt voorlopig steeds dezelfde keuzes: de volledige afbeelding, de oorspronkelijke kleuren, geen rotatie en geen spiegeling. Alleen texture, positie en schaal verschillen per tekenaanroep.</p>
+</div>
+<div class="paragraph">
+<p>Daaruit volgt een kleine ontwerpkeuze: we bundelen de gedeelde tekeninstellingen op één plaats. Dat kan met een gewone hulpmethode. We kiezen hier voor <strong>extension methods</strong>, zodat de aanroep aansluit bij de bestaande <code>spriteBatch.Draw(&#8230;&#8203;)</code>-schrijfwijze. Ze kennen alleen de tekengegevens; invoer, posities bijwerken en speltoestanden horen er niet bij.</p>
+</div>
+<div class="paragraph">
+<p>De eerste methode vult alleen <code>Color.White</code> in. De tweede geeft ook een schaal door. Maak hiervoor <code>Extensions/SpriteBatchExtensions.cs</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Extensions/SpriteBatchExtensions.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace MonoGame_Pikachu.Extensions;
+
+internal static class SpriteBatchExtensions
+{
+    public static void Draw(
+        this SpriteBatch spriteBatch,
+        Texture2D texture,
+        Vector2 position)
+    {
+        spriteBatch.Draw(texture, position, Color.White);
+    }
+
+    public static void Draw(
+        this SpriteBatch spriteBatch,
+        Texture2D texture,
+        Vector2 position,
+        float scale)
+    {
+        spriteBatch.Draw(texture, position, null, Color.White,
+            0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Een extension method is een statische methode die we met de schrijfwijze van een instantiemethode kunnen aanroepen. <code>this SpriteBatch spriteBatch</code> geeft aan op welk type ze toepasbaar is. We wijzigen de klasse <code>SpriteBatch</code> zelf niet en erven er ook niet van.</p>
+</div>
+<div class="paragraph">
+<p>Voeg bovenaan <code>Game1.cs</code> de namespace toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using MonoGame_Pikachu.Extensions;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Met de eerste extension method kunnen we de kleur weglaten:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_spriteBatch.Draw(_pikachuTexture, _pikachuPosition);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Deze aanroep geeft hetzelfde beeld als de eenvoudige overload met <code>Color.White</code>.</p>
+</div>
+<div class="paragraph">
+<p>De schaal voor Pikachu is een keuze van onze game, geen algemene eigenschap van de tekenhulp. Daarom bewaren we die in <code>Game1</code> en geven we ze mee aan de extension method. We kiezen <code>0.5f</code>: zowel breedte als hoogte worden gehalveerd. Een benoemde constante maakt die keuze herkenbaar en houdt haar op één plaats.</p>
+</div>
+<div class="paragraph">
+<p>Voeg deze constante toe binnen <code>Game1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - spelerschaal</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private const float PLAYER_SCALE = 0.5f;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vervang de tekenaanroep vervolgens door:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_spriteBatch.Draw(_pikachuTexture, _pikachuPosition, PLAYER_SCALE);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De methode met een <code>float</code> als derde argument komt uit onze extensieklasse. Verwar ze niet met de ingebouwde overload die als derde argument een <code>Color</code> verwacht. Binnen de extension method gebruiken we een uitgebreidere overload om de schaal door te geven; de overige tekeninstellingen staan zo op één plaats.</p>
+</div>
+<div class="paragraph">
+<p><strong>Onderzoek:</strong> Pikachu heeft dezelfde positie, maar wordt nu half zo breed en half zo hoog getekend. Probeer tijdelijk schaal <code>1f</code> en herstel daarna <code>0.5f</code>. Waarom geven we de schaal mee als argument, terwijl de extension method zelf <code>Color.White</code> invult? Welke keuze geldt voor één figuur en welke keuze delen onze tekenaanroepen?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_4_bewegen_door_invoer_te_blijven_controleren"><a class="anchor" href="#_stap_4_bewegen_door_invoer_te_blijven_controleren"></a>Stap 4 - Bewegen door invoer te blijven controleren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tot nu toe verandert de spelerpositie alleen wanneer wij de beginwaarde in de code aanpassen. We willen nu dat de speler naar rechts blijft bewegen zolang de rechterpijl ingedrukt is, en stopt zodra hij die loslaat.</p>
+</div>
+<div class="paragraph">
+<p>Wat moet er tijdens één update gebeuren? We lezen de huidige invoer. Is de rechterpijl ingedrukt, dan verhogen we X met een kleine afstand. In de volgende update vertrekken we van die nieuwe positie. Bij een afstand van 5 wordt X bijvoorbeeld achtereenvolgens 100, 105, 110 en 115. Wanneer de toets wordt losgelaten, blijft X op de laatst berekende waarde staan.</p>
+</div>
+<div class="paragraph">
+<p>Die afstand per update bepaalt de snelheid. We geven haar een naam zodat alle richtingen dezelfde instelling gebruiken. Voeg de constante toe binnen <code>Game1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - spelersnelheid</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private const int PLAYER_SPEED = 5;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nu bepalen we welke methode deze verantwoordelijkheid krijgt. <code>Initialize</code> wordt gebruikt om te starten; beweging moet zich herhalen. <code>Draw</code> moet de actuele positie weergeven. De berekening hoort dus in <code>Update</code>. We bundelen het deel dat over de speler gaat in <code>UpdatePlayerPosition</code>, zodat de game loop straks ook andere taken kan coördineren.</p>
+</div>
+<div class="paragraph">
+<p>De besturing laat twee toetsen per richting toe. De voorwaarde voor rechts wordt dus: rechterpijl <strong>of</strong> D is ingedrukt. Een hulpmethode <code>IsKeyDown</code> verwoordt die vraag en voorkomt dat we de toetsenbordaanroep overal uitschrijven. Het blijft polling: bij iedere aanroep vragen we naar de toestand van de toets op dat moment.</p>
+</div>
+<div class="paragraph">
+<p><strong>Redeneer vóór je verder leest:</strong> welke component moet wijzigen voor links, omhoog en omlaag? Moet die component groter of kleiner worden? Wat verwacht je wanneer rechts en omhoog tegelijk ingedrukt zijn?</p>
+</div>
+<div class="paragraph">
+<p>De uitwerking bestaat uit deze private methoden in <code>Game1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - speler bewegen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdatePlayerPosition()
+{
+    if (IsKeyDown(Keys.Right, Keys.D))
+        _pikachuPosition.X += PLAYER_SPEED;
+
+    if (IsKeyDown(Keys.Left, Keys.Q))
+        _pikachuPosition.X -= PLAYER_SPEED;
+
+    if (IsKeyDown(Keys.Up, Keys.Z))
+        _pikachuPosition.Y -= PLAYER_SPEED;
+
+    if (IsKeyDown(Keys.Down, Keys.S))
+        _pikachuPosition.Y += PLAYER_SPEED;
+}
+
+private bool IsKeyDown(Keys key)
+    =&gt; Keyboard.GetState().IsKeyDown(key);
+
+private bool IsKeyDown(Keys firstKey, Keys secondKey)
+    =&gt; IsKeyDown(firstKey) || IsKeyDown(secondKey);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De overload met twee toetsen hergebruikt de overload met één toets. Zo ondersteunen we zowel pijltjestoetsen als <code>ZQSD</code>. Voor een QWERTY-indeling kan je zelf de alternatieven aanpassen naar <code>WASD</code>.</p>
+</div>
+<div class="paragraph">
+<p>Een methode definiëren voert haar nog niet uit. De game loop moet onze spelerberekening bij iedere update bereiken. Voeg daarom in <code>Update</code>, na de controle op <code>Escape</code> en vóór <code>base.Update(gameTime)</code>, deze aanroep toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">UpdatePlayerPosition();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>IsKeyDown</code> betekent <strong>is deze toets nu ingedrukt?</strong>, niet <strong>werd deze toets zojuist ingedrukt?</strong>. Bij ingedrukt houden is de voorwaarde gedurende veel updates waar. Iedere update verplaatst Pikachu een klein stukje. <code>Draw</code> leest daarna de positie en tekent hem opnieuw.</p>
+</div>
+<div class="paragraph">
+<p>We gebruiken vier afzonderlijke <code>if</code>-constructies. Daardoor kan de speler bijvoorbeeld tegelijk naar rechts en omhoog bewegen. Een keten met <code>else if</code> zou maar één van die richtingen per update verwerken. De diagonale beweging is in deze eenvoudige versie sneller; we normaliseren de richting vandaag nog niet.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -495,47 +994,689 @@ De code wordt na afloop van de les beschikbaar gesteld op Chamilo.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Logica en Content in dit voorbeeld is absoluut niet voldoende rijk en efficiënt om als goed voorbeeld te dienen voor game development. Het is wél een goed voorbeeld van het <em>State Pattern</em>, en daar gaat het natuurlijk over.<br>
-<br>
-Indien je meer wil leren over MonoGame, kan je de <a href="https://docs.monogame.net/articles/getting_to_know/howto/">documentatie</a> consulteren.
+Beweging staat in <code>Update</code>, niet in <code>Draw</code>. Tekenen hoort de positie alleen te lezen. Zo hangt de spelberekening niet af van het aantal tekenbeurten.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Open de Solution in VS Code.</p>
+<p><strong>Onderzoek:</strong> houd een richting ingedrukt en laat daarna los. Test ook twee richtingen tegelijk en vergelijk het resultaat met je voorspelling. Welke verandering zou optreden als je de vier <code>if</code>-constructies door een <code>if/else if</code>-keten vervangt? De speler kan voorlopig buiten beeld bewegen; de schermgrenzen vormen een oefening op het einde.</p>
 </div>
-<div class="imageblock">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_5_een_bewegende_achtergrond"><a class="anchor" href="#_stap_5_een_bewegende_achtergrond"></a>Stap 5 - Een bewegende achtergrond</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De speler kan bewegen, maar het blauwe vlak geeft nog geen indruk van surfen. We willen water zien dat voortdurend naar links schuift. Daarmee krijgen we een tweede soort beweging: ze hangt niet af van toetsenbordinput.</p>
+</div>
+<div class="paragraph">
+<p>Welke gegevens verschillen van de speler? Het water heeft een eigen afbeelding, positie, schaal en snelheid. Het gebruikt wel dezelfde tekenhulp en hetzelfde coördinatenstelsel. De positie moet zelfstandig blijven bestaan: als we de spelerpositie zouden hergebruiken, zou het water onbedoeld meebewegen met de besturing.</p>
+</div>
+<div class="paragraph">
+<p>We kiezen een schaal van <code>0.25f</code> voor de waterafbeelding en een verplaatsing van 2 pixels naar links per update. De constanten beschrijven de instellingen; het positieveld bewaart de veranderende toestand. Voeg deze gegevens toe binnen <code>Game1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - achtergrondgegevens</div>
 <div class="content">
-<img src="_images/game/open.png" alt="open">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private const int BACKGROUND_SPEED = 2;
+private const float BACKGROUND_SCALE = 0.25f;
+
+private Texture2D _backgroundTexture;
+private Vector2 _backgroundPosition;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Restore het project om de nodige dependencies en tools te installeren.</p>
+<p>Het water begint linksboven. Dat is een beginwaarde, dus die hoort in <code>Initialize</code> vóór <code>base.Initialize()</code>:</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="_images/game/restore.png" alt="restore">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_backgroundPosition = Vector2.Zero;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Run (en build impliciet) het project.</p>
+<p>De afbeelding is nodig bij elke tekenbeurt. We laden haar samen met de andere resources in <code>LoadContent</code>:</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
 <div class="content">
-<img src="_images/game/run.png" alt="run">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_backgroundTexture = Content.Load&lt;Texture2D&gt;("water");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Als het goed zit, start het spelletje op.</p>
+<p>Naar links bewegen betekent X verkleinen. De berekening heeft geen toetsvoorwaarde nodig: ook als de speler niets doet, moet ze worden uitgevoerd. Geef haar een eigen methode en roep die in <code>Update</code> aan vóór <code>UpdatePlayerPosition()</code>:</p>
 </div>
-<div class="imageblock">
+<div class="listingblock">
+<div class="title">Game1 - achtergrond bewegen</div>
 <div class="content">
-<img src="_images/game/running.png" alt="running">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdateBackgroundPosition()
+{
+    _backgroundPosition.X -= BACKGROUND_SPEED;
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Aan het einde van deze les zouden jullie moeten uitkomen op een implementatie zoals je kan vinden op jouw klas zijn folder op deze lokatie: <a href="https://github.com/tommy-uytterhaegen" class="bare">https://github.com/tommy-uytterhaegen</a></p>
+<p>We hebben nu twee afbeeldingen die elkaar kunnen overlappen. Welke hoort vooraan? Pikachu moet zichtbaar blijven bovenop het water. Bij onze standaardinstellingen worden latere tekenopdrachten bovenop eerdere getekend. Daarom is de volgorde binnen <code>Begin</code> en <code>End</code>: eerst water, daarna Pikachu.</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - achtergrond en speler tekenen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_spriteBatch.Draw(_backgroundTexture, _backgroundPosition, BACKGROUND_SCALE);
+_spriteBatch.Draw(_pikachuTexture, _pikachuPosition, PLAYER_SCALE);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Onderzoek:</strong> raak geen toetsen aan. Het water blijft bewegen terwijl Pikachu op zijn positie blijft. Wissel tijdelijk de twee tekenaanroepen om en verklaar het verschil dat je ziet. Herstel daarna de volgorde. De achtergrond herhaalt nog niet: na verloop van tijd schuift hij uit beeld. Dat is een mogelijke uitbreiding.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_6_haaien_een_collectie_en_een_timer"><a class="anchor" href="#_stap_6_haaien_een_collectie_en_een_timer"></a>Stap 6 - Haaien, een collectie en een timer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De wereld beweegt en de speler kan sturen. We willen er nu haaien aan toevoegen: elke drie seconden komt er rechts een bij, terwijl de eerdere haaien blijven zwemmen. Dat introduceert twee nieuwe vragen: hoe bewaren we een veranderend aantal figuren, en hoe herkennen we dat er genoeg tijd verstreken is?</p>
+</div>
+<div class="sect2">
+<h3 id="_welke_informatie_delen_de_haaien"><a class="anchor" href="#_welke_informatie_delen_de_haaien"></a>Welke informatie delen de haaien?</h3>
+<div class="paragraph">
+<p>Voor één haai zou een texture met één positie volstaan, net zoals bij Pikachu. Een tweede haai moet echter tegelijk op een andere plaats kunnen staan. Als we één positieveld overschrijven bij iedere spawn, verdwijnt de vorige positie uit ons model. Losse velden zoals <code>sharkPosition1</code> en <code>sharkPosition2</code> zouden ons bovendien dwingen vooraf te bepalen hoeveel haaien er komen.</p>
+</div>
+<div class="paragraph">
+<p>Daarom gebruiken we een collectie van posities. We kiezen <code>List&lt;Vector2&gt;</code> omdat het aantal posities tijdens het spelen groeit en later weer kan afnemen. De texture delen we: een nieuwe haai ziet er in deze versie hetzelfde uit en vereist geen tweede geladen afbeelding. Snelheid en schaal gelden voorlopig ook voor alle haaien samen.</p>
+</div>
+<div class="paragraph">
+<p>Daarnaast moet de game kunnen onthouden hoeveel tijd er sinds de vorige spawn verstreken is. Dat wordt een afzonderlijk veld, <code>_elapsedTimeForSpawn</code>. De interval van drie seconden schrijven we als 3000 milliseconden, met een naam die de eenheid vermeldt.</p>
+</div>
+<div class="paragraph">
+<p>Die afwegingen leveren de volgende gegevens op. Voeg bovenaan <code>Game1.cs</code> <code>using System.Collections.Generic;</code> toe en plaats de gegevens binnen de klasse:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - haaiengegevens</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private const int SHARK_SPEED = 2;
+private const float SHARK_SCALE = 0.25f;
+private const int SHARK_SPAWN_TIME_IN_MS = 3000;
+
+private Texture2D _sharkTexture;
+private List&lt;Vector2&gt; _sharkPositions;
+private double _elapsedTimeForSpawn;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bij het starten zijn er nog geen haaien en is er nog geen speeltijd verzameld. We maken daarom een lege lijst en zetten de teller op nul in <code>Initialize</code>, vóór <code>base.Initialize()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_sharkPositions = new List&lt;Vector2&gt;();
+_elapsedTimeForSpawn = 0;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voeg in <code>LoadContent</code> toe:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_sharkTexture = Content.Load&lt;Texture2D&gt;("haai");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De lijst blijft private, zodat het toevoegen en verplaatsen via de gamelogica verloopt. Dezelfde gedachte zagen we bij de kastelencollectie van <code>Raster</code>.</p>
+</div>
+<div class="paragraph">
+<p>Dit eenvoudige model kan alleen per haai een positie onderscheiden. Zodra elke haai ook een eigen snelheid of schaal heeft, horen die gegevens bij dezelfde haai en wordt een <code>Shark</code>-object een natuurlijke kandidaat. Dat is de OO-vraag achter deze tussenstap: welke gegevens vormen samen één concept?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wachten_zonder_de_game_loop_te_blokkeren"><a class="anchor" href="#_wachten_zonder_de_game_loop_te_blokkeren"></a>Wachten zonder de game loop te blokkeren</h3>
+<div class="paragraph">
+<p>Een haai toevoegen bij iedere <code>Update</code> zou tientallen haaien per seconde opleveren. Drie seconden wachten met <code>Thread.Sleep</code> zou intussen ook de speler en het tekenen ophouden. We willen juist dat de wereld verdergaat terwijl het volgende spawnmoment nadert.</p>
+</div>
+<div class="paragraph">
+<p>Elke update krijgt via <code>GameTime</code> de verstreken tijd mee. We tellen die kleine stukjes op totdat samen minstens drie seconden bereikt zijn. Daarmee beantwoorden we tijdens iedere update dezelfde vraag: <strong>is het nu tijd voor een nieuwe haai?</strong> Is het antwoord nee, dan geeft de methode onmiddellijk de controle terug.</p>
+</div>
+<div class="paragraph">
+<p>De teller moet tussen aanroepen behouden blijven, vandaar het veld. We gebruiken <code>TotalMilliseconds</code> omdat ook de interval in milliseconden staat. Alleen updates tijdens het spelen mogen straks meetellen; dat zal ook bepalen waar we deze methode bij de pauzelogica aanroepen.</p>
+</div>
+<div class="paragraph">
+<p>Een nieuwe haai begint net rechts van het venster: zijn linkerbovenhoek heeft X gelijk aan de vensterbreedte. We kiezen voorlopig steeds dezelfde Y-waarde, zodat we eerst het verschijnen en bewegen kunnen controleren. Met deze keuzes krijgt <code>SpawnSharkIfNeeded</code> de volgende implementatie:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - haai laten verschijnen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void SpawnSharkIfNeeded(GameTime gameTime)
+{
+    _elapsedTimeForSpawn += gameTime.ElapsedGameTime.TotalMilliseconds;
+
+    if (_elapsedTimeForSpawn &gt;= SHARK_SPAWN_TIME_IN_MS)
+    {
+        var spawnPosition = new Vector2(
+            _graphics.PreferredBackBufferWidth,
+            _graphics.PreferredBackBufferHeight / 2);
+
+        _sharkPositions.Add(spawnPosition);
+        _elapsedTimeForSpawn = 0;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Waarom staat er <code>&gt;=</code>? Stel dat de teller 2996 milliseconden bevat en de volgende update er 17 toevoegt. We krijgen 3013 en passeren dus de grens zonder ooit exact 3000 te bereiken. Met <code>==</code> zouden we dat spawnmoment missen.</p>
+</div>
+<div class="paragraph">
+<p>Na de spawn begint in deze basisversie een nieuwe meting vanaf nul. Anders zou de voorwaarde in de volgende update opnieuw waar zijn en zou er meteen nog een haai verschijnen. Voor een preciezer ritme kan je later 3000 aftrekken en de overblijvende tijd bewaren.</p>
+</div>
+<div class="paragraph">
+<p><strong>Voorspel:</strong> wat gebeurt er als je de teller aan het begin van deze methode op nul zet? En wat als je hem na het toevoegen van een haai helemaal niet meer terugzet? Verklaar beide voorspellingen vanuit de opeenvolgende aanroepen van <code>Update</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alle_haaien_verplaatsen"><a class="anchor" href="#_alle_haaien_verplaatsen"></a>Alle haaien verplaatsen</h3>
+<div class="paragraph">
+<p>Een spawn voegt één positie toe, maar daarna moeten alle bestaande haaien verder bewegen. De bewerking per haai is eenvoudig: verminder X met de gedeelde snelheid en behoud Y. We doorlopen dus de collectie en schrijven voor ieder item de nieuwe positie weg.</p>
+</div>
+<div class="paragraph">
+<p>Hier speelt het type <code>Vector2</code> een rol. Het is een <code>struct</code>, een waardetype. Een positie uit de lijst in een lokale variabele lezen geeft een kopie. Alleen die kopie wijzigen werkt de lijst niet bij. We gebruiken daarom een <code>for</code>-lus: via de index kunnen we de berekende positie terug op dezelfde plaats in de lijst zetten.</p>
+</div>
+<div class="paragraph">
+<p>Voeg hiervoor <code>UpdateSharkPositions</code> toe:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - haaien bewegen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdateSharkPositions()
+{
+    for (var index = 0; index &lt; _sharkPositions.Count; index++)
+    {
+        var position = _sharkPositions[index];
+        _sharkPositions[index] = new Vector2(
+            position.X - SHARK_SPEED,
+            position.Y);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We hebben nu twee verschillende verantwoordelijkheden: <code>SpawnSharkIfNeeded</code> beslist of er een haai bijkomt; <code>UpdateSharkPositions</code> verplaatst de bestaande haaien. Als de spawnvoorwaarde niet vervuld is, moeten de bestaande haaien nog steeds bewegen. Daarom roepen we beide methoden afzonderlijk aan vanuit <code>Update</code>.</p>
+</div>
+<div class="paragraph">
+<p>Vervang de volledige <code>Update</code>-methode door deze versie:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - update met haaien</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Update(GameTime gameTime)
+{
+    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+        Exit();
+
+    UpdateBackgroundPosition();
+    UpdatePlayerPosition();
+    SpawnSharkIfNeeded(gameTime);
+    UpdateSharkPositions();
+
+    base.Update(gameTime);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voor het tekenen moeten we dezelfde verzameling posities kunnen <strong>lezen</strong>. Hier volstaat een <code>foreach</code>: er hoeft geen gewijzigde waarde naar de lijst teruggeschreven te worden. We tekenen het water eerst, de haaien daarop en Pikachu als laatste. Vervang de tekenopdrachten tussen <code>Begin</code> en <code>End</code> door:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - wereld tekenen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">_spriteBatch.Draw(_backgroundTexture, _backgroundPosition, BACKGROUND_SCALE);
+
+foreach (var sharkPosition in _sharkPositions)
+    _spriteBatch.Draw(_sharkTexture, sharkPosition, SHARK_SCALE);
+
+_spriteBatch.Draw(_pikachuTexture, _pikachuPosition, PLAYER_SCALE);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Onderzoek:</strong> na ongeveer drie seconden verschijnt rechts een haai; drie seconden later komt er een bij. Controleer of de eerste haai intussen blijft bewegen. Leg uit waarom de bewegingslus buiten de spawnvoorwaarde moet blijven. Inspecteer ook de lijst nadat een haai links verdwenen is: onzichtbaar zijn verwijdert haar positie niet uit het geheugen. Dat probleem nemen we mee naar de oefeningen.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_7_menu_spelen_en_pauzeren"><a class="anchor" href="#_stap_7_menu_spelen_en_pauzeren"></a>Stap 7 - Menu, spelen en pauzeren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tot nu toe voert elke update dezelfde spelberekeningen uit. Nu veranderen de requirements: de speler moet eerst kunnen starten vanuit een menu en het spel tussendoor kunnen pauzeren. Hetzelfde programma moet dus op verschillende momenten ander gedrag vertonen.</p>
+</div>
+<div class="paragraph">
+<p>Neem <code>Enter</code> als voorbeeld. In het menu betekent de toets <strong>beginnen</strong>, tijdens pauze betekent ze <strong>verdergaan</strong>, en tijdens het spelen hoeft ze niets te doen. De ingedrukte toets alleen is dus onvoldoende informatie. We moeten ook onthouden in welke situatie het spel zich bevindt.</p>
+</div>
+<div class="paragraph">
+<p>We onderscheiden <code>Menu</code>, <code>Play</code> en <code>Pause</code>. In het menu tonen we een startboodschap. Tijdens het spelen werken we de wereld bij en tekenen we haar. Tijdens pauze tonen we dezelfde wereld met een boodschap, terwijl haar gegevens bewaard blijven. Zo leiden we uit de gewenste werking zowel de toestanden als hun verantwoordelijkheden af.</p>
+</div>
+<div class="sect2">
+<h3 id="_toestanden_en_overgangen"><a class="anchor" href="#_toestanden_en_overgangen"></a>Toestanden en overgangen</h3>
+<div class="paragraph">
+<p>Voordat we de code aanpassen, leggen we vast welke invoer in welke toestand betekenis heeft. Zo kunnen we achteraf controleren of alle afgesproken overgangen werken.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Huidige toestand</th>
+<th class="tableblock halign-left valign-top">Invoer</th>
+<th class="tableblock halign-left valign-top">Nieuwe toestand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Menu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Enter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Play</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Play</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>P</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pause</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pause</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Enter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Play</code>, met behoud van de spelgegevens</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elke toestand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Escape</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Het spel wordt afgesloten</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Hoe stellen we die situaties voor? Met losse booleans zouden combinaties mogelijk zijn zoals tegelijk in het menu en aan het spelen zijn. Voor onze afspraken is telkens precies één toestand actief. Een <code>enum</code> geeft die mogelijke waarden namen; één veld bewaart de gekozen waarde tussen updates.</p>
+</div>
+<div class="paragraph">
+<p>Daarom voegen we binnen <code>Game1</code> de enum en het toestandveld toe:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - speltoestand</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public enum States
+{
+    Menu,
+    Play,
+    Pause,
+    GameOver
+}
+
+private States _currentState;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GameOver</code> is al opgenomen om aan te sluiten bij de referentiecode en de volgende lessen. We gaan er vandaag nog niet naartoe en implementeren nog geen botsingen.</p>
+</div>
+<div class="paragraph">
+<p>Het menu en de pauzestand moeten tekst kunnen tonen. Daarvoor hebben we het eerder toegevoegde <code>game-font.spritefont</code> nodig als geladen <code>SpriteFont</code>. Net zoals bij een texture laden we het font bij het opstarten en bewaren we het voor latere tekenbeurten. Voeg daarom het fontveld toe:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - fontveld</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private SpriteFont _spriteFont;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De toepassing moet beginnen in <code>Menu</code>. Die keuze hoort bij de beginwaarden in <code>Initialize</code>. Het laden van het font komt bij de andere resources in <code>LoadContent</code>. De bestaande posities, collectie en teller blijven nodig, ook wanneer ze in het menu nog niet zichtbaar zijn.</p>
+</div>
+<div class="paragraph">
+<p>Vervang beide methoden door deze versies:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - volledige initialisatie</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Initialize()
+{
+    _currentState = States.Menu;
+    _elapsedTimeForSpawn = 0;
+
+    _pikachuPosition = new Vector2(0, _graphics.PreferredBackBufferHeight / 2);
+    _backgroundPosition = Vector2.Zero;
+    _sharkPositions = new List&lt;Vector2&gt;();
+
+    base.Initialize();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - alle content laden</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void LoadContent()
+{
+    _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+    _spriteFont = Content.Load&lt;SpriteFont&gt;("game-font");
+    _pikachuTexture = Content.Load&lt;Texture2D&gt;("surfing-pikachu");
+    _sharkTexture = Content.Load&lt;Texture2D&gt;("haai");
+    _backgroundTexture = Content.Load&lt;Texture2D&gt;("water");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alleen_de_actieve_logica_uitvoeren"><a class="anchor" href="#_alleen_de_actieve_logica_uitvoeren"></a>Alleen de actieve logica uitvoeren</h3>
+<div class="paragraph">
+<p>Welke berekeningen mogen in welke toestand doorgaan? Alleen <code>Play</code> mag de posities en de spawnteller veranderen. <code>Menu</code> en <code>Pause</code> moeten wel invoer blijven verwerken; anders kan de speler nooit beginnen of hervatten. <code>Escape</code> blijft in elke toestand betekenis hebben en krijgt daarom een controle buiten de toestandtakken.</p>
+</div>
+<div class="paragraph">
+<p>Daaruit volgt de structuur van <code>Update</code>: eerst de algemene invoer, daarna één tak voor de actieve toestand. We kiezen een <code>if/else if</code>-keten. Als een menutak de toestand op <code>Play</code> zet, beginnen we de speelberekeningen bij de volgende update; we doorlopen niet in dezelfde aanroep nog een tweede toestandtak.</p>
+</div>
+<div class="paragraph">
+<p><strong>Redeneer eerst:</strong> hoort <code>SpawnSharkIfNeeded</code> binnen de <code>Play</code>-tak of kan ze erbuiten blijven staan? Wat merkt de speler daarvan na een lange pauze?</p>
+</div>
+<div class="paragraph">
+<p>Vervang de volledige <code>Update</code>-methode door deze uitwerking:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - update per toestand</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Update(GameTime gameTime)
+{
+    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
+        || IsKeyDown(Keys.Escape))
+        Exit();
+
+    if (_currentState == States.Menu)
+    {
+        if (IsKeyDown(Keys.Enter))
+            _currentState = States.Play;
+    }
+    else if (_currentState == States.Play)
+    {
+        UpdateBackgroundPosition();
+        UpdatePlayerPosition();
+        SpawnSharkIfNeeded(gameTime);
+        UpdateSharkPositions();
+
+        if (IsKeyDown(Keys.P))
+            _currentState = States.Pause;
+    }
+    else if (_currentState == States.Pause)
+    {
+        if (IsKeyDown(Keys.Enter))
+            _currentState = States.Play;
+    }
+
+    base.Update(gameTime);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vergelijk hervatten met opnieuw beginnen. Hervatten vraagt alleen een andere actieve toestand; de speler verwacht dezelfde posities en dezelfde haaien terug. <code>Initialize</code> opnieuw aanroepen zou die gegevens vervangen door de beginwaarden. Daarom verandert <code>Enter</code> tijdens pauze alleen <code>_currentState</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<strong>Pauzeren stopt de game loop niet.</strong> MonoGame blijft <code>Update</code> en <code>Draw</code> aanroepen. Onze <code>Update</code> kiest tijdens pauze om geen spelbeweging of spawntimer uit te voeren. Daardoor kan het venster zichtbaar en responsief blijven en kan <code>Enter</code> nog worden verwerkt.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tekenen_volgens_de_toestand"><a class="anchor" href="#_tekenen_volgens_de_toestand"></a>Tekenen volgens de toestand</h3>
+<div class="paragraph">
+<p>Pauze heeft een andere betekenis voor bijwerken dan voor tekenen. We willen de wereld niet laten bewegen, maar ze wel zichtbaar houden. Alleen de <code>Play</code>-toestand tekenen zou tijdens pauze na het wissen van het scherm een leeg beeld opleveren.</p>
+</div>
+<div class="paragraph">
+<p>Daarom delen <code>Play</code> en <code>Pause</code> de tekenopdrachten voor de wereld. De pauzeboodschap is een toevoeging die we daarna tekenen, zodat ze bovenop het water en de figuren verschijnt. Het menu krijgt zijn eigen tekst. <code>Draw</code> kiest op basis van de toestand wat zichtbaar is en verandert die toestand zelf niet.</p>
+</div>
+<div class="paragraph">
+<p>Vervang de volledige <code>Draw</code>-methode door:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - tekenen per toestand</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Draw(GameTime gameTime)
+{
+    GraphicsDevice.Clear(Color.CornflowerBlue);
+    _spriteBatch.Begin();
+
+    if (_currentState == States.Menu)
+    {
+        _spriteBatch.DrawString(_spriteFont,
+            "Druk op enter om te beginnen", Vector2.Zero, Color.White);
+    }
+    else if (_currentState == States.Play || _currentState == States.Pause)
+    {
+        _spriteBatch.Draw(_backgroundTexture, _backgroundPosition, BACKGROUND_SCALE);
+
+        foreach (var sharkPosition in _sharkPositions)
+            _spriteBatch.Draw(_sharkTexture, sharkPosition, SHARK_SCALE);
+
+        _spriteBatch.Draw(_pikachuTexture, _pikachuPosition, PLAYER_SCALE);
+
+        if (_currentState == States.Pause)
+        {
+            _spriteBatch.DrawString(_spriteFont,
+                "Pause. Druk op enter om door te doen", Vector2.Zero, Color.White);
+        }
+    }
+
+    _spriteBatch.End();
+    base.Draw(gameTime);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Onderzoek:</strong> zet kort een breakpoint in <code>Draw</code> tijdens pauze. De methode wordt nog steeds bereikt. Het beeld ziet er stilstaand uit omdat de posities die <code>Draw</code> leest gelijk blijven. Verwijder daarna het breakpoint.</p>
+</div>
+<div class="paragraph">
+<p>Met een enum en overgangen beschrijven we al een eenvoudig toestandsmodel. Het <strong>State Pattern</strong> gaat een stap verder: toestandafhankelijk gedrag krijgt een plaats in afzonderlijke klassen. Dat onderzoeken we volgende les.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controleer_het_volledige_verloop"><a class="anchor" href="#_controleer_het_volledige_verloop"></a>Controleer het volledige verloop</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Start het programma en wacht enkele seconden in het menu. Er verschijnen nog geen haaien.</p>
+</li>
+<li>
+<p>Druk op <code>Enter</code>. Het water beweegt, de speler reageert op de toetsen en na ongeveer drie seconden verschijnt een haai.</p>
+</li>
+<li>
+<p>Druk op <code>P</code>. Water, speler en haaien blijven op hun positie staan en de pauzetekst verschijnt.</p>
+</li>
+<li>
+<p>Houd tijdens pauze een richtingstoets ingedrukt. De speler blijft staan.</p>
+</li>
+<li>
+<p>Wacht langer dan drie seconden en hervat. Er is tijdens pauze geen haai bijgekomen en de bestaande wereld gaat verder.</p>
+</li>
+<li>
+<p>Pauzeer ongeveer twee seconden na een spawn. Wacht vijf seconden en hervat: de volgende haai verschijnt na ongeveer één verdere seconde speeltijd.</p>
+</li>
+<li>
+<p>Test <code>Escape</code> vanuit het menu, tijdens het spelen en tijdens pauze.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_terug_naar_verantwoordelijkheden_en_grasp"><a class="anchor" href="#_terug_naar_verantwoordelijkheden_en_grasp"></a>Terug naar verantwoordelijkheden en GRASP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We hebben het gedrag van de referentieversie bereikt door telkens gegevens en verantwoordelijkheden uit een requirement af te leiden. De helpers <code>UpdatePlayerPosition</code>, <code>UpdateBackgroundPosition</code>, <code>SpawnSharkIfNeeded</code> en <code>UpdateSharkPositions</code> maken die taken herkenbaar. Ze staan wel nog allemaal in <code>Game1</code>. Een methode een goede naam geven verdeelt de verantwoordelijkheden nog niet over samenwerkende objecten.</p>
+</div>
+<div class="paragraph">
+<p>Dat verschil herkennen we uit de vorige lessen: <code>Raster</code> beheert zijn kastelen en de MAUI-pagina laat het beheren van grappen aan <code>JokeService</code> over. Wat zou hier een volgende stap kunnen zijn? Neem de requirement dat elke haai een eigen snelheid krijgt. Positie en snelheid beschrijven dan samen één haai. Een <code>Shark</code>-object kan beide bewaren en beschikt daarmee over de informatie om zijn eigen verplaatsing te berekenen. Dat is de redenering van <strong>Information Expert</strong>: gegevens en bijbehorend gedrag komen samen.</p>
+</div>
+<div class="paragraph">
+<p>Er is ook een probleem rond de speltoestanden. Stel dat we een scherm met speluitleg toevoegen. In de huidige opzet moeten we zowel de toestandselectie in <code>Update</code> als die in <code>Draw</code> uitbreiden. De invoer en weergave van die ene toestand staan verspreid tussen andere toestanden. Als we het bijbehorende gedrag samenbrengen, wordt het makkelijker om één toestand te begrijpen en aan te passen. Dat sluit aan bij <strong>High Cohesion</strong> en vormt de aanleiding voor de volgende les over het State Pattern.</p>
+</div>
+<div class="paragraph">
+<p><strong>Bespreek:</strong> welke wijziging in deze les bleef beperkt tot één plaats, en welke wijziging raakte meerdere methoden? Gebruik een concreet voorbeeld uit je code. Zo beoordeel je het ontwerp aan de hand van de gevolgen van een wijziging.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_veelvoorkomende_problemen"><a class="anchor" href="#_veelvoorkomende_problemen"></a>Veelvoorkomende problemen</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Probleem</th>
+<th class="tableblock halign-left valign-top">Controleer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De template ontbreekt in Visual Studio.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controleer <strong>Extensions &gt; Manage Extensions &gt; Installed</strong>. Is de extensie ingeschakeld en de installatie afgerond? Herstart Visual Studio en wis de filters in <strong>Create a new project</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De MGCB Editor opent niet.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controleer de MonoGame-extensie, bouw via <strong>Build &gt; Build Solution</strong> en bekijk <strong>View &gt; Output &gt; Build</strong>. Los gemelde package- of runtimeproblemen op en dubbelklik daarna opnieuw op <code>Content.mgcb</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een afbeelding wordt niet gevonden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Staat ze in <code>Content.mgcb</code>, is de contentbuild gelukt en klopt de naam in <code>Content.Load</code>, zonder <code>.png</code>?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Het font kan niet gebouwd worden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controleer de <code>FontName</code> in <code>game-font.spritefont</code> en of dat font op de computer geïnstalleerd is.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Draw</code> accepteert geen schaal als derde argument.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bestaat <code>SpriteBatchExtensions</code> en staat <code>using MonoGame_Pikachu.Extensions;</code> bovenaan <code>Game1.cs</code>?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De speler springt steeds naar zijn beginpositie.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stel de beginpositie in bij initialisatie, niet opnieuw in <code>Update</code> of <code>Draw</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een haai verschijnt nooit, of bij iedere update.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewaar de teller in een veld, gebruik dezelfde tijdseenheid en herstel de teller na een spawn.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tijdens pauze beweegt de wereld verder.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Staan alle bewegingsaanroepen en de spawntimer uitsluitend in de <code>Play</code>-tak van <code>Update</code>?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefeningen_bouw_verder_op_je_eerste_game"><a class="anchor" href="#_oefeningen_bouw_verder_op_je_eerste_game"></a>Oefeningen - Bouw verder op je eerste game</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De lesversie toont het afgesproken gedrag, maar tijdens het spelen vallen nog beperkingen op. De volgende opdrachten vertrekken van die waarnemingen. Werk zelfstandig verder op je eigen game en behoud het menu, de besturing en het pauzeren. Werk de opdrachten thuis af als de lestijd voorbij is.</p>
+</div>
+<div class="paragraph">
+<p>Noteer vóór elke uitbreiding kort welke regel je wilt laten gelden, welke gegevens je nodig hebt en waar de berekening thuishoort. Onderbouw bijvoorbeeld waarom iets één keer bij de creatie moet gebeuren of bij iedere update opnieuw. Beschrijf ook een situatie waarmee je kunt controleren dat de regel werkt. Gebruik die redenering om je methoden en velden te kiezen.</p>
+</div>
+<div class="sect2">
+<h3 id="_must"><a class="anchor" href="#_must"></a>Must</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>De speler kan uit beeld verdwijnen.</strong> Zorg dat de volledige speler binnen het venster blijft. Leid de toegelaten X- en Y-waarden af uit de vensterafmetingen en de getekende grootte van Pikachu. Zijn positie beschrijft de linkerbovenhoek; zijn breedte en hoogte worden bepaald door de texture en <code>PLAYER_SCALE</code>. Leg uit waarom de controle na een beweging nodig is en geef haar een gerichte methode.</p>
+</li>
+<li>
+<p><strong>Onzichtbare haaien blijven werk veroorzaken.</strong> Hun posities zitten nog in de lijst en worden telkens bijgewerkt. Verwijder een haai zodra ze volledig links uit beeld is. Leid uit haar positie en geschaalde breedte af wanneer ook haar rechterkant verdwenen is. Kies een manier om de collectie veilig aan te passen en verklaar waarom verwijderen tijdens dezelfde <code>foreach</code> problemen geeft.</p>
+</li>
+<li>
+<p><strong>We willen het aantal gelijktijdige haaien begrenzen.</strong> Laat maximaal acht haaien tegelijk bestaan en geef die limiet een benoemde constante. Bepaal welke methode de beslissing om een haai toe te voegen neemt en laat daar de regel bewaken. De spawnteller blijft intervallen van drie seconden speeltijd volgen. Bij een volle lijst sla je die spawn over en begin je een nieuw interval; er ontstaat geen wachtrij met uitgestelde haaien.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Voor grenzen kan je <code>MathHelper.Clamp</code> gebruiken. Voor het verwijderen kan je achterwaarts door de lijst lopen of een geschikte collectiemethode gebruiken. Gebruik de geschaalde texture-afmetingen om te bepalen wanneer een afbeelding helemaal buiten beeld is.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_should"><a class="anchor" href="#_should"></a>Should</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Alle haaien volgen nu dezelfde lijn. Laat een nieuwe haai op een willekeurige hoogte verschijnen en daarna op die hoogte verder zwemmen. Leid het bereik voor de willekeurige Y-waarde af uit de vensterhoogte en de getekende haaihoogte. Verklaar waarom de keuze bij het aanmaken hoort en niet bij iedere update.</p>
+</li>
+<li>
+<p>De menu- en pauzetekst beginnen nu linksboven. Centreer beide teksten horizontaal. Alleen de helft van de vensterbreedte nemen plaatst het begin van de tekst in het midden; beredeneer hoe de gemeten tekstbreedte de berekening verandert. Gebruik <code>SpriteFont.MeasureString</code> en bundel de gedeelde berekening in een passende hulpmethode.</p>
+</li>
+<li>
+<p>Voeg een extension method toe waarmee je <code>DrawString</code> zonder expliciete kleur kan aanroepen. Gebruik intern <code>Color.White</code> en pas de twee tekstaanroepen aan.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_could"><a class="anchor" href="#_could"></a>Could</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Na verloop van tijd schuift het water uit beeld. Maak de achtergrond herhalend, zodat er geen lege strook ontstaat. Onderzoek hoe je twee exemplaren van dezelfde texture aansluitend kan tekenen en leid uit hun getekende breedte af wanneer je een positie moet terugzetten.</p>
+</li>
+<li>
+<p>Druk snelheden uit in pixels per seconde en gebruik <code>gameTime.ElapsedGameTime.TotalSeconds</code> bij het bewegen. Behoud ongeveer dezelfde snelheid: de huidige 5 pixels per update komt bij 60 updates per seconde overeen met 300 pixels per seconde. Pas speler, haaien en achtergrond consequent aan.</p>
+</li>
+<li>
+<p>Toon met een klein ontwerpvoorstel waar je verantwoordelijkheden zou plaatsen wanneer elke haai een eigen snelheid en schaal krijgt. Welke gegevens en welk gedrag horen dan samen? Onderbouw je keuze met Information Expert en High Cohesion; een volledige herwerking is voor deze oefening niet nodig.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controleer_je_uitbreiding"><a class="anchor" href="#_controleer_je_uitbreiding"></a>Controleer je uitbreiding</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Beweeg naar alle vier de randen en hoeken. De volledige speler blijft zichtbaar, ook bij diagonale invoer.</p>
+</li>
+<li>
+<p>Controleer met de debugger het aantal haaien: het groeit bij een spawn en daalt wanneer een haai volledig links verdwenen is. Er zijn nooit meer dan acht tegelijk.</p>
+</li>
+<li>
+<p>Test de bovengrens door tijdelijk het spawninterval te verkorten. Een volle lijst blijft op acht; na het vrijmaken van plaats verschijnt pas bij een volgend spawnmoment een nieuwe haai. Herstel daarna drie seconden.</p>
+</li>
+<li>
+<p>Controleer tijdens pauze dat posities, spawnteller en het aantal haaien behouden blijven. Hervatten reset de wereld niet.</p>
+</li>
+<li>
+<p>Bij willekeurige hoogtes blijven de haaien volledig in beeld en behouden ze hun gekozen hoogte terwijl ze bewegen.</p>
+</li>
+<li>
+<p>Bij gecentreerde tekst blijven zowel menu als pauzeboodschap leesbaar.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Bewaar deze versie en je uitbreidingen. In <a href="31-monogame-statemachine.html" class="xref page">de volgende les</a> vertrekken we van de werking met een enum en <code>if/else</code> om het State Pattern te begrijpen en toe te passen.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
