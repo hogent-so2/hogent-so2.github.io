@@ -243,6 +243,111 @@ De afbeeldingen en het fontbestand vind je in dezelfde <a href="https://github.c
 </div>
 </div>
 <div class="sect1">
+<h2 id="_state_in_business_software"><a class="anchor" href="#_state_in_business_software"></a>State In Business Software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Het <em>State Pattern</em> kan toegepast worden wanneer bepaalde domeinlogica sterk onderhevig is aan de notie van toestand, of <em>State</em>. We bedoelen daarmee <strong>niet</strong> de algemene <strong>toestand</strong> van het <strong>geheugen</strong> van de computer, maar <strong>wel</strong> het onderscheiden van <strong>discrete toestanden</strong> in de <strong>logica</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+De gedetailleerde blauwdruk voor het State Pattern kan je bekijken op <a href="https://refactoring.guru/design-patterns/state">Refactoring Guru</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Zo kent een document op een wiki bijvoorbeeld verschillende toestanden.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Draft</p>
+</li>
+<li>
+<p>Review</p>
+</li>
+<li>
+<p>Published</p>
+</li>
+<li>
+<p>Rejected</p>
+</li>
+<li>
+<p>Archived</p>
+</li>
+<li>
+<p>Etc</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Het gedrag van de applicatie zal verschillen naargelang de <em>State</em> van het document dat behandeld wordt door de logica.</p>
+</div>
+<div class="paragraph">
+<p>Dit kan je implementeren op enkele low-tech manieren</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>booleans en ifs</p>
+</li>
+<li>
+<p>strings en switches</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Code met veel states en state-afhankelijke logica kan moeilijk leesbaar en onderhoudbaar worden.</p>
+</div>
+<div class="paragraph">
+<p>Het <em>State Pattern</em> lost dit op door <em>States</em> expliciet te introduceren als klasses. State-eigen logica wordt hierin vervat. <em>States</em> erven van een gemeenschappelijke abstracte basisklasse. Het object onderhevig aan <em>State</em> krijgt een state implementatie toegewezen en delegeert vervolgens de state-afhankelijke methodeaanroepen naar het <em>State</em> object. <em>States</em> krijgen het recht om de huidige <em>State</em> op het state-afhankelijke object te veranderen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_state_in_videogames"><a class="anchor" href="#_state_in_videogames"></a>State In Videogames</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Videogames zijn een sprekend voorbeeld van logica die onderhevig is aan <em>state</em>.</strong></p>
+</div>
+<div class="paragraph">
+<p>Een klassieke videogame kent enkele duidelijk te onderscheiden states waarin de uit te voeren logica sterk verschilt.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>StartScreen</p>
+</li>
+<li>
+<p>Playing</p>
+</li>
+<li>
+<p>Paused</p>
+</li>
+<li>
+<p>Game Over</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We kunnen deze states én de toegelaten overgangen in kaart brengen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/game/gamestates.png" alt="Speltoestanden en toegelaten overgangen">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_wat_is_monogame"><a class="anchor" href="#_wat_is_monogame"></a>Wat is MonoGame?</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1472,7 +1577,7 @@ private States _currentState;</code></pre>
 <p><strong>Onderzoek:</strong> zet kort een breakpoint in <code>Draw</code> tijdens pauze. De methode wordt nog steeds bereikt. Het beeld ziet er stilstaand uit omdat de posities die <code>Draw</code> leest gelijk blijven. Verwijder daarna het breakpoint.</p>
 </div>
 <div class="paragraph">
-<p>Met een enum en overgangen beschrijven we al een eenvoudig toestandsmodel. Het <strong>State Pattern</strong> gaat een stap verder: toestandafhankelijk gedrag krijgt een plaats in afzonderlijke klassen. Dat onderzoeken we volgende les.</p>
+<p>Met een enum en overgangen beschrijven we al een eenvoudig toestandsmodel. In de volgende les organiseren we het toestandafhankelijke gedrag met het <strong>State Pattern</strong> in afzonderlijke klassen.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1502,23 +1607,6 @@ private States _currentState;</code></pre>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_terug_naar_verantwoordelijkheden_en_grasp"><a class="anchor" href="#_terug_naar_verantwoordelijkheden_en_grasp"></a>Terug naar verantwoordelijkheden en GRASP</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We hebben het gedrag van de referentieversie bereikt door telkens gegevens en verantwoordelijkheden uit een requirement af te leiden. De helpers <code>UpdatePlayerPosition</code>, <code>UpdateBackgroundPosition</code>, <code>SpawnSharkIfNeeded</code> en <code>UpdateSharkPositions</code> maken die taken herkenbaar. Ze staan wel nog allemaal in <code>Game1</code>. Een methode een goede naam geven verdeelt de verantwoordelijkheden nog niet over samenwerkende objecten.</p>
-</div>
-<div class="paragraph">
-<p>Dat verschil herkennen we uit de vorige lessen: <code>Raster</code> beheert zijn kastelen en de MAUI-pagina laat het beheren van grappen aan <code>JokeService</code> over. Wat zou hier een volgende stap kunnen zijn? Neem de requirement dat elke haai een eigen snelheid krijgt. Positie en snelheid beschrijven dan samen één haai. Een <code>Shark</code>-object kan beide bewaren en beschikt daarmee over de informatie om zijn eigen verplaatsing te berekenen. Dat is de redenering van <strong>Information Expert</strong>: gegevens en bijbehorend gedrag komen samen.</p>
-</div>
-<div class="paragraph">
-<p>Er is ook een probleem rond de speltoestanden. Stel dat we een scherm met speluitleg toevoegen. In de huidige opzet moeten we zowel de toestandselectie in <code>Update</code> als die in <code>Draw</code> uitbreiden. De invoer en weergave van die ene toestand staan verspreid tussen andere toestanden. Als we het bijbehorende gedrag samenbrengen, wordt het makkelijker om één toestand te begrijpen en aan te passen. Dat sluit aan bij <strong>High Cohesion</strong> en vormt de aanleiding voor de volgende les over het State Pattern.</p>
-</div>
-<div class="paragraph">
-<p><strong>Bespreek:</strong> welke wijziging in deze les bleef beperkt tot één plaats, en welke wijziging raakte meerdere methoden? Gebruik een concreet voorbeeld uit je code. Zo beoordeel je het ontwerp aan de hand van de gevolgen van een wijziging.</p>
 </div>
 </div>
 </div>
