@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 690" width="1040" height="690" role="img" aria-labelledby="title desc">
+<title id="title">Dezelfde speelsessie blijft bestaan tijdens pauze</title>
+<desc id="desc">Game1 verwijst via currentState naar PauseState. PauseState verwijst via previousState naar de bestaande PlayState. Beide states verwijzen via Context naar dezelfde Game1. Update loopt alleen tot PauseState; Draw loopt via PauseState door naar PlayState. Zo blijven posities, vijanden en spawnteller behouden terwijl de wereld getekend wordt.</desc>
+<style>
+text{font-family:'Segoe UI',Arial,sans-serif;fill:#243345}
+.title{font-size:24px;font-weight:650}
+.subtitle{font-size:16px;fill:#53657a}
+.class-name{font-size:20px;font-weight:650}
+.member{font-family:Consolas,'Courier New',monospace;font-size:15px}
+.label{font-size:16px;fill:#425873}
+.small{font-size:14px;fill:#53657a}
+.card{fill:#fff;stroke:#7489a3;stroke-width:1.7}
+.rule{stroke:#aebccc;stroke-width:1}
+.link{fill:none;stroke:#405a79;stroke-width:2;stroke-linejoin:round}
+.context{fill:none;stroke:#8064a4;stroke-width:1.8;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#405a79" stroke-width="1.8"/></marker>
+<marker id="context-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8064a4" stroke-width="1.8"/></marker>
+<marker id="inherit" markerWidth="18" markerHeight="18" refX="17" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L17 9 L1 17 Z" fill="#fff" stroke="#405a79" stroke-width="1.8"/></marker>
+</defs><rect width="1040" height="690" fill="#fff"/>
+<text class="title" x="30" y="37">Tijdens pauze blijft dezelfde speelsessie bestaan</text>
+<text class="subtitle" x="30" y="65">Objectdiagram · de onderstreepte namen stellen concrete instanties voor</text>
+<g>
+<rect class="card" x="30" y="117" width="260" height="170" rx="4"/>
+<rect x="31" y="118" width="258" height="49" rx="3" fill="#eaf1f9"/>
+<text class="class-name" x="160" y="149" text-anchor="middle" text-decoration="underline">game : Game1</text>
+<line class="rule" x1="30" x2="290" y1="168" y2="168"/>
+<text class="member" x="44" y="200">_currentState = pause</text>
+<text class="label" x="44" y="239">Gedeelde textures en font</text>
+<rect class="card" x="390" y="117" width="260" height="170" rx="4"/>
+<rect x="391" y="118" width="258" height="49" rx="3" fill="#fff3de"/>
+<text class="class-name" x="520" y="149" text-anchor="middle" text-decoration="underline">pause : PauseState</text>
+<line class="rule" x1="390" x2="650" y1="168" y2="168"/>
+<text class="member" x="404" y="200">_previousState = play</text>
+<text class="member" x="404" y="239">Context = game</text>
+<rect class="card" x="750" y="117" width="260" height="170" rx="4"/>
+<rect x="751" y="118" width="258" height="49" rx="3" fill="#e8f4f0"/>
+<text class="class-name" x="880" y="149" text-anchor="middle" text-decoration="underline">play : PlayState</text>
+<line class="rule" x1="750" x2="1010" y1="168" y2="168"/>
+<text class="member" x="764" y="200">Context = game</text>
+<text class="label" x="764" y="235">Dezelfde posities, vijanden</text>
+<text class="label" x="764" y="260">en gedeeltelijke spawntijd</text>
+</g>
+<path class="link" d="M290 194 H390" marker-end="url(#arrow)"/>
+<text class="small" x="340" y="181" text-anchor="middle">_currentState</text>
+<path class="link" d="M650 194 H750" marker-end="url(#arrow)"/>
+<text class="small" x="700" y="181" text-anchor="middle">_previousState</text>
+<path class="context" d="M520 287 V331 H190 V287" marker-end="url(#context-arrow)"/>
+<text class="label" x="355" y="321" text-anchor="middle">Context</text>
+<path class="context" d="M880 287 V379 H130 V287" marker-end="url(#context-arrow)"/>
+<text class="label" x="699" y="368" text-anchor="middle">Context</text>
+<text class="small" x="30" y="411">Bij Enter wordt play opnieuw de actieve state; er wordt geen nieuwe speelsessie gemaakt.</text>
+<rect x="30" y="435" width="980" height="96" rx="8" fill="#f1f5fa"/>
+<text class="label" x="48" y="461" font-weight="650">BIJWERKEN</text>
+<text class="class-name" x="48" y="497" font-size="18">Game1.Update</text>
+<path class="link" d="M213 490 H278" marker-end="url(#arrow)"/>
+<text class="class-name" x="296" y="497" font-size="18">PauseState.Update</text>
+<text class="label" x="565" y="478">Verwerkt hervatten.</text>
+<text class="label" x="565" y="505">PlayState.Update wordt niet aangeroepen.</text>
+<rect x="30" y="551" width="980" height="96" rx="8" fill="#edf7f3"/>
+<text class="label" x="48" y="577" font-weight="650">TEKENEN</text>
+<text class="class-name" x="48" y="613" font-size="18">Game1.Draw</text>
+<path class="link" d="M213 606 H278" marker-end="url(#arrow)"/>
+<text class="class-name" x="296" y="613" font-size="18">PauseState.Draw</text>
+<path class="link" d="M502 606 H565" marker-end="url(#arrow)"/>
+<text class="class-name" x="583" y="613" font-size="18">PlayState.Draw</text>
+<text class="label" x="780" y="596">Wereld tekenen, daarna</text>
+<text class="label" x="780" y="621">de pauzetekst in PauseState.</text>
+<text class="small" x="30" y="678">Game1 beheert Clear, Begin en End. De game loop blijft ook tijdens pauze doorgaan.</text>
+</svg>

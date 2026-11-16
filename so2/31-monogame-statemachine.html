@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MonoGame – van if/else naar een statemachine :: Softwareontwerp 2 (BETA)</title>
+    <title>MonoGame - Van enum en if/else naar het State Pattern :: Softwareontwerp 2 (BETA)</title>
     <meta name="generator" content="Antora 3.1.14">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -51,7 +51,7 @@
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="index.html">Softwareontwerp 2</a></h3>
+    <h3 class="title"><a href="01-klassen-objecten.html">Softwareontwerp 2</a></h3>
 <ul class="nav-list">
       <li class="nav-item is-active" data-depth="0">
 <ul class="nav-list">
@@ -118,7 +118,7 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <div class="title"><a href="index.html">Softwareontwerp 2</a></div>
+      <div class="title"><a href="01-klassen-objecten.html">Softwareontwerp 2</a></div>
     </li>
   </ul>
 </div>
@@ -130,7 +130,7 @@
 <button class="nav-toggle"></button>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="index.html">Softwareontwerp 2</a></li>
+    <li><a href="01-klassen-objecten.html">Softwareontwerp 2</a></li>
     <li>MonoGame</li>
     <li><a href="31-monogame-statemachine.html">State pattern</a></li>
   </ul>
@@ -141,115 +141,190 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">MonoGame – van if/else naar een statemachine</h1>
+<h1 class="page">MonoGame - Van enum en if/else naar het State Pattern</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Startcode nodig? Je vindt de code van vorige les op <a href="https://github.com/hogent-so2/software-ontwerp-2-source">Github</a>. Heb je zelf een werkende vorige versie, dan is het sterk aangeraden om daarin verder te werken.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Onze game heeft een menu, een bewegende spelwereld en een pauzestand. In <code>Game1</code> bepaalt een enum welke takken van <code>Update</code> en <code>Draw</code> uitgevoerd worden. Dat werkt. In deze les onderzoeken we hoe we het gedrag van één toestand bij elkaar kunnen plaatsen, zodat we het gemakkelijker kunnen begrijpen en uitbreiden.</p>
+</div>
+<div class="paragraph">
+<p>We passen het <strong>State Pattern</strong> toe. Daarbij gebruiken we opnieuw overerving, encapsulatie, associaties en polymorfisme uit de OO-herhaling. Zoals bij de overstap naar MVVM veranderen we de organisatie van een bestaande toepassing en controleren we dat de afgesproken werking behouden blijft.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_situering"><a class="anchor" href="#_situering"></a>Situering</h2>
+<h2 id="_vertrekpunt_samen_door_de_oefeningen"><a class="anchor" href="#_vertrekpunt_samen_door_de_oefeningen"></a>Vertrekpunt: samen door de oefeningen</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In deze les bouwen we verder op het MonoGame-project uit de vorige les. In deze versie zit de speltoestand rechtstreeks in <code>Game1</code> via een enumeratie en een veld om de huidige <code>state</code> bij te houden. De <code>Update</code>- en <code>Draw</code>-methode bevatten dan grote <code>if</code>/<code>else if</code>-blokken die bepalen wat er moet gebeuren in <code>Menu</code>, <code>Play</code>, <code>Pause</code> en <code>GameOver</code>. In de nieuwe versie wordt dat vervangen door het state pattern toe te passen met een abstracte basisklasse <code>AbstractState</code> en concrete toestanden zoals <code>MenuState</code>, <code>PlayState</code>, <code>PauseState</code> en <code>GameOverState</code>. <code>Game1</code> houdt dan enkel nog een referentie bij naar de actieve state en delegeert <code>Update</code> en <code>Draw</code> volledig naar die state.</p>
+<p>Start eerst je game. Controleer het menu, de pijltjestoetsen en <code>ZQSD</code>, het verschijnen van haaien, pauzeren met <code>P</code>, hervatten met <code>Enter</code> en afsluiten met <code>Escape</code>. Tijdens pauze blijven de wereld en de spawnteller bewaard.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_startpunt_alles_zit_in_game1"><a class="anchor" href="#_startpunt_alles_zit_in_game1"></a>Startpunt: alles zit in <code>Game1</code></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>In <code>Update</code> wordt met een reeks <code>if</code>-constructies gekeken welke logica uitgevoerd moet worden. In <code>Draw</code> gebeurt hetzelfde voor de rendering. Daardoor krijgt <code>Game1</code> meerdere verantwoordelijkheden: het beheert de game-loop, bewaart gedeelde data, verwerkt input, voert spelregels uit en beslist ook nog eens welke toestand actief is.</p>
+<p>De <strong>Must</strong>-oefeningen uit de vorige les vormen onze gezamenlijke basis: de speler blijft binnen het venster, volledig verdwenen haaien worden verwijderd en er bestaan maximaal acht haaien tegelijk. Bespreek deze regels aan de hand van je code voordat we verantwoordelijkheden verplaatsen.</p>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Waarneming</th>
+<th class="tableblock halign-left valign-top">Waar staat de regel?</th>
+<th class="tableblock halign-left valign-top">Waarom daar?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De speler blijft volledig zichtbaar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KeepPlayerInsideWindow</code>, na de beweging.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De nieuwe positie moet binnen de grenzen vallen. De rechter- en onderkant hangen ook af van de geschaalde texture.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een haai is volledig links verdwenen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RemoveEnemiesOutsideWindow</code>, na het verplaatsen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De rechterkant bepaalt of de haai nog zichtbaar is. Achterwaarts verwijderen voorkomt dat we door opschuivende indices een item overslaan.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Er zijn al acht haaien bij een spawnmoment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SpawnEnemyIfNeeded</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die methode beslist over het toevoegen. Ook bij een volle lijst begint een nieuw interval; een overgeslagen spawn wordt niet uitgesteld.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Voorspel:</strong> er zijn acht haaien, de spawnteller bereikt drie seconden en even later verdwijnt een haai. Verschijnt er onmiddellijk een nieuwe haai? Zoek de regels die je antwoord onderbouwen.</p>
+</div>
+<div class="sect2">
+<h3 id="_eerst_de_spelwereld_stilzetten_en_zichtbaar_houden"><a class="anchor" href="#_eerst_de_spelwereld_stilzetten_en_zichtbaar_houden"></a>Eerst: de spelwereld stilzetten en zichtbaar houden</h3>
+<div class="paragraph">
+<p>Pauzeer je game terwijl er haaien in beeld zijn. De speler, het water en de haaien moeten op hun plaats blijven, en er mogen geen haaien bijkomen. Waar veranderen die gegevens? In de spelberekeningen die we vanuit <code>Update</code> aanroepen. <strong>De wereld bevriezen betekent dat we die berekeningen tijdelijk overslaan.</strong> De posities, vijandencollectie en spawnteller behouden daardoor hun waarden.</p>
+</div>
+<div class="paragraph">
+<p>We stoppen niet de volledige <code>Update</code> of de game loop: tijdens pauze moeten we nog op hervatten en afsluiten kunnen reageren. In onze enumversie voert alleen de <code>States.Play</code>-tak de spelberekeningen uit; de <code>States.Pause</code>-tak verwerkt hervatten.</p>
+</div>
+<div class="paragraph">
+<p>Daarna volgt een afzonderlijke vraag: hoe houden we die stilstaande wereld zichtbaar? Dat is de taak van <code>Draw</code>. Die methode leest de bewaarde posities en tekent de wereld opnieuw. Ze veroorzaakt het bevriezen niet. Als we binnen onze <code>Game1.Draw</code> de tekenopdrachten voor de wereld overslaan, wordt het scherm nog wel gewist met <code>GraphicsDevice.Clear</code>, maar verschijnt de wereld niet meer.</p>
+</div>
+<div class="paragraph">
+<p>In de referentiecode werken beide delen al. Vergelijk jouw oplossing ermee: welke voorwaarde verhindert het bijwerken, en welke voorwaarde laat het tekenen doorgaan?</p>
+</div>
+<div class="paragraph">
+<p>Controleer of pas je enumversie als volgt aan:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Controleer eerst in <code>Update</code> dat bewegen, opruimen en spawnen uitsluitend in de <code>States.Play</code>-tak gebeuren. Tijdens pauze worden die methoden niet aangeroepen. De pauzetak verwerkt alleen hervatten; de algemene afsluitinvoer blijft buiten die takken.</p>
+</li>
+<li>
+<p>Zoek in <code>Draw</code> de tak die de wereld tekent. Laat die zowel bij <code>States.Play</code> als bij <code>States.Pause</code> uitvoeren. Vervang daarvoor alleen de voorwaarde; behoud jouw tekenopdrachten en hun volgorde.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private States _currentState;</code></pre>
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">else if (_currentState == States.Play || _currentState == States.Pause)</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>Plaats de het tekenen van de pauzetekst <strong>binnen die tak</strong>, na het tekenen van de wereld (anders wordt er over de pauze tekst getekend). Verplaats je bestaande pauzetekst naar die plaats; behoud je eigen tekstpositie als je de centreeroefening al maakte.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">if (_currentState == States.Menu)
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">if (_currentState == States.Pause)
 {
-    ...
-}
-else if (_currentState == States.Play)
-{
-    ...
-}
-else if (_currentState == States.Pause)
-{
-    ...
-}
-else if (_currentState == States.GameOver)
-{
-    ...
+    _spriteBatch.DrawString(_spriteFont,
+        "Pause. Druk op enter om door te doen", Vector2.Zero, Color.White);
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_probleem_van_deze_aanpak"><a class="anchor" href="#_probleem_van_deze_aanpak"></a>Probleem van deze aanpak</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Voor een klein voorbeeld werkt deze oplossing nog. Maar zodra een spel groeit, duiken er snel problemen op:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Game1</code> wordt te groot;</p>
 </li>
-<li>
-<p>logica van verschillende toestanden raakt door elkaar;</p>
-</li>
-<li>
-<p>het wordt moeilijker om gedrag per toestand apart te begrijpen;</p>
-</li>
-<li>
-<p>nieuwe states toevoegen betekent opnieuw <code>if/else</code>-blokken uitbreiden;</p>
-</li>
-<li>
-<p>hergebruik en testen worden moeilijker.</p>
-</li>
-</ul>
+</ol>
 </div>
 <div class="paragraph">
-<p>Concreet zie je in de code dat menu-, speel-, pauze- en gameoverlogica allemaal in dezelfde <code>Update</code>-methode zitten. Ook in <code>Draw</code> staan meerdere branches naast elkaar. Dat is een klassiek signaal dat gedrag beter opgesplitst wordt in aparte objecten.</p>
+<p><strong>Voorspel:</strong> waarom mag de voorwaarde voor het tekenen van de wereld <code>Play || Pause</code> zijn, maar de voorwaarde voor het bijwerken van die wereld niet?</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> pauzeer ongeveer twee seconden na een spawn, houd een richtingstoets ingedrukt en wacht vijf seconden. De wereld blijft zichtbaar; posities, aantal haaien en spawnteller blijven gelijk. Hervat: de volgende haai verschijnt na ongeveer één verdere seconde speeltijd, als de limiet dat toelaat. Zet een breakpoint bij de spelberekeningen in de <code>Play</code>-tak van <code>Update</code>: tijdens pauze bereik je die niet. <code>Game1.Update</code> en <code>Game1.Draw</code> zelf blijven wel aangeroepen worden.</p>
+</div>
+<div class="paragraph">
+<p>Deze werking nemen we mee in de refactoring. Straks onderzoeken we welke objecten verantwoordelijk worden voor het overslaan van de spelberekeningen, het blijven tekenen en het hervatten.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Eerst organiseren we de bestaande werking anders. Een nieuw hulpscherm en een voorlopig game-overscherm zijn oefeningen na de refactoring. Zo kunnen we onderscheiden of een fout door het verplaatsen van code of door een nieuwe spelregel ontstaat.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Onze enumoplossing is niet fout. Voor weinig, eenvoudige toestanden kan ze volstaan. We onderzoeken een andere structuur omdat we toestandafhankelijk gedrag willen groeperen en nieuwe toestanden willen kunnen toevoegen zonder telkens de centrale selectie in <code>Game1</code> uit te breiden.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_wat_is_het_statemachine"><a class="anchor" href="#_wat_is_het_statemachine"></a>Wat is het statemachine?</h2>
+<h2 id="_een_toestandsmachine_state_machine_en_het_state_pattern"><a class="anchor" href="#_een_toestandsmachine_state_machine_en_het_state_pattern"></a>Een toestandsmachine (State Machine) en het State Pattern</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Een statemachine is een concrete implementatie van het <a href="https://refactoring.guru/design-patterns/state">State Pattern</a>, het is een model waarbij een systeem zich altijd in exact één toestand bevindt, en waarbij het gedrag afhangt van die huidige toestand. Een overgang naar een andere toestand gebeurt wanneer een bepaalde gebeurtenis optreedt, bijvoorbeeld een toetsindruk of een collision (2 of meer objecten die elkaar raken). In een game is dat erg herkenbaar:</p>
+<p>Een <strong>toestandsmachine</strong> beschrijft welke toestanden mogelijk zijn en welke overgangen toegelaten zijn. Dat model hadden we in de vorige les al:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>in het menu reageert het spel anders dan tijdens het spelen;</p>
-</li>
-<li>
-<p>tijdens het spelen teken je vijanden en verwerk je beweging;</p>
-</li>
-<li>
-<p>in pauze toon je meestal dezelfde wereld, maar zonder normale update-logica;</p>
-</li>
-<li>
-<p>bij game over toon je een eindscherm en laat je de speler opnieuw starten.</p>
-</li>
-</ul>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Huidige toestand</th>
+<th class="tableblock halign-left valign-top">Invoer</th>
+<th class="tableblock halign-left valign-top">Gevolg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Menu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Begin een speelsessie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spelen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pauzeer die speelsessie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pauze</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hervat dezelfde speelsessie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elke toestand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Escape</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sluit de game af.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Een enum met voorwaarden kan dit model implementeren. Het <strong>State Pattern</strong> is een objectgeoriënteerde manier om het bijbehorende gedrag te organiseren: we maken voor iedere toestand een klasse en spreken het actieve object aan via een gemeenschappelijk contract.</p>
 </div>
 <div class="paragraph">
-<p>Een statemachine zegt dus eigenlijk:</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-De toestand bepaalt welk gedrag actief is.
-</blockquote>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_doelarchitectuur"><a class="anchor" href="#_doelarchitectuur"></a>Doelarchitectuur</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In code verdwijnt de enum uit <code>Game1</code>. In de plaats daarvan bewaart <code>Game1</code> een veld van het type <code>AbstractState</code>. Daarnaast krijgt <code>Game1</code> een methode <code>ChangeState(AbstractState newActiveState)</code>. Bij het initialiseren houden we de logica <code>_currentState = States.Menu</code>, maar passen we deze aan naar <code>new MenuState(this)</code>. Daarna roept <code>Game1</code> in zijn game-loop gewoon <code>_currentState.Update(gameTime)</code> en <code>_currentState.Draw(gameTime, _spriteBatch)</code> op.</p>
+<p><code>Game1</code> wordt in de terminologie van het pattern de <strong>context</strong>. Die bewaart een verwijzing naar de actieve state. Een toestandsovergang vervangt die verwijzing. Een state kan de context vragen om zo&#8217;n overgang uit te voeren.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -258,42 +333,400 @@ De toestand bepaalt welk gedrag actief is.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>this</code> hebben we nodig op elke state omdat we de context van ons spel niet in de states willen. Deze halen we - op dit moment - uit de Game1 instantie.
+Open <a href="https://refactoring.guru/design-patterns/state">State op Refactoring Guru</a>. Bekijk <strong>Problem</strong> in de context van ons project. Welke rol krijgt <code>Game1</code> en welke rol krijgt een concrete speltoestand? De algemene introductie uit de vorige les krijgt hier een concrete toepassing.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Het State Pattern vervangt de game loop niet. MonoGame blijft <code>Update</code> en <code>Draw</code> op <code>Game1</code> aanroepen. Binnen die aanroepen vraagt <code>Game1</code> voortaan aan één stateobject om de toestandafhankelijke taak uit te voeren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eerst_de_verantwoordelijkheden_verdelen"><a class="anchor" href="#_eerst_de_verantwoordelijkheden_verdelen"></a>Eerst de verantwoordelijkheden verdelen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zoek in je enumversie alle code die bij het menu of bij pauze hoort. Welke regels horen inhoudelijk samen, maar staan nu verspreid over <code>Update</code> en <code>Draw</code>?</p>
+</div>
+<div class="paragraph">
+<p>Een klasse toevoegen is pas nuttig als duidelijk is welk werk en welke gegevens erbij horen. We maken onderscheid tussen de geladen resources van de toepassing en de veranderende gegevens van één speelsessie.</p>
+</div>
+<div class="paragraph">
+<p>Een texture kan voor meerdere speelsessies dezelfde blijven. De spelerpositie, vijanden en spawnteller beschrijven daarentegen één concrete speelsessie. Bij hervatten willen we die behouden; bij een nieuw spel willen we nieuwe beginwaarden.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Klasse</th>
+<th class="tableblock halign-left valign-top">Verantwoordelijkheid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Game1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configureert het venster, laadt de gedeelde assets, bewaart de actieve state en delegeert vanuit de game loop. Verwerkt afsluiten en beheert <code>Clear</code>, <code>Begin</code> en <code>End</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AbstractState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definieert het gemeenschappelijke contract voor bijwerken en tekenen. Bewaart een verwijzing naar de context en bundelt de gedeelde toetsenbordhulpjes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MenuState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toont het menu en laat een nieuwe speelsessie beginnen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PlayState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewaart de posities, vijandencollectie en spawnteller van één speelsessie. Voert de spelberekeningen uit en tekent die wereld.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PauseState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewaart de gepauzeerde <code>PlayState</code>, laat die de wereld tekenen en verwerkt hervatten.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/game/state-pattern-classes.svg" alt="Klassendiagram met Game1 als context en MenuState, PlayState en PauseState als afgeleiden van AbstractState.">
+</div>
+<div class="title">Figure 1. Klassendiagram van de kern van onze game</div>
+</div>
+<div class="paragraph">
+<p>De open driehoek duidt overerving aan. De andere pijlen tonen bewaarde referenties: de actieve state, de context en de gepauzeerde speelsessie. Alleen de leden die deze samenwerking verduidelijken zijn opgenomen; de tijdelijke afhankelijkheden bij het aanmaken van states zijn weggelaten.</p>
+</div>
+<div class="paragraph">
+<p>De terugverwijzing naar <code>Game1</code> geeft een state toegang tot gedeelde resources en <code>ChangeState</code>. Het is dezelfde <code>Game1</code>-instantie, geen kopie en geen tweede gamevenster. Een state bevat ook niet automatisch alle gegevens van de context: ze heeft een <strong>referentie</strong> waarmee ze de toegelaten leden kan aanspreken.</p>
+</div>
+<div class="paragraph">
+<p>Dit sluit aan bij de GRASP-richtlijnen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Information Expert:</strong> <code>PlayState</code> beschikt over de posities en timer en voert de bijbehorende berekeningen uit.</p>
+</li>
+<li>
+<p><strong>High Cohesion:</strong> de invoer en weergave van één toestand staan samen.</p>
+</li>
+<li>
+<p><strong>Polymorphism:</strong> een concrete state implementeert het gedrag; <code>Game1</code> hoeft het concrete type niet te onderzoeken.</p>
+</li>
+<li>
+<p><strong>Low Coupling:</strong> we geven toegang tot de benodigde resources en bewerkingen. We maken de vijandencollectie niet publiek om code te kunnen verplaatsen.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+De states kennen voorlopig nog <code>Game1</code> en MonoGame-types. De afhankelijkheden verdwijnen dus niet. In de volgende les onderzoeken we de verdere opsplitsing in eigen spelobjecten en hulpmiddelen. Voor deze les houden we de aandacht bij de toestanden.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_1_een_beperkt_aanspreekpunt_op_game1"><a class="anchor" href="#_stap_1_een_beperkt_aanspreekpunt_op_game1"></a>Stap 1 - Een beperkt aanspreekpunt op Game1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De nieuwe states moeten straks een texture kunnen tekenen, de vensterafmetingen kennen en tekst kunnen centreren. Nu zijn de benodigde velden private. Alle velden publiek maken zou ook toestaan dat een state ze zomaar vervangt.</p>
+</div>
+<div class="paragraph">
+<p>We voegen daarom properties met alleen een getter toe. <code>Game1</code> blijft de resources laden. Een state kan de geladen referenties gebruiken, maar krijgt geen setter om ze te vervangen. De positievelden en collectie blijven buiten dit aanspreekpunt.</p>
+</div>
+<div class="paragraph">
+<p>Voeg binnen je bestaande <code>Game1</code> de volgende properties toe. Behoud in deze stap alle bestaande velden en methoden.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+De voorbeelden volgen de namen uit de referentiecode. Heet jouw veld <code>_pikachuTexture</code>, laat <code>PlayerTexture</code> dan dat veld teruggeven. Ook <code>_sharkPositions</code> en <code>_enemyPositions</code> hebben hier dezelfde rol. Je hoeft werkende namen niet overal te veranderen; koppel iedere verwijzing aan het juiste gegeven in jouw versie.
 </td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
+<div class="title">Game1 - gedeelde resources en afmetingen</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private AbstractState _currentState;
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public int ScreenWidth =&gt; _graphics.PreferredBackBufferWidth;
+public int ScreenHeight =&gt; _graphics.PreferredBackBufferHeight;
 
-public void ChangeState(AbstractState newActiveState)
+public SpriteFont SpriteFont =&gt; _spriteFont;
+public Texture2D PlayerTexture =&gt; _playerTexture;
+public Texture2D SharkTexture =&gt; _sharkTexture;
+public Texture2D BackgroundTexture =&gt; _backgroundTexture;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Een getter maakt het achterliggende MonoGame-object niet onveranderlijk. De afspraak blijft dat states deze resources gebruiken om te tekenen; <code>Game1</code> en zijn contentbeheer verzorgen hun levensduur. Een state laadt of verwijdert de gedeelde textures niet bij iedere overgang.</p>
+</div>
+<div class="paragraph">
+<p>Ook de berekening voor gecentreerde tekst hebben zowel het menu als de pauzestand nodig. Ze gebruikt de font en vensterbreedte die <code>Game1</code> kent. Vervang de bestaande private methode door deze publieke versie, of voeg ze toe als je deze oefening nog niet had:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - tekstpositie</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Vector2 GetCenteredTextPosition(string text)
 {
+    float textWidth = _spriteFont.MeasureString(text).X;
+    return new Vector2((ScreenWidth - textWidth) / 2f, 0);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Behoud <code>Extensions/SpriteBatchExtensions.cs</code>. De toestanden hieronder gebruiken de <code>DrawString</code>-overload uit de Should-oefening. Heb je die nog niet, voeg dan deze methode <strong>binnen de bestaande extensieklasse</strong> toe:</p>
+</div>
+<div class="listingblock">
+<div class="title">SpriteBatchExtensions - tekst zonder kleurargument</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static void DrawString(this SpriteBatch spriteBatch, SpriteFont spriteFont, string text, Vector2 position)
+{
+    spriteBatch.DrawString(spriteFont, text, position, Color.White);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw en start de game. De werking is nog dezelfde. Kun je uitleggen waarom er wel een <code>PlayerTexture</code>-getter is, maar geen publieke setter voor de spelerpositie of de vijandencollectie?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_2_een_contract_voor_iedere_toestand"><a class="anchor" href="#_stap_2_een_contract_voor_iedere_toestand"></a>Stap 2 - Een contract voor iedere toestand</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Welke vragen moet <code>Game1</code> aan iedere actieve toestand kunnen stellen? Bij iedere update: verwerk de invoer en werk de toestand bij. Bij iedere tekenbeurt: teken wat bij deze toestand hoort.</p>
+</div>
+<div class="paragraph">
+<p>Dat levert <code>Update(GameTime)</code> en <code>Draw(GameTime, SpriteBatch)</code> op. De implementatie verschilt per toestand. Een algemene state zonder concreet gedrag heeft in onze toepassing geen betekenis.</p>
+</div>
+<div class="paragraph">
+<p>Maak de map <code>States</code> en voeg onderstaande volledige klasse toe.</p>
+</div>
+<div class="listingblock">
+<div class="title">States/AbstractState.cs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace MonoGame_Pikachu.States;
+
+public abstract class AbstractState
+{
+    protected Game1 Context { get; }
+
+    protected AbstractState(Game1 context)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        Context = context;
+    }
+
+    public abstract void Update(GameTime gameTime);
+    public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+
+    protected bool IsKeyDown(Keys key)
+        =&gt; Keyboard.GetState().IsKeyDown(key);
+
+    protected bool IsKeyDown(Keys firstKey, Keys secondKey)
+        =&gt; IsKeyDown(firstKey) || IsKeyDown(secondKey);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>abstract</code> verhindert dat we een losse <code>AbstractState</code> maken. De abstracte methoden verplichten concrete afgeleide klassen om beide taken te implementeren. Dit is dezelfde werking van abstractie en polymorfisme die we bij de bewoners van het kasteel onderzochten.</p>
+</div>
+<div class="paragraph">
+<p>Een interface zou het contract ook kunnen beschrijven. We kiezen hier een abstracte klasse omdat we daarnaast de contextreferentie en toetsenbordhulpjes willen delen. Die hulpjes blijven polling: ze vragen of een toets <strong>nu</strong> ingedrukt is. We schakelen niet over naar MAUI-events of commands.</p>
+</div>
+<div class="paragraph">
+<p>De constructor ontvangt de context van buitenaf, zoals een service in de MAUI-lessen haar dependency via een constructor ontving. Daarvoor is geen DI-container nodig. Met <code>protected</code> kunnen afgeleide states de context en hulpjes gebruiken. De contextreferentie krijgt alleen in de constructor een waarde en heeft geen publieke setter.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing. Er is nog geen actieve state van dit nieuwe type; het bestaande spel werkt nog via de enum. Voorspel waarom <code>new AbstractState(game)</code> geen geldige manier is om een spel te starten.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hoe_we_de_omschakeling_uitvoeren"><a class="anchor" href="#_hoe_we_de_omschakeling_uitvoeren"></a>Hoe we de omschakeling uitvoeren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We sluiten eerst een werkend menu aan, voegen daarna de spelwereld toe en herstellen vervolgens het pauzeverloop. Zo kunnen we een probleem koppelen aan de laatste stap.</p>
+</div>
+<div class="paragraph">
+<p>Tijdens die omschakeling zijn starten en pauzeren kort nog niet aangesloten. Elk controlepunt vermeldt welke werking je op dat moment moet zien. De volledige vergelijking met les 8 voeren we uit zodra de drie toestanden samenwerken. Laat de oude spelhelpers voorlopig staan in <code>Game1</code>; in stap 6 ruimen we ze op nadat hun vervangers werken.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_3_het_menu_via_een_state_tekenen"><a class="anchor" href="#_stap_3_het_menu_via_een_state_tekenen"></a>Stap 3 - Het menu via een state tekenen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We beginnen met het kleinste zichtbare onderdeel. Het menu kent nog geen spelerposities of vijandencollectie. Het heeft alleen de geladen font en een tekstpositie nodig.</p>
+</div>
+<div class="paragraph">
+<p>Maak <code>States/MenuState.cs</code> met onderstaande inhoud. De update doet in deze tussenstap bewust nog niets: <code>PlayState</code> bestaat nog niet. De startovergang volgt in stap 4.</p>
+</div>
+<div class="listingblock">
+<div class="title">States/MenuState.cs - eerste versie</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame_Pikachu.Extensions;
+
+namespace MonoGame_Pikachu.States;
+
+public class MenuState : AbstractState
+{
+    public MenuState(Game1 context) : base(context)
+    {
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        // De startovergang sluiten we aan zodra PlayState bestaat.
+    }
+
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    {
+        string menuText = "Druk op enter om te beginnen";
+        spriteBatch.DrawString(Context.SpriteFont, menuText, Context.GetCenteredTextPosition(menuText));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>MenuState</code> erft het contract en de contextreferentie. Met <code>base(context)</code> geeft de constructor dezelfde referentie door aan de constructor van <code>AbstractState</code>. We maken geen nieuwe <code>Game1</code> aan.</p>
+</div>
+<div class="sect2">
+<h3 id="_de_actieve_state_vervangen"><a class="anchor" href="#_de_actieve_state_vervangen"></a>De actieve state vervangen</h3>
+<div class="paragraph">
+<p>Een enumwaarde vertelt <code>Game1</code> welke toestand actief is, maar kan zelf geen gedrag uitvoeren. Daardoor moet <code>Game1</code> die waarde telkens onderzoeken om de juiste code te kiezen. We willen voortaan het actieve object rechtstreeks kunnen vragen om bij te werken en te tekenen.</p>
+</div>
+<div class="paragraph">
+<p>Daarom vervangen we de enumwaarde door een referentie van het type <code>AbstractState</code>. Via dat gemeenschappelijke contract kan <code>Game1</code> iedere concrete state aanspreken. De enum daarnaast blijven bijhouden zou twee voorstellingen van dezelfde actieve toestand opleveren, die we bij iedere overgang gelijk zouden moeten houden.</p>
+</div>
+<div class="paragraph">
+<p>Die referentie blijft private. Andere states vragen via <code>ChangeState</code> om een overgang; zo kan <code>Game1</code> op één plaats bewaken dat het een bruikbaar stateobject krijgt. Voer de volgende wijzigingen samen uit voordat je bouwt:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Voeg <code>using System;</code> en <code>using MonoGame_Pikachu.States;</code> bovenaan toe als ze nog ontbreken.</p>
+</li>
+<li>
+<p>Verwijder de volledige enum <code>States</code>.</p>
+</li>
+<li>
+<p>Vervang <code>private States _currentState;</code> door het onderstaande veld.</p>
+</li>
+<li>
+<p>Voeg <code>ChangeState</code> toe en vervang <code>Initialize</code>, <code>Update</code> en <code>Draw</code> door de versies hieronder.</p>
+</li>
+<li>
+<p>Behoud <code>LoadContent</code>, de getters, de teksthelper en voorlopig de oude spelhelpers en hun velden.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - actieve state</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private AbstractState _currentState = null!;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>_currentState</code> kan naar een object van iedere concrete afgeleide stateklasse verwijzen. Het veld is private. We laten overgangen verlopen via één gerichte methode:</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - toestand veranderen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public void ChangeState(AbstractState newActiveState)
+{
+    ArgumentNullException.ThrowIfNull(newActiveState);
     _currentState = newActiveState;
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>De nullcontrole bewaakt dat de actieve state een object is waarop we later <code>Update</code> en <code>Draw</code> kunnen aanroepen. De methode kiest zelf niet naar welke toestand we gaan. De state die de invoer verwerkt, vraagt de passende overgang aan.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initialiseren_en_laden_blijven_verschillende_taken"><a class="anchor" href="#_initialiseren_en_laden_blijven_verschillende_taken"></a>Initialiseren en laden blijven verschillende taken</h3>
+<div class="paragraph">
+<p>De assets blijven in <code>LoadContent</code>. De eerste actieve state kiezen hoort bij het opstarten. We laten eerst de basisinitialisatie uitvoeren; in deze levenscyclus wordt daarbij ook <code>LoadContent</code> aangeroepen. Daarna kiezen we het menu.</p>
+</div>
 <div class="listingblock">
+<div class="title">Game1 - initialisatie met menu</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Initialize()
 {
-    _currentState = new MenuState(this);
-    ...
     base.Initialize();
+    ChangeState(new MenuState(this));
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>De oude initialisatie van spelerpositie, vijanden en spawnteller staat hier niet meer. Die beginwaarden gaan straks naar de constructor van <code>PlayState</code>, omdat ze één nieuwe speelsessie beschrijven.</p>
+</div>
+<div class="paragraph">
+<p>Het <code>null!</code> bij het veld vertelt de nullable-analyse dat de referentie later door deze levenscyclus ingevuld wordt. Het maakt geen object aan en voorkomt geen fout bij verkeerd gebruik. Vóór de eerste update moet <code>Initialize</code> dus werkelijk een state toegewezen hebben.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Roep <code>Initialize</code> of <code>LoadContent</code> niet opnieuw aan bij starten of hervatten. MonoGame beheert die opstartfase. Een toestandsovergang verandert de actieve state; ze bouwt niet het venster en alle content opnieuw op.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delegeren_vanuit_de_game_loop"><a class="anchor" href="#_delegeren_vanuit_de_game_loop"></a>Delegeren vanuit de game loop</h3>
+<div class="paragraph">
+<p>Afsluiten geldt in iedere toestand en blijft daarom in <code>Game1.Update</code>. Na die controle krijgt precies de actieve state de update. De frameworkaanroep <code>base.Update</code> blijft behouden.</p>
+</div>
 <div class="listingblock">
+<div class="title">Game1 - update delegeren</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Update(GameTime gameTime)
 {
-    ...
-    _currentState.Update(gameTime);
-    ...
-    base.Update(gameTime);
-}
+    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
+        || Keyboard.GetState().IsKeyDown(Keys.Escape))
+    {
+        Exit();
+        return;
+    }
 
-protected override void Draw(GameTime gameTime)
+    _currentState.Update(gameTime);
+    base.Update(gameTime);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voor het tekenen maakt <code>Game1</code> het beeld klaar en opent het één spritebatch. De actieve state voegt daar haar tekenopdrachten aan toe.</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1 - tekenen delegeren</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">protected override void Draw(GameTime gameTime)
 {
     GraphicsDevice.Clear(Color.CornflowerBlue);
     _spriteBatch.Begin();
@@ -305,137 +738,435 @@ protected override void Draw(GameTime gameTime)
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw en start. Je ziet het menu, <code>Escape</code> sluit af en <code>Enter</code> start in deze tussenstap nog geen spel. Zet een breakpoint in <code>MenuState.Draw</code>. Kun je via de call stack terugvinden dat de aanroep uit <code>Game1.Draw</code> komt? Verwijder het breakpoint daarna.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_de_abstracte_basisklasse"><a class="anchor" href="#_de_abstracte_basisklasse"></a>De abstracte basisklasse</h2>
+<h2 id="_stap_4_de_speelsessie_naar_playstate_verplaatsen"><a class="anchor" href="#_stap_4_de_speelsessie_naar_playstate_verplaatsen"></a>Stap 4 - De speelsessie naar PlayState verplaatsen</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>De kern van de nieuwe oplossing is <code>AbstractState</code>. Deze klasse definieert wat elke state minstens moet kunnen: een <code>Update(&#8230;&#8203;)</code> en een <code>Draw(&#8230;&#8203;)</code>. Daarnaast bewaart ze een referentie naar de <code>Game1</code>-context, zodat concrete states toegang hebben tot gedeelde data en functionaliteit. De basisklasse bevat ook hulpfuncties om toetsen te lezen.</p>
+<p>Het menu kan nu tekenen. Om te kunnen starten hebben we een object nodig dat één speelsessie voorstelt. Welke gegevens moeten opnieuw beginnen wanneer we een nieuw spel starten?</p>
+</div>
+<div class="paragraph">
+<p>De speler krijgt een beginpositie, de achtergrond begint linksboven, de vijandencollectie is leeg en de spawnteller staat op nul. Die gegevens worden daarom private velden van <code>PlayState</code>. De textures blijven gedeelde resources van <code>Game1</code>.</p>
+</div>
+<div class="paragraph">
+<p>De voorbeelden hieronder volgen de referentiecode met de Should- en Could-uitbreidingen: willekeurige spawnhoogtes, herhalend water en beweging op basis van verstreken seconden. Werk je vanuit je eigen versie, behoud dan je werkende helpers, instellingen en eventuele uitbreidingen. Het doel is de verantwoordelijkheden verplaatsen. De extra uitbreidingen hoef je daarvoor niet eerst over te nemen.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bestaande code</th>
+<th class="tableblock halign-left valign-top">Plaats na deze stap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Speler-, achtergrond- en vijandposities, spawnteller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private velden van <code>PlayState</code>; initialisatie bij het maken van die speelsessie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bewegen, begrenzen, opruimen en spawnen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private methoden van <code>PlayState</code>, aangeroepen vanuit zijn <code>Update</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wereld tekenen en <code>DrawBackground</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Methoden van <code>PlayState</code>, met de ontvangen <code>SpriteBatch</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Textures en font laden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Game1.LoadContent</code>, eenmaal bij het opstarten.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toetsenbordhulpjes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AbstractState</code>, zodat iedere state ze kan gebruiken.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_4a_gegevens_en_beginwaarden_van_één_speelsessie"><a class="anchor" href="#_4a_gegevens_en_beginwaarden_van_één_speelsessie"></a>4a - Gegevens en beginwaarden van één speelsessie</h3>
+<div class="paragraph">
+<p>Maak <code>States/PlayState.cs</code>. Neem de velden en constanten voor je spelberekeningen over. De constructor neemt de initialisatie van de sessiegegevens over; een nieuwe instantie betekent zo een nieuwe speelsessie. <code>Update</code> en <code>Draw</code> laten we even leeg zodat we de klasse in kleine stappen kunnen aanvullen.</p>
 </div>
 <div class="listingblock">
+<div class="title">States/PlayState.cs - gegevens en beginwaarden</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public abstract class AbstractState
-{
-    protected Game1 Context { get; init; }
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonoGame_Pikachu.Extensions;
 
-    public AbstractState(Game1 context)
+namespace MonoGame_Pikachu.States;
+
+public class PlayState : AbstractState
+{
+    private const float PLAYER_SCALE = 0.75f;
+    private const float SHARK_SCALE = 0.30f;
+    private const float PLAYER_SPEED_IN_PIX_PER_SEC = 300f;
+    private const float ENEMY_SPEED_IN_PIX_PER_SEC = 120f;
+    private const float BACKGROUND_SPEED_IN_PIX_PER_SEC = 120f;
+    private const int ENEMY_SPAWNTIME_IN_MS = 3000;
+    private const int MAX_ENEMY_COUNT = 8;
+
+    private readonly List&lt;Vector2&gt; _enemyPositions = new();
+    private readonly float _backgroundScale;
+
+    private Vector2 _playerPosition;
+    private Vector2 _backgroundPosition;
+    private double _elapsedTimeForSpawn;
+
+    public PlayState(Game1 context) : base(context)
     {
-        Context = context;
+        _playerPosition = new Vector2(0, Context.ScreenHeight / 2);
+        _backgroundPosition = Vector2.Zero;
+        _elapsedTimeForSpawn = 0;
+        _backgroundScale = (float)Context.ScreenHeight / Context.BackgroundTexture.Height;
     }
-
-    public abstract void Update(GameTime gameTime);
-    public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
-
-    protected bool IsKeyDown(Keys key1, Keys key2) =&gt; IsKeyDown(key1) || IsKeyDown(key2);
-    protected bool IsKeyDown(Keys key) =&gt; Keyboard.GetState().IsKeyDown(key);
-}</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-We markeren de klasse als <code>abstract</code> omdat we willen afdwingen dat deze NIET kan geïnstantieerd worden.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-We maken de methoden <code>Draw</code> en <code>Update</code> abstract omdat we willen afdwingen dat elke state zijn eigen implementatie doet.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-We zetten de methoden van <code>IsKeyDown</code> in de abstracte klasse omdat elke state deze nodig heeft
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_waarom_is_dit_nuttig"><a class="anchor" href="#_waarom_is_dit_nuttig"></a>Waarom is dit nuttig?</h3>
-<div class="paragraph">
-<p>Deze klasse zorgt voor een gemeenschappelijk contract:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>elke state moet kunnen updaten;</p>
-</li>
-<li>
-<p>elke state moet kunnen tekenen;</p>
-</li>
-<li>
-<p>elke state krijgt toegang tot dezelfde context;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Dit is ontwerpmatig interessant omdat clientcode dan kan werken tegen de abstractie <code>AbstractState</code> in plaats van tegen concrete types zoals <code>MenuState</code> of <code>PlayState</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_de_concrete_states"><a class="anchor" href="#_de_concrete_states"></a>De concrete states</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_menustate"><a class="anchor" href="#_menustate"></a>MenuState</h3>
-<div class="paragraph">
-<p><code>MenuState</code> is klein en duidelijk: wanneer de speler op <code>Enter</code> drukt, schakelt de game naar <code>PlayState</code>. In <code>Draw</code> wordt enkel de menutekst getoond. Alle logica van het menu zit dus samen in één klasse.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class MenuState : AbstractState
-{
-    public MenuState(Game1 context) : base(context) { }
 
     public override void Update(GameTime gameTime)
     {
-        if (IsKeyDown(Keys.Enter))
-            Context.ChangeState(new PlayState(Context));
+        // De spelberekeningen sluiten we in 4d aan.
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
-        spriteBatch.DrawString(Context.SpriteFont,
-            "Druk op enter om te beginnen",
-            Vector2.Zero,
-            Color.White);
+        // De wereld tekenen we vanaf 4e.
     }
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>De lijst is private en <code>readonly</code>: de verwijzing wordt bij het maken van het speelobject vastgelegd. Dat verbiedt niet dat <code>PlayState</code> items toevoegt of verwijdert. Die wijzigingen blijven juist de verantwoordelijkheid van dit object.</p>
+</div>
+<div class="paragraph">
+<p>De achtergrondberekening gebruikt de geladen texturehoogte. Daarom moet de content beschikbaar zijn wanneer we een <code>PlayState</code> maken. We maken die pas wanneer de speler vanuit het menu start, na het laden van de content.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing. Het menu blijft werken; we hebben starten nog niet aangesloten. Waarom horen de vijandencollectie én de gedeeltelijk verlopen spawntijd bij hetzelfde speelobject? Wat zou er met de teller gebeuren als hij een lokale variabele in <code>Update</code> was?</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_playstate"><a class="anchor" href="#_playstate"></a>PlayState</h3>
+<h3 id="_4b_bewegen_en_begrenzen_verplaatsen"><a class="anchor" href="#_4b_bewegen_en_begrenzen_verplaatsen"></a>4b - Bewegen en begrenzen verplaatsen</h3>
 <div class="paragraph">
-<p><code>PlayState</code> bevat de eigenlijke spel-logica. In <code>Update</code> worden achtergrond, speler en vijanden geüpdatet, en wordt eventueel een nieuwe enemy gespawned. Bij <code>P</code> wordt overgeschakeld naar <code>PauseState</code>.
-In <code>Draw</code> worden achtergrond, enemies en speler getekend. Daardoor zit alle gameplay op één plaats.</p>
+<p>Welke informatie heeft de bewegingscode nodig? De posities bezit <code>PlayState</code> nu zelf. De geladen textures en vensterafmetingen vraagt de state aan <code>Context</code>. Zo wordt <code>_playerTexture</code> bijvoorbeeld <code>Context.PlayerTexture</code> en de vensterbreedte <code>Context.ScreenWidth</code>.</p>
+</div>
+<div class="paragraph">
+<p>Voeg je bestaande helpers voor spelerbeweging en begrenzing toe aan <code>PlayState</code>. Pas de toegang tot resources aan. In de referentiecode ziet dat er zo uit:</p>
 </div>
 <div class="listingblock">
+<div class="title">PlayState - speler bewegen en begrenzen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdatePlayerPosition(float elapsedSeconds)
+{
+    float distance = PLAYER_SPEED_IN_PIX_PER_SEC * elapsedSeconds;
+
+    if (IsKeyDown(Keys.Right, Keys.D))
+        _playerPosition.X += distance;
+
+    if (IsKeyDown(Keys.Left, Keys.Q))
+        _playerPosition.X -= distance;
+
+    if (IsKeyDown(Keys.Up, Keys.Z))
+        _playerPosition.Y -= distance;
+
+    if (IsKeyDown(Keys.Down, Keys.S))
+        _playerPosition.Y += distance;
+}
+
+private void KeepPlayerInsideWindow()
+{
+    float maximumX = Context.ScreenWidth - Context.PlayerTexture.Width * PLAYER_SCALE;
+    float maximumY = Context.ScreenHeight - Context.PlayerTexture.Height * PLAYER_SCALE;
+
+    _playerPosition.X = MathHelper.Clamp(_playerPosition.X, 0, maximumX);
+    _playerPosition.Y = MathHelper.Clamp(_playerPosition.Y, 0, maximumY);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verplaats daarna de achtergrondbeweging. Onderstaande versie behoudt het herhalende water uit de Could-oefening. Gebruik je nog één achtergrond, dan verhuist jouw bestaande berekening mee.</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - achtergrond bewegen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdateBackgroundPosition(float elapsedSeconds)
+{
+    _backgroundPosition.X -= BACKGROUND_SPEED_IN_PIX_PER_SEC * elapsedSeconds;
+    float backgroundWidth = Context.BackgroundTexture.Width * _backgroundScale;
+
+    while (_backgroundPosition.X &lt;= -backgroundWidth)
+        _backgroundPosition.X += backgroundWidth;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing en vergelijk de berekeningen met je oude helpers. De posities zijn nu velden van <code>PlayState</code>; de afmetingen komen via <code>Context</code>. Waarom moet het begrenzen na de beweging gebeuren? We sluiten deze helpers in 4d aan op <code>Update</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4c_de_vijanden_en_hun_spawnregel_verplaatsen"><a class="anchor" href="#_4c_de_vijanden_en_hun_spawnregel_verplaatsen"></a>4c - De vijanden en hun spawnregel verplaatsen</h3>
+<div class="paragraph">
+<p>De vijandencollectie is private. Het object dat die collectie beheert, moet haar ook bijwerken en bewaken. Voeg daarom je helpers voor verplaatsen en opruimen toe aan <code>PlayState</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - vijanden bewegen en opruimen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void UpdateEnemyPositions(float elapsedSeconds)
+{
+    for (var index = 0; index &lt; _enemyPositions.Count; index++)
+    {
+        var position = _enemyPositions[index];
+        _enemyPositions[index] = new Vector2(
+            position.X - ENEMY_SPEED_IN_PIX_PER_SEC * elapsedSeconds,
+            position.Y);
+    }
+}
+
+private void RemoveEnemiesOutsideWindow()
+{
+    float sharkWidth = Context.SharkTexture.Width * SHARK_SCALE;
+
+    for (var index = _enemyPositions.Count - 1; index &gt;= 0; index--)
+    {
+        if (_enemyPositions[index].X + sharkWidth &lt;= 0)
+            _enemyPositions.RemoveAt(index);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verplaats vervolgens <code>SpawnEnemyIfNeeded</code>. Houd de volledige spawnregel bij elkaar: de teller verhogen, het interval controleren, de teller resetten, de limiet bewaken en eventueel een haai toevoegen.</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - spawnen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">private void SpawnEnemyIfNeeded(GameTime gameTime)
+{
+    _elapsedTimeForSpawn += gameTime.ElapsedGameTime.TotalMilliseconds;
+    if (_elapsedTimeForSpawn &lt; ENEMY_SPAWNTIME_IN_MS)
+        return;
+
+    // Ook bij een volle lijst begint een nieuw interval.
+    _elapsedTimeForSpawn = 0;
+    if (_enemyPositions.Count &gt;= MAX_ENEMY_COUNT)
+        return;
+
+    float maximumY = Context.ScreenHeight - Context.SharkTexture.Height * SHARK_SCALE;
+    float spawnY = Random.Shared.NextSingle() * maximumY;
+    var spawnPosition = new Vector2(Context.ScreenWidth, spawnY);
+    _enemyPositions.Add(spawnPosition);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing. Leg uit waarom de teller ook bij acht haaien wordt gereset. Heeft het verplaatsen van deze methode iets veranderd aan het antwoord op de voorspelvraag aan het begin van de les?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4d_de_spelberekeningen_vanuit_update_uitvoeren"><a class="anchor" href="#_4d_de_spelberekeningen_vanuit_update_uitvoeren"></a>4d - De spelberekeningen vanuit Update uitvoeren</h3>
+<div class="paragraph">
+<p>We hebben nu gegevens en helpers, maar roepen ze nog niet aan. Vervang de lege <code>Update</code> van <code>PlayState</code> door de speelberekeningen uit je oude <code>Game1.Update</code>. Behoud hun volgorde en tijdsargumenten:</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - spelberekeningen uitvoeren</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Update(GameTime gameTime)
 {
-    UpdateBackgroundPosition();
-    UpdatePlayerPosition();
-    UpdateEnemyPositions();
+    float elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+    UpdateBackgroundPosition(elapsedSeconds);
+    UpdatePlayerPosition(elapsedSeconds);
+    KeepPlayerInsideWindow();
+    UpdateEnemyPositions(elapsedSeconds);
+    RemoveEnemiesOutsideWindow();
+    SpawnEnemyIfNeeded(gameTime);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Er staat hier geen controle meer op <code>States.Play</code>. <code>Game1</code> roept deze implementatie alleen aan wanneer dit speelobject de actieve state is. Een state opnieuw naar haar eigen enumwaarde laten kijken zou de oude centrale selectie opnieuw invoeren.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing. Wijs aan waar de speler wordt begrensd en waar plaats vrijkomt voor een nieuwe haai. De pauzeovergang voegen we pas in stap 5 toe.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4e_de_wereld_tekenen_met_de_ontvangen_spritebatch"><a class="anchor" href="#_4e_de_wereld_tekenen_met_de_ontvangen_spritebatch"></a>4e - De wereld tekenen met de ontvangen SpriteBatch</h3>
+<div class="paragraph">
+<p>De gegevens staan bij <code>PlayState</code>. Laat die state daarom ook bepalen hoe ze worden getekend. Vervang haar lege <code>Draw</code> en voeg <code>DrawBackground</code> toe. Behoud de tekenvolgorde uit je eigen versie.</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - wereld tekenen</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+{
+    DrawBackground(spriteBatch);
+    spriteBatch.Draw(Context.PlayerTexture, _playerPosition, PLAYER_SCALE);
+
+    foreach (var enemyPosition in _enemyPositions)
+        spriteBatch.Draw(Context.SharkTexture, enemyPosition, SHARK_SCALE);
+}
+
+private void DrawBackground(SpriteBatch spriteBatch)
+{
+    float backgroundWidth = Context.BackgroundTexture.Width * _backgroundScale;
+    var nextBackgroundPosition = _backgroundPosition + new Vector2(backgroundWidth, 0);
+
+    spriteBatch.Draw(Context.BackgroundTexture, _backgroundPosition, _backgroundScale);
+    spriteBatch.Draw(Context.BackgroundTexture, nextBackgroundPosition, _backgroundScale);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hier gebruiken we <code>spriteBatch</code>, de parameter, in plaats van het private veld <code>_spriteBatch</code> uit <code>Game1</code>. De state ontvangt de al voorbereide tekencontext.</p>
+</div>
+<div class="paragraph">
+<p>In <code>Draw</code> staan geen <code>Begin</code>, <code>End</code> of <code>Clear</code>. <code>Game1</code> beheert één tekenbeurt. Daardoor kan straks ook een pauzestand eerst de spelwereld en daarna tekst laten tekenen binnen dezelfde tekenbeurt. <code>Draw</code> leest de posities; het verandert ze niet.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> bouw de oplossing. Waarom zou het een probleem zijn als <code>DrawBackground</code> zelf de achtergrondpositie zou veranderen? Denk aan het bevroren pauzebeeld dat we aan het begin maakten.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4f_het_menu_laat_een_nieuwe_speelsessie_beginnen"><a class="anchor" href="#_4f_het_menu_laat_een_nieuwe_speelsessie_beginnen"></a>4f - Het menu laat een nieuwe speelsessie beginnen</h3>
+<div class="paragraph">
+<p>In het menu betekent <code>Enter</code>: begin een nieuw spel. Dat vraagt een nieuwe speelsessie met beginposities, een lege vijandencollectie en een teller op nul. De constructor van <code>PlayState</code> legt die beginwaarden vast, dus maken we hier een nieuw speelobject.</p>
+</div>
+<div class="paragraph">
+<p>De betekenis van die toets hoort bij <code>MenuState</code>, dat de menu-invoer verwerkt. Daarom beslist het menu om de speelsessie te maken en vraagt het de context om die actief te maken. <code>Game1</code> hoeft daarvoor geen menuvoorwaarde terug te krijgen.</p>
+</div>
+<div class="paragraph">
+<p>Voeg in <code>MenuState.cs</code> bovenaan <code>using Microsoft.Xna.Framework.Input;</code> toe en vervang zijn lege <code>Update</code> door:</p>
+</div>
+<div class="listingblock">
+<div class="title">MenuState - starten</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Update(GameTime gameTime)
+{
+    if (IsKeyDown(Keys.Enter))
+        Context.ChangeState(new PlayState(Context));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Met <code>new PlayState(Context)</code> maken we één nieuw speelobject met zijn eigen beginwaarden. <code>ChangeState</code> laat <code>Game1</code> naar dat object verwijzen.</p>
+</div>
+<div class="paragraph">
+<p>Tijdens een volgende update roept <code>Game1</code> dezelfde regel <code>_currentState.Update(gameTime)</code> aan, maar nu wordt de implementatie van <code>PlayState</code> uitgevoerd. Het concrete object bepaalt het gedrag: dit is polymorfisme.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>ChangeState</code> vervangt alleen een referentie. Het roept niet zelf de nieuwe <code>Update</code> aan en beëindigt ook niet automatisch de lopende methode. Code na een overgang zou nog uitgevoerd worden. De volgende tekenbeurt kan de nieuwe state al tekenen; de nieuwe state krijgt zijn eerste update bij een volgende update-aanroep.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> start vanuit het menu. Besturing, schermgrenzen, spawninterval en opruimen moeten werken zoals voordien. Vergelijk ook je optionele uitbreidingen. <code>P</code> doet nog niets; dat is het volgende controlepunt. Zet een breakpoint in de constructor van <code>PlayState</code>: wordt die één keer bereikt bij starten, of opnieuw bij iedere update?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_5_pauzeren_zonder_de_speelsessie_te_verliezen"><a class="anchor" href="#_stap_5_pauzeren_zonder_de_speelsessie_te_verliezen"></a>Stap 5 - Pauzeren zonder de speelsessie te verliezen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tijdens pauze willen we dezelfde wereld zien zonder haar verder te laten bewegen. Bij hervatten moeten de posities en de gedeeltelijk verlopen spawntijd behouden zijn. Aan het begin konden <code>Play</code> en <code>Pause</code> dezelfde tekenopdrachten gebruiken. Hoe organiseren we dat nu met twee objecten?</p>
+</div>
+<div class="paragraph">
+<p>Een nieuwe <code>PlayState</code> maken bij hervatten zou nieuwe beginwaarden opleveren. De pauzestand moet daarom de <strong>bestaande instantie</strong> onthouden. Twee objecten van dezelfde klasse zijn nog niet dezelfde speelsessie.</p>
+</div>
+<div class="sect2">
+<h3 id="_5a_de_spelberekeningen_overslaan_en_de_wereld_blijven_tekenen"><a class="anchor" href="#_5a_de_spelberekeningen_overslaan_en_de_wereld_blijven_tekenen"></a>5a - De spelberekeningen overslaan en de wereld blijven tekenen</h3>
+<div class="paragraph">
+<p>Alle beweging en het bijhouden van de spawntijd gebeuren nu in <code>PlayState.Update</code>. Zodra <code>PauseState</code> actief is, roept <code>Game1.Update</code> de update van die pauzestand aan. Als <code>PauseState.Update</code> de bewaarde <code>PlayState.Update</code> niet aanroept, worden de spelberekeningen overgeslagen. Dat houdt de wereld stil. De update van de pauzestand blijft beschikbaar om straks de invoer voor hervatten te verwerken.</p>
+</div>
+<div class="paragraph">
+<p>Het zichtbaar houden van de wereld regelen we afzonderlijk. <code>PlayState.Draw</code> kan de bewaarde posities al tekenen. De pauzestand krijgt daarom een verwijzing naar het bestaande speelobject en roept alleen diens <code>Draw</code> aan. Ze hoeft geen spelgegevens of tekenopdrachten te kopiëren.</p>
+</div>
+<div class="paragraph">
+<p>Maak <code>States/PauseState.cs</code>. Deze eerste versie slaat het bijwerken van de spelwereld over en blijft haar tekenen. Hervatten en de pauzetekst voegen we in 5c toe.</p>
+</div>
+<div class="listingblock">
+<div class="title">States/PauseState.cs - wereld zichtbaar houden</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonoGame_Pikachu.Extensions;
+
+namespace MonoGame_Pikachu.States;
+
+public class PauseState : AbstractState
+{
+    private readonly PlayState _previousState;
+
+    public PauseState(Game1 context, PlayState previousState) : base(context)
+    {
+        ArgumentNullException.ThrowIfNull(previousState);
+        _previousState = previousState;
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        // De gepauzeerde wereld wordt niet bijgewerkt.
+    }
+
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    {
+        _previousState.Draw(gameTime, spriteBatch);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De constructor ontvangt naast de context ook het speelobject dat we pauzeren. De private <code>readonly</code>-referentie <code>_previousState</code> bewaart precies dat object. We geven die referentie geen publieke setter.</p>
+</div>
+<div class="paragraph">
+<p>We kiezen hier bewust het type <code>PlayState</code>: onze spelregels laten pauzeren vanuit het spelen toe. Een algemener type <code>AbstractState</code> zou ook een menu toelaten en vraagt dus andere afspraken. We modelleren de samenwerking die we nu nodig hebben.</p>
+</div>
+<div class="paragraph">
+<p>De twee methoden hebben dus elk hun taak: <code>PauseState.Update</code> laat de spelberekeningen achterwege, waardoor de gegevens gelijk blijven. <code>PauseState.Draw</code> laat die onveranderde gegevens tekenen, waardoor de stilstaande wereld zichtbaar blijft.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5b_de_speeltoestand_laat_zichzelf_pauzeren"><a class="anchor" href="#_5b_de_speeltoestand_laat_zichzelf_pauzeren"></a>5b - De speeltoestand laat zichzelf pauzeren</h3>
+<div class="paragraph">
+<p>De toets <code>P</code> betekent alleen tijdens het spelen dat we willen pauzeren. Die beslissing hoort daarom bij <code>PlayState.Update</code>. Een algemene toetscontrole in <code>Game1</code> zou ook vanuit het menu een pauze kunnen starten, terwijl er dan nog geen speelsessie is om te bewaren.</p>
+</div>
+<div class="paragraph">
+<p>Om een <code>PauseState</code> te maken hebben we twee bestaande objecten nodig: de context voor gedeelde resources en overgangen, en de speelsessie die zichtbaar moet blijven. <code>PlayState</code> kent beide: via <code>Context</code> bereikt ze de game en met <code>this</code> verwijst ze naar zichzelf. Door die referenties door te geven kan de pauzestand dezelfde wereld blijven tekenen en later hervatten.</p>
+</div>
+<div class="paragraph">
+<p>Vervang <code>PlayState.Update</code> door onderstaande versie. Alle bestaande berekeningen blijven staan; de laatste controle voegt de pauzeovergang toe.</p>
+</div>
+<div class="listingblock">
+<div class="title">PlayState - update met pauze</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Update(GameTime gameTime)
+{
+    float elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+    UpdateBackgroundPosition(elapsedSeconds);
+    UpdatePlayerPosition(elapsedSeconds);
+    KeepPlayerInsideWindow();
+    UpdateEnemyPositions(elapsedSeconds);
+    RemoveEnemiesOutsideWindow();
     SpawnEnemyIfNeeded(gameTime);
 
     if (IsKeyDown(Keys.P))
@@ -443,158 +1174,471 @@ In <code>Draw</code> worden achtergrond, enemies en speler getekend. Daardoor zi
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Hier betekent <code>this</code> de huidige <code>PlayState</code>-instantie. <code>Context</code> is de bijbehorende <code>Game1</code>-instantie. De twee argumenten hebben dus verschillende rollen:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Argument</th>
+<th class="tableblock halign-left valign-top">Verwijst naar</th>
+<th class="tableblock halign-left valign-top">Waarom nodig?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Context</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De bestaande <code>Game1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Geeft de pauzestand toegang tot gedeelde resources en <code>ChangeState</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>this</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De huidige <code>PlayState</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laat de pauzestand precies deze speelsessie bewaren en tekenen.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Controleer:</strong> start, wacht op een haai en pauzeer met <code>P</code>. Het speelbeeld blijft zichtbaar, maar beweging en spawnen stoppen, ook als je toetsen ingedrukt houdt. Er is nog geen pauzetekst en <code>Enter</code> doet voorlopig niets. Met <code>Escape</code> kun je wel afsluiten, omdat <code>Game1</code> die invoer verwerkt.</p>
+</div>
+<div class="paragraph">
+<p>Zet breakpoints in <code>PlayState.Update</code> en <code>PlayState.Draw</code>. Tijdens pauze wordt <code>PlayState.Update</code> niet bereikt, maar <code>PlayState.Draw</code> wel. Controleer ook dat <code>Game1.Update</code> en <code>PauseState.Update</code> blijven doorgaan. Verklaar welke aanroep ontbreekt om de wereld stil te houden en welke aanroep nodig blijft om haar te tonen.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_pausestate"><a class="anchor" href="#_pausestate"></a>PauseState</h3>
+<h3 id="_5c_pauzetekst_en_hervatten_toevoegen"><a class="anchor" href="#_5c_pauzetekst_en_hervatten_toevoegen"></a>5c - Pauzetekst en hervatten toevoegen</h3>
 <div class="paragraph">
-<p><code>PauseState</code> is hier interessant. Deze state bewaart een referentie naar <code>PreviousState</code>, gezien we enkel willen pauzeren op een <code>PlayState</code> gaan we hier een <code>PlayState</code> binnenpakken en niet <code>AbstractState</code>. In <code>Draw</code> roept ze eerst <code>PreviousState.Draw(&#8230;&#8203;)</code> op en tekent daarna de pauzetekst erbovenop. Daardoor blijft de wereld zichtbaar, maar ligt de update-logica stil want de PreviousState.Update() wordt niet opgeroepen. Als de speler op <code>Enter</code> drukt, schakelt de game terug naar de vorige state.</p>
+<p>Het beeld staat nu stil, maar de speler weet nog niet hoe verder te gaan. Vervang <code>PauseState.Draw</code> door deze versie. We tekenen eerst de wereld en daarna de pauzeboodschap, zodat de tekst bovenop het spel verschijnt.</p>
 </div>
 <div class="listingblock">
+<div class="title">PauseState - wereld en boodschap tekenen</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class PauseState : AbstractState
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
 {
-    public PlayState PreviousState { get; init; }
+    _previousState.Draw(gameTime, spriteBatch);
 
-    public PauseState(Game1 context, PlayState previousState) : base(context)
+    string pauseText = "Pause. Druk op enter om door te doen";
+    spriteBatch.DrawString(Context.SpriteFont, pauseText, Context.GetCenteredTextPosition(pauseText));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hervatten betekent vervolgens dat we het bestaande speelobject opnieuw de actieve state maken. Vervang de lege <code>PauseState.Update</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">PauseState - hervatten</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public override void Update(GameTime gameTime)
+{
+    if (IsKeyDown(Keys.Enter))
+        Context.ChangeState(_previousState);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bij <code>Enter</code> krijgt <code>Game1</code> opnieuw een verwijzing naar diezelfde <code>PlayState</code>. De constructor wordt niet opnieuw uitgevoerd. De pauzestand kopieert geen lijst en bewaart geen tweede versie van de posities.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/game/state-pattern-pause-objects.svg" alt="Objectdiagram tijdens pauze: Game1 verwijst naar PauseState en PauseState bewaart dezelfde PlayState.">
+</div>
+<div class="title">Figure 2. Het objectnetwerk tijdens pauze</div>
+</div>
+<div class="paragraph">
+<p>In dit objectdiagram zie je concrete instanties. <code>game</code> is de gedeelde context van beide states. <code>play</code> blijft bestaan via <code>pause._previousState</code>, ook al is het tijdelijk niet de actieve state. Bij hervatten verandert alleen de actieve verwijzing van <code>game</code> weer naar <code>play</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Pauzeren stopt de game loop niet. MonoGame blijft <code>Game1.Update</code> en <code>Game1.Draw</code> aanroepen. Die delegeren naar <code>PauseState</code>, die invoer blijft verwerken en de wereld laat tekenen. Alleen de spelberekeningen van <code>PlayState.Update</code> worden overgeslagen.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Voorspel:</strong> wat zou veranderen als we in <code>PauseState.Update</code> <code>new PlayState(Context)</code> doorgeven in plaats van <code>_previousState</code>? Welke gegevens zouden opnieuw beginnen, en welke geladen resources zouden dezelfde blijven?</p>
+</div>
+<div class="paragraph">
+<p><strong>Controleer:</strong> speel, pauzeer en hervat. Dezelfde haaien en posities blijven bestaan. Test ook <code>Escape</code> vanuit pauze. Pauzeer halverwege een spawninterval: alleen de resterende speeltijd telt na hervatten verder. Controleer met een breakpoint dat de constructor van <code>PlayState</code> bij hervatten niet opnieuw wordt uitgevoerd.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stap_6_game1_opruimen_en_de_werking_vergelijken"><a class="anchor" href="#_stap_6_game1_opruimen_en_de_werking_vergelijken"></a>Stap 6 - Game1 opruimen en de werking vergelijken</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>De drie toestanden werken nu samen. De oude spelhelpers en velden in <code>Game1</code> worden niet meer gebruikt. Laat ze niet staan als een tweede, verouderde versie van de spelregels.</p>
+</div>
+<div class="paragraph">
+<p>Verwijder uit <code>Game1</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de oude positievelden, vijandencollectie, spawnteller en achtergrondschaling;</p>
+</li>
+<li>
+<p>de constanten voor beweging, figuurschalen en spawnen; ze staan nu bij <code>PlayState</code>;</p>
+</li>
+<li>
+<p>de helpers voor bewegen, begrenzen, verwijderen, spawnen en de achtergrond tekenen;</p>
+</li>
+<li>
+<p>de oude toetsenbordhulpjes; states gebruiken de helpers uit <code>AbstractState</code>;</p>
+</li>
+<li>
+<p>de berekening van <code>_backgroundScale</code> uit <code>LoadContent</code>; de constructor van <code>PlayState</code> berekent die nu.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Behoud de vensterinstellingen, resourcevelden en de bewerkingen die we in stap 1 en 3 invoerden. <code>Program.cs</code>, het projectbestand, de contentmap en de tekenextensies blijven bestaan.</p>
+</div>
+<div class="paragraph">
+<p>Onderstaande volledige <code>Game1</code> dient als controle van die opruiming. Vergelijk je resultaat ermee; de spelregels staan nu in de states.</p>
+</div>
+<div class="listingblock">
+<div class="title">Game1.cs - na de refactoring</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonoGame_Pikachu.States;
+
+namespace MonoGame_Pikachu;
+
+public class Game1 : Game
+{
+    private const int WINDOW_WIDTH = 768;
+    private const int WINDOW_HEIGHT = 540;
+
+    private readonly GraphicsDeviceManager _graphics;
+    private AbstractState _currentState = null!;
+
+    private SpriteBatch _spriteBatch = null!;
+    private SpriteFont _spriteFont = null!;
+    private Texture2D _playerTexture = null!;
+    private Texture2D _sharkTexture = null!;
+    private Texture2D _backgroundTexture = null!;
+
+    public int ScreenWidth =&gt; _graphics.PreferredBackBufferWidth;
+    public int ScreenHeight =&gt; _graphics.PreferredBackBufferHeight;
+
+    public SpriteFont SpriteFont =&gt; _spriteFont;
+    public Texture2D PlayerTexture =&gt; _playerTexture;
+    public Texture2D SharkTexture =&gt; _sharkTexture;
+    public Texture2D BackgroundTexture =&gt; _backgroundTexture;
+
+    public Game1()
     {
-        PreviousState = previousState;
+        _graphics = new GraphicsDeviceManager(this);
+        Content.RootDirectory = "Content";
+        IsMouseVisible = true;
+
+        _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
+        _graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
     }
 
-    public override void Update(GameTime gameTime)
+    protected override void Initialize()
     {
-        if (IsKeyDown(Keys.Enter))
-            Context.ChangeState(PreviousState);
+        base.Initialize();
+        ChangeState(new MenuState(this));
     }
 
-    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+    protected override void LoadContent()
     {
-        PreviousState.Draw(gameTime, spriteBatch);
-        spriteBatch.DrawString(Context.SpriteFont,
-            "Pause. Druk op enter om door te doen",
-            Vector2.Zero,
-            Color.White);
+        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _spriteFont = Content.Load&lt;SpriteFont&gt;("game-font");
+        _playerTexture = Content.Load&lt;Texture2D&gt;("surfing-pikachu");
+        _sharkTexture = Content.Load&lt;Texture2D&gt;("haai");
+        _backgroundTexture = Content.Load&lt;Texture2D&gt;("water");
+    }
+
+    public void ChangeState(AbstractState newActiveState)
+    {
+        ArgumentNullException.ThrowIfNull(newActiveState);
+        _currentState = newActiveState;
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
+            || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        {
+            Exit();
+            return;
+        }
+
+        _currentState.Update(gameTime);
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        _spriteBatch.Begin();
+
+        _currentState.Draw(gameTime, _spriteBatch);
+
+        _spriteBatch.End();
+        base.Draw(gameTime);
+    }
+
+    public Vector2 GetCenteredTextPosition(string text)
+    {
+        float textWidth = _spriteFont.MeasureString(text).X;
+        return new Vector2((ScreenWidth - textWidth) / 2f, 0);
     }
 }</code></pre>
 </div>
 </div>
-<div class="quoteblock">
-<blockquote>
-Hier kiezen we bewust voor PlayState, omdat pauzeren enkel zin heeft vanuit gameplay. Een algemenere oplossing zou AbstractState gebruiken, maar dan moet je bewaken welke states pauzeerbaar zijn.
-</blockquote>
+<div class="paragraph">
+<p>De resourcevelden gebruiken hier ook <code>null!</code>: MonoGame laat <code>LoadContent</code> ze invullen voordat we ze gebruiken. Dat volgt dezelfde levenscyclusafspraak als bij de actieve state. Deze velden zouden in een gewone klasse vaak via een constructor ingevuld worden; hier volgen we de opstartmomenten van het framework.</p>
+</div>
+<div class="paragraph">
+<p>Je project bevat nu deze onderdelen:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Bestand of map</th>
+<th class="tableblock halign-left valign-top">Inhoud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Program.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start de MonoGame-toepassing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Game1.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beheert het venster, de resources en de actieve state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Extensions/SpriteBatchExtensions.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bundelt de vereenvoudigde tekenaanroepen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>States/AbstractState.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definieert het gemeenschappelijke contract en de gedeelde hulpjes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>States/MenuState.cs</code>, <code>States/PlayState.cs</code> en <code>States/PauseState.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bevatten het gedrag van de drie toestanden.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Content/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bevat <code>Content.mgcb</code> en de assets <code>game-font.spritefont</code>, <code>surfing-pikachu.png</code>, <code>haai.png</code> en <code>water.png</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_de_volledige_weg_van_een_update"><a class="anchor" href="#_de_volledige_weg_van_een_update"></a>De volledige weg van een update</h3>
+<div class="paragraph">
+<p>Volg met breakpoints één keer het starten en één keer het hervatten:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>MonoGame roept <code>Game1.Update</code> aan.</p>
+</li>
+<li>
+<p><code>Game1</code> controleert de algemene afsluitinvoer.</p>
+</li>
+<li>
+<p><code>Game1</code> roept <code>Update</code> aan op het actieve stateobject.</p>
+</li>
+<li>
+<p>Dat object verwerkt de invoer die in zijn toestand betekenis heeft.</p>
+</li>
+<li>
+<p>Bij een overgang vraagt het object via <code>Context.ChangeState</code> een andere actieve state.</p>
+</li>
+<li>
+<p>Een volgende tekenbeurt gebruikt de dan actieve state; een volgende update werkt die state bij.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Bij starten maakt <code>MenuState</code> een nieuwe <code>PlayState</code>. Bij hervatten geeft <code>PauseState</code> zijn bewaarde referentie terug. De aanroep in <code>Game1</code> blijft in beide gevallen dezelfde.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gameoverstate"><a class="anchor" href="#_gameoverstate"></a>GameOverState</h3>
-<div class="paragraph">
-<p><code>GameOverState</code> toont een game-over-boodschap en laat de speler met <code>Enter</code> terugkeren naar <code>MenuState</code>. Ook dit gedrag zit volledig apart van de andere toestanden.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_wat_verandert_er_ontwerpmatig"><a class="anchor" href="#_wat_verandert_er_ontwerpmatig"></a>Wat verandert er ontwerpmatig?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>De overgang van de code zonder naar met statemachine is geen cosmetische refactor. Het ontwerp verandert fundamenteel.</p>
-</div>
-<div class="sect2">
-<h3 id="_1_van_conditionele_logica_naar_polymorfisme"><a class="anchor" href="#_1_van_conditionele_logica_naar_polymorfisme"></a>1. Van conditionele logica naar polymorfisme</h3>
-<div class="paragraph">
-<p>In de oude code vraagt de code voortdurend: “In welke state zit ik nu?” In de huidige code hoeft <code>Game1</code> dat niet meer te weten. Het roept gewoon <code>Update</code> en <code>Draw</code> op de huidige state aan. Welke concrete implementatie uitgevoerd wordt, hangt af van het object waar <code>_currentState</code> naar verwijst. Dat is polymorfisme in actie.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_2_betere_scheiding_van_verantwoordelijkheden"><a class="anchor" href="#_2_betere_scheiding_van_verantwoordelijkheden"></a>2. Betere scheiding van verantwoordelijkheden</h3>
-<div class="paragraph">
-<p><code>Game1</code> wordt teruggebracht tot zijn rol als centrale game-context:</p>
-</div>
+<h3 id="_vergelijk_met_de_werking_van_les_8"><a class="anchor" href="#_vergelijk_met_de_werking_van_les_8"></a>Vergelijk met de werking van les 8</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>resources laden;</p>
+<p>Start de game en wacht in het menu. Er loopt nog geen speelsessie.</p>
 </li>
 <li>
-<p>gedeelde data bewaren;</p>
+<p>Start met <code>Enter</code>. Beweeg met pijltjestoetsen en <code>ZQSD</code>, ook diagonaal. Controleer alle randen.</p>
 </li>
 <li>
-<p>de actieve state bijhouden;</p>
+<p>Controleer het spawninterval, de limiet van acht en het verwijderen van volledig verdwenen haaien.</p>
 </li>
 <li>
-<p>delegeren naar die state.</p>
+<p>Pauzeer ongeveer twee seconden na een spawn. Wacht vijf seconden en hervat. De volgende haai verschijnt na ongeveer één verdere seconde speeltijd.</p>
+</li>
+<li>
+<p>Kijk tijdens pauze naar de private velden van de bewaarde <code>PlayState</code>. Posities, aantal vijanden en teller blijven gelijk, ook bij ingedrukte bewegingstoetsen.</p>
+</li>
+<li>
+<p>Controleer dat hervatten dezelfde <code>PlayState</code> gebruikt en haar constructor niet opnieuw aanroept.</p>
+</li>
+<li>
+<p>Test <code>Escape</code> vanuit menu, spelen en pauze.</p>
+</li>
+<li>
+<p>Controleer je optionele uitbreidingen: willekeurige hoogtes, gecentreerde teksten, eenvoudige tekenaanroepen, herhalend water en dezelfde bewegingssnelheden.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>De concrete states nemen het gedragsaspect over. Dat maakt de code leesbaarder en lokaler: wie het menu wil begrijpen, kijkt naar <code>MenuState</code>; wie gameplay wil begrijpen, kijkt naar <code>PlayState</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_3_uitbreidbaarheid"><a class="anchor" href="#_3_uitbreidbaarheid"></a>3. Uitbreidbaarheid</h3>
-<div class="paragraph">
-<p>Een nieuwe toestand toevoegen, zoals bijvoorbeeld <code>SettingsState</code> of <code>HighScoreState</code>, vraagt nu geen uitbreiding van een groot <code>if/else</code>-blok in <code>Game1</code>. Je maakt gewoon een extra klasse die <code>AbstractState</code> erft en je schakelt ernaartoe wanneer nodig. Dat sluit beter aan bij het open/closed-principe: bestaande code hoeft minder aangepast te worden wanneer nieuw gedrag toegevoegd wordt.
-Dit principe werkt ook als je meerdere <code>PlayStates</code> wil bv. <code>SinglePlayState</code> of <code>MultiPlayState</code>.</p>
+<p>Vergelijk hiervoor met je werkende versie van les 8. We willen dezelfde spelregels en dezelfde bestaande uitbreidingen terugvinden, terwijl de verantwoordelijkheden nu een andere plaats hebben.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_waarom_krijgt_elke_state_een_game1_context"><a class="anchor" href="#_waarom_krijgt_elke_state_een_game1_context"></a>Waarom krijgt elke state een <code>Game1</code>-context?</h2>
+<h2 id="_wat_hebben_we_met_dit_ontwerp_gewonnen"><a class="anchor" href="#_wat_hebben_we_met_dit_ontwerp_gewonnen"></a>Wat hebben we met dit ontwerp gewonnen?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>De states krijgen in de constructor een <code>Game1 context</code>. Daardoor kunnen ze werken met gedeelde gegevens zoals:</p>
+<p>We hebben twee soorten toestand van elkaar onderscheiden. De <strong>actieve speltoestand</strong> bepaalt welke klasse gedrag uitvoert. De <strong>spelgegevens van een speelsessie</strong> zijn de posities, collectie en timer binnen een <code>PlayState</code>. Die speelsessie blijft ook bestaan wanneer ze tijdelijk niet de actieve state is.</p>
 </div>
+<div class="paragraph">
+<p>Dit maakt drie ontwerpkeuzes concreet:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Keuze</th>
+<th class="tableblock halign-left valign-top">Gevolg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toestandafhankelijk gedrag in concrete klassen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invoer en weergave van één toestand staan samen. Dat ondersteunt High Cohesion.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Een gemeenschappelijk contract en één actieve referentie.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Game1</code> delegeert zonder een enum of typecontrole. Polymorfisme kiest de implementatie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De speelsessie bewaart haar eigen veranderende gegevens.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hervatten en opnieuw beginnen krijgen een duidelijke betekenis. Andere states hoeven de interne collectie niet te wijzigen.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Een nieuwe <code>HelpState</code> vraagt straks geen extra toestandtak in <code>Game1.Update</code> of <code>Game1.Draw</code>. We moeten wel de overgang vanuit het menu toevoegen. Uitbreidbaar betekent dus niet dat bestaande code nooit meer verandert: we beperken waar de wijziging thuishoort.</p>
+</div>
+<div class="paragraph">
+<p>Er is ook een prijs. We hebben meer klassen en moeten de samenwerking via referenties begrijpen. Concrete states kennen de context en sommige andere states die ze kunnen aanmaken. Voor een kleine toepassing met nauwelijks veranderend toestandafhankelijk gedrag kan de enumversie eenvoudiger blijven.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oefeningen_nieuwe_toestanden_toevoegen"><a class="anchor" href="#_oefeningen_nieuwe_toestanden_toevoegen"></a>Oefeningen - Nieuwe toestanden toevoegen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Werk verder op je werkende versie met <code>MenuState</code>, <code>PlayState</code> en <code>PauseState</code>. De oefeningen laten zien welke wijzigingen het State Pattern gemakkelijker maakt en waarom we de speelsessie als object bewaren. Werk de opdrachten thuis af als de lestijd voorbij is.</p>
+</div>
+<div class="sect2">
+<h3 id="_must_een_scherm_met_speluitleg"><a class="anchor" href="#_must_een_scherm_met_speluitleg"></a>Must - Een scherm met speluitleg</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><code>PlayerPosition</code></p>
+<p>Voeg <code>HelpState</code> toe met uitleg over bewegen, pauzeren, hervatten en afsluiten. De state gebruikt hetzelfde contract en dezelfde geladen font.</p>
 </li>
 <li>
-<p><code>EnemyPositions</code></p>
+<p>Laat <code>H</code> in het menu naar de uitleg gaan. Laat <code>M</code> vanuit de uitleg terugkeren naar het menu. Toon beide mogelijkheden in de teksten. <code>Escape</code> blijft overal afsluiten.</p>
 </li>
 <li>
-<p><code>BackgroundPosition</code></p>
+<p>Laat <code>Enter</code> vanuit het menu nog steeds een nieuw spel starten. Als meerdere toetsen ingedrukt zijn, mag één update hoogstens één overgang uitvoeren.</p>
 </li>
 <li>
-<p><code>SpriteFont</code></p>
+<p>Houd de tekst leesbaar binnen het venster. Je kunt korte regels afzonderlijk tekenen en de tekstpositie per regel een andere Y-waarde geven.</p>
 </li>
 <li>
-<p>textures</p>
+<p>Laat <code>Game1.Update</code> en <code>Game1.Draw</code> ongewijzigd. Verklaar waarom <code>Game1</code> geen extra tak voor deze nieuwe state nodig heeft.</p>
 </li>
 <li>
-<p><code>GraphicsDeviceManager</code></p>
+<p>Controleer alle eerder werkende spelregels en pauzeren. Een extra scherm mag geen reden zijn om de spelgegevens weer publiek te maken.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Dat is praktisch, maar ook interessant. De state-objecten beheren niet alles zelf; ze gebruiken de context om met gedeelde speldata te werken. Je kan dit zien als een eenvoudige vorm van het State pattern waarbij <code>Game1</code> de context is en de concrete states het toestand-afhankelijke gedrag implementeren. De code laat dat patroon duidelijk zien via <code>Context.ChangeState(&#8230;&#8203;)</code> en de <code>AbstractState</code>-hiërarchie.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sterktes_van_deze_aanpak"><a class="anchor" href="#_sterktes_van_deze_aanpak"></a>Sterktes van deze aanpak</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_leesbaarheid"><a class="anchor" href="#_leesbaarheid"></a>Leesbaarheid</h3>
-<div class="paragraph">
-<p>Elke state bevat enkel de code die voor die toestand relevant is. Daardoor wordt de intentie van de code sneller duidelijk.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_onderhoudbaarheid"><a class="anchor" href="#_onderhoudbaarheid"></a>Onderhoudbaarheid</h3>
-<div class="paragraph">
-<p>Aanpassingen in het menu breken minder snel gameplaycode, en omgekeerd. Je werkt in kleinere, meer afgebakende klassen.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Gebruik <code>MenuState</code> als voorbeeld van de samenwerking, niet als een tweede centrale beslisboom. De uitleg kent haar eigen invoer en weergave. De overgang ernaartoe hoort bij de state waarin de speler <code>H</code> kan gebruiken.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_uitbreidbaarheid"><a class="anchor" href="#_uitbreidbaarheid"></a>Uitbreidbaarheid</h3>
-<div class="paragraph">
-<p>Nieuwe states kunnen toegevoegd worden zonder dat <code>Game1</code> opnieuw een beslisboom moet kennen.</p>
+<h3 id="_should_een_voorlopig_game_overscherm"><a class="anchor" href="#_should_een_voorlopig_game_overscherm"></a>Should - Een voorlopig game-overscherm</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Voeg <code>GameOverState</code> toe. Laat voorlopig alleen tijdens het spelen de toets <code>G</code> naar deze state gaan. Dit is een testovergang; botsingen en levens komen later.</p>
+</li>
+<li>
+<p>Toon een game-over-boodschap en vermeld dat <code>S</code> terugkeert naar het menu, zoals afgesproken in het einddoel van de lessenreeks.</p>
+</li>
+<li>
+<p>Laat een volgende <code>Enter</code> in het menu een <strong>nieuwe</strong> <code>PlayState</code> maken. De speler begint op zijn beginpositie, de vijandencollectie is leeg en de spawnteller begint opnieuw.</p>
+</li>
+<li>
+<p>Hergebruik de geladen textures en font. Een nieuwe speelsessie vraagt geen nieuw <code>Game1</code>-object en geen nieuwe contentbuild.</p>
+</li>
+<li>
+<p>Controleer dat <code>G</code> in menu, pauze en uitleg geen game over veroorzaakt. De betekenis van invoer hoort bij de actieve toestand.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_hergebruik_van_gedrag"><a class="anchor" href="#_hergebruik_van_gedrag"></a>Hergebruik van gedrag</h3>
-<div class="paragraph">
-<p>De abstracte basisklasse centraliseert gedeelde input-hulpjes en het gemeenschappelijke contract.</p>
+<h3 id="_could_opnieuw_beginnen_vanuit_pauze"><a class="anchor" href="#_could_opnieuw_beginnen_vanuit_pauze"></a>Could - Opnieuw beginnen vanuit pauze</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Bied tijdens pauze naast <code>Enter</code> voor hervatten ook <code>N</code> voor een nieuw spel aan. Maak die keuze zichtbaar in de pauzetekst.</p>
+</li>
+<li>
+<p>Laat hervatten dezelfde <code>PlayState</code> gebruiken, en opnieuw beginnen een nieuwe <code>PlayState</code>.</p>
+</li>
+<li>
+<p>Onderbouw welke gegevens opnieuw geïnitialiseerd worden en welke resources dezelfde blijven. Verander geen velden van de oude speelsessie om een nieuwe sessie na te bootsen.</p>
+</li>
+<li>
+<p>Controleer dat dezelfde update niet zowel hervat als opnieuw begint wanneer meerdere toetsen ingedrukt zijn.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
